@@ -1,0 +1,107 @@
+ .trad-advance-accordion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trad-advance-accordion-item {
+  overflow: hidden;
+  border-radius: 8px;
+  transition: all 0.35s ease;
+  border: 1px solid #9e9e9e62;
+}
+
+.trad-advance-accordion-title {
+  background: #dcdddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #202020;
+  padding: 12px;
+}
+
+.trad-advanceaccordion-content {
+ max-height: 0;
+ overflow: hidden;
+ opacity: 0;
+ visibility: hidden;
+ transition: max-height 0.35s ease, opacity 0.25s ease, visibility 0.25s ease;
+  padding: 0 16px;
+}
+/* When item is open */
+.trad-advance-accordion-item.trad-advance-accordion-open .trad-advanceaccordion-content {
+  opacity: 1;
+  visibility: visible;
+  max-height: 2000px; /* large enough for any content */
+  transition:
+    max-height 0.45s ease,
+    opacity 0.25s ease 0.1s,
+    visibility 0s;
+}
+.trad-advance-accordion-item:not(.trad-advance-accordion-open) {
+  background: transparent !important;
+}
+
+.trad-advance-accordion-icon {
+  font-size: 18px;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.trad-advance-accordion-icon .trad-advanced-accordion-icon-open {
+  transition: transform 0.3s ease-in-out;
+  display: none;
+}
+.trad-advance-accordion-item.trad-advance-accordion-open .trad-advance-accordion-icon .trad-advanced-accordion-icon-closed {
+  display: none;
+  transition: display .3s ease-in-out;
+}
+.trad-advance-accordion-item.trad-advance-accordion-open .trad-advance-accordion-icon .trad-advanced-accordion-icon-open {
+  display: block;
+  transition: display .3s ease-in-out;
+}
+.trad-advance-accordion-icon i,
+.trad-advance-accordion-icon svg {
+  width: 1em;
+  height: 1em;
+  font-size: 18px;   /* adjust as needed */
+  fill: currentColor;
+  color: inherit;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.trad-advance-accordion-title {
+    background: var(--accordion-title-background-normal, #dadada); /* Default background */
+    transition: background 0.3s ease; /* Smooth transition for background */
+}
+
+/* Hover background */
+.trad-advance-accordion-title:hover {
+    background: var(--accordion-title-background-hover, #d1e7f1); /* Hover background */
+}
+
+/* Active background when title is clicked */
+.trad-advance-accordion-title.trad-advance-accordion-title-active {
+    background: var(--accordion-title-background-active, #d1e7f1); /* Active background */
+}
+
+
+.trad-advance-accordion-item.trad-advance-accordion-open .trad-advanceaccordion-content {
+  padding-top: initial !important;
+  padding-bottom: initial !important;
+}
+.advanced-accordion-dynamic-open{
+ transform: translateY(0);
+transition: transform 0.3s ease;
+}
+.trad-advanceaccordion-content.advanced-accordion-dynamic-open{
+  transition: transform 0.3s ease;
+}
+.trad-advanceaccordion-content{
+  transition: display duration 0.3s ease, transform 0.3s ease;
+}

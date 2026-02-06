@@ -1,0 +1,34 @@
+.trad-accordion-container{
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+.trad-accordion-title{
+    width: 100%;
+    display: flex !important;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    margin-bottom: 0px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px; 
+    font-weight: bold;
+    padding: 10px;
+    gap: 10px;
+}
+
+.trad-accordion-content {
+    padding: 10px;
+    display: none;
+    background-color: #ffffff;
+    border-top: none;
+}
+
+.trad-accordion-content.is-open {
+    display: block; 
+}
+
+
+
+

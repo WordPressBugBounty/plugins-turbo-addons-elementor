@@ -1,0 +1,36 @@
+.trad-business-hours{
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+.trad-business-hour {
+	width: 100%;
+	padding: 10px 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+.trad-business-day i,
+.trad-business-day svg,
+.trad-business-time i,
+.trad-business-time svg{
+ width: 20px;
+ font-size: 20px;
+}
+
+.trad-business-day,
+.trad-business-time{
+ display: flex;
+ align-items: center;
+ gap: 10px;
+}
+
+.trad-business-time{
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ text-align: right;
+ justify-content: flex-end
+}

@@ -1,0 +1,106 @@
+.trad-scroll-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.trad-scroll-nav.trad-scroll-right {
+    right: 20px;
+}
+
+.trad-scroll-nav.trad-scroll-left {
+    left: 20px;
+}
+
+.trad-scroll-navigation-ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.trad-scroll-navigation-li {
+    margin: 10px 0;
+}
+
+.trad-scroll-nav .trad-scroll-link {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 5px;
+    background: transparent;
+    border-radius: 50%;
+    text-align: center;
+    transition: background 0.3s ease, color 0.3s ease;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s;
+    border: 3px solid #2e319559;
+}
+
+.trad-scroll-nav .trad-scroll-link:hover {
+    background: #ffffff;
+    color: #fff;
+}
+.trad-scroll-nav .trad-scroll-link.active {
+    position: relative;
+    background: #2e31959f;
+    color: #fff;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.trad-scroll-nav .trad-scroll-link.active::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #2e319562;
+    /* animation: glow 1.5s infinite; */
+    z-index: -1;
+}
+
+@keyframes glow {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
+
+.trad-scroll-label {
+    position: relative;
+    transition: all .3s;
+    width: 200px;
+    display: none;
+}
+
+.trad-scroll-nav .trad-scroll-link:hover .trad-scroll-label {
+    right: -50px;
+    color: #000000;
+    display: block;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 5px 10px;
+
+}

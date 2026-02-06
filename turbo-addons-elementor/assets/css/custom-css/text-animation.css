@@ -1,0 +1,43 @@
+/* -------------------------Animation text//
+============================================================ */
+.trad-text-animation-widget * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Text Animation Widget Styles */
+.trad-text-animation-widget {
+    display: flex;
+    align-items: center;
+}
+
+/* Static Text Styles */
+.trad-text-animation-widget 
+.trad-iam {
+    padding-right: 10px;
+    font-size: 36px;
+    font-weight: 600;
+}
+.trad-text-animation-widget .trad-text{
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.typed-cursor{
+    display: none!important;
+}
+
+/* Cursor animation */
+.trad-text-animation-widget 
+.trad-text::after {
+    content: '';
+    border-right: 2px solid;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}

@@ -1,0 +1,40 @@
+/* ==========================most top bar======================// */
+
+.trad-most-top-bar-left-side{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+}
+.trad-most-topbar-right-side{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.trad-most-top-bar-icon-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+.trad-most-top-bar-left-side .elementor-icon{
+    font-size: 16px !important;
+}
+
+.trad-most-top-bar {
+    padding: 5px;
+}
+@media only screen and (max-width:768px){
+    .trad-most-top-bar{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}
+
+.trad-most-top-bar .trad-most-top-bar-icon-wrapper i,
+.trad-most-top-bar .trad-most-top-bar-icon-wrapper svg{
+   color: rgb(247, 247, 247);
+   fill: rgb(255, 255, 255);
+}

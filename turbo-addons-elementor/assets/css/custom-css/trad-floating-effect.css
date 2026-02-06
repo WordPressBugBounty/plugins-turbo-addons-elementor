@@ -1,0 +1,59 @@
+/* Y-Axis Movement Animation */
+.trad-y-movement-animation img {
+    animation: tradYMovement infinite alternate ease-in-out;
+    animation-duration: var(--animation-speed, 2s);
+}
+
+@keyframes tradYMovement {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(var(--movement-range, 20px));
+    }
+}
+
+/* X-Axis Movement Animation */
+.trad-x-movement-animation img {
+    animation: tradXMovement infinite alternate ease-in-out;
+    animation-duration: var(--animation-speed, 2s);
+}
+
+@keyframes tradXMovement {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(var(--movement-range, 20px));
+    }
+}
+
+/* Rotate Animation */
+.trad-rotate-animation img {
+    animation: tradRotate infinite linear;
+    animation-duration: var(--animation-speed, 2s);
+}
+
+@keyframes tradRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(180deg); /* 180 degree rotation */
+    }
+}
+
+/* 360-degree Spin Animation */
+.trad-spin-animation img {
+    animation: tradSpin infinite linear;
+    animation-duration: var(--animation-speed, 5s);
+}
+
+@keyframes tradSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg); /* Full 360-degree spin */
+    }
+}

@@ -1,0 +1,95 @@
+.trad-preview-card {
+    width: 100%;
+    height: auto;
+    background-color: #FFF9F9;
+    transition: all 0.6s cubic-bezier(.25,.8,.25,1);
+    overflow: hidden;
+    border-radius: 7px;
+}
+
+.trad-preview-card 
+.trad-preview-card-image {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    z-index: 0;
+    transition: all 0.6s cubic-bezier(.25,.8,.25,1);
+}
+
+.trad-preview-card-content{
+    padding: 10px;
+    transition: all 0.6s cubic-bezier(.25,.8,.25,1);
+}
+.trad-preview-card-title{
+    padding-top: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 30px;
+    margin: 0;
+    transition: all 0.6s cubic-bezier(.25,.8,.25,1);
+
+
+}
+.trad-preview-card-divider {
+    position: relative;
+    height: 2px;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+
+.trad-preview-card 
+.trad-preview-card-image 
+.trad-top-price-badge {
+    position: absolute;
+    padding: 4px 12px;
+    border-radius: 30px;
+    top: 15px;
+    right: 30px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.6s cubic-bezier(.25,.8,.25,1);
+}
+
+.trad-preview-card 
+.trad-bottom-price-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 30px;
+    position: absolute;
+    bottom: -15px;
+    right: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.6s cubic-bezier(.25,.8,.25,1);
+}
+.show_preview_card_button{
+    transition: all 0.6s cubic-bezier(.25,.8,.25,1);
+}
+
+.trad-preview-card-readmore{
+    text-align: center;
+    transition: all 0.6s cubic-bezier(.25,.8,.25,1);
+}
+.trad-preview-card-readmore a{
+    text-decoration: none !important;
+    transition: all 0.6s cubic-bezier(.25,.8,.25,1);
+}
+.trad-preview-card-content{
+    display: flex;
+    flex-direction: column;
+    transition: all 0.6s cubic-bezier(.25,.8,.25,1);
+}
+
+.trad-preview-button-readmore {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    transition: background 0.2s;
+    cursor: pointer;
+}

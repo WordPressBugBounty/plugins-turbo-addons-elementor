@@ -1,0 +1,87 @@
+.trad_data_table_container {
+    padding: 0 !important;
+    background-color: transparent !important;
+    overflow-x: auto;
+  }
+  .trad_data_table_container table {
+    width: 100%;
+    height: auto;
+    margin: 0 auto !important;
+    border-collapse: separate !important;
+    border: none;
+    overflow-x: auto;
+  } 
+  .trad_data_table_container table thead tr th{
+    transition: .3s;
+  } 
+  .trad_data_table_container th {
+    transition: .3s;
+  } 
+
+  .trad_data_table_container table tr {
+    border: 1px solid #ddd;
+    padding: 5px;
+  }
+  
+  .trad_data_table_container table th,
+  .trad_data_table_container table td {
+    vertical-align: middle;
+    text-align: center;
+  }
+  .trad_data_table_container table th {
+    font-size: 14px;
+  }
+  
+  .trad_data_table_container table tbody tr {
+    background-color: #fff;
+  }
+  
+  .trad_data_table_container .trad_data_table_custom_btn {
+    background-color: #2e3192; 
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  .trad_data_table_content , .trad_data_table_heading_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  .trad_data_table_heading_content img, .trad_data_table_content img {
+    width: 30px;
+  }
+  .trad_data_table_content i, .trad_data_table_content img ,.trad_data_table_heading_image img,
+  .trad_data_table_heading_content i, .trad_data_table_heading_content img {
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+/* updated css for table border// */
+  /* base */
+.trad_data_table_container table {
+  border-collapse: collapse;
+  border-spacing: 0; /* safety */
+}
+.trad_data_table_container table th,
+.trad_data_table_container table td {
+  border: 0; /* reset any old borders */
+}
+
+
+/* table content  */
+.trad_data_table_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+.trad_data_table_container table {
+  overflow: hidden; /* to clip the corners */
+}

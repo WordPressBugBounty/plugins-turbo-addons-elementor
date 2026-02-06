@@ -1,0 +1,95 @@
+.trad-info-box {
+    padding: 15px;
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
+    border: 1px solid #cacaca;
+    background-color: #f2f2f2;
+}
+
+.trad-infobox-heading{
+    margin: 0;
+    transition: all .3s ease-in-out;
+}
+
+.trad-infobox-description {
+    font-size: 16px;
+    transition: all .3s ease-in-out;
+}
+.trad-infobox-description p{
+    margin: 0;
+    transition: all .3s ease-in-out;
+}
+/* //button styles */
+
+/* Button behaves nicely with padding and centers within wrapper text-align */
+.trad-infobox-button-wrapper{ 
+    display:block; 
+}
+
+.trad-infobox-button{
+    display:inline-flex !important;             /* inline so wrapper text-align moves it */
+    align-items:center !important;
+    justify-content:center !important;          /* centers icon+text inside the button */
+    gap:10px;
+    line-height:1;
+    box-sizing:border-box;
+    max-width:100%;
+    width:auto;
+    border: 1px solid #cacaca;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.trad-infobox-button i, .trad-infobox-button svg{
+    font-size: 16px;
+    width: 16px;
+}
+
+.info-box-icon-box{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
+}
+.trad-infobox-icon svg,
+.trad-infobox-icon i{
+    background-color: transparent;
+    border: 0 #fff;
+    transition: all .3s ease-in-out;
+}
+
+/* box alignment// */
+.trad-info-box{
+    display: flex;
+}
+.trad-info-box[style*="flex-direction: column"] .trad-infobox-icon-wrapper,
+.trad-info-box[style*="flex-direction: column-reverse"] .trad-infobox-icon-wrapper {
+    display: block !important;
+}
+
+
+.trad-info-box[style*="flex-direction: row"] .trad-infobox-icon-wrapper,
+.trad-info-box[style*="flex-direction: row-reverse"] .trad-infobox-icon-wrapper {
+    display: flex !important;
+    flex-direction: column;
+}
+
+/* Content column so items stack and never overlap */
+.trad-infobox-content{
+    display:flex;
+    flex-direction:column;
+    gap: .6rem;          /* space between heading/desc/button; tweak as you like */
+    min-width:0;         /* prevents flex overflow issues */
+}
+
+.trad-infobox-icon-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trad-infobox-icon-wrapper .trad-infobox-image img{
+    position: relative !important;
+}

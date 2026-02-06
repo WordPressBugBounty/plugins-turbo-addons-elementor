@@ -1,0 +1,65 @@
+.trad-coupon-code-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.trad-coupon-code-inner span {
+    display: block;
+}
+.trad-coupon-code-inner .trad-ccb-icon {
+    margin-right: 5px;
+}
+.trad-coupon-code-inner .trad-coupon-code {
+    border: 1px dashed #7158fe;
+    padding: 10px 20px;
+    border-right: 0;
+    color: #222222;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.trad-coupon-code-inner .trad-ccb {
+    border: 1px solid #7158fe;
+    background: #7158fe;
+    padding: 10px 20px;
+    color: #fff;
+    transition: 0.3s;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.trad-ccc-style-2 .trad-coupon-code-inner .trad-coupon-code {
+    border-right: 1px dashed #7158fe;
+    text-align: center;
+    padding: 10px 30px;
+}
+.trad-ccc-style-2 .trad-coupon-code-inner .trad-ccb {
+    margin-left: 30px;
+}
+
+
+.trad-ccc-style-3 .trad-coupon-code-inner {
+    display: block;
+}
+.trad-ccc-style-3 .trad-coupon-code-inner {
+    border: 1px dashed #7158fe;
+    padding: 15px 20px;
+    border-radius: 79px;
+    text-align: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.trad-ccc-style-3 .trad-coupon-code-inner.active,
+.trad-ccc-style-3 .trad-coupon-code-inner:hover {
+    background-color: #7158fe;
+    color: #fff;
+}
+
+.trad-ccc-style-3 .trad-coupon--code{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

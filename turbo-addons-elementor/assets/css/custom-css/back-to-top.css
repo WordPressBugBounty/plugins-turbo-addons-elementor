@@ -1,0 +1,30 @@
+#tradBackToTopButton {
+    display: inline-block;
+    background-color: #2e3192;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    /* text-align: center; */
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s, 
+      opacity .5s, visibility .5s;
+    z-index: 1000;
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially hidden */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #tradBackToTopButton:hover {
+    cursor: pointer;
+    background-color: #9230e2;
+    color: #fff;
+  }
+  #tradBackToTopButton:active {
+    background-color: #a73939;
+    color: #fff;
+  }

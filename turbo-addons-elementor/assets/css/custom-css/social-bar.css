@@ -1,0 +1,12 @@
+.trad-social-icons {
+    width: 100%;
+    display: flex;
+    gap: 25px;
+    justify-content: flex-start !important;
+    align-items: center
+
+}
+.trad-social-single-icon {
+    background-color: #EDEDED;
+    color: rgb(45, 45, 45);
+}

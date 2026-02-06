@@ -1,0 +1,96 @@
+/* -------------------------------------Pricing Table
+-------------------------------------------------------------- */
+.trad-pricing-table{
+    transition: all .3s;
+    border: 1px solid #69686859;
+    overflow: hidden;
+}
+.trad-pr-table-popular span{
+    background-color: royalblue;
+    color: #fff;
+    z-index: 10;
+    padding: 5px 10px;
+    font-size: 13px;
+    line-height: 18px;
+    margin: 0;
+    border-radius: 4px;
+    position: relative;
+}
+.trad-pricing-table 
+.trad-pricing-table-header 
+.trad-header-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 30px 0 0 0;
+}
+.trad-pricing-table 
+.trad-pricing-table-header 
+.trad-header-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 15px 0;
+    line-height: 30px;
+}
+.trad-pricing-table 
+.trad-pricing-table-price {
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.trad-pricing-table 
+.trad-pricing-table-price 
+.trad-priceing {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.trad-pricing-table 
+.trad-pricing-table-price 
+.trad-price-duration {
+    position: relative;
+    display: flex;
+}
+.trad-pricing-table 
+.trad-pricing-table-feature {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.trad-pricing-feature-item{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.trad-pricing-table 
+.trad-pricing-table-action {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.trad-pricing-table 
+.trad-pricing-table-action a {
+    display: inline-block;
+    padding: 12px 26px;
+    background-color: #707070;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.9;
+    text-decoration: none;
+    border-radius: 4px;
+}
+/* //image icon// */
+.trad-header-media.trad-header-icon {
+    display: flex;
+}
+.trad-header-media.trad-header-image {
+    display: flex;
+}

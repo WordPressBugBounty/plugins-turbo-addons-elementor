@@ -1,0 +1,31 @@
+.trad-food-menu-list .trad-menu-list-item {
+    padding: 5px 5px;
+  }
+  .trad-food-menu-list .trad-menu-list-item {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: baseline;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+  .trad-food-menu-list .trad-menu-list-item:before {
+      height: 0.1em;
+      flex: 1 1 auto;
+      order: 1;
+      content: "";
+      border-bottom: 2px dotted #000;
+      margin-right: 3px;
+      margin-left: 3px;
+      border-top: 0 !important;
+      border-left: 0 !important;
+      border-right: 0 !important;
+  }
+  .trad-food-menu-list .trad-menu-list-item:after {
+    order: 2;
+    content: " " attr(data-page);
+  }
+  .trad-food-menu-list a:hover, 
+  .trad-food-menu-list a:focus {
+    color: black;
+}
+  

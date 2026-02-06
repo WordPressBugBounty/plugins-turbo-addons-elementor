@@ -1,0 +1,46 @@
+
+.trad-3d-carousel-gallery {
+  
+    --s: 150px; /* the image size */
+    
+    display: grid;
+    transform-style: preserve-3d;
+    animation: r 15s linear infinite;
+    position: relative;
+    top:-10vh;
+    }
+    @keyframes r {
+        0% {transform: perspective(450px) rotateX(-100deg) rotate(0deg);}
+        100% {transform: perspective(450px) rotateX(-100deg) rotate(-360deg);}
+    }
+    .trad-3d-carousel-gallery > img {
+    grid-area: 1/1;
+    width: var(--s);
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    transform: rotate(var(--_a)) translateY(120%) rotateX(90deg);
+    }
+    .trad-3d-carousel-gallery > img:nth-child(1) {--_a: 0deg}
+    .trad-3d-carousel-gallery > img:nth-child(2) {--_a: 60deg}
+    .trad-3d-carousel-gallery > img:nth-child(3) {--_a: 120deg}
+    .trad-3d-carousel-gallery > img:nth-child(4) {--_a: 180deg}
+    .trad-3d-carousel-gallery > img:nth-child(5) {--_a: 240deg}
+    .trad-3d-carousel-gallery > img:nth-child(6) {--_a: 300deg}
+
+    .trad-3d-carousel-gallery::before {
+    content: "";
+    position: absolute;
+    inset: -100%;
+    clip-path: polygon(50% 0,calc(50% + .866*50%) 25%,calc(50% + .866*50%) 75%,50% 100%,calc(50% - .866*50%) 75%,calc(50% - .866*50%) 25%);
+    background: #576874;
+    transform: translateZ(calc(var(--s)/2)) rotate(90deg);
+    }
+    .trad-3d-carousel-body {
+    margin: 0;
+    min-height: 80vh;
+    display: grid;
+    place-content: center;
+    background: #547980;
+    overflow: hidden;
+    }

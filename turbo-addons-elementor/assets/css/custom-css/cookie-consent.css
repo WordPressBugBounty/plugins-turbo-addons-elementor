@@ -1,0 +1,125 @@
+/* Cookie Consent style start */
+.cc-banner.cc-bottom {
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.cc-window {
+    transition: all 0.3s ease;
+}
+.cc-window.cc-invisible {
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.cc-banner.cc-top {
+    left: 0;
+    right: 0;
+    top: 0;
+}
+.cc-window.cc-bottom.cc-left {
+    left: 10px;
+    bottom: 10px;
+}
+.cc-window.cc-left.cc-center {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.cc-window.cc-right.cc-center {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.cc-window.cc-banner.cc-bottom.cc-right,
+.cc-window.cc-bottom.cc-right {
+    right: 10px;
+    bottom: 10px;
+    left: inherit;
+}
+.cc-window.cc-bottom.cc-left,
+.cc-window.cc-bottom.cc-right,
+.cc-window.cc-right.cc-center,
+.cc-window.cc-left.cc-center {
+    display: flex;
+    flex-direction: column;
+}
+.cc-window {
+    position: fixed;
+    overflow: hidden;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    z-index: 999;
+}
+.cc-window.cc-banner {
+    -ms-flex-align: center;
+    align-items: center;
+}
+.cc-banner .cc-message {
+    -ms-flex: 1;
+    flex: 1;
+}
+.cc-compliance {
+    display: flex;
+    gap: 10px; /* Adds spacing between buttons */
+}
+
+/* Accept Button */
+body .cc-btn.cc-dismiss {
+    display: inline-flex;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: center;
+    background-color: #42C3AF;
+    color: #ffffff;
+    border: 1px solid #42C3AF;
+    transition: all 0.3s ease;
+}
+body .cc-btn.cc-dismiss:hover {
+    cursor: pointer;
+    background-color: #36A393;
+    border-color: #36A393;
+}
+
+/* Reject Button */
+body .cc-btn.cc-reject {
+    display: inline-flex;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: center;
+    background-color: #e74c3c;
+    color: #ffffff;
+    border: 1px solid #e74c3c;
+    transition: all 0.3s ease;
+}
+body .cc-btn.cc-reject:hover {
+    cursor: pointer;
+    background-color: #c0392b;
+    border-color: #c0392b;
+}
+
+/* Read More Link */
+body .cc-window .cc-link {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 767px) {
+    .cc-window.cc-banner {
+        flex-direction: column;
+    }
+    .cc-compliance {
+        flex-direction: column;
+    }
+    body .cc-window.cc-banner .cc-btn.cc-dismiss,
+    body .cc-window.cc-banner .cc-btn.cc-reject {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+    }
+}
+/* Cookie Consent style end */

@@ -1,0 +1,453 @@
+/* ==============================
+   TURBO IMAGE CAROUSEL - Skin - 1 FINAL
+   ============================== */
+
+.trad-image-carousel {
+    position: relative;
+    overflow: visible !important;
+}
+
+/* Swiper Container */
+.trad-image-carousel .trad-main-swiper {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Handle both single & multi-row cases */
+.trad-image-carousel .trad-main-swiper .swiper-wrapper {
+    height: auto !important;
+}
+
+.trad-image-carousel.has-multi-row .trad-main-swiper .swiper-wrapper {
+    flex-wrap: wrap !important;
+}
+
+/* Slides */
+.trad-image-carousel .trad-carousel-item {
+    position: relative;
+}
+
+.trad-image-carousel .trad-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+    min-height: 170px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.trad-image-carousel .trad-carousel img {
+    transition: all 0.3s ease;
+    max-width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* HOVER OVERLAY base (for advance_image) */
+.trad-image-carousel.advance_image .trad-carousel::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    z-index: 1;
+}
+
+/* From Bottom */
+.trad-image-carousel.hover_from_bottom .trad-carousel::before {
+    top: 100%;
+    left: 0;
+}
+.trad-image-carousel.hover_from_bottom .trad-carousel:hover::before {
+    top: 0;
+    opacity: 1;
+}
+
+/* From Top */
+.trad-image-carousel.hover_from_top .trad-carousel::before {
+    top: -100%;
+    left: 0;
+}
+.trad-image-carousel.hover_from_top .trad-carousel:hover::before {
+    top: 0;
+    opacity: 1;
+}
+
+/* From Left */
+.trad-image-carousel.hover_from_left .trad-carousel::before {
+    top: 0;
+    left: -100%;
+}
+.trad-image-carousel.hover_from_left .trad-carousel:hover::before {
+    left: 0;
+    opacity: 1;
+}
+
+/* From Right */
+.trad-image-carousel.hover_from_right .trad-carousel::before {
+    top: 0;
+    left: 100%;
+}
+.trad-image-carousel.hover_from_right .trad-carousel:hover::before {
+    left: 0;
+    opacity: 1;
+}
+
+/* Default overlay gradient (can be customized via controls) */
+.trad-image-carousel.advance_image .trad-carousel::before {
+    background: linear-gradient(315deg, #f2709c 0%, #fe8f75 60%);
+}
+
+/* NAVIGATION ARROWS */
+.trad-image-carousel .swiper-navigation-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.trad-image-carousel .swiper-navigation-button:hover {
+    background: #fff;
+    color: #fff;
+}
+
+/* inside/outside positioning */
+.trad-image-carousel.arrow_inside .swiper-button-prev {
+    left: 10px;
+}
+.trad-image-carousel.arrow_inside .swiper-button-next {
+    right: 10px;
+}
+
+/* OUTSIDE position */
+.trad-image-carousel.arrow_outside .swiper-button-prev,
+.trad-image-carousel.arrow_outside .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 15;
+}
+
+.trad-image-carousel.arrow_outside .swiper-button-prev {
+    left: -55px;
+}
+.trad-image-carousel.arrow_outside .swiper-button-next {
+    right: -55px;
+}
+
+.trad-image-carousel.arrow_outside {
+    overflow: visible !important;
+}
+.trad-image-carousel.arrow_outside .trad-main-swiper {
+    overflow: hidden !important;
+}
+
+/* DOTS (PAGINATION) */
+.trad-image-carousel > .swiper-pagination {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 8px;
+    z-index: 10;
+}
+
+.trad-image-carousel > .swiper-pagination span {
+    width: 10px;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.trad-image-carousel > .swiper-pagination span.swiper-pagination-bullet-active {
+    background-color: #000;
+    opacity: 1;
+    transform: scale(1.3);
+}
+
+/* dashed/dotted styles */
+.trad-image-carousel.dot_dotted > .swiper-pagination span,
+.trad-image-carousel.dot_dashed > .swiper-pagination span {
+    background-color: #101010;
+}
+
+.trad-image-carousel.dot_dotted > .swiper-pagination span.swiper-pagination-bullet-active,
+.trad-image-carousel.dot_dashed > .swiper-pagination span.swiper-pagination-bullet-active {
+    transform: scale(2);
+    opacity: 1;
+}
+
+/* paginated (numbered) style */
+.trad-image-carousel.dot_paginated > .swiper-pagination {
+    counter-reset: myCounter;
+}
+.trad-image-carousel.dot_paginated > .swiper-pagination > span {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    color: #565656;
+    font-weight: 600;
+    border-radius: 50%;
+}
+.trad-image-carousel.dot_paginated > .swiper-pagination > span::before {
+    counter-increment: myCounter;
+    content: counter(myCounter);
+}
+.trad-image-carousel.dot_paginated > .swiper-pagination > span.swiper-pagination-bullet-active {
+    background-color: #2575fc;
+    color: #fff;
+}
+
+/* SMOOTH HOVER IMAGE SWITCH EFFECT (only when has-hover-image class) */
+.trad-image-carousel .trad-carousel.has-hover-image .content-image {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.trad-image-carousel .trad-carousel.has-hover-image .content-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    backface-visibility: hidden;
+}
+
+/* Default (normal visible, hover hidden) */
+.trad-image-carousel .trad-carousel.has-hover-image .content-image img.hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.05);
+    z-index: 3;
+}
+
+/* Hover effect */
+.trad-image-carousel .trad-carousel.has-hover-image:hover .content-image img.hover-image {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.trad-image-carousel .trad-carousel.has-hover-image:hover .content-image img:not(.hover-image) {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+}
+
+/* Placeholder style for Skin-2 (safe minimal) */
+.trad-image-carousel.skin-2-placeholder .trad-carousel {
+    min-height: 160px;
+    display:flex;align-items:center;justify-content:center;
+    background: #f5f7fb;
+    border: 1px dashed #cfd6e4;
+}
+
+.trad-image-carousel .trad-overlay-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    z-index: 3;
+    color: #fff;
+    /* background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); */
+}
+
+.trad-badge-text {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255,255,255,0.8);
+    color: #000;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.trad-item-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.trad-item-desc {
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* ==============================
+   TURBO IMAGE CAROUSEL - Skin - 2 FINAL
+   ============================== */
+
+   		.trad-skin2-wrapper main a {
+		display: inline-block;
+		text-decoration: none;
+		text-transform: uppercase;
+		color: #717171;
+		font-weight: 500;
+		background: #fff;
+		border-radius: 3.125rem;
+		transition: 0.3s ease-in-out;
+		}
+
+		.trad-skin2-wrapper main > div > a {
+		border: 2px solid #c2c2c2;
+		margin-top: 2.188rem;
+		padding: 0.625rem 1.875rem;
+		}
+
+		.trad-skin2-wrapper main > div > a:hover {
+		border: 0.125rem solid #005baa;
+		color: #005baa;
+		}
+
+		/* Swiper main wrapper */
+		.trad-skin2-wrapper .swiper {
+		width: 100%;
+		/* padding-top: 3.125rem; */
+		}
+
+		/* Pagination bullets */
+		.trad-skin2-wrapper .swiper-pagination-bullet,
+		.trad-skin2-wrapper .swiper-pagination-bullet-active {
+		background: #fff;
+		}
+
+		.trad-skin2-wrapper .swiper-pagination {
+		bottom: 1.25rem !important;
+		}
+
+		/* Slide box */
+		.trad-skin2-wrapper .swiper-slide {
+		width: 18.75rem;
+		height: 28.125rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: end;
+		align-items: flex-start;
+		background-size: cover !important;
+		background-position: center !important;
+		background-repeat: no-repeat !important;
+
+		/* same gradient layer */
+		background-image: linear-gradient(
+			to top,
+			rgba(15, 32, 39, 0.8),
+			rgba(32, 58, 67, 0),
+			rgba(44, 83, 100, 0)
+			);
+		}
+
+        .trad-skin2-wrapper .trad-skin2-content {
+            width: 100%; /* Required for proper horizontal align */
+        }
+
+		/* Title */
+		.trad-skin2-wrapper .swiper-slide h2 {
+		color: #fff;
+		font-family: "Roboto", sans-serif;
+		font-weight: 400;
+		font-size: 1.4rem;
+		line-height: 1.4;
+		margin-bottom: 0.625rem;
+		padding: 0 0 0 1.563rem;
+		text-transform: uppercase;
+		}
+
+		/* Description */
+		.trad-skin2-wrapper .swiper-slide p {
+		color: #dadada;
+		font-family: "Roboto", sans-serif;
+		font-weight: 300;
+		padding: 0 1.563rem;
+		line-height: 1.6;
+		font-size: 0.75rem;
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		}
+
+		/* Explore button */
+		.trad-skin2-wrapper .swiper-slide a {
+		margin: 1.25rem 1.563rem 3.438rem 1.563rem;
+		padding: 0.438em 1.875rem;
+		font-size: 0.9rem;
+		border: 2px solid #c2c2c2;
+		text-decoration: none;
+		border-radius: 3.125rem;
+		text-transform: uppercase;
+		background: #fff;
+		transition: 0.3s ease;
+		color: #717171;
+		}
+
+		.trad-skin2-wrapper .swiper-slide a:hover {
+		border-color: #005baa;
+		color: #005baa;
+		}
+
+		/* Hide content by default */
+		.trad-skin2-wrapper .swiper-slide .trad-skin2-content {
+		display: none;
+		opacity: 0;
+		padding-bottom: 0.625rem;
+		transition: opacity 0.3s ease-in-out;
+		}
+
+		/* Show only active slide content */
+		.trad-skin2-wrapper .swiper-slide-active .trad-skin2-content {
+		display: block;
+		opacity: 1;
+		}
+
+		/* Remove swiper shadow */
+		.trad-skin2-wrapper .swiper-3d .swiper-slide-shadow-left,
+		.trad-skin2-wrapper .swiper-3d .swiper-slide-shadow-right {
+		background-image: none !important;
+		}
+
+		/* Responsive */
+		@media screen and (min-width: 48rem) {
+            .trad-skin2-wrapper main {
+                display: flex;
+                align-items: center;
+            }
+		}
+
+		@media screen and (min-width: 93.75rem) {
+            .trad-skin2-wrapper .swiper {
+                width: 100%;
+            }
+		}
+
+

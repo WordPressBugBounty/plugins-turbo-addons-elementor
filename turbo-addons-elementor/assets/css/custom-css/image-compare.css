@@ -1,0 +1,54 @@
+/* Image Comparison Slider */
+
+.trad-image-compare {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.trad-image-compare img {
+    width: 100%;
+    height: auto;
+}
+
+.twentytwenty-horizontal .twentytwenty-handle:before {
+    box-shadow:none !important;
+    margin-bottom: 20px !important;
+    
+}
+.twentytwenty-horizontal .twentytwenty-handle:after {
+   box-shadow:none !important;
+   margin-top: 20px !important;
+}   
+
+.twentytwenty-after-label{
+ width: 100%;
+ padding: 0;
+}
+.twentytwenty-before-label{
+    width: 100%;
+    padding: 0;
+}
+
+.twentytwenty-horizontal .twentytwenty-after-label:before,
+.twentytwenty-horizontal .twentytwenty-before-label:before,
+.twentytwenty-vertical .twentytwenty-after-label:before,
+.twentytwenty-vertical .twentytwenty-before-label:before {
+    text-align: center;
+}
+
+
+.twentytwenty-vertical .twentytwenty-handle:before{
+    margin-top: 0px !important;
+ }
+.twentytwenty-vertical .twentytwenty-handle:after{
+    margin-top: 0px !important;
+ }
+ .twentytwenty-horizontal .twentytwenty-handle:before,
+ .twentytwenty-horizontal .twentytwenty-handle:after{
+    margin-left: 0px !important;
+ }
+
+ .twentytwenty-handle{
+    transform: translateX(0px);
+ }

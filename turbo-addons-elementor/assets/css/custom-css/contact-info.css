@@ -1,0 +1,49 @@
+.trad-dm-contact-info__title {
+    font: 300 33px/40px 'Open Sans', sans-serif;
+    color: #333;
+    margin: 0 0 20px;
+  }
+  
+  .trad-contact-info-horizontal-line{
+      background-color: #333;
+      border: none;
+      height: 1px;
+      width: 15%;
+      margin: 0 0 20px;
+  }
+  
+  .trad-dm-contact-info {
+    padding: 30px 30px 30px 30px;
+    color: #efefef;
+    width: 100%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    /* box-shadow */
+  }
+  
+  /* Square Shape */
+.trad-icon-shape-square {
+    border-radius: 0;
+}
+
+/* Rounded Shape */
+.trad-icon-shape-rounded {
+    border-radius: 8px; /* Adjust radius as needed for softer corners */
+}
+
+/* Circle Shape */
+.trad-icon-shape-circle {
+    border-radius: 50%;
+}
+.trad-contact-item{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap:10px;
+    margin-top: 10px;
+}
+.trad-contact-value{
+    font-size: 20px;
+    color: #333;
+}

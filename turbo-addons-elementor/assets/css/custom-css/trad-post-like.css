@@ -1,0 +1,68 @@
+.trad-post-like-wrapper {
+    display: flex;
+    gap: 12px;
+}
+
+.trad-post-like-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid #e5e7eb;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    outline: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color .25s ease;
+}
+
+.trad-post-like-btn i,
+.trad-post-like-btn svg {
+    font-size: 18px;
+    transition: color .25s ease;
+    color: inherit;
+}
+
+/* IMPORTANT:
+   ❌ No background change
+   ✅ Only icon color controlled via Elementor */
+.trad-post-like-btn.active {
+    background: #ffffff;
+}
+
+.trad-post-like-btn .count {
+    color: #9ca3af !important; /* default gray */
+    font-size: 12px;
+    margin-left: 4px;
+    transition: color .25s ease;
+}
+/* ICON WRAPPER FIX */
+.trad-like-icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* Elementor icon fix */
+.trad-like-icon-wrap .elementor-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* SVG fix */
+.trad-like-icon-wrap svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+/* Font icon fix */
+.trad-like-icon-wrap i {
+    line-height: 1;
+}
+

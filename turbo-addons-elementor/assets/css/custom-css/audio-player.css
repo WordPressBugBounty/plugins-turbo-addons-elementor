@@ -1,0 +1,364 @@
+.trad-audio-player-wrapper .far, .fas, .fab {
+  font-family: 'Font Awesome 5 Free' !important;
+}
+
+.trad-audio-player.mejs-container {
+  background: transparent !important;
+  font-family: "Font Awesome 6 Free" !important;
+font-weight: 900 !important;
+}
+.trad-audio-player-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+}
+
+.trad-audio-thumb {
+  display: flex;
+  align-items: center;
+}
+
+.trad-audio-player-info {
+  display: flex;
+  align-items: center;
+  gap:10px;
+}
+
+.trad-audio-player .mejs-time-total span:not(.mejs-time-float) {
+  height: 100%;
+}
+
+.trad-audio-player .mejs-time-total span.mejs-time-handle {
+  display: none;
+}
+
+.trad-audio-player .mejs-time-rail {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0 !important;
+}
+
+.trad-audio-player .mejs-button.mejs-playpause-button,
+.trad-audio-player .mejs-volume-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.trad-audio-player .mejs-volume-button>button i{
+  /* padding-right: 5px !important; */
+  margin-right: 5px !important;
+}
+
+.trad-audio-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.trad-audio-content {
+  text-align: center;
+}
+
+.trad-audio-description {
+  color: #dfdfdf;
+  font-size: 18px;
+}
+
+.trad-audio-player-wrapper{
+  background-color: #efefef;
+}
+
+.trad-audio-player-wrapper .mejs-button>button {
+  background: transparent;
+}
+
+/* 🎯 Play state */
+.trad-audio-player-wrapper .mejs-playpause-button button[aria-label="Play"] i.trad-audio-play {
+  display: inline-block !important;
+  font-size: 20px;
+  color: azure;
+}
+
+/* 🎯 Pause state */
+.trad-audio-player-wrapper .mejs-playpause-button button[aria-label="Pause"] i.trad-audio-pause {
+  display: inline-block!important;
+  font-size: 20px;
+  color: azure;
+}
+
+/* 🎯 Replay state (optional support) */
+.trad-audio-player-wrapper .mejs-playpause-button button[aria-label="Replay"] i.trad-audio-replay {
+  display: inline-block!important;
+  font-size: 20px;
+  color: azure;
+  /* transition: all .3s !important; */
+}
+/* .trad-audio-player-wrapper .mejs-playpause-button button i{
+  transition: all .3s !important;
+} */
+
+/* 🔊 Show unmute icon when about to mute */
+.trad-audio-player-wrapper .mejs-volume-button button[aria-label="Mute"] i.trad-audio-unmute {
+  display: inline-block!important;
+    font-size: 20px;
+    transition: all .3s !important;
+  color: azure;
+
+}
+
+/* 🔇 Show mute icon when about to unmute */
+.trad-audio-player-wrapper .mejs-volume-button button[aria-label="Unmute"] i.trad-audio-mute {
+  /* display: inline-block!important; */
+    font-size: 20px;
+    color: azure;
+    transition: all .3s !important;
+}
+
+.trad-audio-player .mejs-inner .mejs-controls{
+  display: flex !important;
+  justify-content: space-between !important;
+  /* overflow: hidden; */
+  /* gap: 5px; */
+}
+/* ---------------------progress bar wrapper---------------------// */
+.trad-audio-player .mejs-horizontal-volume-slider{
+  width: 100px;
+  /* transform: rotate(90deg); */
+}
+.trad-audio-player .mejs-horizontal-volume-total{
+  width: 100% !important;
+}
+
+.trad-audio-player .fa-volume-high::before, .fa-volume-up::before{
+   width: 10px !important;
+}
+
+.trad-audio-player .mejs-playpause-button{
+  transition: all .1s !important;
+}
+.trad-audio-player .mejs-volume-button{
+  transition: all .3s !important;
+}
+
+/* play/pause button/// */
+.trad-audio-player-wrapper .mejs-playpause-button>button{
+  padding: 0 !important;
+  margin: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.trad-audio-player-wrapper .mejs-volume-button>button{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  box-shadow: none !important;
+  outline: none !important;
+  /* background-color: red !important; */
+}
+.trad-audio-player .fa-volume-high::before, .fa-volume-up::before{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto !important;
+  margin: 0 auto !important;
+}
+.trad-audio-player .fa-volume-high::before, .fa-volume-up::before i{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+
+/* mejs-button mejs-volume-button mejs-mute */
+
+/* Vertical Volume Slider Styles */
+.trad-audio-player .mejs-volume-button.vertical-volume {
+  position: relative;
+}
+
+.trad-audio-player .mejs-volume-button.vertical-volume .mejs-horizontal-volume-slider {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 100px;
+  margin-bottom: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  padding: 10px 5px;
+  display: none;
+}
+
+.trad-audio-player .mejs-volume-button.vertical-volume:hover .mejs-horizontal-volume-slider {
+  display: block;
+}
+
+.trad-audio-player .mejs-volume-button.vertical-volume .mejs-horizontal-volume-total {
+  width: 20px !important;
+  height: 80px !important;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.trad-audio-player .mejs-volume-button.vertical-volume .mejs-horizontal-volume-current {
+  width: 20px !important;
+  background: #fff;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: height 0.1s ease;
+}
+
+.trad-audio-player .mejs-volume-button.vertical-volume .mejs-horizontal-volume-handle {
+  width: 20px !important;
+  height: 20px !important;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Horizontal Volume Slider Styles (default) */
+.trad-audio-player .mejs-volume-button.horizontal-volume .mejs-horizontal-volume-slider {
+  width: 100px;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.trad-audio-player .mejs-volume-button.horizontal-volume .mejs-horizontal-volume-total {
+  width: 100% !important;
+  height: 4px !important;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  position: relative;
+}
+
+.trad-audio-player .mejs-volume-button.horizontal-volume .mejs-horizontal-volume-current {
+  height: 100% !important;
+  background: #fff;
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 0.1s ease;
+}
+
+.trad-audio-player .mejs-volume-button.horizontal-volume .mejs-horizontal-volume-handle {
+  width: 12px !important;
+  height: 12px !important;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure volume slider is always visible when volume is enabled */
+.trad-audio-player .mejs-volume-button .mejs-horizontal-volume-slider {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Responsive adjustments for volume slider */
+@media (max-width: 768px) {
+  .trad-audio-player .mejs-volume-button.horizontal-volume .mejs-horizontal-volume-slider {
+    width: 80px;
+  }
+  
+  .trad-audio-player .mejs-volume-button.vertical-volume .mejs-horizontal-volume-slider {
+    width: 25px;
+    height: 80px;
+  }
+  
+  .trad-audio-player .mejs-volume-button.vertical-volume .mejs-horizontal-volume-total {
+    height: 60px !important;
+  }
+}
+
+/* Fix for volume slider positioning */
+.trad-audio-player .mejs-volume-button {
+  position: relative;
+}
+
+.trad-audio-player .mejs-volume-button .mejs-horizontal-volume-slider {
+  position: absolute;
+  z-index: 1000;
+}
+
+/* Ensure proper volume slider interaction */
+.trad-audio-player .mejs-horizontal-volume-total {
+  cursor: pointer;
+}
+
+.trad-audio-player .mejs-horizontal-volume-current {
+  pointer-events: none;
+}
+
+.trad-audio-player .mejs-horizontal-volume-handle {
+  pointer-events: auto;
+}
+
+/* Additional MediaElement.js volume slider fixes */
+.trad-audio-player .mejs-volume-button .mejs-horizontal-volume-slider {
+  display: inline-block !important;
+}
+
+.trad-audio-player .mejs-volume-button.vertical-volume .mejs-horizontal-volume-slider {
+  display: none !important;
+}
+
+.trad-audio-player .mejs-volume-button.vertical-volume:hover .mejs-horizontal-volume-slider {
+  display: block !important;
+}
+
+/* Ensure volume slider works with MediaElement.js */
+.trad-audio-player .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+  position: relative;
+  cursor: pointer;
+}
+
+.trad-audio-player .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.trad-audio-player .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
+  position: absolute;
+  cursor: pointer;
+}
+
+/* Vertical volume slider specific positioning */
+.trad-audio-player .mejs-volume-button.vertical-volume .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+
+.trad-audio-player .mejs-volume-button.vertical-volume .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+
+.trad-audio-player .mejs-volume-button.vertical-volume .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
+  transform: rotate(90deg);
+  transform-origin: center;
+}

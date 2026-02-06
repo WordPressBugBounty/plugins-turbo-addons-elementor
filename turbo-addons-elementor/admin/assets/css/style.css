@@ -1,0 +1,632 @@
+.trad-turbo-addon-admin-dashboard-icon {
+    padding: 0 0 !important;
+}
+
+.trad-dashboard-top-message-button {
+    background: linear-gradient(to right, #08007e, #18A6FF);
+    color: #ffffff;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-weight: 600;
+    display: inline-block;
+    text-decoration: none;
+}
+.trad-dashboard-top-message-button:hover {
+    color: #7ccdff;
+}
+/*----------------------- Dashboard top bar 
+---------------------------------------------------------------*/
+#turbo-dashboard-navbar{
+   width: 98.5%;
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   height: 100%;
+   margin: 30px 0;
+}
+.trad-dashboard-top-banner-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+.trad-dashboard-top-banner-container-60{
+    background-color: #fff;
+    width: 60%;
+    border-radius: 10px;
+    padding: 20px;
+}
+.trad-dashboard-top-banner-container-40{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFDF1;
+    width: 40%;
+    border-radius: 10px;
+    padding:15px;
+    gap: 40px;
+    border: 2px solid #da06b6;
+}
+.turbo-dashboard-banner-add{
+    width:160px;
+    border-radius: 5px;
+}
+.turbo-dashboard-navbar-logo {
+    width: 50%;
+}
+.turbo-dashboard-banner-branding{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    gap: 20px;
+}
+.turbo-dashboard-banner-branding img{
+    width: 100%;
+}
+.trad-dashboard-top-banner-button{
+    border: none;
+    background-color: #a527b6;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* ---------------------------start tab sections------------------
+---------------------------------------------------------------- */
+.turbo-addons-dashboard{
+    display: flex;
+    flex-direction: column;
+    gap:30px ;
+    position: relative;
+    width: 98.5%;
+}
+.turbo-addons-sidebar{
+    position: sticky !important;
+    top: 30px !important;
+    background-color: #f0f0f1 !important;
+    z-index: 99 !important;
+}
+.trad-turbo-dashboard-menu-list{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    border-bottom: 2px solid #9b9b9b8a;
+    padding-bottom: 5px;
+}
+.trad-turbo-dashboard-menu-list .trad-tab-link a{
+    font-size: 18px !important;
+    font-weight: 500;
+    outline: none !important;
+    color: #7c7c7c;
+    box-shadow:none; 
+}
+.trad-turbo-dashboard-menu-list .trad-tab-link.active a{
+    font-size: 18px !important;
+    font-weight: 500;
+    color:#2A34BF;
+    outline: none !important;
+    border-bottom: 2px solid #2A34BF !important;
+    box-shadow:none;  
+    padding-bottom: 10px;
+}
+
+.trad-tab-link a:hover {
+    color: #2A34BF !important;
+}
+
+/* // ----------------------------tab->dashboard section 1----------------------------*/
+.trad-dashboard-sec-one{
+    display:flex;
+    gap:30px;
+    width: 100%;
+}
+.trad-dashboard-sec-one-left{
+   background-color: #fff;
+   border-radius: 10px;
+   width: 50%;
+   padding: 20px;
+}
+.trad-updated-list{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 10px;
+}
+.trad-updated-list img{
+   width: 50px;
+}
+
+.trad-dashboard-sec-one-right{
+    background-color: #fff;
+    border-radius: 10px;
+    width: 50%;
+    padding: 20px
+}
+.trad-dashboard-sec1-template-add{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:10;
+    margin-top: 20px;
+}
+.trad-dashboard-sec1-template-add img{
+    width: 30%;
+    border-radius: 10px;
+}
+.trad-dashboard-center-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.trad-dashboard-center-btn a{
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2A34BF;
+}
+
+/* // ----------------------------tab->dashboard section 2 ----------------------------*/
+
+.trad-dashboard-sec-two{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top:10px ;
+}
+.trad-dashboard-sec-two-content{
+    background-image: url('../images/cta-beg.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+}
+.trad-dashboard-sec-two-content h3{
+    font-size: 20px !important;
+    color: #fff;
+
+}
+.trad-dashboard-sec-two-content>.trad-dashboard-center-btn a{
+    font-size: 17px;
+    background: #fff;
+    color: #333;
+    padding-top: 0;
+    padding: 10px 15px;
+    border-radius: 6px;
+}
+
+/* // ----------------------------tab->dashboard section 3 ----------------------------*/
+.trad-dashboard-sec-three-promotion-bnr{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFDF1;
+    border-radius: 10px;
+    padding: 20px;
+    gap: 40px;
+    border: 2px solid #EEB720;
+    text-align: center;
+    padding-bottom: 20px;
+    margin-top: 10px;
+
+}
+.trad-dashboard-sec-three-promotion-bnr .turbo-dashboard-banner-branding{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+}
+.trad-dashboard-sec-three-promotion-bnr .turbo-dashboard-banner-branding h2{
+    font-size: 36px;
+    margin-bottom: 0px;
+}
+
+/* // ----------------------------tab->dashboard section 4----------------------------*/
+.trad-dashboard-sec-four{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 20px;
+    gap: 24px;
+}
+.trad-dashboard-sec-four-card{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+.trad-dashboard-sec-four-card p{
+    margin-top: 20px !important;
+}
+.trad-dashboard-sec-four-card img{
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* // ----------------------------tab->Element----------------------------*/
+/* ===================================================================================== */
+
+.trad-dashboard-elements-tab{
+    padding-bottom: 60px;
+}
+.trad-dashboard-elements-tab-wraper{
+    position: sticky;
+    top: 85px;
+    background-color: #ffffff;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-radius: 8px;
+    border: 1px solid #8f8f8f65;
+    z-index: 99 !important;
+}
+
+.trad-widget-tabs-container .trad-widget-tabs-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+    border-radius: 6px;
+}
+
+.trad-widget-tabs-container .trad-widget-tabs-list .trad-widget-filter-tab-item {
+    padding:7px 12px;
+    cursor: pointer;
+    background-color: rgba(194, 154, 231, 0.233);
+    border: 1px solid #ddd;
+    margin: 0;
+    color: #414040;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.trad-widget-tabs-container .trad-widget-tabs-list .trad-widget-filter-tab-item:hover {
+    background-color: #2A34BF;
+    color: #ffffff;
+}
+
+.trad-widget-tabs-container .trad-widget-tabs-list .trad-widget-filter-tab-item.active {
+    background-color: #2A34BF;
+    color: white;
+    font-weight: bold;
+}
+
+.trad-dashboard-select-widget-btn{
+    background-color:#2A34BF;
+    color: #fff;
+    padding: 6px 20px;
+    border-radius: 6px;
+    height: 25px;
+}
+/* // -----------------------widgets container// --------------------------------*/
+.trad-widget-tabs-container .trad-widget-tabs-content .trad-widget-tab-content {
+    display: block; /* Show all content by default */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: #fff;
+}
+
+.trad-widget-tabs-container .trad-widget-tabs-content .trad-widget-tab-content.active {
+    display: block; /* Ensure content remains visible */
+}
+
+.trad-tab-filter-save-btn{
+    position: sticky;
+    bottom: 10px;
+    padding-top: 10px;
+    display: block;
+    align-items: center;
+    justify-content: end;
+    width: 120px;
+    float: right;
+    margin-right: 27px;
+}
+
+.trad-dashboard-elements-btn-submit{
+    padding: 0px 20px !important;
+    border-radius: 7px !important;
+    background-color: #2e3194 !important;
+    color: #f0f0f0 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+}
+
+.trad-widget-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 20px;
+    gap: 24px;
+}
+
+.trad-widget-card {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: #F8F8F8;
+    border-radius: 10px;
+    height: 60px;
+    padding: 0px 20px;
+    width: auto;
+    margin-bottom: 0px;
+    border-left: 3px solid #306BE0;
+}
+
+.trad-elements-tab-icon-text> {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+  
+.trad-elements-tab-icon-text> span{
+     font-size: 17px;
+     color: #5f5f5f;
+     font-weight: 500;
+     cursor: pointer;
+}
+
+
+/* -------------------------alert//--------------- */
+
+.trad-alert-updated-div {
+    margin: 5px 2px 11px 1px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.trad-alert-dismiss-button {
+    background-color: #2e3192;
+    border-radius: 5px !important;
+    color: #fff;
+    cursor: pointer;
+    width: 40px;
+    height: 30px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* -----------------switch toggler/// */
+    /* Hide the default checkbox */
+    .trad-dashboard-toggle-switch {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    
+    /* Style for switcher container */
+    .trad-dashboard-toggle-slider {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+        background-color: #ccc;
+        border-radius: 20px;
+        transition: background-color 0.3s;
+        margin-right: 10px;
+        cursor: pointer;
+        top: 3.5px;
+    }
+    
+    /* Circle inside the toggle */
+    .trad-dashboard-toggle-slider::before {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: white;
+        top: 2px;
+        left: 2px;
+        transition: transform 0.3s;
+    }
+    
+    /* When checked, change background and move the toggle */
+    .trad-dashboard-toggle-switch:checked + .trad-dashboard-toggle-slider {
+        background-color: #306BE0;
+    }
+    
+    .trad-dashboard-toggle-switch:checked + .trad-dashboard-toggle-slider::before {
+        transform: translateX(20px);
+    }
+    
+    /* Style the text label */
+    .trad-dashboard-widget-label {
+        font-size: 17px;
+        color: #5f5f5f;
+        font-weight: 500;
+        cursor: pointer;
+    }
+/* ------------------------------------------------------------------------------------------- */
+
+/* Tab functionality styling */
+.trad-tab-content {
+    display: none;
+}
+.trad-tab-content.active {
+    display: block; 
+}
+
+
+/*============================================ Dashboard style// 
+==============================================================================================*/
+.trad-header-section h1{
+    margin: 0 !important;
+}
+
+.turbo-addons-content {
+    width: 100% !important;
+    min-height: 100vh ;
+    background-color: transparent !important;
+    margin-top: 0 !important;
+    padding-top: 0;
+    top: 0 !important;
+    top: 0 !important;
+    padding: 0;
+}
+/* =================================general sections
+================================================================// */
+*{
+    list-style: none;
+    text-decoration:none ;
+}
+.trad-dashboard-tab-general-wraper{
+    background-color: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    align-items: start;
+    width:100%;
+    display: flex !important;
+    justify-content: space-between;
+    gap: 30px;
+}
+.trad-dashboard-tab-general-left{
+    /* background-color: rgb(255, 255, 255) !important; */
+    width: 80%;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px 2px hsla(0, 0%, 70%, 0.226);
+}
+.trad-dashboard-tab-general-right{
+    background-color: transparent !important;
+}
+.trad-dashboard-tab-general-right img{
+    border-radius: 10px;
+    width: 250px;
+}
+.trad-general-p p{
+    font-size: 18px;
+    color: #757474 !important;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.trad-general-p h1{
+    font-size: 2rem;
+    color: #383737 !important;
+    font-weight: 500;
+    line-height: 1;
+}
+.trad-widgets-section button{
+    padding: 10px 20px;
+    background-color: #2e3192;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.trad-dashboard-general-tabs-top-btn{
+    font-size: 1.2rem;
+    background-color: #08007e;
+    border-radius:8px;
+    padding: 10px 20px;
+    color: #eee !important;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    width: 250px;
+    margin-top: 4px;
+    cursor: pointer;
+}
+
+/* =====================Elements Tab sections style
+==================================================================/// */
+
+
+
+
+
+/* =================================Premium sections
+================================================================// */
+.trad-dashboard-premium-tab{
+    background-color: rgb(255, 255, 255) !important;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px 2px hsla(0, 0%, 70%, 0.226);
+}
+.trad-dashboard-premium-tab img{
+    width: 100%;
+}
+.trad_dashboard_pro_tabs_cta{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+    background-image: linear-gradient(90deg, #18A6FF 0%, #BD07EB 100%);
+    padding: 20px;
+    border-radius: 8px;
+    color: #eee;
+}
+
+.trad_dashboard_pro_tabs_cta h3{
+    font-size: 24px;
+    color: #eee;
+}
+.trad_dashboard_copun code{
+    position: relative;
+    top: 15px;
+    font-size: 24px;
+    background-color: #f5f830;
+    border-radius: 5px;
+    color: #121212;
+}
+.trad-dashboard-pro-tabs-top-btn{
+    font-size: 1.2rem;
+    background-color: #ffffff;
+    border-radius:8px;
+    padding: 10px 20px;
+    color: #121212 !important;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+/* --------------------------------Tab Content ---------------------------------------- */
+
+    /* commor css */
+    .trad-dashboard-sub-heading{
+        margin: 0 !important;
+        font-size: 16px !important;
+        font-weight: 700px !important;
+    }
+    .trad-updated-list-typography{
+        padding: 10px;
+    }
+   .trad-updated-list-typography>h4, p{
+    margin-block-start: 0 !important;
+    margin-block-end: 0 !important;
+    margin: 0 !important;
+    }
+  
+
+
+
+
+
+
+
+

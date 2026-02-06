@@ -1,0 +1,127 @@
+.trad-banking-debit-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .trad-banking-debit-card {
+    position: relative;
+    width: 508px;
+    height: 314px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+    z-index: 0;
+    background: #0042df;
+    background-image:
+    radial-gradient(circle at 100% 0%,hsla(0,0%,100%,0.08) 29.5%,hsla(0,0%,100%,0) 30%),
+    radial-gradient(circle at 100% 0%,hsla(0,0%,100%,0.08) 39.5%,hsla(0,0%,100%,0) 40%),
+    radial-gradient(circle at 100% 0%,hsla(0,0%,100%,0.08) 49.5%,hsla(0,0%,100%,0) 50%);
+    border-radius: 15px;
+  }
+
+  
+.trad-banking-debit-face {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    background: rgba(49, 49, 49, 0.26);
+    backdrop-filter: preserve-3d;
+    transition: 1s;
+  }
+  .trad-bank-card-header{
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    top: 20px;
+    flex-direction: row-reverse;
+    margin-bottom: 30px;
+}
+  
+  .trad-debit-chip-num-exp{
+    position: relative;
+    width: 100%;
+    align-items:start;
+    justify-content: start;
+    flex-direction: row;
+    padding-left: 20px;
+  
+  }
+  
+  .trad-banking-debit-chip {
+   position: relative;
+  }
+  
+  .trad-banking-debit-number {
+    position: relative;
+    top: -20px;
+  }
+
+  .trad-banking-debit-valid-text {
+    position: relative;
+    top: -30px;
+     }
+  
+  .trad-banking-debit-valid {
+   position: relative;
+   top: -55px;
+  }
+
+
+/* Animation */
+@keyframes rotate {
+	from,
+	to {
+		animation-timing-function: ease-in;
+		box-shadow:
+			0 0 0 hsl(0,0%,80%),
+			0.1rem 0 0 hsl(0,0%,100%),
+			-0.2rem 0 0.75rem 0 hsla(0,0%,0%,0.3);
+		transform: rotateY(-10deg);
+	}
+	25%,
+	75% {
+		animation-timing-function: ease-out;
+		box-shadow:
+			0 0 0 hsl(0,0%,80%),
+			0 0 0 hsl(0,0%,100%),
+			-0.25rem -0.05rem 1rem 0.15rem hsla(0,0%,0%,0.3);
+		transform: rotateY(0deg);
+	}
+	50% {
+		animation-timing-function: ease-in;
+		box-shadow:
+			-0.1rem 0 0 hsl(0,0%,80%),
+			0 0 0 hsl(0,0%,100%),
+			-0.3rem -0.1rem 1.5rem 0.3rem hsla(0,0%,0%,0.3);
+		transform: rotateY(10deg);
+	}
+}
+@keyframes texture {
+	from,
+	to {
+		transform: translate3d(0,0,0);
+	}
+	50% {
+		transform: translate3d(-6%,0,0);
+	}
+}
+
+
+
+.trad-bank-card-footer{
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  bottom:0px;
+ 
+}

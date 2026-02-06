@@ -1,0 +1,18 @@
+.trad-read-more-button{
+ background-color: #2e3192;
+ border: none;
+}
+
+.trad-read-more-widget {
+    box-shadow: inset -10px -55px 71px -45px rgba(207, 207, 207, 0.5);
+}
+
+.trad-read-more-description {
+    max-height: 100px; /* Adjust as needed */
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.trad-read-more-description.expanded {
+    max-height: 1000px; /* Adjust based on content */
+}

@@ -1,0 +1,275 @@
+/* Template One Css */
+.trad-image-overlay-template-one-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgba(47, 47, 233, 0.521);
+}
+
+.trad-image-overlay-template-one-text {
+    position: relative;
+    color: rgb(10, 9, 9);
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+    height: 100%;
+    transition: all 0.5s ease-in-out;
+    padding: 20px;
+}
+
+/* -------------------------------------------------------------card title// */
+.trad-image-overlay-template-one-text-title{
+    position: relative;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    font-size: 24px;
+    font-weight: 600;
+    justify-content: center !important;
+    margin: 25px 0 10px 0 !important;
+    overflow: hidden;
+}
+
+/* Show on hover */
+.trad-image-overlay-template-one-text:hover 
+.trad-image-overlay-template-one-text-title {
+    transform: translateY(0) !important;  /* go back to original spot */
+    opacity: 1;
+}
+
+/* --------------------------------------------------------------text area// */
+.trad-image-overlay-text-area{
+    margin: 0;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    font-size: 16px;
+}
+
+.trad-image-overlay-template-one-text:hover .trad-image-overlay-text-area {
+    opacity: 1;
+    transform: translateY(0) !important;
+}
+
+/* //icons---------------------------------------------------------------icons */
+.trad-image-overlay-template-one-social-icons{
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+}
+.trad-image-overlay-template-one-text:hover .trad-image-overlay-template-one-social-icons {
+    opacity: 1;
+    transform: translateY(0) !important;
+}
+
+
+/* -------------------------------------------------------------button// */
+.trad-image-overlay-template-two-text-link{
+    font-size: 16px;
+    border: 1px solid;
+    padding: 5px;
+    margin-top: 10px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.trad-image-overlay-template-one-text:hover .trad-image-overlay-template-two-text-link {
+    opacity: 1;
+    transform: translateY(0) !important;
+}
+
+
+/* ---------------All Animation list------------------- */
+
+ /* From Left - done*/
+.trad-image-overlay-template-one-container.none::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: left 0.3s ease-in-out, background-color 0.5s ease-in-out;
+}
+.trad-image-overlay-template-one-container.from-left::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    transition: left 0.3s ease-in-out, background-color 0.5s ease-in-out;
+}
+.trad-image-overlay-template-one-container.from-left:hover::before {
+    left: 0;
+}
+
+/* From Right */
+.trad-image-overlay-template-one-container.from-right::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 100%;
+    transition: left 0.3s ease-in-out, background-color 0.5s ease-in-out;
+}
+.trad-image-overlay-template-one-container.from-right:hover::before {
+    left: 0; 
+}
+
+/* From Top */
+.trad-image-overlay-template-one-container.from-top::before {
+    content: "";
+    position: absolute;
+    top: -100%;          
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: top 0.3s ease-in-out;    
+}
+.trad-image-overlay-template-one-container.from-top:hover::before {
+    top: 0; 
+}
+
+/* From Bottom */
+.trad-image-overlay-template-one-container.from-bottom::before {
+    content: "";
+    position: absolute;
+    bottom: -100%;               
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: bottom 0.3s ease-in-out; 
+}
+.trad-image-overlay-template-one-container.from-bottom:hover::before {
+    bottom: 0;
+}
+
+/* Expand Vertical */
+.trad-image-overlay-template-one-container.expand-vertical::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    transition: all 0.3s ease-in-out;
+    /* transform: translateY(-50%);  */
+}
+.trad-image-overlay-template-one-container.expand-vertical:hover::before {
+    height: 100%;
+    top: 0;
+    /* transform: none; */
+}
+
+/* Expand Horizontal */
+.trad-image-overlay-template-one-container.expand-horizontal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;                    
+    width: 0;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+.trad-image-overlay-template-one-container.expand-horizontal:hover::before {
+    width: 100%; 
+}
+
+/* Expand Circular */
+.trad-image-overlay-template-one-container.expand-circular::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;            
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.3s ease-in-out;
+}
+.trad-image-overlay-template-one-container.expand-circular:hover::before {
+    width: 200%;                  
+    height: 200%;
+    transform: translate(-50%, -50%) scale(1); 
+}
+
+
+.trad-image-overlay-template-one-social-icons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-top: 10px;
+}
+.trad-image-overlay-template-one-social-icons i{
+   margin-left: -10px !important;
+   padding: 0 !important;
+   gap: 5px;
+}
+
+/* Template Two Css */
+
+.trad-image-overlay-template-two-container {
+    position: relative;
+    width: 100%;
+}
+  
+.trad-image-overlay-template-two-image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+  
+.trad-image-overlay-template-two-middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+  
+.trad-image-overlay-template-two-container:hover 
+.trad-image-overlay-template-two-image {
+    opacity: 0.3;
+}
+  
+.trad-image-overlay-template-two-container:hover 
+.trad-image-overlay-template-two-middle {
+    opacity: 1;
+}
+  
+.trad-image-overlay-template-two-text {
+    background-color: #04AA6D;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+}
+.trad-image-overlay-template-one-social-icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+/* Always show if switch = ON */
+.dynamic_class_default_title {
+    opacity: 1 !important;
+}
+.dynamic_class_default_paragraph {
+    opacity: 1 !important;
+}
+.dynamic_class_default_icons {
+    opacity: 1 !important;
+}
+.dynamic_class_default_button {
+    opacity: 1 !important;
+}

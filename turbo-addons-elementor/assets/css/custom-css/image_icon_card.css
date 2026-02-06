@@ -1,0 +1,36 @@
+.trad-img-card-wrapper{
+    border-radius: 10px;
+    overflow: hidden;
+}
+.trad-image_icon_card_footer{
+    background-color: #FAFAFA;
+    padding: 0;
+    margin: 0;
+    bottom: 0;
+}
+.trad-image_icon_card_icon-title{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.trad-icon-image-card-icons span{
+ width: 100%;
+ height: auto;
+}
+
+.trad-image-card-readmore-btn{
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    background-color: #d3d3d3;
+    border-radius: 8px;
+}
+
+.trad-icon-img-card-image{
+    display: flex;
+    justify-content: center;
+    
+}

@@ -1,0 +1,198 @@
+.trad-team-slider {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.trad-team-slider .owl-nav {
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none; /* container transparent to clicks */
+}
+
+
+
+
+.trad-team-slider .owl-nav button {
+     pointer-events: all;  /* buttons clickable */
+     z-index: 99;
+}
+.trad-team-slider .owl-nav button.owl-prev {
+    left: 20px;
+}
+.trad-team-slider .owl-nav button.owl-next {
+    right: 20px;
+}
+.trad-team-slider .owl-nav button:hover {
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+}
+.trad-team-slider-wrapper-main .owl-nav button {
+    border-radius: 5px;
+}
+.trad-team-slider-wrapper-main .owl-dots {
+    text-align: center;
+    padding-top: 15px;
+}
+.trad-team-slider-wrapper-main .owl-dots button.owl-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #ccc;
+    margin: 0 3px;
+}
+.trad-team-slider-wrapper-main .owl-dots button.owl-dot.active {
+    background-color: #000;
+}
+.trad-team-slider-wrapper-main .owl-dots button.owl-dot:focus {
+    outline: none;
+}
+.elementor-control-team_member_social_icons .elementor-repeater-add {
+    display: none !important;
+} 
+
+/* ✅ Default hidden when disabled */
+.trad-nav-disabled .owl-nav {
+    display: none !important;
+}
+
+/* ✅ Force visible when enabled, even if Owl marks as disabled */
+.trad-nav-enabled .owl-nav.disabled {
+    display: flex !important;
+}
+
+
+
+   
+/* common styles */
+.trad-team-slider-member {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* -------------------------------
+----------- Style 1
+--------------------------------*/
+.trad-team-slider-overlay.style1 .trad-team-slider-social-icons .elementor-icon{
+    font-size: 20px;
+}
+.trad-team-slider-overlay.style1 .trad-team-slider-social-icons{
+    display: flex;
+    gap: 10px;
+}
+.trad-team-slider-overlay.style1 {
+    text-align: end;
+    padding: 15px 0;
+}
+.trad-team-slider-overlay.style1 .trad-team-slider-image {
+    border-radius: 15px;
+}
+.trad-team-slider-overlay.style1 .trad-team-slider-name {
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 15px;
+}
+.trad-team-slider-overlay.style1 .trad-team-slider-text {
+    color: #777;
+    font-size: 14px;
+}
+.trad-team-slider-overlay.style1 .trad-team-slider-social-icons {
+    margin-top: 12px;
+}
+
+/* -------------------------------
+----------- Style 2
+--------------------------------*/
+.trad-team-slider-overlay.style2 {
+    position: relative;
+    background: transparent;
+    padding: 15px 0;
+}
+.trad-team-slider-overlay.style2 .trad-team-slider-social-icons.vertical {
+    position: absolute;
+    top: 0%;
+    right: 15px;
+    transform: translateY(-175%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.trad-team-slider-overlay.style2 .trad-team-slider-info {
+    color: #000;
+}
+.trad_team_sliderhover_effect_style_two{
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+.trad-team-slider-member:hover .trad_team_sliderhover_effect_style_two{
+    opacity: 1;
+}
+
+
+
+/* -------------------------------
+----------- Style 3 
+--------------------------------*/
+.trad-team-slider-overlay.style3 {
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
+}
+.trad-team-slider-overlay.style3:hover{
+    transition: all 0.3s ease-in-out;
+    background: linear-gradient(rgba(255, 255, 255, 0.144), rgba(0, 0, 255, 0.774));
+}
+
+.trad-team-slider-overlay.style3 .trad-team-slider-social-icons {
+    position: absolute;
+    top: 0%;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+.trad-team-slider-overlay.style3:hover .trad-team-slider-social-icons{
+    top: 50px;
+    opacity: 1;
+}
+
+.trad-team-slider-info-style3{
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+    color: #141414;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.trad-team-slider-overlay.style3:hover .trad-team-slider-info-style3{
+    bottom: 5px;
+    opacity: 1;
+}
+
+/* image zoom in hover// */
+/* .trad-team-slider-image */
+.trad-team-slider-image {
+   transition: transform 0.3s ease;
+}
+.trad-zoom-active .trad-team-slider-member:hover .trad-team-slider-image {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+

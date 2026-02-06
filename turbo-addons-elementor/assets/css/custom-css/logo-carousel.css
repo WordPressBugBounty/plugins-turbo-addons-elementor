@@ -1,0 +1,289 @@
+/* ==============================
+   TURBO LOGO CAROUSEL - FINAL (One-row + Multi-row supported)
+   ============================== */
+
+.trad-carousel-logo {
+    position: relative;
+    overflow: visible !important;
+}
+
+/* Swiper Container */
+.trad-carousel-logo .trad-main-swiper {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* ✅ Handle both single & multi-row cases */
+.trad-carousel-logo .trad-main-swiper .swiper-wrapper {
+    height: auto !important;
+}
+
+.trad-carousel-logo.has-multi-row .trad-main-swiper .swiper-wrapper {
+    flex-wrap: wrap !important;
+}
+
+/* Slides */
+.trad-carousel-logo .trad-carousel-item {
+    position: relative;
+}
+
+.trad-carousel-logo .trad-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08); */
+    min-height: 170px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.trad-carousel-logo .trad-carousel img {
+    transition: all 0.3s ease;
+    max-width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* ==============================
+   ✅ HOVER OVERLAY
+   ============================== */
+.trad-carousel-logo.advance_logo_image .trad-carousel::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(315deg, #f2709c 0%, #fe8f75 60%);
+    transition: all 0.4s ease-in-out;
+    opacity: 0;
+    z-index: 1;
+}
+
+.trad-carousel-logo.advance_logo_image .trad-carousel:hover::before {
+    top: 0;
+    opacity: 1;
+}
+
+/* ==============================
+   ✅ NAVIGATION ARROWS
+   ============================== */
+.trad-carousel-logo .swiper-navigation-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: #fff;
+    border-radius: 50%;
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.trad-carousel-logo .swiper-navigation-button:hover {
+    background: #fff;
+    color: #fff;
+}
+
+/* inside/outside positioning */
+.trad-carousel-logo.arrow_inside .swiper-button-prev {
+    left: 10px;
+}
+.trad-carousel-logo.arrow_inside .swiper-button-next {
+    right: 10px;
+}
+
+/* ✅ OUTSIDE position */
+.trad-carousel-logo.arrow_outside .swiper-button-prev,
+.trad-carousel-logo.arrow_outside .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 15;
+}
+
+.trad-carousel-logo.arrow_outside .swiper-button-prev {
+    left: -55px;
+}
+.trad-carousel-logo.arrow_outside .swiper-button-next {
+    right: -55px;
+}
+
+.trad-carousel-logo.arrow_outside {
+    overflow: visible !important;
+}
+.trad-carousel-logo.arrow_outside .trad-main-swiper {
+    overflow: hidden !important;
+}
+
+/* ==============================
+   ✅ DOTS (PAGINATION)
+   ============================== */
+.trad-carousel-logo > .swiper-pagination {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 8px;
+    z-index: 10;
+}
+
+.trad-carousel-logo > .swiper-pagination span {
+    width: 10px;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.trad-carousel-logo > .swiper-pagination span.swiper-pagination-bullet-active {
+    background-color: #000;
+    opacity: 1;
+    transform: scale(1.3);
+}
+
+/* dashed/dotted styles */
+.trad-carousel-logo.dot_dotted > .swiper-pagination span,
+.trad-carousel-logo.dot_dashed > .swiper-pagination span {
+    background-color: #101010;
+}
+
+.trad-carousel-logo.dot_dotted > .swiper-pagination span.swiper-pagination-bullet-active,
+.trad-carousel-logo.dot_dashed > .swiper-pagination span.swiper-pagination-bullet-active {
+    transform: scale(2);
+    opacity: 1;
+}
+
+/* paginated (numbered) style */
+.trad-carousel-logo.dot_paginated > .swiper-pagination {
+    counter-reset: myCounter;
+}
+.trad-carousel-logo.dot_paginated > .swiper-pagination > span {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #fff;
+    /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); */
+    color: #565656;
+    font-weight: 600;
+    border-radius: 50%;
+}
+.trad-carousel-logo.dot_paginated > .swiper-pagination > span::before {
+    counter-increment: myCounter;
+    content: counter(myCounter);
+}
+.trad-carousel-logo.dot_paginated > .swiper-pagination > span.swiper-pagination-bullet-active {
+    background-color: #2575fc;
+    color: #fff;
+}
+
+/* ==============================
+   ✅ SMOOTH HOVER LOGO SWITCH EFFECT (only when has-hover-logo class)
+   ============================== */
+.trad-carousel-logo .trad-carousel.has-hover-logo .content-image {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.trad-carousel-logo .trad-carousel.has-hover-logo .content-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    backface-visibility: hidden;
+}
+
+/* 🔹 Default (normal logo visible, hover hidden) */
+.trad-carousel-logo .trad-carousel.has-hover-logo .content-image img.hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.05);
+    z-index: 3;
+}
+
+/* 🔹 Hover effect (only when has-hover-logo class present) */
+.trad-carousel-logo .trad-carousel.has-hover-logo:hover .content-image img.hover-image {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.trad-carousel-logo .trad-carousel.has-hover-logo:hover .content-image img:not(.hover-image) {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+}
+
+/* ==============================
+   ✅ ADVANCE LOGO IMAGE - OVERLAY DIRECTIONS
+   ============================== */
+
+/* Base overlay layer */
+.trad-carousel-logo.advance_logo_image .trad-carousel::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    z-index: 1;
+}
+
+/* ----- From Bottom ----- */
+.trad-carousel-logo.hover_from_bottom .trad-carousel::before {
+    top: 100%;
+    left: 0;
+}
+.trad-carousel-logo.hover_from_bottom .trad-carousel:hover::before {
+    top: 0;
+    opacity: 1;
+}
+
+/* ----- From Top ----- */
+.trad-carousel-logo.hover_from_top .trad-carousel::before {
+    top: -100%;
+    left: 0;
+}
+.trad-carousel-logo.hover_from_top .trad-carousel:hover::before {
+    top: 0;
+    opacity: 1;
+}
+
+/* ----- From Left ----- */
+.trad-carousel-logo.hover_from_left .trad-carousel::before {
+    top: 0;
+    left: -100%;
+}
+.trad-carousel-logo.hover_from_left .trad-carousel:hover::before {
+    left: 0;
+    opacity: 1;
+}
+
+/* ----- From Right ----- */
+.trad-carousel-logo.hover_from_right .trad-carousel::before {
+    top: 0;
+    left: 100%;
+}
+.trad-carousel-logo.hover_from_right .trad-carousel:hover::before {
+    left: 0;
+    opacity: 1;
+}
+

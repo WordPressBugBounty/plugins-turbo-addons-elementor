@@ -1,0 +1,82 @@
+.trad-dual-header-text-container {
+    display: flex;
+}
+.trad-dual-header-text-container.is-row {
+    flex-direction: row;
+}
+.trad-dual-header-text-container.is-column {
+    flex-direction: column;
+}
+.trad-dual-header-text-container .trad-dual-header-primary {
+    font-size: 34px;
+    font-weight: 500;
+    transition: color 0.4s ease-in-out, 
+    -webkit-text-stroke-color 0.4s ease-in-out;
+    color: #333;
+}
+/* Apply gradient style only if has-gradient is present */
+.trad-dual-header-text-container .trad-dual-header-primary {
+    transition: color 0.4s ease, 
+    -webkit-text-stroke-color 0.4s ease;
+}
+
+/* Gradient state (additional styles only) */
+.trad-dual-header-text-container.has-gradient .trad-dual-header-primary {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    background-position: left center;
+    transition: background-position 0.4s ease, 
+                color 0.4s ease, 
+  -webkit-text-stroke-color 0.4s ease;
+}
+
+.trad-dual-header-text-container.has-gradient .trad-dual-header-primary:hover {
+    background-position: right center;
+}
+
+ /*---------------------------------- For second header style// ------------------------------------*/
+.trad-dual-header-text-container .trad-dual-header-secondary {
+    font-size: 34px;
+    font-weight: 500;
+    transition: color 0.4s ease-in-out, 
+    -webkit-text-stroke-color 0.4s ease-in-out;
+}
+/* Apply gradient style only if has-gradient is present */
+.trad-dual-header-text-container .trad-dual-header-secondary {
+    color: #0c38c9;
+    transition: color 0.4s ease, 
+    -webkit-text-stroke-color 0.4s ease;
+    letter-spacing: 10px;
+}
+/* Gradient state (additional styles only) */
+.trad-dual-header-text-container.has-gradient .trad-dual-header-secondary {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    background-position: left center;
+    transition: background-position 0.4s ease, 
+                color 0.4s ease, 
+  -webkit-text-stroke-color 0.4s ease;
+}
+.trad-dual-header-text-container.has-gradient .trad-dual-header-secondary:hover {
+    background-position: right center;
+}
+
+
+
+.trad-dual-header-text-container.has-gradient .trad-dual-header-primary,
+.trad-dual-header-text-container.has-gradient-secondary .trad-dual-header-secondary {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@media(max-width:767px){
+  .elementor-element-123 .trad-dual-header-text-container { flex-direction: column; }
+}
+.trad-dual-header-text-container {
+    display: flex;
+}

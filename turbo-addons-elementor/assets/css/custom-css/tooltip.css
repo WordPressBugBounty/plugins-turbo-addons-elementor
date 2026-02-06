@@ -1,0 +1,140 @@
+/* Each widget wrapper relative so tooltip positions properly */
+.elementor-widget {
+    position: relative;
+}
+
+/* Base Tooltip (hidden by default) */
+.trad-tooltip {
+    position: absolute;
+    background-color: #bfbfc0;
+    color: #2c2c2c;
+    border-radius: 5px;
+    font-size: 13px;
+    z-index: 999;
+    pointer-events: auto;
+
+    /* layout safety */
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    /* Hidden state */
+    opacity: 0;
+    visibility: hidden;
+
+    /* 🔑 Transitions — opacity, visibility, transform */
+    transition-property: opacity, visibility, transform;
+    transition-duration: 0.3s, 0s, 0.3s;
+    transition-timing-function: ease, linear, ease;
+
+    /* 🔑 When going HIDE: wait `--tooltip-hide-delay` before starting opacity/transform,
+       and switch visibility to hidden AFTER opacity finishes */
+    transition-delay:
+        var(--tooltip-hide-delay, 0s),                         /* opacity delay */
+        calc(var(--tooltip-hide-delay, 0s) + 0.3s),            /* visibility delay */
+        var(--tooltip-hide-delay, 0s);                         /* transform delay */
+}
+
+/* When tooltip is active (hover OR click trigger), show it */
+.elementor-widget:hover .trad-tooltip[data-trigger="hover"],
+.trad-tooltip[data-trigger="click"].tooltip-active {
+    opacity: 1;
+    visibility: visible;
+
+    /* 🔑 When SHOW: wait `--tooltip-show-delay` before starting opacity/transform;
+       visibility comes instantly */
+    transition-delay:
+        var(--tooltip-show-delay, 0s),  /* opacity delay */
+        0s,                             /* visibility delay */
+        var(--tooltip-show-delay, 0s);  /* transform delay */
+}
+
+/* TOP */
+.trad-tooltip[data-position="top"] {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    margin-bottom: 6px;
+}
+
+/* BOTTOM */
+.trad-tooltip[data-position="bottom"] {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    margin-top: 6px;
+}
+
+/* LEFT */
+.trad-tooltip[data-position="left"] {
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%) translateX(-6px);
+    margin-right: 6px;
+}
+
+/* RIGHT */
+.trad-tooltip[data-position="right"] {
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%) translateX(6px);
+    margin-left: 6px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .trad-tooltip {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .trad-tooltip {
+        font-size: 11px;
+        padding: 5px 7px;
+        max-width: 90%;
+        white-space: normal;
+        text-align: center;
+    }
+}
+
+/* Arrow styles */
+.trad-tooltip::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+}
+.trad-tooltip[data-position="top"]::after {
+    top: 100%;
+    left: 50%;
+    border-width: 6px 6px 0 6px;
+    border-color: #2E3192 transparent transparent transparent;
+    transform: translateX(var(--tooltip-x, -50%)) translateY(var(--tooltip-y, -6px));
+}
+.trad-tooltip[data-position="bottom"]::after {
+    bottom: 100%;
+    left: 50%;
+    border-width: 0 6px 6px 6px;
+    border-color: transparent transparent #2E3192 transparent;
+    transform: translateX(var(--tooltip-x, -50%)) translateY(var(--tooltip-y, 6px));
+}
+.trad-tooltip[data-position="left"]::after {
+    top: 50%;
+    right: -6px;
+    border-width: 6px 0 6px 6px;
+    border-color: transparent transparent transparent #2E3192;
+    transform: translateX(var(--tooltip-x, -6px)) translateY(var(--tooltip-y, -50%));
+}
+.trad-tooltip[data-position="right"]::after {
+    top: 50%;
+    left: -6px;
+    border-width: 6px 6px 6px 0;
+    border-color: transparent #2E3192 transparent transparent;
+    transform: translateX(var(--tooltip-x, 6px)) translateY(var(--tooltip-y, -50%));
+}
+/* End of tooltip.css */

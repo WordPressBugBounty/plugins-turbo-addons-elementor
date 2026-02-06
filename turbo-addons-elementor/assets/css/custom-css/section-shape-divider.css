@@ -1,0 +1,32 @@
+.trad-divider-wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+/* //--------------------------- glow divider-----------------------------------// */
+.trad-section-divider {
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+  gap: 1em;
+}
+
+.trad-section-divider::before,
+.trad-section-divider::after {
+  content: "";
+  flex: 1;
+  height: 5px;
+  margin: 0 0;
+  border-radius: 5px;
+  background-color: rgb(17, 17, 121);
+  /* blur removed — handled via switcher */
+}
+
+/* .trad-section-divider::before {
+  background: linear-gradient(to right, blue, hotpink);
+}
+
+.trad-section-divider::after {
+  background: linear-gradient(to left, blue, hotpink);
+} */

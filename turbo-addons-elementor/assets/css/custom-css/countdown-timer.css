@@ -1,0 +1,32 @@
+.trad-countdown-main {
+    text-align: center;
+    display: flex;
+}
+
+.trad-countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.trad-countdown div {
+    text-align: center;
+    border-radius: 5px;
+    display: flex;
+}
+
+.trad-countdown div span {
+    display: block;
+}
+
+.trad-countdown .trad-number {
+    font-size: 48px;
+    font-weight: bold;
+    color: #1b1816;
+    line-height: 100%;
+}
+
+.trad-countdown > div.is-off{
+  display:none !important; /* only hide needs !important */
+}
+  

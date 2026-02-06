@@ -1,0 +1,120 @@
+
+.trad-turbo-contact-form-7 .wpcf7 {
+    width: 100%;
+}
+  
+.trad-turbo-contact-form {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.trad-turbo-contact-form .trad-turbo-contact-form-title {
+  display: block;
+  width: 100%;
+  margin-bottom: 30px;
+  font-size: 30px;
+  color: #9fa0a8;
+  font-weight: 500;
+}
+
+.trad-turbo-contact-form .trad-turbo-contact-form-input-group {
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+@media (max-width: 575px) {
+  .trad-turbo-contact-form .trad-turbo-contact-form-input-group {
+    width: 100%;
+  }
+}
+
+.trad-turbo-contact-form-7 input[type="text"], .trad-turbo-contact-form-7 input[type="email"], .trad-turbo-contact-form-7 input[type="url"], .trad-turbo-contact-form-7 input[type="password"], .trad-turbo-contact-form-7 input[type="search"], .trad-turbo-contact-form-7 input[type="number"], .trad-turbo-contact-form-7 input[type="tel"], .trad-turbo-contact-form-7 input[type="range"], .trad-turbo-contact-form-7 input[type="date"], .trad-turbo-contact-form-7 input[type="month"], .trad-turbo-contact-form-7 input[type="week"], .trad-turbo-contact-form-7 input[type="time"], .trad-turbo-contact-form-7 input[type="datetime"], .trad-turbo-contact-form-7 input[type="datetime-local"], .trad-turbo-contact-form-7 input[type="color"], .trad-turbo-contact-form-7 textarea {
+  width: 100%;
+  border: none;
+}
+
+.trad-turbo-contact-form-7 label {
+  display: block;
+}
+
+.trad-turbo-contact-form-7 textarea {
+  height: auto;
+}
+
+.trad-turbo-contact-form .trad-turbo-contact-form-input-group label {
+  display: inline-block;
+  position: relative;
+  margin-right: 20px;
+  margin-top: 20px;
+  padding: 0 0 0 25px;
+}
+
+.trad-turbo-contact-form .trad-turbo-contact-form-input-group label input {
+  opacity: 0;
+  height: 0;
+  width: 0;
+  position: absolute;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+   user-select: none;
+}
+
+.trad-turbo-contact-form .trad-turbo-contact-form-input-group label input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.trad-turbo-contact-form .trad-turbo-contact-form-input-group label input:checked ~ .checkmark {
+  background-color: #4ce2bd;
+  border: none;
+}
+.trad-turbo-contact-form .trad-turbo-contact-form-input-group label .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #fff;
+  border: 1px solid #e3e6ec;
+}
+
+.trad-turbo-contact-form .trad-turbo-contact-form-input-group label .checkmark::after {
+  content: "\e90e";
+  font-family: eicons;
+  position: absolute;
+  display: none;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 12px;
+}
+
+.trad-turbo-contact-form-7 .wpcf7-form input[type="submit"] {
+  transition: all .4s ease;
+  display: flex;
+}
+
+.trad-turbo-contact-form-7 .trad-turbo-cf7-column{
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 15px;
+}
+
+.trad-turbo-contact-form .trad-turbo-contact-form-input-action i {
+  margin-left: 10px;
+}
+
+.trad-turbo-contact-form.two {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.trad-turbo-contact-form-7 br { 
+  display: none;
+}

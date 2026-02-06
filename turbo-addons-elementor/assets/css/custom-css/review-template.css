@@ -1,0 +1,587 @@
+/**
+Template - 1
+*/
+.trad-review-archive {
+    max-width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    margin: auto;
+}
+.trad-review-archive-logo img {
+    max-width: 80px;
+    margin: 0 auto;
+}
+.trad-review-archive-name {
+    font-size: 22px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.trad-template-one-star-filled {
+    color: #2acf2a;
+}
+.trad-template-one-star-empty{
+    color: #CCCCCC;
+}
+.trad-review-archive-features {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.trad-review-archive-action {
+    margin-top: 20px;
+}
+.trad-review-archive-btn {
+    display: inline-block;
+    background-color: #6a33d8;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 16px;
+}
+.trad-review-archive-terms {
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .trad-review-archive {
+        max-width: 100%;
+    }
+}
+
+/**
+Template - 2
+*/
+
+.trad-review-archive-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+}
+
+.trad-review-archive-image-section {
+    margin-right: 20px;
+}
+
+.trad-review-archive-template-two-content-section {
+    flex: 1;
+}
+
+.trad-template-two-description {
+    text-align: left !important;
+}
+
+@media (max-width: 768px) {
+    .trad-review-archive-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .trad-review-archive-image-section {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
+
+/**
+Template - 3
+*/
+
+.trad-review-archive-template-three-container {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.trad-review-archive-template-three-container 
+.trad-review-archive-template-three-logo-image {
+   box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.trad-review-archive-template-three-container 
+.trad-review-archive-template-three-divider {
+    width: 1px;
+    height: 100px;
+    background-color: #ddd;
+    margin: 0 20px;
+}
+
+.trad-review-archive-template-three-container 
+.trad-review-archive-template-three-price-section {
+    text-align: center;
+}
+
+.trad-review-archive-template-three-container 
+.trad-review-archive-template-three-money-back {
+    font-size: 0.8rem;
+    color: #999;
+    margin: 0px !important;
+}
+
+.trad-review-archive-template-three-container 
+.trad-review-archive-template-three-price-value {
+    font-size: 2rem;
+    color: #000;
+    font-weight: bold;
+    margin: 0px !important;
+}
+
+.trad-review-archive-template-three-container 
+.trad-review-archive-template-three-save-value {
+    color: #00aaff;
+    font-weight: bold;
+    margin: 0px !important;
+}
+
+.trad-review-archive-template-three-container 
+.trad-review-archive-template-three-secure-value {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0px !important;
+}
+
+.trad-review-archive-template-three-container 
+.trad-review-archive-template-three-rating-section {
+    text-align: center;
+}
+
+.trad-review-archive-template-three-container 
+.stars {
+    color: #6c00ff;
+    font-size: 1.5rem;
+}
+
+.trad-review-archive-template-three-container 
+.trad-review-archive-template-three-rating-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.trad-review-archive-template-three-container 
+.trad-template-three-terms {
+    font-size: 0.9rem;
+    color: #999;
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: center;
+}
+
+.trad-review-archive-template-three-container 
+.trad-review-archive-template-three-action-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.trad-review-archive-template-three-container 
+.trad-achive-template-three-btn {
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.trad-review-archive-template-three-container 
+.trad-achive-template-three-visit {
+    background-color: #00aaff;
+    color: #fff;
+}
+
+.trad-review-archive-template-three-container 
+.trad-achive-template-three-read-review {
+    background-color: #e0e9ff;
+    color: #6c00ff;
+}
+
+@media (max-width: 768px) {
+    .trad-review-archive-template-three-container 
+    .trad-review-archive-template-three-logo-image {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .trad-review-archive-template-three-container 
+    .trad-review-archive-template-three-divider {
+        display: none;
+    }
+
+    .trad-review-archive-template-three-container 
+    .trad-review-archive-template-three-price-section, 
+    .trad-review-archive-template-three-rating-section, 
+    .trad-review-archive-template-three-action-section {
+        margin-top: 20px;
+    }
+}
+
+/**
+Template - 4
+*/
+
+/* General card styling */
+.trad-review-archive-template-four-container {
+    width: 100%;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+    transition: box-shadow 0.3s;
+    margin: auto;
+}
+
+.trad-review-archive-template-four-container:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.trad-review-archive-template-four-container-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.trad-card-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.trad-review-archive-template-four-container-info {
+    text-align: center;
+    padding: 0 15px;
+}
+
+.trad-review-archive-template-four-container-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+/* Rating Stars */
+.trad-card-rating {
+    margin-top: 5px;
+}
+
+.trad-rating-stars {
+    font-size: 1.25rem;
+    color: #7B61FF;
+}
+
+.trad-star-filled {
+    color: #7B61FF;
+}
+
+.trad-star-empty {
+    color: #ccc;
+}
+
+/* Card description */
+.trad-review-archive-template-four-container-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 20px 0;
+}
+
+.trad-card-btn {
+    padding: 7px 8px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+}
+
+
+.trad-card-btn:hover {
+    opacity: 0.9;
+}
+
+/* Terms and Conditions */
+.trad-review-archive-template-four-container-trad-terms {
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 15px;
+}
+
+/* Responsive styling */
+@media (max-width: 991px) {
+    .trad-review-archive-template-four-container {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .trad-review-archive-template-four-container-footer {
+        flex-direction: column !important;
+        width: 100%;
+    }
+
+    .trad-card-btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .trad-review-archive-template-four-container-trad-terms {
+        font-size: 0.7rem;
+    }
+
+    .trad-template-four-review-btn {
+        width: 100%!important;
+        display: block!important;
+    }
+    .trad-template-four-visit-btn {
+        width: 100%!important;
+        display: block!important;
+    }
+}
+
+/**
+Template - 5
+*/
+
+/* Card container */
+.trad-template-five-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f6fb;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Left section */
+.trad-template-five-left-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.trad-template-five-icon-wrapper {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.trad-template-five-service-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Middle section */
+.trad-template-five-middle-section {
+    text-align: left;
+}
+
+.trad-template-five-money-back {
+    font-size: 14px;
+    color: #808080;
+}
+
+.trad-template-five-price {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.trad-template-five-price-value {
+    color: #000000;
+}
+
+.trad-template-five-save {
+    font-size: 14px;
+    color: #ff6464;
+}
+
+.trad-template-five-devices {
+    font-size: 14px;
+    color: #808080;
+}
+
+/* Right section */
+.trad-template-five-right-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Rating and review section */
+.trad-template-five-rating-review {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.trad-template-five-rating-star {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #7b4fe8;
+}
+
+.trad-template-five-star {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.trad-template-five-rating-value {
+    font-weight: bold;
+}
+
+.trad-template-five-review-link {
+    font-size: 14px;
+    color: #7b4fe8;
+    text-decoration: none;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Visit button and terms section */
+.trad-template-five-visit-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trad-template-five-visit-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #00aaff;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 170, 255, 0.4);
+}
+
+.trad-template-five-visit-btn:hover {
+    background-color: #008ecc;
+}
+
+.trad-template-five-terms {
+    font-size: 12px;
+    color: #808080;
+    margin-top: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .trad-template-five-left-section {
+        display: flex;
+        flex-direction: column; /* Stack the icon and service name vertically */
+        align-items: center; /* Center the items */
+        text-align: center; /* Center the text */
+        gap: 10px; /* Add some space between the icon and service name */
+    }
+
+    .trad-template-five-service-name {
+        margin-top: 10px; /* Optional: You can adjust this spacing as needed */
+    }
+
+    .trad-template-five-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .trad-template-five-middle-section,
+    .trad-template-five-right-section {
+        width: 100%;
+        text-align: center;
+    }
+
+    .trad-template-five-middle-section {
+        margin: 10px 0;
+    }
+
+    .trad-template-five-visit-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .trad-template-five-middle-section, 
+    .trad-template-five-right-section {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .trad-template-five-price {
+        font-size: 20px;
+    }
+
+    .trad-template-five-visit-btn {
+        padding: 8px 15px;
+    }
+
+    .trad-template-five-middle-section,
+    .trad-template-five-right-section {
+        flex-direction: column-reverse;
+    }
+}
+
+:root {
+    --star-size: 60px;
+    --star-color: #fff;
+    --star-background: #fc0;
+}
+
+.trad-template-stars {
+    --percent: calc(var(--rating) / 5 * 100%);
+    
+    display: inline-block;
+    font-size: var(--star-size);
+    font-family: Times; /* Ensure ★ appears correctly */
+    line-height: 1;
+}
+
+.trad-template-stars::before {
+    content: attr(data-stars);
+    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.trad-template-stars-hover:hover {
+    --star-color: rgba(142, 141, 141, 0.444)!important;
+}
+

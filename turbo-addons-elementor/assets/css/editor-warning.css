@@ -1,0 +1,12 @@
+/*------------------------------------------------------- Global Notice Warning ---------------------------------------------------------------------------- */
+
+/* Turbo Addons Elementor Notice Warning */
+.trad-notice-warning {
+    background-color: #e7dab1 !important; /* Light yellow background */
+    color: #856404 !important; /* Dark text color for contrast */
+    padding: 12px !important;
+    border: 1px solid #e7dab1 !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    text-align: center !important;
+}

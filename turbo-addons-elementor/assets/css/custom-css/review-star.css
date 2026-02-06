@@ -1,0 +1,27 @@
+:root {
+    --star-size: 60px;
+    --star-color: #fff;
+    --star-background: #fc0;
+}
+
+.trad-stars {
+    --percent: calc(var(--rating) / 5 * 100%);
+    display: flex;
+    align-items: center;
+    font-size: var(--star-size);
+    font-family: Times; /* Ensure ★ appears correctly */
+    line-height: 1;
+    gap: 5px;
+}
+
+.trad-stars::before {
+    content: '★★★★★';
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.trad-stars-hover:hover {
+    --star-color: rgba(142, 141, 141, 0.444) !important; 
+}
