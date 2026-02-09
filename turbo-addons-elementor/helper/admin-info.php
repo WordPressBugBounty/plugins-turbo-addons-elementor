@@ -12,8 +12,35 @@ class TRAD_ADMIN_INFO
         add_action('admin_enqueue_scripts', [__CLASS__, 'trad_admin_info_scripts']);
     }
 
+    private function trad_is_turbo_pro_version_active() {
+        if ( ! function_exists( 'get_plugins' ) ) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+        
+        $active_plugins = get_option( 'active_plugins' );
+        $all_plugins = get_plugins();
+        
+        foreach ( $all_plugins as $plugin_file => $plugin_data ) {
+            if ( in_array( $plugin_file, $active_plugins ) ) {
+                // Check by plugin name instead of folder path
+                if ( isset( $plugin_data['Name'] ) && $plugin_data['Name'] === 'Turbo Addons Elementor Pro' ) {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+
     static function trad_display_admin_info_output()
     {
+
+    // ✅ Pro version check
+    $instance = new self();
+    if ( method_exists( $instance, 'trad_is_turbo_pro_version_active' ) && $instance->trad_is_turbo_pro_version_active() ) {
+        // Pro version active → return, don't display notice
+        return;
+    }
 
 ?>
         <div class="trad-hero">
@@ -56,7 +83,12 @@ class TRAD_ADMIN_INFO
 
     public static function trad_display_admin_info()
     {
-
+        // ✅ Pro version check
+        $instance = new self();
+        if ( method_exists( $instance, 'trad_is_turbo_pro_version_active' ) && $instance->trad_is_turbo_pro_version_active() ) {
+            // Pro version active → return, don't display notice
+            return;
+        }
         $hide_date = get_option('trad_info_text_date');
         if (!empty($hide_date)) {
             $clickhide = round((time() - strtotime($hide_date)) / 24 / 60 / 60);

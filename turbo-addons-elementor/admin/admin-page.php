@@ -74,13 +74,13 @@ function turbo_addons_admin_page() {
              <!-- ------------------tab1-----section  1// ---------------------------->
                 <div class="trad-dashboard-sec-one">
                     <div class="trad-dashboard-sec-one-left">
-                        <h3 class="trad-dashboard-sub-heading">What's New in Version 1.8.9</h3>
+                        <h3 class="trad-dashboard-sub-heading">What's New in Version 1.8.10</h3>
                         <hr>
                         <div class="trad-updated-list">
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
                             <div class="trad-updated-list-typography">
-                                <h4>Optimized</h4>
-                                <p>Plugin performance, security, and code quality</p>
+                                <h4>Improved</h4>
+                                <p>Plugin performance and security</p>
                             </div>
                         </div>
                         <hr>
@@ -88,7 +88,7 @@ function turbo_addons_admin_page() {
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
                             <div class="trad-updated-list-typography">
                                 <h4>Updated</h4>
-                                <p>Tested and verified for full compatibility with Elementor version 3.34.1.</p>
+                                <p>Tested and verified for full compatibility with Elementor version 3.35.3.</p>
                             </div>
                         </div>
                     </div>
