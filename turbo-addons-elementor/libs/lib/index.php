@@ -23,7 +23,7 @@ if (!class_exists('TRAD_Turbo_Template_Library')) {
 
 			self::$plugin_data = array(
 				'root_file' =>  __FILE__,
-				'pro-link' => 'https://turbo-addons.com/elementor-addons-pricing/',
+				'pro-link' => 'https://turbo-addons.com/pricing/',
 				'remote_site' => 'https://mt.turbo-addons.com/',
 				'remote_page_site' => 'https://mt.turbo-addons.com/',
 				'widget' => 'ta-items',
