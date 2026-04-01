@@ -190,12 +190,16 @@
                 // var type = $('#elementor-editor-wrapper').find('.trad-lib-xl-settings').attr('data-type');
                 var type = $('.trad-lib-centerhead li.active').data('type') || 'page';
                 var search = $('#elementor-editor-wrapper').find('.trad-lib-xl-settings').attr('data-search');
+                var pro = $('.trad-filter-profree').val();
+                var website_type = $('.trad-filter-website').val();
                 $('#elementor-editor-wrapper').find('.trad-lib-xl-settings').attr('data-pagesettings', page_no);
                 var ajax_data = {
                     page: page_no,
                     category: category,
                     type : type,
                     search : search,
+                    pro: pro,
+                    website_type: website_type,
                 };
                 process_data(ajax_data);
             });
@@ -216,11 +220,15 @@
                 $('#elementor-editor-wrapper').find('.trad-lib-xl-settings').attr('data-search', search);
                 // var type = $('#elementor-editor-wrapper').find('.trad-lib-xl-settings').attr('data-type');
                 var type = $('.trad-lib-centerhead li.active').data('type') || 'page';
+                var pro = $('.trad-filter-profree').val();
+                var website_type = $('.trad-filter-website').val();
                 $('.trad-lib-content').addClass('loading');
                 var ajax_data = {
                     page : '1',
                     type : type,
                     search : search,
+                    pro: pro,
+                    website_type: website_type,
                 };
                 process_data(ajax_data);
             });
