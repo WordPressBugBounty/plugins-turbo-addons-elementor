@@ -4,7 +4,7 @@ Tags: elementor addons, elementor widgets, elementor templates, header footer bu
 Requires at least: 3.0  
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.8.12
+Stable tag: 1.8.13
 License: GPLv3  
 License URI: https://opensource.org/licenses/GPL-3.0  
 
@@ -261,6 +261,11 @@ Follow these steps to install Turbo Addons for Elementor on your WordPress websi
 **A:** Yes, Turbo Addons for Elementor is licensed under GPL v2 or later, allowing you to use it on unlimited websites.
 
 == Changelog ==
+
+### Version 1.8.13
+
+1. **Tested**: Tested and verified for full compatibility with Elementor version 4.0.1.
+2. **Updated**: Template gallery and added more new templates.
 
 ### Version 1.8.12
 

@@ -159,6 +159,52 @@ color: #ffffff;
 .trad-lib-wrap .product:hover .buy-tmpl,.trad-lib-wrap .product:hover .insert-tmpl{
   display:block;
 }
+.trad-lib-wrap .product .tmpl-missing-overlay {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: rgba(0,0,0,0.75);
+  padding: 6px 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.trad-lib-wrap .product:hover .tmpl-missing-overlay {
+  display: flex;
+}
+.trad-lib-wrap .product .tmpl-missing-overlay > i {
+  position: static;
+  opacity: 1;
+  color: #f39c12;
+  transform: none;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.trad-lib-wrap .product .tmpl-missing-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.trad-lib-wrap .product .tmpl-plugin-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.trad-lib-wrap .product .tmpl-plugin-badge {
+  background: #fff3cd;
+  color: #000;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 3px;
+  line-height: 1.6;
+  white-space: nowrap;
+}
 
 /*Navigation*/
 

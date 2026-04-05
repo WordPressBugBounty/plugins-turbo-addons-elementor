@@ -145,8 +145,12 @@ if (!class_exists('TRAD_Turbo_Template_Library')) {
 
 			$option_type = $this->choose_option_table($option_data_item);
 
-			$data = get_option('trad_turbo_addons_template_items');
-			$products = $data ? $data[$option_type] : $direct_data[$option_type];
+			$products = !empty($direct_data[$option_type]) ? $direct_data[$option_type] : [];
+
+			// Update cached option with fresh API data
+			if ( ! empty( $direct_data ) ) {
+				update_option( 'trad_turbo_addons_template_items', $direct_data );
+			}
 
 			if (is_array($products)) {
 
@@ -212,7 +216,31 @@ if (!class_exists('TRAD_Turbo_Template_Library')) {
 						if ($product['pro'] == 'on' && !class_exists('TRAD_Turbo_Addons_Pro')) {
 							$btn = '<a target="_blank" href="' . self::$plugin_data['pro-link'] . '" class="buy-tmpl"><i class="eicon-external-link-square"></i> Buy pro</a>';
 						} else {
-							$btn = '<a href="#" data-parentsite="' . $parent_site . '" data-id="' . $product['id'] . '" class="insert-tmpl"><i class="eicon-file-download"></i> Insert</a>';
+							// Check required plugins
+							$required_plugins = !empty($product['required_plugins']) ? (array) $product['required_plugins'] : [];
+							$missing_plugins  = [];
+
+							if ( ! empty( $required_plugins ) ) {
+								$all_installed = get_plugins();
+								foreach ( $required_plugins as $req_name ) {
+									$is_active = false;
+									foreach ( $all_installed as $slug => $data ) {
+										if ( strtolower( $data['Name'] ) === strtolower( $req_name ) ) {
+											$is_active = is_plugin_active( $slug );
+											break;
+										}
+									}
+									if ( ! $is_active ) {
+										$missing_plugins[] = $req_name;
+									}
+								}
+							}
+
+							if ( ! empty( $missing_plugins ) ) {
+								$btn = '';
+							} else {
+								$btn = '<a href="#" data-parentsite="' . $parent_site . '" data-id="' . $product['id'] . '" class="insert-tmpl"><i class="eicon-file-download"></i> Insert</a>';
+							}
 						}
 		?>
 						<div class="item">
@@ -221,6 +249,15 @@ if (!class_exists('TRAD_Turbo_Template_Library')) {
 									<?php echo wp_kses_post($template_type); ?>
 									<img src="<?php echo esc_url($product['thumb']); ?>">
 									<i class="eicon-zoom-in-bold"></i>
+									<?php if ( ! empty( $missing_plugins ) ) : ?>
+										<?php
+										$badges = '';
+										foreach ( $missing_plugins as $pname ) {
+											$badges .= '<span class="tmpl-plugin-badge">' . esc_html( $pname ) . '</span>';
+										}
+										echo wp_kses_post( '<div class="tmpl-missing-overlay"><i class="eicon-warning"></i><span class="tmpl-missing-label">Missing Plugin:</span><div class="tmpl-plugin-badges">' . $badges . '</div></div>' );
+										?>
+									<?php endif; ?>
 								</div>
 								<div class='lib-footer'>
 									<p class="lib-name"><?php echo esc_html($product['name']); ?></p>
