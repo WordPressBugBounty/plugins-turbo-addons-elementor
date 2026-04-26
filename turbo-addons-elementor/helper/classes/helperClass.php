@@ -60,6 +60,10 @@ class Helper {
                 'audio-player',
                 'advanced-accordion',
                 'like-unlike',
+                'accordion-slider',
+                'modal-popup',
+                // '360-photo-viewer',
+                'metro-grid',
             ];
         }
 
@@ -113,6 +117,10 @@ class Helper {
             'audio-player'             => 'Audio Player',
             'advanced-accordion'      => 'Advanced Accordion',
             'like-unlike'              => 'Post Like Counter',
+            'accordion-slider'         => 'Accordion Slider',
+            'modal-popup'              => 'Modal Popup',
+            // '360-photo-viewer'         => '360° Photo Viewer',
+            'metro-grid'               => 'Metro Grid',
         ];
 
         $widget_categories = [
@@ -167,6 +175,10 @@ class Helper {
                 'counter',
                 'news-ticker',
                 'audio-player',
+                'accordion-slider',
+                'modal-popup',
+                // '360-photo-viewer',
+                'metro-grid',
             ],
             'SOCIAL' => [
                 'most-top-bar',

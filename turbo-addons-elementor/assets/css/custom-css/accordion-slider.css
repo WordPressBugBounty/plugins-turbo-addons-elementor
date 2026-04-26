@@ -1,0 +1,159 @@
+.trad-accordion-slider { color: #c5c7ce; }
+
+/* ── Head ──────────────────────────────────────────────────────────────── */
+.trad-accordion-slider .head {
+  max-width: 1400px; margin: auto; padding: 30px 0 20px;
+  display: flex; align-items: center; gap: .5rem;
+}
+
+/* ── Navigation buttons ─────────────────────────────────────────────────── */
+.trad-accordion-slider .nav-btn {
+  border: none; border-radius: 50%;
+  background: rgba(255,255,255,0.15); color: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background 0.3s; flex-shrink: 0;
+  font-size: 16px; line-height: 1; padding: 10px;
+}
+.trad-accordion-slider .nav-btn i,
+.trad-accordion-slider .nav-btn svg {
+  display: block; pointer-events: none;
+  width: 1em; height: 1em;
+}
+.trad-accordion-slider .nav-btn:hover  { background: var(--trad-accent, #ab34f0); }
+.trad-accordion-slider .nav-btn:disabled { opacity: .35; cursor: default; }
+
+/* ── Controls wrapper ───────────────────────────────────────────────────── */
+.trad-accordion-slider .controls {
+  display: flex; flex-direction: row; gap: .5rem; background: transparent;
+}
+
+/* ── Slider ─────────────────────────────────────────────────────────────── */
+.trad-accordion-slider .slider { max-width: 1400px; margin: auto; overflow: hidden; padding-top: 10px; }
+
+/* ── Track (desktop) ────────────────────────────────────────────────────── */
+.trad-accordion-slider .track {
+  display: flex; flex-direction: row; flex-wrap: nowrap;
+  gap: var(--trad-gap, 1.25rem);
+  align-items: flex-start;
+  padding-bottom: 40px;
+}
+
+/* ── Card (desktop) ─────────────────────────────────────────────────────── */
+.trad-accordion-slider .project-card {
+  position: relative; flex: 0 0 var(--trad-closed, 5rem);
+  height: 26rem; border-radius: 1rem;
+  overflow: hidden; cursor: pointer;
+  transition: flex-basis 0.55s cubic-bezier(0.25,0.46,0.45,0.94),
+              transform  0.55s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.trad-accordion-slider .project-card[active] {
+  flex-basis: var(--trad-open, 30rem);
+  transform: translateY(-6px);
+}
+.trad-accordion-slider .project-card__bg {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(.75) saturate(75%);
+  transition: filter 0.3s, transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.trad-accordion-slider .project-card:hover .project-card__bg {
+  filter: brightness(.9) saturate(100%); transform: scale(1.06);
+}
+
+/* ── Card content ───────────────────────────────────────────────────────── */
+.trad-accordion-slider .project-card__content {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; gap: .7rem; padding: 0;
+  background: linear-gradient(transparent 40%, rgba(0,0,0,.85) 100%); z-index: 2;
+}
+.trad-accordion-slider .project-card__title {
+  color: #fff; font-weight: 700; font-size: 1.35rem;
+  writing-mode: vertical-rl; transform: rotate(180deg);
+}
+.trad-accordion-slider .project-card__thumb,
+.trad-accordion-slider .project-card__desc,
+.trad-accordion-slider .project-card__btn { display: none; }
+
+.trad-accordion-slider .project-card[active] .project-card__content {
+  flex-direction: row; align-items: center; padding: 1.2rem 2rem; gap: 1.1rem;
+}
+.trad-accordion-slider .project-card[active] .project-card__title {
+  writing-mode: horizontal-tb; transform: none; font-size: 2.4rem;
+}
+.trad-accordion-slider .project-card[active] .project-card__thumb,
+.trad-accordion-slider .project-card[active] .project-card__desc,
+.trad-accordion-slider .project-card[active] .project-card__btn { display: block; }
+
+.trad-accordion-slider .project-card__thumb {
+  width: 133px; height: 269px; border-radius: .45rem; object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,.4);
+}
+.trad-accordion-slider .project-card__desc {
+  color: #ddd; font-size: 1rem; line-height: 1.4; max-width: 16rem;
+}
+.trad-accordion-slider .project-card__btn {
+  padding: .55rem 1.3rem; border: none; border-radius: 9999px;
+  background: var(--trad-accent, #ab34f0);
+  color: #fff; font-size: .9rem; font-weight: 600; cursor: pointer; text-decoration: none;
+}
+.trad-accordion-slider .project-card__btn:hover { filter: brightness(1.15); }
+
+/* ── Dots ───────────────────────────────────────────────────────────────── */
+.trad-accordion-slider .dots {
+  display: flex; gap: .5rem; justify-content: center; padding: 16px 0;
+}
+.trad-accordion-slider .dot {
+  width: 13px; height: 13px; border-radius: 50%;
+  background: rgba(171,52,240,0.5);
+  cursor: pointer; transition: background .3s, transform .3s, width .3s;
+}
+.trad-accordion-slider .dot.active { background: var(--trad-accent, #ab34f0); transform: scale(1.2); }
+
+/* ── Dots position ──────────────────────────────────────────────────────── */
+.trad-accordion-slider.trad-dots-bottom-left  .dots { justify-content: flex-start; padding-left: 1rem; }
+.trad-accordion-slider.trad-dots-bottom-right .dots { justify-content: flex-end;   padding-right: 1rem; }
+
+/* ── Dots styles ────────────────────────────────────────────────────────── */
+.trad-accordion-slider .dots.trad-dots-line .dot {
+  border-radius: 2px; height: 4px; width: 20px;
+}
+.trad-accordion-slider .dots.trad-dots-line .dot.active { width: 36px; transform: none; }
+.trad-accordion-slider .dots.trad-dots-square .dot { border-radius: 3px; }
+.trad-accordion-slider .dots.trad-dots-stretch .dot.active {
+  width: 32px; border-radius: 6px; transform: none;
+}
+
+/* ── Arrows position ────────────────────────────────────────────────────── */
+.trad-accordion-slider.trad-arrows-top-right  .head { justify-content: flex-end; }
+.trad-accordion-slider.trad-arrows-top-left   .head { justify-content: flex-start; }
+.trad-accordion-slider.trad-arrows-top-center .head { justify-content: center; }
+
+/* ── MOBILE ─────────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .trad-accordion-slider .head { padding: 16px 12px 12px; max-width: 100%; }
+  .trad-accordion-slider .slider { overflow: hidden; padding: 0; width: 100%; }
+  .trad-accordion-slider .track {
+    width: 100%; flex-wrap: nowrap; gap: 0; padding-bottom: 0;
+    align-items: stretch;
+    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+  .trad-accordion-slider .project-card {
+    flex: 0 0 100%; width: 100%; max-width: 100%;
+    height: 400px; min-height: unset; border-radius: .75rem;
+    transform: none !important; transition: none; cursor: default;
+  }
+  .trad-accordion-slider .project-card[active] .project-card__content {
+    flex-direction: column; align-items: flex-start;
+    justify-content: flex-end; padding: 1.5rem; gap: .6rem;
+  }
+  .trad-accordion-slider .project-card[active] .project-card__title {
+    writing-mode: horizontal-tb; transform: none; font-size: 1.8rem;
+  }
+  .trad-accordion-slider .project-card[active] .project-card__thumb { display: none; }
+  .trad-accordion-slider .project-card[active] .project-card__desc,
+  .trad-accordion-slider .project-card[active] .project-card__btn  { display: block; }
+  .trad-accordion-slider .project-card__title {
+    writing-mode: horizontal-tb; transform: none; font-size: 1.4rem;
+  }
+  .trad-accordion-slider .dots { display: flex; padding: 12px 0; }
+}

@@ -1,0 +1,85 @@
+/* ── Modal Popup ─────────────────────────────────────────────────────────── */
+
+.trad-mp__trigger-wrap { display: block; }
+
+.trad-mp__trigger {
+  display: inline-flex; align-items: center; gap: .5em;
+  cursor: pointer; border: none; background: none;
+  font-family: inherit; transition: all .25s;
+}
+.trad-mp__trigger--btn {
+  padding: .6rem 1.5rem; background: #6040e0; color: #fff;
+  font-size: 1rem; font-weight: 600; border-radius: 6px;
+}
+.trad-mp__trigger--btn:hover { background: #4f32c0; }
+.trad-mp__trigger--text { color: #6040e0; font-weight: 600; text-decoration: underline; }
+.trad-mp__trigger--icon { font-size: 1.5rem; color: #6040e0; background: none; border: none; padding: 0; }
+.trad-mp__trigger--icon i   { font-size: inherit; line-height: 1; }
+.trad-mp__trigger--icon svg { width: 1em; height: 1em; display: block; fill: currentColor; }
+.trad-mp__trigger--img img  { display: block; max-width: 100%; cursor: pointer; }
+
+/* Overlay */
+.trad-mp__overlay {
+  display: none; position: fixed; inset: 0; z-index: 99998;
+  background: rgba(0,0,0,0.7);
+  align-items: center; justify-content: center; padding: 20px;
+}
+.trad-mp__overlay.trad-mp--open { display: flex; }
+
+/* Modal box */
+.trad-mp__modal {
+  position: relative; background: #fff; border-radius: 12px;
+  max-width: 95vw; max-height: 90vh; overflow: visible;
+  z-index: 99999; box-shadow: 0 20px 60px rgba(0,0,0,.3);
+}
+
+/* Modal body handles scroll */
+.trad-mp__body { overflow-y: auto; max-height: calc(90vh - 120px); }
+
+/* Header */
+.trad-mp__header { padding: 20px 30px; border-bottom: 1px solid #eee; }
+.trad-mp__title  { margin: 0; font-size: 1.25rem; font-weight: 700; color: #1a1a2e; }
+
+/* Body */
+.trad-mp__body { padding: 30px; }
+
+/* Close button */
+.trad-mp__close {
+  position: absolute; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  cursor: pointer; 
+  border: none; 
+  transition: all .2s; 
+  z-index: 10; 
+  line-height: 1;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Video */
+.trad-mp__video-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+.trad-mp__video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+
+/* ── Appear Effects ─────────────────────────────────────────────────────── */
+.trad-mp__modal { opacity: 0; transition: opacity .35s ease, transform .35s ease; }
+.trad-mp--open .trad-mp__modal { opacity: 1; }
+
+.trad-mp__effect-fade      { transform: none; }
+.trad-mp__effect-slide-up  { transform: translateY(40px); }
+.trad-mp--open .trad-mp__effect-slide-up  { transform: translateY(0); }
+.trad-mp__effect-slide-down { transform: translateY(-40px); }
+.trad-mp--open .trad-mp__effect-slide-down { transform: translateY(0); }
+.trad-mp__effect-zoom-in   { transform: scale(0.8); }
+.trad-mp--open .trad-mp__effect-zoom-in   { transform: scale(1); }
+.trad-mp__effect-zoom-out  { transform: scale(1.2); }
+.trad-mp--open .trad-mp__effect-zoom-out  { transform: scale(1); }
+.trad-mp__effect-flip      { transform: perspective(600px) rotateX(-20deg); }
+.trad-mp--open .trad-mp__effect-flip      { transform: perspective(600px) rotateX(0); }
+
+/* Preview mode in editor */
+.trad-mp__overlay.trad-mp--preview {
+  display: flex; position: relative; inset: auto; z-index: 1; padding: 0; margin-top: 10px;
+}
+.trad-mp--preview .trad-mp__modal { opacity: 1; transform: none; }

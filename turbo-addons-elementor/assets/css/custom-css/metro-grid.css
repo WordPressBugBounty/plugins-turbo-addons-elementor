@@ -1,0 +1,336 @@
+/**
+ * Turbo Addons - Metro Grid Widget
+ */
+
+/* Wrapper */
+.trad-metro-grid-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Grid Container */
+.trad-metro-grid-container {
+    display: grid;
+    width: 100%;
+    gap: 10px;
+}
+
+/* Grid Item */
+.trad-metro-grid-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    height: 250px;
+    background: #333;
+}
+
+.trad-metro-grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.trad-metro-grid-item:hover img {
+    transform: scale(1.05);
+}
+
+/* ===================== LAYOUTS ===================== */
+
+/* Layout 1: 1 big left + 2 right stacked */
+.trad-metro-layout-1 {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+.trad-metro-layout-1 .trad-metro-grid-item:nth-child(1) {
+    grid-row: 1 / 3;
+}
+
+/* Layout 2: 2 top + 1 big bottom-left + 1 bottom-right */
+.trad-metro-layout-2 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+.trad-metro-layout-2 .trad-metro-grid-item:nth-child(3) {
+    grid-column: 1 / 2;
+}
+
+/* Layout 3: 3 columns equal */
+.trad-metro-layout-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+.trad-metro-layout-3 .trad-metro-grid-item:nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+}
+
+/* Layout 4: 2 top + 1 big middle + 2 bottom */
+.trad-metro-layout-4 {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.trad-metro-layout-4 .trad-metro-grid-item:nth-child(1) {
+    grid-column: 1 / 3;
+}
+.trad-metro-layout-4 .trad-metro-grid-item:nth-child(4) {
+    grid-column: 2 / 4;
+}
+
+/* Layout 5: Masonry-like */
+.trad-metro-layout-5 {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+.trad-metro-layout-5 .trad-metro-grid-item:nth-child(2) {
+    grid-row: 1 / 3;
+}
+
+/* Layout 6: 4 columns */
+.trad-metro-layout-6 {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+.trad-metro-layout-6 .trad-metro-grid-item:nth-child(1) {
+    grid-column: 1 / 3;
+}
+.trad-metro-layout-6 .trad-metro-grid-item:nth-child(6) {
+    grid-column: 3 / 5;
+}
+
+/* ===================== OVERLAY ===================== */
+.trad-metro-grid-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    transition: all 0.4s ease;
+    z-index: 2;
+}
+
+/* Slide Up */
+.trad-hover-slide-up .trad-metro-grid-overlay {
+    transform: translateY(100%);
+    opacity: 0;
+}
+.trad-metro-grid-item:hover .trad-hover-slide-up.trad-metro-grid-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Slide Down */
+.trad-hover-slide-down .trad-metro-grid-overlay {
+    transform: translateY(-100%);
+    top: 0;
+    bottom: auto;
+    opacity: 0;
+}
+.trad-metro-grid-item:hover .trad-hover-slide-down.trad-metro-grid-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Fade */
+.trad-hover-fade .trad-metro-grid-overlay {
+    opacity: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.trad-metro-grid-item:hover .trad-hover-fade.trad-metro-grid-overlay {
+    opacity: 1;
+}
+
+/* Zoom */
+.trad-hover-zoom .trad-metro-grid-overlay {
+    opacity: 0;
+    transform: scale(0.8);
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.trad-metro-grid-item:hover .trad-hover-zoom.trad-metro-grid-overlay {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Overlay pseudo-element for color tint */
+.trad-metro-grid-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    transition: background 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ===================== CONTENT ===================== */
+.trad-metro-grid-item-content {
+    position: relative;
+    z-index: 3;
+}
+
+.trad-metro-grid-title {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.3;
+}
+
+.trad-metro-grid-description {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+}
+
+/* ===================== VIDEO ===================== */
+.trad-metro-grid-video-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.trad-metro-grid-video-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    color: #ffffff;
+    z-index: 3;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+}
+
+.trad-metro-grid-item:hover .trad-metro-grid-video-icon {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* ===================== LIGHTBOX ===================== */
+.trad-metro-lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.trad-metro-lightbox-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.trad-metro-lightbox-inner {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trad-metro-lightbox-inner img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.trad-metro-lightbox-inner video {
+    max-width: 90vw;
+    max-height: 85vh;
+}
+
+.trad-metro-lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: transform 0.2s ease;
+}
+
+.trad-metro-lightbox-close:hover {
+    transform: rotate(90deg);
+}
+
+.trad-metro-lightbox-prev,
+.trad-metro-lightbox-next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    z-index: 100000;
+}
+
+.trad-metro-lightbox-prev {
+    left: 20px;
+}
+
+.trad-metro-lightbox-next {
+    right: 20px;
+}
+
+.trad-metro-lightbox-prev:hover,
+.trad-metro-lightbox-next:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* ===================== LINK ===================== */
+.trad-metro-grid-link {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+    .trad-metro-grid-container {
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: auto !important;
+    }
+    .trad-metro-grid-item {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        height: 180px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .trad-metro-grid-container {
+        grid-template-columns: 1fr !important;
+    }
+    .trad-metro-grid-item {
+        height: 200px !important;
+    }
+}

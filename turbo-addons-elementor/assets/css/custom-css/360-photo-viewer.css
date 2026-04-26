@@ -1,0 +1,374 @@
+/**
+ * Turbo Addons - 360 Photo Viewer
+ */
+
+.trad-360-viewer-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.trad-360-viewer-container {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    background: #000;
+    overflow: hidden;
+}
+
+.trad-360-viewer-container a-scene {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+.trad-360-viewer-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+}
+
+/* Navigation Bar */
+.trad-360-navigation {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 50px;
+    z-index: 100;
+}
+
+.trad-360-navigation button {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+}
+
+.trad-360-navigation button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.trad-360-navigation button:active {
+    transform: scale(0.95);
+}
+
+.trad-360-navigation button.active {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Loading State */
+.trad-360-viewer-container.loading::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 20;
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Fullscreen Mode */
+.trad-360-viewer-wrapper.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background: #000;
+}
+
+.trad-360-viewer-wrapper.fullscreen .trad-360-viewer-container {
+    height: 100vh;
+}
+
+/* Rotation Indicator */
+.trad-360-navigation button.trad-360-rotate-toggle.active i {
+    animation: rotate-icon 2s linear infinite;
+}
+
+@keyframes rotate-icon {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .trad-360-viewer-container {
+        height: 400px;
+    }
+
+    .trad-360-navigation {
+        bottom: 10px;
+        padding: 8px 15px;
+        gap: 5px;
+    }
+
+    .trad-360-navigation button {
+        font-size: 16px;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .trad-360-viewer-container {
+        height: 300px;
+    }
+
+    .trad-360-navigation {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* HTML Markers Overlay */
+.trad-360-html-marker {
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    pointer-events: auto;
+}
+
+.trad-360-html-marker > i,
+.trad-360-html-marker > svg {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    color: #ff0000;
+    fill: #ff0000;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    animation: marker-pulse 2s infinite;
+    display: block;
+    line-height: 1;
+}
+
+@keyframes marker-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.trad-360-html-marker:hover > i,
+.trad-360-html-marker:hover > svg {
+    color: #ffff00;
+    fill: #ffff00;
+    transform: scale(1.3);
+    animation: none;
+}
+
+/* Marker Tooltip */
+.trad-360-marker-tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.95);
+    color: #ffffff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    min-width: 200px;
+    max-width: 300px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    white-space: normal;
+    z-index: 1000;
+}
+
+.trad-360-html-marker:hover .trad-360-marker-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.trad-360-marker-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid rgba(0, 0, 0, 0.95);
+}
+
+.trad-360-marker-tooltip h4 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    white-space: normal;
+}
+
+.trad-360-marker-tooltip p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #ffffff;
+    white-space: normal;
+}
+
+/* Marker Styles */
+.trad-360-marker {
+    cursor: pointer !important;
+}
+
+.trad-marker-sphere {
+    cursor: pointer !important;
+}
+
+.trad-marker-label {
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* VR Button Styling */
+.trad-360-viewer-container .a-enter-vr-button {
+    position: absolute !important;
+    z-index: 999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    --vr-offset-x: 20px;
+    --vr-offset-y: 20px;
+    background-image: none !important;
+}
+
+/* Hide A-Frame's default SVG icon */
+.trad-360-viewer-container .a-enter-vr-button > svg {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Remove background image from all states */
+.a-enter-vr-button,
+.a-enter-vr.fullscreen .a-enter-vr-button,
+.a-enter-vr-button:hover {
+    background-image: none !important;
+}
+
+/* Force SVG icon color inheritance */
+.trad-360-viewer-container .a-enter-vr-button svg,
+.trad-360-viewer-container .a-enter-vr-button svg path,
+.trad-360-viewer-container .a-enter-vr-button svg circle,
+.trad-360-viewer-container .a-enter-vr-button svg rect,
+.trad-360-viewer-container .a-enter-vr-button svg polygon,
+.trad-360-viewer-container .a-enter-vr-button svg * {
+    fill: currentColor !important;
+}
+
+/* Force icon size */
+.trad-360-viewer-container .a-enter-vr-button svg {
+    width: 1em !important;
+    height: 1em !important;
+}
+
+/* Custom VR Icon Styling */
+.trad-360-viewer-container .a-enter-vr-button .trad-custom-vr-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: inherit !important;
+    color: inherit !important;
+    line-height: 1 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.trad-360-viewer-container .a-enter-vr-button .trad-custom-vr-icon svg {
+    width: 1em !important;
+    height: 1em !important;
+    fill: currentColor !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin: auto !important;
+}
+
+/* VR Button Position - Bottom Right (Default) */
+.trad-360-viewer-wrapper .trad-360-viewer-container .a-enter-vr-button {
+    bottom: var(--vr-offset-y) !important;
+    right: var(--vr-offset-x) !important;
+    top: auto !important;
+    left: auto !important;
+}
+
+/* VR Button Position - Bottom Left */
+.trad-360-viewer-wrapper[data-vr-position="bottom-left"] .trad-360-viewer-container .a-enter-vr-button {
+    bottom: var(--vr-offset-y) !important;
+    left: var(--vr-offset-x) !important;
+    right: auto !important;
+    top: auto !important;
+}
+
+.trad-360-viewer-container .a-enter-vr-button:hover {
+    transform: scale(1.1) !important;
+}
+
+/* VR Button Hover Animations */
+.elementor-widget-turbo-360-photo-viewer[data-vr-hover="scale"] .a-enter-vr-button:hover {
+    transform: scale(1.15) !important;
+}
+
+.elementor-widget-turbo-360-photo-viewer[data-vr-hover="rotate"] .a-enter-vr-button:hover {
+    transform: rotate(15deg) !important;
+}
+
+.elementor-widget-turbo-360-photo-viewer[data-vr-hover="pulse"] .a-enter-vr-button:hover {
+    animation: vr-pulse 0.6s ease-in-out !important;
+}
+
+@keyframes vr-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}

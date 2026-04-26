@@ -27,7 +27,7 @@ function turbo_addons_admin_page() {
                   //  echo esc_html($current_user->display_name);
                    ?>
                 <!-- 👋🏻</h3> -->
-                <p style="font-size:18px">Turbo Addons Pro is now available with full <strong>WooCommerce support with custom product pages.</strong> You’ll also get 80+ widgets and 100+ ready templates to speed up your design process.
+                <p style="font-size:18px">Turbo Addons Pro is now available with full <strong>WooCommerce support with custom product pages.</strong> You’ll also get 90+ widgets and 200+ ready templates to speed up your design process.
                 </p>
                 <p style="font-size:18px;">
                     Upgrade to <strong>Turbo Addons Pro</strong> and unlock the full potential! 🚀  
@@ -74,13 +74,21 @@ function turbo_addons_admin_page() {
              <!-- ------------------tab1-----section  1// ---------------------------->
                 <div class="trad-dashboard-sec-one">
                     <div class="trad-dashboard-sec-one-left">
-                        <h3 class="trad-dashboard-sub-heading">What's New in Version 1.8.13</h3>
+                        <h3 class="trad-dashboard-sub-heading">What's New in Version 1.8.14</h3>
                         <hr>
                         <div class="trad-updated-list">
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
                             <div class="trad-updated-list-typography">
-                                <h4>Added</h4>
-                                <p>Several new templates.</p>
+                                <h4>Added Free Widgets</h4>
+                                <p>Accordion Slider, Modal PopUp and Metro Grid</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="trad-updated-list">
+                            <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
+                            <div class="trad-updated-list-typography">
+                                <h4>Features</h4>
+                                <p>Template gallery and Add 20+ New Modern Templates.</p>
                             </div>
                         </div>
                         <hr>
@@ -88,15 +96,7 @@ function turbo_addons_admin_page() {
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
                             <div class="trad-updated-list-typography">
                                 <h4>Updated</h4>
-                                <p>Template gallery.</p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="trad-updated-list">
-                            <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
-                            <div class="trad-updated-list-typography">
-                                <h4>Updated</h4>
-                                <p>Tested and verified for full compatibility with Elementor version 4.0.1.</p>
+                                <p>Tested and verified for full compatibility with Elementor version 4.0.2</p>
                             </div>
                         </div>
                     </div>
@@ -151,9 +151,9 @@ function turbo_addons_admin_page() {
                         </div>
                     </div>
                     <div class="trad-dashboard-sec-four-card">
-                        <h3 class="trad-dashboard-sub-heading">Explore 80+ Widgets</h3>
+                        <h3 class="trad-dashboard-sub-heading">Explore 90+ Widgets</h3>
                         <p>
-                            Discover a powerful collection of 80+ versatile widgets designed to enhance your website’s functionality, creativity, and user experience.
+                            Discover a powerful collection of 90+ versatile widgets designed to enhance your website’s functionality, creativity, and user experience.
                         </p>  
                         <img class="turbo-dashboard-banner-add" src="<?php echo esc_url( plugin_dir_url( __FILE__ ) . 'assets/images/widgets.webp' ); ?>" alt="<?php echo esc_attr( 'turbo-logo' ); ?>"> 
                         <div class="trad-dashboard-center-btn">
@@ -384,12 +384,12 @@ function turbo_addons_admin_page() {
                 <div class="trad-header-section">
                     <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/DashboardBanner.webp'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
                     
-                    <div class="trad_dashboard_pro_tabs_cta">
+                    <!-- <div class="trad_dashboard_pro_tabs_cta">
 
-                        <h3>Discover Our Lates Creation Enjoy Flat 50% Off for any package ( Limited Time ) <span class="trad_dashboard_copun"><code>TURBO50</code></span></h3>
+                        <h3>Discover Our Lates Creation Enjoy Flat 60% Off for any package ( Limited Time ) <span class="trad_dashboard_copun"><code>TURBO50</code></span></h3>
                         <a href="https://turbo-addons.com/pricing/" target="blank"><button class="trad-dashboard-pro-tabs-top-btn">Upgrade Now</button></a>
                      
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="trad-widgets-section">

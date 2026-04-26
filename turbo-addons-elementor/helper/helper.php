@@ -262,8 +262,6 @@ function trad_get_widget_lists() {
         'carousel'                    => 'carousel.php',                      // Carousel Widget 
         'call-to-action'              => 'call-to-action.php',                // Call to action Widget
         'accordion'                   => 'accordion.php',                     // Accordion Widget
-        // 'tooltip'                     => 'tooltip.php',                        Tooltip Widget
-        // 'accordion'                   => 'accordion.php',                     // Accordion Widget
         'tooltip'                     => 'tooltip.php',                       // Tooltip Widget
         'floating-effect'             => 'floating-effect.php',               // Image floating Widget 
         'image-overlay-effects'       => 'image-overlay-effects.php',         // Image overlay effects widget
@@ -291,6 +289,10 @@ function trad_get_widget_lists() {
         'audio-player'                => 'audio-player.php',                  // Audio Player
         'advanced-accordion'          => 'advanced-accordion.php',            // Advanced Accordion
         'like-unlike'                 => 'like-unlike.php',                   //Post Like Unlike Counter
+        'accordion-slider'            => 'accordion-slider.php',               // Accordion Slider Widget
+        'modal-popup'                 => 'modal-popup.php',                    // Modal Popup Widget
+        // '360-photo-viewer'            => '360-photo-viewer.php',               // 360 Photo Viewer Widget
+        'metro-grid'                  => 'metro-grid.php',                     // Metro Grid Widget
     ];
 }
 
@@ -475,6 +477,19 @@ function trad_enqueue_scripts_styles() {
     wp_register_style( 'trad-post-like-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/trad-post-like.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/trad-post-like.css' ), 'all' );
     wp_register_script( 'trad-post-like-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/trad-post-like.js',['jquery'], TRAD_TURBO_ADDONS_PLUGIN_VERSION, true );
 
+    //Accordion Slider
+    wp_register_style( 'trad-accordion-slider-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/accordion-slider.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/accordion-slider.css' ), 'all' );
+    wp_register_script( 'trad-accordion-slider-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/accordion-slider.js', ['jquery'], TRAD_TURBO_ADDONS_PLUGIN_VERSION, true );
+
+    //Modal Popup
+    wp_register_style( 'trad-modal-popup-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/modal-popup.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/modal-popup.css' ), 'all' );
+    wp_register_script( 'trad-modal-popup-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/modal-popup.js', ['jquery'], TRAD_TURBO_ADDONS_PLUGIN_VERSION, true );
+
+    //360 Photo Viewer
+    // wp_register_style( 'trad-360-photo-viewer-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/360-photo-viewer.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/360-photo-viewer.css' ), 'all' );
+    // wp_register_script( 'aframe-js', 'https://cdn.jsdelivr.net/npm/aframe@1.5.0/dist/aframe-master.min.js', [], '1.5.0', true );
+    // wp_register_script( 'trad-360-photo-viewer-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/360-photo-viewer.js', ['jquery', 'aframe-js'], TRAD_TURBO_ADDONS_PLUGIN_VERSION, true );
+
     wp_localize_script(
         'trad-post-like-script',
         'tradPostLike',
@@ -483,6 +498,10 @@ function trad_enqueue_scripts_styles() {
             'nonce'   => wp_create_nonce('trad_post_like_nonce'),
         ]
     );
+
+    //Metro Grid
+    wp_register_style( 'trad-metro-grid-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/metro-grid.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/metro-grid.css' ), 'all' );
+    wp_register_script( 'trad-metro-grid-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/metro-grid.js', ['jquery'], TRAD_TURBO_ADDONS_PLUGIN_VERSION, true );
 }
 
 //----------------------------------------------------------- placeholder image functions--------------------------///
