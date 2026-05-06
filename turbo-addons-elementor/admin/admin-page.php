@@ -7,9 +7,41 @@ if (!defined('ABSPATH')) {
 // Enqueue necessary styles and scripts
 function turbo_addons_admin_enqueue_styles_scripts() {
     wp_enqueue_style( 'turbo-addons-admin-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'admin/assets/css/style.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'admin/assets/css/style.css' ), 'all' );
-    wp_enqueue_script('turbo-addons-admin-script', plugin_dir_url(__FILE__) . 'assets/js/admin-script.js', array('jquery'), '1.0.0', true);
+    wp_enqueue_script('turbo-addons-admin-script', plugin_dir_url(__FILE__) . 'assets/js/admin-script.js', array('jquery'), filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'admin/assets/js/admin-script.js' ), true);
+    wp_localize_script( 'turbo-addons-admin-script', 'tradAdmin', [
+        'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+        'nonce'   => wp_create_nonce( 'trad_fetch_template' ),
+    ] );
 }
 add_action('admin_enqueue_scripts', 'turbo_addons_admin_enqueue_styles_scripts');
+
+// ── AJAX: fetch latest templates fresh (no cache) ──────────────────────────────
+function trad_ajax_fetch_latest_template() {
+    check_ajax_referer( 'trad_fetch_template', 'nonce' );
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_send_json_error( 'Unauthorized', 403 );
+    }
+    $response = wp_remote_get(
+        'https://mt.turbo-addons.com/api/ta/v1/latest-template',
+        [ 'timeout' => 8, 'sslverify' => true ]
+    );
+    if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
+        wp_send_json_error( 'API unreachable' );
+    }
+    $data = json_decode( wp_remote_retrieve_body( $response ), true );
+    if ( ! is_array( $data ) || empty( $data ) ) {
+        wp_send_json_error( 'Invalid response' );
+    }
+    $templates   = isset( $data[0] ) ? $data : [ $data ];
+    $first       = $templates[0];
+    $pointer_key = 'trad_tpl_pointer_v1';
+    $data_pfx    = 'trad_tpl_data_';
+    $pointer     = md5( $first['title'] ?? $first['name'] ?? 'turbo' );
+    set_transient( $data_pfx . $pointer, $templates, 6 * HOUR_IN_SECONDS );
+    set_transient( $pointer_key, $pointer, 1 * HOUR_IN_SECONDS );
+    wp_send_json_success( $templates );
+}
+add_action( 'wp_ajax_trad_fetch_latest_template', 'trad_ajax_fetch_latest_template' );
 
 // Function to render the admin page
 function turbo_addons_admin_page() {
@@ -99,78 +131,328 @@ function turbo_addons_admin_page() {
                                 <p>Tested and verified for full compatibility with Elementor version 4.0.2</p>
                             </div>
                         </div>
+
+                        <div class="trad-updated-list">
+                            <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
+                            <div class="trad-updated-list-typography">
+                                <h4>Templates, Block & Sections</h4>
+                                <p>Added different types of 20+ free templates, block and sections</p>
+                            </div>
+                        </div>
                     </div>
 
+
+                    <!-- dynamic latest templates slider -->
                     <div class="trad-dashboard-sec-one-right">
-                        <h3 class="trad-dashboard-sub-heading">New Template</h3>
+                        <?php
+                        $trad_api_url    = 'https://mt.turbo-addons.com/api/ta/v1/latest-template';
+                        $trad_ptr_key    = 'trad_tpl_pointer_v1';
+                        $trad_data_pfx   = 'trad_tpl_data_';
+                        $trad_templates  = null;
+                        $trad_ptr        = get_transient( $trad_ptr_key );
+                        if ( $trad_ptr ) {
+                            $trad_templates = get_transient( $trad_data_pfx . $trad_ptr );
+                        }
+                        if ( empty( $trad_templates ) ) {
+                            $trad_resp = wp_remote_get( $trad_api_url, [ 'timeout' => 8, 'sslverify' => true ] );
+                            if ( ! is_wp_error( $trad_resp ) && 200 === wp_remote_retrieve_response_code( $trad_resp ) ) {
+                                $trad_decoded = json_decode( wp_remote_retrieve_body( $trad_resp ), true );
+                                if ( is_array( $trad_decoded ) && ! empty( $trad_decoded ) ) {
+                                    $trad_templates = isset( $trad_decoded[0] ) ? $trad_decoded : [ $trad_decoded ];
+                                    $trad_first     = $trad_templates[0];
+                                    $trad_new_ptr   = md5( $trad_first['title'] ?? $trad_first['name'] ?? 'turbo' );
+                                    set_transient( $trad_data_pfx . $trad_new_ptr, $trad_templates, 6 * HOUR_IN_SECONDS );
+                                    set_transient( $trad_ptr_key, $trad_new_ptr, 1 * HOUR_IN_SECONDS );
+                                }
+                            }
+                        }
+                        ?>
+
+                        <!-- Panel header -->
+                        <!-- <div class="trad-template-panel-header">
+                            <div class="trad-template-panel-header-left">
+                                <span class="trad-live-dot"></span>
+                                <span class="trad-live-label"><?php esc_html_e( 'New', 'turbo-addons-elementor' ); ?></span>
+                                <h3 class="trad-dashboard-sub-heading"><?php esc_html_e( 'Latest Templates', 'turbo-addons-elementor' ); ?></h3>
+                            </div>
+                            <a href="https://turbo-addons.com/pricing/" target="_blank" rel="noopener" class="trad-upgrade-pill">
+                                ⚡ <?php esc_html_e( 'Get Pro', 'turbo-addons-elementor' ); ?>
+                            </a>
+                        </div> -->
+                        <div class="trad-template-panel-header">
+                            <div class="trad-template-panel-header-left">
+                                <span class="trad-live-dot"></span>
+                                <span class="trad-live-label"><?php esc_html_e( 'New', 'turbo-addons-elementor' ); ?></span>
+                                <h3 class="trad-dashboard-sub-heading"><?php esc_html_e( 'Templates Added', 'turbo-addons-elementor' ); ?></h3>
+                            </div>
+                            <a href="#trad-watch-guide-video" class="trad-how-to-btn trad-scroll-to-video">
+                                <span class="trad-how-to-ring">
+                                    <span class="trad-how-to-play"></span>
+                                </span>
+                                <span class="trad-how-to-text">
+                                    <span class="trad-how-to-label"><?php esc_html_e( 'How to Use', 'turbo-addons-elementor' ); ?></span>
+                                    <span class="trad-how-to-sub"><?php esc_html_e( 'Watch tutorial', 'turbo-addons-elementor' ); ?></span>
+                                </span>
+                            </a>
+                        </div>
                         <hr>
-                        <div class="trad-dashboard-sec1-template-add">
-                            <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/template1.webp'); ?>" alt="<?php echo esc_attr('new template'); ?>"> 
-                            <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/template2.webp'); ?>" alt="<?php echo esc_attr('new template'); ?>"> 
-                            <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/template3.webp'); ?>" alt="<?php echo esc_attr('new template'); ?>">   
+
+                        <?php if ( ! empty( $trad_templates ) ) :
+                            $trad_items = [];
+                            foreach ( $trad_templates as $t ) {
+                                $trad_items[] = [
+                                    'title'    => sanitize_text_field( $t['title']       ?? $t['name']    ?? '' ),
+                                    'desc'     => sanitize_text_field( $t['description'] ?? '' ),
+                                    'category' => sanitize_text_field( $t['category']    ?? '' ),
+                                    'type'     => sanitize_text_field( $t['type']        ?? '' ),
+                                    'batch'    => sanitize_text_field( $t['batch']       ?? $t['pro']     ?? '' ),
+                                    'link'     => esc_url( $t['link']    ?? $t['preview'] ?? '#' ),
+                                    'thumb'    => esc_url( $t['thumb']   ?? '' ),
+                                ];
+                            }
+                            $trad_first_tpl = $trad_items[0];
+                        ?>
+
+                        <div class="trad-tpl-slider-card" id="trad-template-card">
+
+                            <!-- LEFT: image slider -->
+                            <div class="trad-tpl-slider-left">
+                                <div class="trad-tpl-slides" id="trad-tpl-slides">
+                                    <?php foreach ( $trad_items as $idx => $tpl ) : ?>
+                                    <div class="trad-tpl-slide <?php echo $idx === 0 ? 'active' : ''; ?>"
+                                         data-index="<?php echo esc_attr( $idx ); ?>">
+                                        <img src="<?php echo esc_url( $tpl['thumb'] ); ?>"
+                                             alt="<?php echo esc_attr( $tpl['title'] ); ?>"
+                                             class="trad-tpl-slide-img">
+                                        <?php if ( strtoupper( $tpl['batch'] ) === 'PRO' || $tpl['batch'] === 'on' ) : ?>
+                                        <span class="trad-template-pro-badge">PRO</span>
+                                        <?php endif; ?>
+                                    </div>
+                                    <?php endforeach; ?>
+                                </div>
+                                <?php if ( count( $trad_items ) > 1 ) : ?>
+                                <div class="trad-tpl-dots" id="trad-tpl-dots">
+                                    <?php foreach ( $trad_items as $idx => $tpl ) : ?>
+                                    <button class="trad-tpl-dot <?php echo $idx === 0 ? 'active' : ''; ?>"
+                                            data-index="<?php echo esc_attr( $idx ); ?>"
+                                            aria-label="<?php echo esc_attr( $tpl['title'] ); ?>"></button>
+                                    <?php endforeach; ?>
+                                </div>
+                                <?php endif; ?>
+                            </div>
+
+                            <!-- RIGHT: info -->
+                            <div class="trad-tpl-info" id="trad-tpl-info">
+                                <div class="trad-tpl-meta">
+                                    <?php if ( $trad_first_tpl['category'] ) : ?>
+                                    <span class="trad-tpl-badge trad-tpl-badge-cat" id="trad-tpl-category">
+                                        <?php echo esc_html( ucfirst( $trad_first_tpl['category'] ) ); ?>
+                                    </span>
+                                    <?php endif; ?>
+                                    <?php if ( $trad_first_tpl['type'] ) : ?>
+                                    <span class="trad-tpl-badge trad-tpl-badge-type" id="trad-tpl-type">
+                                        <?php echo esc_html( ucfirst( $trad_first_tpl['type'] ) ); ?>
+                                    </span>
+                                    <?php endif; ?>
+                                </div>
+                                <h4 class="trad-tpl-name" id="trad-tpl-name">
+                                    <?php echo esc_html( $trad_first_tpl['title'] ); ?>
+                                </h4>
+                                <p class="trad-tpl-desc" id="trad-tpl-desc">
+                                    <?php echo esc_html( $trad_first_tpl['desc'] ?: sprintf(
+                                        /* translators: %s: template name */
+                                        __( 'A brand-new "%s" template is now available. Import it in one click.', 'turbo-addons-elementor' ),
+                                        $trad_first_tpl['title']
+                                    ) ); ?>
+                                </p>
+                                <?php if ( count( $trad_items ) > 1 ) : ?>
+                                <div class="trad-tpl-counter">
+                                    <span id="trad-tpl-current">1</span>/<span><?php echo count( $trad_items ); ?></span>
+                                    <span class="trad-tpl-counter-lbl"><?php esc_html_e( 'templates', 'turbo-addons-elementor' ); ?></span>
+                                </div>
+                                <?php endif; ?>
+                                <div class="trad-tpl-actions">
+                                    <a href="<?php echo esc_url( $trad_first_tpl['link'] ); ?>" target="_blank" rel="noopener"
+                                       class="trad-tpl-btn trad-tpl-btn-preview" id="trad-tpl-preview-btn">
+                                        <?php esc_html_e( 'Live Preview ⤴', 'turbo-addons-elementor' ); ?>
+                                    </a>
+                                    <a href="https://turbo-addons.com/templates/" target="_blank" rel="noopener"
+                                       class="trad-tpl-btn trad-tpl-btn-all">
+                                        <?php esc_html_e( 'All Templates', 'turbo-addons-elementor' ); ?>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="trad-dashboard-center-btn">
-                            <a href="https://turbo-addons.com/templates/" target="_blank" rel="noopener" >Explore All Template ⤴</a>
+
+                        <script>window.tradTemplates = <?php echo wp_json_encode( $trad_items ); ?>;</script>
+
+                        <?php else : ?>
+                        <div class="trad-tpl-fallback">
+                            <div class="trad-dashboard-sec1-template-add">
+                                <img src="<?php echo esc_url( plugin_dir_url(__FILE__) . 'assets/images/template1.webp' ); ?>" alt="template">
+                                <img src="<?php echo esc_url( plugin_dir_url(__FILE__) . 'assets/images/template2.webp' ); ?>" alt="template">
+                                <img src="<?php echo esc_url( plugin_dir_url(__FILE__) . 'assets/images/template3.webp' ); ?>" alt="template">
+                            </div>
+                            <div class="trad-dashboard-center-btn">
+                                <a href="https://turbo-addons.com/templates/" target="_blank" rel="noopener">
+                                    <?php esc_html_e( 'Explore All Templates ⤴', 'turbo-addons-elementor' ); ?>
+                                </a>
+                            </div>
                         </div>
+                        <?php endif; ?>
                     </div>
+
+
                 </div>
-                <!-- ------------------tab1-----section  2// ---------------------------->
-                <div class="trad-dashboard-sec-two">
-                    <div class="trad-dashboard-sec-two-content">
-                        <h3 class="trad-dashboard-sub-heading">Share Your Thoughts</h3>
-                        <p>We’d love to hear your feedback! Share your experience with us and help us improve. Your insights make a difference. <br/> Click below to request a review</p>
-                        <div class="trad-dashboard-center-btn">
-                                <a href="https://wordpress.org/plugins/turbo-addons-elementor/#reviews" target="_blank" rel="noopener" >Request for Review</a>
+
+                <!-- Section 2: Review CTA -->
+                <div class="trad-review-cta-wrap">
+                    <div class="trad-review-cta-blob trad-review-cta-blob-left"></div>
+                    <div class="trad-review-cta-blob trad-review-cta-blob-right"></div>
+                    <div class="trad-review-cta-inner">
+                        <div class="trad-review-stars" aria-label="5 stars">
+                            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                        </div>
+                        <h3 class="trad-review-cta-title"><?php esc_html_e( 'Loving Turbo Addons?', 'turbo-addons-elementor' ); ?></h3>
+                        <p class="trad-review-cta-desc"><?php esc_html_e( "Your review helps thousands of WordPress users discover Turbo Addons. It takes 30 seconds and means the world to us.", 'turbo-addons-elementor' ); ?></p>
+                        <div class="trad-review-cta-actions">
+                            <a href="https://wordpress.org/plugins/turbo-addons-elementor/#reviews" target="_blank" rel="noopener" class="trad-review-btn trad-review-btn-primary">
+                                &#9733;&nbsp;<?php esc_html_e( 'Leave a Review', 'turbo-addons-elementor' ); ?>
+                            </a>
+                            <a href="https://turbo-addons.com/get-support/" target="_blank" rel="noopener" class="trad-review-btn trad-review-btn-ghost">
+                                <?php esc_html_e( 'Need Help?', 'turbo-addons-elementor' ); ?>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- ------------------tab1-----section 3// ---------------------------->
-                <!-- <div class="trad-dashboard-sec-three">
-                    <div class="trad-dashboard-sec-three-promotion-bnr">
-                        <img style="width: 360px" class="turbo-dashboard-banner-add" src="<?php echo esc_url( plugin_dir_url( __FILE__ ) . 'assets/images/seventyoffer.webp' ); ?>" alt="<?php echo esc_attr( 'turbo-logo' ); ?>">    
-                        <div class="turbo-dashboard-banner-branding">
-                            <h2>🚀 Supercharge with Turbo Addons! 🎨✨</h2>
-                            <p>
-                                Turbo Addons for Elementor offers advanced widgets to enhance Elementor, helping you <br/>create professional, interactive websites easily and quickly.
-                            </p>   
-                        </div>
+                <!-- Section 3: Three info cards -->
+                <div class="trad-info-cards-grid">
 
-                    </div>
-                </div> -->
-                <!-- ------------------tab1-----section  4// ---------------------------->
-                <div class="trad-dashboard-sec-four">
-                    <div class="trad-dashboard-sec-four-card">
-                        <h3 class="trad-dashboard-sub-heading">Documentation</h3>
-                        <p>
-                        Thank you for choosing Turbo Addons! ✨ We're excited to share that our Pro version is now available, loaded with advanced features to take your web design to the next level.
-                        </p>  
-                        <img class="turbo-dashboard-banner-add" src="<?php echo esc_url( plugin_dir_url( __FILE__ ) . 'assets/images/documentation.webp' ); ?>" alt="<?php echo esc_attr( 'turbo-logo' ); ?>"> 
-                        <div class="trad-dashboard-center-btn">
-                            <a href="https://turbo-addons.com/docs/" target="_blank" rel="noopener" >Documentation ⤴</a>
+                    <!-- Card 1: Support & Docs -->
+                    <div class="trad-info-card trad-info-card--support">
+                        <div class="trad-info-card-icon-wrap">
+                            <span class="trad-info-card-icon">📚</span>
+                        </div>
+                        <div class="trad-info-card-body">
+                            <h3 class="trad-info-card-title"><?php esc_html_e( 'Docs & Support', 'turbo-addons-elementor' ); ?></h3>
+                            <p class="trad-info-card-desc"><?php esc_html_e( 'Everything you need — step-by-step guides, widget references, and a dedicated support team ready to help.', 'turbo-addons-elementor' ); ?></p>
+                            <ul class="trad-info-card-list">
+                                <li>✅ <?php esc_html_e( 'Full widget documentation', 'turbo-addons-elementor' ); ?></li>
+                                <li>✅ <?php esc_html_e( 'Video tutorials', 'turbo-addons-elementor' ); ?></li>
+                                <li>✅ <?php esc_html_e( 'Community support', 'turbo-addons-elementor' ); ?></li>
+                            </ul>
+                        </div>
+                        <div class="trad-info-card-footer">
+                            <a href="https://turbo-addons.com/docs/" target="_blank" rel="noopener" class="trad-info-card-btn trad-info-card-btn--primary">
+                                <?php esc_html_e( 'Read Docs', 'turbo-addons-elementor' ); ?> →
+                            </a>
+                            <a href="https://turbo-addons.com/get-support/" target="_blank" rel="noopener" class="trad-info-card-btn trad-info-card-btn--ghost">
+                                <?php esc_html_e( 'Get Support', 'turbo-addons-elementor' ); ?>
+                            </a>
                         </div>
                     </div>
-                    <div class="trad-dashboard-sec-four-card">
-                        <h3 class="trad-dashboard-sub-heading">Explore 90+ Widgets</h3>
-                        <p>
-                            Discover a powerful collection of 90+ versatile widgets designed to enhance your website’s functionality, creativity, and user experience.
-                        </p>  
-                        <img class="turbo-dashboard-banner-add" src="<?php echo esc_url( plugin_dir_url( __FILE__ ) . 'assets/images/widgets.webp' ); ?>" alt="<?php echo esc_attr( 'turbo-logo' ); ?>"> 
-                        <div class="trad-dashboard-center-btn">
-                            <a href="https://turbo-addons.com/widgets/" target="_blank" rel="noopener" >Explore⤴</a>
+
+                    <!-- Card 2: Pro Upgrade -->
+                    <div class="trad-info-card trad-info-card--upgrade">
+                        <div class="trad-info-card-gradient-header">
+                            <span class="trad-info-card-badge"><?php esc_html_e( 'UPGRADE TO PRO', 'turbo-addons-elementor' ); ?></span>
+                            <h3 class="trad-info-card-title trad-info-card-title--light"><?php esc_html_e( 'Unlock Premium Features', 'turbo-addons-elementor' ); ?></h3>
+                        </div>
+                        <div class="trad-info-card-body">
+                            <div class="trad-feature-chips">
+                                <span class="trad-feature-chip">🛒 <?php esc_html_e( 'WooCommerce Builder', 'turbo-addons-elementor' ); ?></span>
+                                <span class="trad-feature-chip">🎠 <?php esc_html_e( '3D Carousel', 'turbo-addons-elementor' ); ?></span>
+                                <span class="trad-feature-chip">📄 <?php esc_html_e( 'PDF Flip Book', 'turbo-addons-elementor' ); ?></span>
+                                <span class="trad-feature-chip">🦸 <?php esc_html_e( 'Hero Slider', 'turbo-addons-elementor' ); ?></span>
+                                <span class="trad-feature-chip">🔍 <?php esc_html_e( 'Advanced Search', 'turbo-addons-elementor' ); ?></span>
+                                <span class="trad-feature-chip">💬 <?php esc_html_e( 'WhatsApp Chat', 'turbo-addons-elementor' ); ?></span>
+                                <span class="trad-feature-chip">🎯 <?php esc_html_e( 'Image Hotspot', 'turbo-addons-elementor' ); ?></span>
+                                <span class="trad-feature-chip">📊 <?php esc_html_e( 'Dynamic Table', 'turbo-addons-elementor' ); ?></span>
+                            </div>
+                        </div>
+                        <div class="trad-info-card-footer">
+                            <a href="https://turbo-addons.com/pricing/" target="_blank" rel="noopener" class="trad-info-card-btn trad-info-card-btn--purple">
+                                <?php esc_html_e( 'Get Pro Now', 'turbo-addons-elementor' ); ?> →
+                            </a>
                         </div>
                     </div>
-                    <div class="trad-dashboard-sec-four-card">
-                        <h3 class="trad-dashboard-sub-heading">Get Support</h3>
-                        <p>
-                        Get expert guidance, instant support, and personalized insights to troubleshoot issues, explore features, and achieve your goals effortlessly.
-                        </p>  
-                        <img class="turbo-dashboard-banner-add" src="<?php echo esc_url( plugin_dir_url( __FILE__ ) . 'assets/images/support.webp' ); ?>" alt="<?php echo esc_attr( 'turbo-logo' ); ?>"> 
-                        <div class="trad-dashboard-center-btn">
-                            <a href="https://turbo-addons.com/get-support/" target="_blank" rel="noopener" >Get Support ⤴</a>
+
+                    <!-- Card 3: Our Other Plugins -->
+                    <div class="trad-info-card trad-info-card--plugins">
+                        <div class="trad-info-card-body">
+                            <h3 class="trad-info-card-title"><?php esc_html_e( 'More From Our Team', 'turbo-addons-elementor' ); ?></h3>
+                            <p class="trad-info-card-desc"><?php esc_html_e( 'Free plugins built by the same team — trusted by thousands of WordPress users.', 'turbo-addons-elementor' ); ?></p>
+                            <div class="trad-plugin-list">
+                                <a href="https://wordpress.org/plugins/header-footer-builder-for-elementor/" target="_blank" rel="noopener" class="trad-plugin-item">
+                                    <div class="trad-plugin-icon trad-plugin-icon--green">🧩</div>
+                                    <div class="trad-plugin-info">
+                                        <strong><?php esc_html_e( 'Header Footer Builder', 'turbo-addons-elementor' ); ?></strong>
+                                        <span><?php esc_html_e( 'Custom headers & footers for Elementor', 'turbo-addons-elementor' ); ?></span>
+                                    </div>
+                                    <span class="trad-plugin-arrow">→</span>
+                                </a>
+                                <a href="https://wordpress.org/plugins/turbo-templates-library-for-elementor/" target="_blank" rel="noopener" class="trad-plugin-item">
+                                    <div class="trad-plugin-icon trad-plugin-icon--blue">🎨</div>
+                                    <div class="trad-plugin-info">
+                                        <strong><?php esc_html_e( 'Turbo Templates Library', 'turbo-addons-elementor' ); ?></strong>
+                                        <span><?php esc_html_e( '200+ ready-made Elementor templates', 'turbo-addons-elementor' ); ?></span>
+                                    </div>
+                                    <span class="trad-plugin-arrow">→</span>
+                                </a>
+                                <a href="https://wordpress.org/plugins/whitespace-fixer-for-xml-sitemap/" target="_blank" rel="noopener" class="trad-plugin-item">
+                                    <div class="trad-plugin-icon trad-plugin-icon--orange">🗺️</div>
+                                    <div class="trad-plugin-info">
+                                        <strong><?php esc_html_e( 'Whitespace Fixer for XML Sitemap', 'turbo-addons-elementor' ); ?></strong>
+                                        <span><?php esc_html_e( 'Fix XML sitemap whitespace errors instantly', 'turbo-addons-elementor' ); ?></span>
+                                    </div>
+                                    <span class="trad-plugin-arrow">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Section 4: Watch Video -->
+                <div class="trad-guide-video-wrap" id="trad-watch-guide-video">
+                    <div class="trad-video-blob trad-video-blob-l"></div>
+                    <div class="trad-video-blob trad-video-blob-r"></div>
+                    <div class="trad-video-inner">
+                        <div class="trad-video-text">
+                            <span class="trad-video-eyebrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="vertical-align:middle;margin-right:5px;">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                </svg>
+                                <?php esc_html_e( 'Video Tutorial', 'turbo-addons-elementor' ); ?>
+                            </span>
+                            <h2 class="trad-video-title"><?php esc_html_e( 'Get Started in Minutes', 'turbo-addons-elementor' ); ?></h2>
+                            <p class="trad-video-desc"><?php esc_html_e( 'Watch this quick walkthrough to learn how to set up Turbo Addons, activate widgets, import templates, and build stunning pages — no coding needed.', 'turbo-addons-elementor' ); ?></p>
+                            <ul class="trad-video-checklist">
+                                <li>✅ <?php esc_html_e( 'Activate & configure widgets', 'turbo-addons-elementor' ); ?></li>
+                                <li>✅ <?php esc_html_e( 'Import ready-made templates', 'turbo-addons-elementor' ); ?></li>
+                                <li>✅ <?php esc_html_e( 'Customize with Elementor', 'turbo-addons-elementor' ); ?></li>
+                            </ul>
+                            <a href="https://www.youtube.com/@TurboAddons" target="_blank" rel="noopener" class="trad-video-channel-btn">
+                                <?php esc_html_e( 'Visit Our YouTube Channel ⤴', 'turbo-addons-elementor' ); ?>
+                            </a>
+                        </div>
+                        <div class="trad-video-frame-wrap">
+                            <div class="trad-video-frame-glow"></div>
+                            <div class="trad-video-frame">
+                                <iframe
+                                    src="https://www.youtube.com/embed/Z5v6LXkcWLo?rel=0&modestbranding=1"
+                                    title="<?php esc_attr_e( 'Turbo Addons — How to Use', 'turbo-addons-elementor' ); ?>"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen
+                                    loading="lazy">
+                                </iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
             <!-- ======================tab-2===Elements Tab Content
              ================================================================================ -->
@@ -422,4 +704,3 @@ function turbo_addons_add_admin_menu() {
     );
 }
 add_action('admin_menu', 'turbo_addons_add_admin_menu');
-

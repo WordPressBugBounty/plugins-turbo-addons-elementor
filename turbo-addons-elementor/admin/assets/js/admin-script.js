@@ -203,3 +203,75 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
+/* ============================================================
+   Free plugin — Latest Templates Slider (trad- prefix)
+   ============================================================ */
+(function () {
+    'use strict';
+
+    var templates = window.tradTemplates || [];
+    if ( templates.length < 2 ) return;
+
+    var currentIdx = 0;
+    var AUTO_DELAY = 4000;
+    var autoTimer  = null;
+
+    var slides     = document.querySelectorAll('#trad-tpl-slides .trad-tpl-slide');
+    var dots       = document.querySelectorAll('#trad-tpl-dots .trad-tpl-dot');
+    var nameEl     = document.getElementById('trad-tpl-name');
+    var descEl     = document.getElementById('trad-tpl-desc');
+    var catEl      = document.getElementById('trad-tpl-category');
+    var typeEl     = document.getElementById('trad-tpl-type');
+    var previewBtn = document.getElementById('trad-tpl-preview-btn');
+    var currentEl  = document.getElementById('trad-tpl-current');
+
+    function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
+
+    function goTo(idx) {
+        if ( idx < 0 ) idx = templates.length - 1;
+        if ( idx >= templates.length ) idx = 0;
+
+        slides.forEach(function(s, i) { s.classList.toggle('active', i === idx); });
+        dots.forEach(function(d, i)   { d.classList.toggle('active', i === idx); });
+
+        var tpl = templates[idx];
+        if ( nameEl )     nameEl.textContent     = tpl.title || '';
+        if ( descEl )     descEl.textContent     = tpl.desc  || 'A brand-new "' + (tpl.title||'') + '" template is now available.';
+        if ( catEl )      catEl.textContent      = cap(tpl.category);
+        if ( typeEl )     typeEl.textContent     = cap(tpl.type);
+        if ( previewBtn ) previewBtn.href        = tpl.link || '#';
+        if ( currentEl )  currentEl.textContent  = idx + 1;
+
+        currentIdx = idx;
+    }
+
+    dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+            resetAuto();
+            goTo(parseInt(dot.getAttribute('data-index'), 10));
+        });
+    });
+
+    function startAuto() { autoTimer = setInterval(function() { goTo(currentIdx + 1); }, AUTO_DELAY); }
+    function resetAuto()  { clearInterval(autoTimer); startAuto(); }
+
+    startAuto();
+}());
+
+
+/* ============================================================
+   "How to Use" button — smooth scroll to video section
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', function () {
+    var btn    = document.querySelector('.trad-scroll-to-video');
+    var target = document.getElementById('trad-watch-guide-video');
+    if ( ! btn || ! target ) return;
+
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var offset    = 80; // WP admin bar height
+        var targetTop = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+    });
+});

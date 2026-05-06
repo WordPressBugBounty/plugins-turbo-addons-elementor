@@ -1,14 +1,14 @@
-=== Turbo Addons Elementor ===  
+﻿=== Turbo Addons Elementor ===  
 Contributors: TurboAddons, siraji2017, sharifok, wpanik, rabiulalam01833
 Tags: elementor addons, elementor widgets, elementor templates, free elementor addons, elementor woocommerce
 Requires at least: 3.0  
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.8.14
+Stable tag: 1.8.15
 License: GPLv3  
 License URI: https://opensource.org/licenses/GPL-3.0  
 
-Turbo Addons for Elementor offers advanced widgets to enhance Elementor, helping you create professional, interactive websites easily and quickly.
+Turbo Addons for Elementor offers 90+ widgets & 200+ modern ready templates — free menu, slider, post list, modal, accordion, grid, woocommerce & mroe
 
 == Description ==
 
@@ -41,7 +41,7 @@ Turbo Addons includes **90+ (more are coming) highly customizable widgets** for 
 
 <h4>50 FREE ADVANCED WIDGETS:</h4>
 <ul>
-   <li><a target="_blank" href="https://turbo-addons.com/advanced-accordion/"><strong>Advanced Accordion –</strong></a> Display collapsible content sections in an organized manner using accordions. Text, Image and short-code can be placed inside the Advanced Accordion</li>
+   <li><a target="_blank" href="https://turbo-addons.com/advanced-accordion/"><strong> Advanced Accordion –</strong></a> Display collapsible content sections in an organized manner using accordions. Text, Image and short-code can be placed inside the Advanced Accordion</li>
    
    <li><a target="_blank" href="https://turbo-addons.com/preview-card/"><strong>Preview Card –</strong></a> An interactive Elementor widget that lets you showcase content with images, headlines, descriptions, and buttons—perfect for portfolios, features, or product highlights.</li>
 
@@ -65,8 +65,6 @@ Turbo Addons includes **90+ (more are coming) highly customizable widgets** for 
 
    <li><a target="_blank" href="https://turbo-addons.com/top-bar/"><strong>Top Bar –</strong></a> Add a floating top section to your Elementor site to highlight offers, news, or contact info—fully customizable for color, content, and links.</li>
 
-   <li><a target="_blank" href="https://turbo-addons.com/call-to-action/"><strong>Call To Action –</strong></a> Encourage users to take action with attention-grabbing CTA boxes in Elementor—perfect for landing pages and marketing campaigns.</li>
-
    <li><a target="_blank" href="https://turbo-addons.com/team-slider/"><strong>Team Slider –</strong></a> Introduce your team in a sleek, scrollable slider format using Elementor—complete with images, roles, bios, and social links.</li>
 
    <li><a target="_blank" href="https://turbo-addons.com/image-carousel/"><strong>Image Carousel –</strong></a> Showcase product galleries, testimonials, or featured images in an elegant Elementor-powered carousel with smooth transitions.</li>
@@ -77,8 +75,6 @@ Turbo Addons includes **90+ (more are coming) highly customizable widgets** for 
 
    <li><a target="_blank" href="https://turbo-addons.com/pricing-table/"><strong>Pricing Table –</strong></a> Build beautiful, conversion-focused pricing tables in Elementor—featuring plan highlights, toggles, and badge labels.</li>
 
-   <li><a target="_blank" href="https://turbo-addons.com/contact-info/"><strong>Contact Info –</strong></a> Display your business contact details clearly using Elementor—include address, phone, email, and even icons for a modern touch.</li>
-
    <li><a target="_blank" href="https://turbo-addons.com/advance-header/"><strong> Advanced Heading –</strong></a> A free Elementor widget to create stunning and customizable headings with advanced typography and dual-style layouts—perfect for any section.</li>
 
    <li><a target="_blank" href="https://turbo-addons.com/popular-posts/"><strong>Popular Post –</strong></a> Automatically show trending blog posts or articles with this smart and responsive Elementor widget—ideal for boosting content visibility.</li>
@@ -87,8 +83,6 @@ Turbo Addons includes **90+ (more are coming) highly customizable widgets** for 
 
    <li><a target="_blank" href="https://turbo-addons.com/food-menu/"><strong>Food Menu –</strong></a> Build attractive, mobile-friendly food menus using this Elementor widget—perfect for restaurants, cafes, or food delivery sites.</li>
 
-   <li><a target="_blank" href="https://turbo-addons.com/coupon-code/"><strong>Coupon Code –</strong></a> Display clickable discount codes in style. This Elementor widget is perfect for marketing deals, offers, and promotions.</li>
-
    <li><a target="_blank" href="https://turbo-addons.com/single-testimonial/"><strong>Single Testimonial –</strong></a> Showcase client reviews beautifully with this free Elementor testimonial widget—customizable and responsive for any layout.</li>
 
    <li><a target="_blank" href="https://turbo-addons.com/data-table/"><strong>Data Table –</strong></a> Create responsive, sortable data tables in Elementor with ease. A great way to present organized info without any technical skills.</li>
@@ -96,10 +90,6 @@ Turbo Addons includes **90+ (more are coming) highly customizable widgets** for 
    <li><a target="_blank" href="https://turbo-addons.com/photo-stack/"><strong>Photo Stack –</strong></a> Showcase images with layered stacking and hover animations—an easy-to-use Elementor widget perfect for creative galleries.</li>
 
    <li><a target="_blank" href="https://turbo-addons.com/image-icon-card/"><strong>Image Icon Card –</strong></a> A versatile free Elementor widget that lets you combine images and icons into a stylish card layout—complete with title, text, and call-to-action button support.</li>
-
-   <li><a target="_blank" href="https://turbo-addons.com/read-more/"><strong>Read More –</strong></a> Keep your layouts clean by showing text previews with a “Read More” toggle. This Elementor widget is ideal for blogs, FAQs, or long descriptions.</li>
-
-   <li><a target="_blank" href="https://turbo-addons.com/copy-right/"><strong>Copy Right –</strong></a> Add dynamic copyright notices to your Elementor footer automatically—customize style, add icons, and keep it up to date without editing each year.</li>
 
    <li><a target="_blank" href="https://turbo-addons.com/banking-card/"><strong>Banking Card –</strong></a> Showcase virtual credit/debit cards like Visa or MasterCard using this creative Elementor widget—great for fintech, eCommerce, or membership sites.</li>
 
@@ -115,31 +105,29 @@ Turbo Addons includes **90+ (more are coming) highly customizable widgets** for 
 
    <li><a target="_blank" href="https://turbo-addons.com/scroll-navigation/"><strong>Scroll Navigation –</strong></a> Create anchor-based navigation menus in Elementor for one-page or long-form layouts. Help users jump between sections effortlessly.</li>
 
-   <li><a target="_blank" href="https://turbo-addons.com/navigation-menu/"><strong>Navigation Menu</strong></a> Build responsive and fully customizable navigation menus using this advanced Elementor widget—great for headers, sidebars, and mobile layouts.</li>
+   <li><a target="_blank" href="https://turbo-addons.com/navigation-menu/"><strong>Navigation Menu -</strong></a> Build responsive and fully customizable navigation menus using this advanced Elementor widget—great for headers, sidebars, and mobile layouts.</li>
 
-   <li><a target="_blank" href="#"><strong>Cookie Consent</strong></a> Stay GDPR-compliant with a fully customizable cookie consent banner. This Elementor widget makes it easy to manage user consent with style and control.</li>
+   <li><a target="_blank" href="#"><strong>Cookie Consent - </strong></a> Stay GDPR-compliant with a fully customizable cookie consent banner. This Elementor widget makes it easy to manage user consent with style and control.</li>
 
-   <li><a target="_blank" href="https://turbo-addons.com/contact-form-7/"><strong>Contact Form 7</strong></a> Elevate your forms in Elementor with advanced design controls—style your Contact Form 7 fields, buttons, and layout without touching a single line of code.</li>
+   <li><a target="_blank" href="https://turbo-addons.com/contact-form-7/"><strong>Contact Form 7 - </strong></a> Elevate your forms in Elementor with advanced design controls—style your Contact Form 7 fields, buttons, and layout without touching a single line of code.</li>
 
-   <li><a target="_blank" href="https://turbo-addons.com/logo-carousel/"><strong>Logo Carousel</strong></a> Showcase brand or client logos in a sleek, responsive carousel. This Elementor widget supports auto-scroll, navigation arrows, and full customization.</li>
+   <li><a target="_blank" href="https://turbo-addons.com/logo-carousel/"><strong>Logo Carousel - </strong></a> Showcase brand or client logos in a sleek, responsive carousel. This Elementor widget supports auto-scroll, navigation arrows, and full customization.</li>
 
-   <li><a target="_blank" href="https://turbo-addons.com/counter/"><strong>Counter</strong></a> Animate numbers to highlight stats, milestones, or achievements in Elementor—customize icons, styles, and layouts to match your design.</li>
+   <li><a target="_blank" href="https://turbo-addons.com/counter/"><strong>Counter - </strong></a> Animate numbers to highlight stats, milestones, or achievements in Elementor—customize icons, styles, and layouts to match your design.</li>
 
-   <li><a target="_blank" href="https://turbo-addons.com/news-ticker/"><strong>News Ticker</strong></a> Grab attention with scrolling headlines or breaking news updates—this free Elementor widget is perfect for announcements and blog highlights.</li>
+   <li><a target="_blank" href="https://turbo-addons.com/news-ticker/"><strong>News Ticker - </strong></a> Grab attention with scrolling headlines or breaking news updates—this free Elementor widget is perfect for announcements and blog highlights.</li>
 
-   <li><a target="_blank" href="https://turbo-addons.com/elementor-audio-player/"><strong>Audio Player</strong></a>A customizable audio player widget for Elementor free. Supports play/pause/replay, volume control, start time, and full icon + style controls with more customizations options</li>
-
-   <li><a target="_blank" href="https://turbo-addons.com/post-like-counter"><strong>Post Like Counter</strong></a>Perfect for news sites, blogs, and online polls. Let readers quickly like or dislike posts to share their opinion and see how others feel, with instant vote updates and smooth user interaction.</li>
+   <li><a target="_blank" href="https://turbo-addons.com/elementor-audio-player/"><strong>Audio Player - </strong></a>A customizable audio player widget for Elementor free. Supports play/pause/replay, volume control, start time, and full icon + style controls with more customizations options</li>
   
-   <li><a target="_blank" href="https://turbo-addons.com/accordion-slider"><strong>Accordion Slider</strong></a>An interactive accordion-style image slider that expands cards on click or hover. Perfect for showcasing portfolios, team members, or featured content with smooth animations and full style control.</li>
+   <li><a target="_blank" href="https://turbo-addons.com/accordion-slider"><strong>Accordion Slider - </strong></a>An interactive accordion-style image slider that expands cards on click or hover. Perfect for showcasing portfolios, team members, or featured content with smooth animations and full style control.</li>
    
-   <li><a target="_blank" href="https://turbo-addons.com/modal-popup"><strong>Modal Popup</strong></a>Display any content in a clean, customizable popup overlay. Ideal for promotions, announcements, contact forms, or media — triggered by button click, page load, or exit intent with flexible styling options.</li>
+   <li><a target="_blank" href="https://turbo-addons.com/modal-popup"><strong>Modal Popup - </strong></a>Display any content in a clean, customizable popup overlay. Ideal for promotions, announcements, contact forms, or media — triggered by button click, page load, or exit intent with flexible styling options.</li>
   
-   <li><a target="_blank" href="https://turbo-addons.com/metro-grid"><strong>Metro Grid</strong></a>A dynamic tile-based grid layout inspired by the Metro UI design. Great for displaying posts, portfolio items, or categories in a visually striking mosaic arrangement with hover effects and custom sizing.</li>
+   <li><a target="_blank" href="https://turbo-addons.com/metro-grid"><strong>Metro Grid - </strong></a>A dynamic tile-based grid layout inspired by the Metro UI design. Great for displaying posts, portfolio items, or categories in a visually striking mosaic arrangement with hover effects and custom sizing.</li>
 
 </ul>
 
-== 40 Pro Widgets: ==
+== 40+ Pro Widgets: ==
 <ul>
   <li><strong>Testimonial Slider–</strong> Create powerful testimonial sliders with ready-made, fully customizable templates. Ideal for boosting trust and showcasing client feedback in your Elementor site.</li>
 
@@ -153,10 +141,6 @@ Turbo Addons includes **90+ (more are coming) highly customizable widgets** for 
 
   <li><strong>Review Archive –</strong> Display responsive user reviews in grid or list views with pre-designed templates. Ideal for service or product-based Elementor sites.</li>
 
-  <li><strong>Local Date –</strong> Automatically show the current local date and time on your Elementor page, adapting to each visitor's timezone and language.</li>
-
-  <li><strong>Post Date  –</strong> Show post or custom post type publish dates with localization and styling control—ideal for blogs and news sites built with Elementor.</li>
-
   <li><strong>Post List  –</strong> Display posts, products, or custom content in clean card layouts with filtering, sorting, and pagination—fully optimized for Elementor.</li>
 
   <li><strong>Icon List –</strong> Create stylish bullet lists in Elementor using icons, custom alignment, and layout flexibility to improve readability and design appeal.</li>
@@ -167,8 +151,6 @@ Turbo Addons includes **90+ (more are coming) highly customizable widgets** for 
 
   <li><strong>Advanced Featured Card –</strong> Highlight services or features in animated, responsive card layouts with advanced styling controls—all built for Elementor.</li>
 
-  <li><strong>Advanced Pricing Table –</strong> Create modern and eye-catching pricing tables with toggle support, custom ribbons, and animation effects in Elementor.</li>
-
   <li><strong>Hero Slider –</strong> Design full-screen hero sliders in Elementor with headings, images, buttons, and animations to highlight promotions or landing page content.</li>
 
   <li><strong>Tour Guide –</strong> Onboard users with an interactive tour across your website. This Elementor widget adds pop-up tooltips and step-by-step highlights for better UX.</li>
@@ -178,10 +160,21 @@ Turbo Addons includes **90+ (more are coming) highly customizable widgets** for 
   <li><strong>Text Gradient –</strong> Enhance your Elementor typography with gradient text styles and image overlays—offering creative control over each character and word.</li>
 
   <li><strong>Live Visitor Counter –</strong> Show how many users are browsing your website in real time. A great Elementor widget for increasing trust and urgency.</li>
-  <li><strong>Dynamic Table –</strong> Widgets is a essential widgets that help to create html table from csv file. Dynamic table widgets convert csv file to html table.
+  
+  <li><strong>CSV Data Table  –</strong> Widgets is a essential widgets that help to create html table from csv file. Dynamic table widgets convert csv file to html table.
 
   <li><strong>Advanced Post Filter –</strong> Filter blog posts by category or subcategory dynamically in Elementor. Boost content discovery and improve browsing UX.</li>
-
+  
+  <li><strong>Off Canvas –</strong> Enhance your site’s navigation by adding hidden sidebars or menus that slide in from any direction. Perfect for mobile-friendly menus, shopping carts, or extra widgets that keep your layout clean and clutter-free.</li>
+ 
+  <li><strong>Advanced Search Pro –</strong> Take site navigation to the next level with powerful, live-search functionality. Allow users to find exactly what they need instantly with AJAX-powered results, category filters, and thumbnail previews.</li>
+  
+  <li><strong>Image Hotspot –</strong> Make your images interactive by adding clickable icons or markers. When users hover or click, they can see tooltips, product details, or links, making it an ideal tool for product showcases and maps.</li>
+ 
+  <li><strong>WhatsApp Chat –</strong> Build trust and boost conversions by providing a direct line of communication. Integrate a stylish WhatsApp button that lets visitors start a conversation with your support or sales team in a single click</li>
+  
+  <li><strong>Post Like Counter - </strong></a>Perfect for news sites, blogs, and online polls. Let readers quickly like or dislike posts to share their opinion and see how others feel, with instant vote updates and smooth user interaction.</li>
+  
   <li><strong>Woo Products Card –</strong> Showcase your WooCommerce products in stylish card layouts with pricing, ratings, images, and buy buttons—fully customizable in Elementor.</li>
 
   <li><strong>WOO Product Pagination –</strong> Add AJAX-based pagination to your WooCommerce product listings in Elementor for smoother and faster navigation.</li>
@@ -190,11 +183,7 @@ Turbo Addons includes **90+ (more are coming) highly customizable widgets** for 
 
   <li><strong>WOO Mini Cart –</strong> Add a floating WooCommerce mini cart to your Elementor pages showing product summary, total price, and quick checkout access.</li>
 
-  <li><strong>WOO Product Title –</strong> Customize the WooCommerce product title style with full control over font, color, spacing, and alignment in Elementor.</li>
-
   <li><strong>WOO Product Short Description –</strong> Show the short WooCommerce product summary just below the title or price—styled your way with Elementor controls.</li>
-
-  <li><strong>WOO Product Description –</strong> Display the full WooCommerce product description with Elementor styling options, spacing, and typography enhancements.</li>
 
   <li><strong>WOO Product Price –</strong> Present both regular and sale WooCommerce prices of a product in a beautifully designed format using Elementor widgets.</li>
 
@@ -220,7 +209,6 @@ Turbo Addons includes **90+ (more are coming) highly customizable widgets** for 
 </ul>
 
 == Extensions (More Coming Soon): ==
-
 <ul>
 <li><a target="_blank" href="https://turbo-addons.com/turbo-tooltip/"><strong>Turbo Tooltip Extension <span style="color:rgba(24, 10, 151, 0.38);">– New!</span> </strong></a>Add tooltips to any Elementor widget instantly. Just activate the extension from the Turbo Addons dashboard — no shortcode or coding needed. Once enabled, a Tooltip control panel appears in every Elementor widget for easy setup.</li>
 </ul>
@@ -269,6 +257,13 @@ Follow these steps to install Turbo Addons for Elementor on your WordPress websi
 **A:** Yes, Turbo Addons for Elementor is licensed under GPL v2 or later, allowing you to use it on unlimited websites.
 
 == Changelog ==
+
+### Version 1.8.15
+
+1. **Added Free widgets**: Metro Grid, WhatsApp chat, off canvas
+2. **Updated**: Upadated the plugin dashboard and tested up to 7.0
+
+
 
 ### Version 1.8.14
 
