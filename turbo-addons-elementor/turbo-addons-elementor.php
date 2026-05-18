@@ -3,14 +3,14 @@
  * Plugin Name: Turbo Addons Elementor
  * Plugin URI: https://turbo-addons.com/
  * Description: Turbo-Addons is towards limitless Free Elementor Addons with 90+ Elementor Free & Pro Widgets, including WooCommerce widgets, for easy customization.
- * Version: 1.8.15
+ * Version: 1.8.16
  * Author: Turbo Addons
  * Author URI: https://wp-turbo.com/
  * License: GPLv3
  * License URI: https://opensource.org/licenses/GPL-3.0
  * Text Domain: turbo-addons-elementor
- * Elementor tested up to: 4.0.2
- * Elementor Pro tested up to: 4.0.2
+ * Elementor tested up to: 4.0.8
+ * Elementor Pro tested up to: 4.0.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -43,7 +43,7 @@ if ( class_exists( 'WPPulse_SDK' ) ) {
 
 // Define the free version's constant...
 if ( ! defined( 'TURBO_ADDONS_VERSION' ) ) {
-    define( 'TURBO_ADDONS_VERSION', '1.8.15' ); // Update the version as necessary
+    define( 'TURBO_ADDONS_VERSION', '1.8.16' ); // Update the version as necessary
 }
 
 /**
@@ -52,7 +52,7 @@ if ( ! defined( 'TURBO_ADDONS_VERSION' ) ) {
  */
 final class TRAD_Turbo_Addons {
 
-    const TRAD_TURBO_ADDONS_PLUGIN_VERSION = '1.8.15';
+    const TRAD_TURBO_ADDONS_PLUGIN_VERSION = '1.8.16';
     const TRAD_TURBO_ADDONS_MIN_ELEMENTOR_VERSION = '3.0.0';
     const TRAD_TURBO_ADDONS_MIN_PHP_VERSION = '7.4';
     private static $_instance = null;
@@ -112,7 +112,7 @@ final class TRAD_Turbo_Addons {
     private function define_constants() {
         define( 'TRAD_TURBO_ADDONS_PLUGIN_URL', trailingslashit( plugins_url( '/', __FILE__ ) ) );
         define( 'TRAD_TURBO_ADDONS_PLUGIN_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
-        define( 'TRAD_TURBO_ADDONS_PLUGIN_VERSION', '1.8.15' );
+        define( 'TRAD_TURBO_ADDONS_PLUGIN_VERSION', '1.8.16' );
 
         // Include the necessary plugin management functions if not already included
         if ( ! function_exists( 'get_plugins' ) ) {

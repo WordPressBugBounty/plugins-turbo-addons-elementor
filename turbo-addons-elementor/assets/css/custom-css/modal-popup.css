@@ -16,7 +16,17 @@
 .trad-mp__trigger--icon { font-size: 1.5rem; color: #6040e0; background: none; border: none; padding: 0; }
 .trad-mp__trigger--icon i   { font-size: inherit; line-height: 1; }
 .trad-mp__trigger--icon svg { width: 1em; height: 1em; display: block; fill: currentColor; }
-.trad-mp__trigger--img img  { display: block; max-width: 100%; cursor: pointer; }
+.trad-mp__trigger--img {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  display: inline-block;
+}
+.trad-mp__trigger--img img  { display: block; max-width: 100%; cursor: pointer; transition: transform .3s ease; }
+.trad-mp__trigger--img:hover,
+.trad-mp__trigger--img:focus { background: none; outline: none; }
 
 /* Overlay */
 .trad-mp__overlay {

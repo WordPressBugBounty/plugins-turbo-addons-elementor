@@ -52,28 +52,19 @@ function turbo_addons_admin_page() {
     <div id="turbo-dashboard-navbar">
         <div class="trad-dashboard-top-banner-container">
             <div class="trad-dashboard-top-banner-container-60">
-                <!-- <h3> -->
-                   <?php 
-                  //  $current_user = wp_get_current_user();
-                  //  esc_html_e('Hello, ', 'turbo-addons-elementor');
-                  //  echo esc_html($current_user->display_name);
-                   ?>
-                <!-- 👋🏻</h3> -->
-                <p style="font-size:18px">Turbo Addons Pro is now available with full <strong>WooCommerce support with custom product pages.</strong> You’ll also get 90+ widgets and 200+ ready templates to speed up your design process.
-                </p>
-                <p style="font-size:18px;">
-                    Upgrade to <strong>Turbo Addons Pro</strong> and unlock the full potential! 🚀  
+                <span class="trad-top-banner-eyebrow">&#9889; New &mdash; Turbo Addons Pro</span>
+                <p>Now available with full <strong>WooCommerce support with custom product pages.</strong> Get 90+ widgets and 200+ ready templates to speed up your design process.</p>
+                <p>Upgrade to <strong>Turbo Addons Pro</strong> and unlock the full potential!
                     <a class="trad-dashboard-top-message-button" href="https://turbo-addons.com/pricing/" target="_blank">
-                        Upgrade Now
+                        &#9889; Upgrade Now
                     </a>
                 </p>
             </div>
             
             <div class="trad-dashboard-top-banner-container-40">
-                <a href="https://wordpress.org/plugins/header-footer-builder-for-elementor/" target="_blank" rel="noopener noreferrer" style="focus:outline:none; text-decoration:none;">
-                    <img style="width: 100%" class="turbo-dashboard-banner-add" src="<?php echo esc_url( plugin_dir_url( __FILE__ ) . 'assets/images/h_and_f_promotion.webp' ); ?>" alt="<?php echo esc_attr( 'turbo-logo' ); ?>">    
-                </a>  
-
+                <a href="https://wordpress.org/plugins/header-footer-builder-for-elementor/" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:block; position:relative; z-index:1; width:100%;">
+                    <img class="turbo-dashboard-banner-add" src="<?php echo esc_url( plugin_dir_url( __FILE__ ) . 'assets/images/h_and_f_promotion.webp' ); ?>" alt="<?php echo esc_attr( 'turbo-logo' ); ?>">    
+                </a>
             </div>
 
         </div>
@@ -657,26 +648,158 @@ function turbo_addons_admin_page() {
             <!-- ======tab-4/// ========================================Premium tabs=========================
              ====================================================================================================-->
 
-            <div id="premium-tab" class="trad-tab-content tab-content trad-dashboard-premium-tab <?php echo $current_tab === 'premium-tab' ? 'active' : ''; ?>"
-                style=
-                    "background-position:center-center;
-                    background-size:cover;
-                    background-repeat:none;
-                ">
-                <div class="trad-header-section">
-                    <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/DashboardBanner.webp'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
-                    
-                    <!-- <div class="trad_dashboard_pro_tabs_cta">
+            <div id="premium-tab" class="trad-tab-content tab-content trad-dashboard-premium-tab <?php echo $current_tab === 'premium-tab' ? 'active' : ''; ?>">
 
-                        <h3>Discover Our Lates Creation Enjoy Flat 60% Off for any package ( Limited Time ) <span class="trad_dashboard_copun"><code>TURBO50</code></span></h3>
-                        <a href="https://turbo-addons.com/pricing/" target="blank"><button class="trad-dashboard-pro-tabs-top-btn">Upgrade Now</button></a>
-                     
-                    </div> -->
+                <!-- ── HERO ─────────────────────────────────────────────────────── -->
+                <div class="trad-pro-hero">
+                    <div class="trad-pro-hero-blob trad-pro-hero-blob-a"></div>
+                    <div class="trad-pro-hero-blob trad-pro-hero-blob-b"></div>
+                    <div class="trad-pro-hero-blob trad-pro-hero-blob-c"></div>
+                    <div class="trad-pro-hero-inner">
+                        <span class="trad-pro-hero-eyebrow">&#9889; Limited Time Offer</span>
+                        <h1 class="trad-pro-hero-title"><?php esc_html_e( 'Faster. Better. Higher Converting', 'turbo-addons-elementor' ); ?><br><span class="trad-pro-hero-title-accent"><?php esc_html_e( 'with Turbo Addons Pro', 'turbo-addons-elementor' ); ?></span></h1>
+                        <p class="trad-pro-hero-desc"><?php esc_html_e( '90+ premium widgets, 200+ ready-made templates, WooCommerce builder, and priority support — everything you need to build stunning websites faster.', 'turbo-addons-elementor' ); ?></p>
+                        <div class="trad-pro-hero-actions">
+                            <a href="https://turbo-addons.com/pricing/" target="_blank" rel="noopener" class="trad-pro-btn trad-pro-btn-primary">
+                                &#9889; <?php esc_html_e( 'Get Pro Now', 'turbo-addons-elementor' ); ?>
+                            </a>
+                            <a href="https://turbo-addons.com/templates/" target="_blank" rel="noopener" class="trad-pro-btn trad-pro-btn-ghost">
+                                <?php esc_html_e( 'View Live Demo', 'turbo-addons-elementor' ); ?> &rarr;
+                            </a>
+                        </div>
+                        <div class="trad-pro-hero-trust">
+                            <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                            <span><?php esc_html_e( 'Trusted by 10,000+ WordPress users', 'turbo-addons-elementor' ); ?></span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="trad-widgets-section">
-                    
+                <!-- ── STATS ROW ─────────────────────────────────────────────────── -->
+                <div class="trad-pro-stats">
+                    <div class="trad-pro-stat">
+                        <span class="trad-pro-stat-num">90<span class="trad-pro-stat-plus">+</span></span>
+                        <span class="trad-pro-stat-lbl"><?php esc_html_e( 'Pro Widgets', 'turbo-addons-elementor' ); ?></span>
+                    </div>
+                    <div class="trad-pro-stat-divider"></div>
+                    <div class="trad-pro-stat">
+                        <span class="trad-pro-stat-num">200<span class="trad-pro-stat-plus">+</span></span>
+                        <span class="trad-pro-stat-lbl"><?php esc_html_e( 'Ready Templates', 'turbo-addons-elementor' ); ?></span>
+                    </div>
+                    <div class="trad-pro-stat-divider"></div>
+                    <div class="trad-pro-stat">
+                        <span class="trad-pro-stat-num">10K<span class="trad-pro-stat-plus">+</span></span>
+                        <span class="trad-pro-stat-lbl"><?php esc_html_e( 'Happy Users', 'turbo-addons-elementor' ); ?></span>
+                    </div>
+                    <div class="trad-pro-stat-divider"></div>
+                    <div class="trad-pro-stat">
+                        <span class="trad-pro-stat-num">4.8<span class="trad-pro-stat-star">&#9733;</span></span>
+                        <span class="trad-pro-stat-lbl"><?php esc_html_e( 'Average Rating', 'turbo-addons-elementor' ); ?></span>
+                    </div>
                 </div>
+
+                <!-- ── FEATURES GRID ─────────────────────────────────────────────── -->
+                <div class="trad-pro-section-label"><?php esc_html_e( "What's Included in Pro", 'turbo-addons-elementor' ); ?></div>
+                 <div class="trad-pro-features-grid">
+                    <div class="trad-pro-feat-card">
+                        <div class="trad-pro-feat-icon trad-pro-feat-icon--violet">&#128722;</div>
+                        <h3 class="trad-pro-feat-title"><?php esc_html_e( 'WooCommerce Builder', 'turbo-addons-elementor' ); ?></h3>
+                        <p class="trad-pro-feat-desc"><?php esc_html_e( 'Design custom product pages, shop layouts, cart & checkout — all with drag-and-drop.', 'turbo-addons-elementor' ); ?></p>
+                    </div>
+
+                    <div class="trad-pro-feat-card">
+                        <div class="trad-pro-feat-icon trad-pro-feat-icon--blue">&#127912;</div>
+                        <h3 class="trad-pro-feat-title"><?php esc_html_e( '200+ Premium Templates', 'turbo-addons-elementor' ); ?></h3>
+                        <p class="trad-pro-feat-desc"><?php esc_html_e( 'Import pixel-perfect, professionally designed templates in one click.', 'turbo-addons-elementor' ); ?></p>
+                    </div>
+
+                    <div class="trad-pro-feat-card">
+                        <div class="trad-pro-feat-icon trad-pro-feat-icon--pink">&#127905;</div>
+                        <h3 class="trad-pro-feat-title"><?php esc_html_e( '3D Carousel & Flip Book', 'turbo-addons-elementor' ); ?></h3>
+                        <p class="trad-pro-feat-desc"><?php esc_html_e( 'Stunning 3D carousel sliders and interactive PDF flip books for your content.', 'turbo-addons-elementor' ); ?></p>
+                    </div>
+
+                    <div class="trad-pro-feat-card">
+                        <div class="trad-pro-feat-icon trad-pro-feat-icon--green">&#128269;</div>
+                        <h3 class="trad-pro-feat-title"><?php esc_html_e( 'Advanced Search', 'turbo-addons-elementor' ); ?></h3>
+                        <p class="trad-pro-feat-desc"><?php esc_html_e( 'Ajax-powered live search with filters, categories, and custom post type support.', 'turbo-addons-elementor' ); ?></p>
+                    </div>
+
+                    <div class="trad-pro-feat-card">
+                        <div class="trad-pro-feat-icon trad-pro-feat-icon--orange">&#128640;</div>
+                        <h3 class="trad-pro-feat-title"><?php esc_html_e( 'Hero Slider', 'turbo-addons-elementor' ); ?></h3>
+                        <p class="trad-pro-feat-desc"><?php esc_html_e( 'Full-screen hero sliders with animations, video backgrounds, and CTA overlays.', 'turbo-addons-elementor' ); ?></p>
+                    </div>
+
+                    <div class="trad-pro-feat-card">
+                        <div class="trad-pro-feat-icon trad-pro-feat-icon--teal">&#128172;</div>
+                        <h3 class="trad-pro-feat-title"><?php esc_html_e( 'WhatsApp Chat & Hotspot', 'turbo-addons-elementor' ); ?></h3>
+                        <p class="trad-pro-feat-desc"><?php esc_html_e( 'Floating WhatsApp chat button and interactive image hotspots to boost engagement.', 'turbo-addons-elementor' ); ?></p>
+                    </div>
+
+                </div>
+                <div class="trad_go_primium_explore_btn">
+                    <a href="https://turbo-addons.com/widgets/" target="_blank" rel="noopener"><button><?php esc_html_e('Explore More', 'turbo-addons-elementor') ?> </button></a>
+                </div>
+
+                <div class="trad-pro-testimonials">
+
+                    <div class="trad-pro-testi-card">
+                        <div class="trad-pro-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="trad-pro-testi-text"><?php esc_html_e( '"Turbo Addons Pro completely transformed how I build sites. The WooCommerce builder alone is worth every penny."', 'turbo-addons-elementor' ); ?></p>
+                        <div class="trad-pro-testi-author">
+                            <div class="trad-pro-testi-avatar trad-pro-testi-avatar--a">JD</div>
+                            <div>
+                                <strong><?php esc_html_e( 'James D.', 'turbo-addons-elementor' ); ?></strong>
+                                <span><?php esc_html_e( 'Freelance Web Designer', 'turbo-addons-elementor' ); ?></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trad-pro-testi-card">
+                        <div class="trad-pro-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="trad-pro-testi-text"><?php esc_html_e( '"200+ templates saved our agency countless hours. The 3D carousel and hero slider widgets are absolutely stunning."', 'turbo-addons-elementor' ); ?></p>
+                        <div class="trad-pro-testi-author">
+                            <div class="trad-pro-testi-avatar trad-pro-testi-avatar--b">SR</div>
+                            <div>
+                                <strong><?php esc_html_e( 'Sarah R.', 'turbo-addons-elementor' ); ?></strong>
+                                <span><?php esc_html_e( 'Agency Owner', 'turbo-addons-elementor' ); ?></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trad-pro-testi-card">
+                        <div class="trad-pro-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="trad-pro-testi-text"><?php esc_html_e( '"Priority support is lightning fast. Had an issue resolved in under 2 hours. Best Elementor addon I\'ve used."', 'turbo-addons-elementor' ); ?></p>
+                        <div class="trad-pro-testi-author">
+                            <div class="trad-pro-testi-avatar trad-pro-testi-avatar--c">MK</div>
+                            <div>
+                                <strong><?php esc_html_e( 'Mike K.', 'turbo-addons-elementor' ); ?></strong>
+                                <span><?php esc_html_e( 'WordPress Developer', 'turbo-addons-elementor' ); ?></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ── BOTTOM CTA ─────────────────────────────────────────────────── -->
+                <div class="trad-pro-bottom-cta">
+                    <div class="trad-pro-bottom-cta-blob trad-pro-bottom-cta-blob-l"></div>
+                    <div class="trad-pro-bottom-cta-blob trad-pro-bottom-cta-blob-r"></div>
+                    <div class="trad-pro-bottom-cta-inner">
+                        <h2 class="trad-pro-bottom-cta-title"><?php esc_html_e( 'Ready to Build Something Amazing?', 'turbo-addons-elementor' ); ?></h2>
+                        <p class="trad-pro-bottom-cta-desc"><?php esc_html_e( 'Join 10,000+ WordPress professionals who trust Turbo Addons Pro to power their websites.', 'turbo-addons-elementor' ); ?></p>
+                        <div class="trad-pro-bottom-cta-actions">
+                            <a href="https://turbo-addons.com/pricing/" target="_blank" rel="noopener" class="trad-pro-btn trad-pro-btn-primary trad-pro-btn-lg">
+                                &#9889; <?php esc_html_e( 'Upgrade to Pro Today', 'turbo-addons-elementor' ); ?>
+                            </a>
+                            <a href="https://turbo-addons.com/" target="_blank" rel="noopener" class="trad-pro-btn trad-pro-btn-ghost-white">
+                                <?php esc_html_e( 'Explore All Features', 'turbo-addons-elementor' ); ?> &rarr;
+                            </a>
+                        </div>
+                        <p class="trad-pro-bottom-cta-note"><?php esc_html_e( '14-days money-back guarantee &nbsp;', 'turbo-addons-elementor' ); ?></p>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Add other tab contents like 'extensions-tab', 'tools-tab', 'integrations-tab', and 'premium-tab' similarly -->

@@ -632,7 +632,212 @@ class TRAD_Modal_Popup_Widget extends Widget_Base {
 		$this->end_controls_tabs();
 
 		$this->end_controls_section();
-	}
+
+		// ── STYLE: Trigger Image ──────────────────────────────────────────────
+		$this->start_controls_section( 'section_style_trigger_image', [
+			'label'     => esc_html__( 'Trigger Image', 'turbo-addons-elementor' ),
+			'tab'       => Controls_Manager::TAB_STYLE,
+			'condition' => [ 'trigger_type' => 'image' ],
+		] );
+
+		$this->add_responsive_control( 'trigger_img_border_radius', [
+			'label'      => esc_html__( 'Border Radius', 'turbo-addons-elementor' ),
+			'type'       => Controls_Manager::DIMENSIONS,
+			'size_units' => [ 'px', '%' ],
+			'selectors'  => [
+				'{{WRAPPER}} .trad-mp__trigger--img'     => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
+				'{{WRAPPER}} .trad-mp__trigger--img img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			],
+		] );
+
+		$this->add_group_control( Group_Control_Border::get_type(), [
+			'name'     => 'trigger_img_border',
+			'selector' => '{{WRAPPER}} .trad-mp__trigger--img img',
+		] );
+
+		$this->add_group_control( Group_Control_Box_Shadow::get_type(), [
+			'name'     => 'trigger_img_shadow',
+			'selector' => '{{WRAPPER}} .trad-mp__trigger--img img',
+		] );
+
+		$this->add_responsive_control( 'trigger_img_padding', [
+			'label'      => esc_html__( 'Padding', 'turbo-addons-elementor' ),
+			'type'       => Controls_Manager::DIMENSIONS,
+			'size_units' => [ 'px', 'em' ],
+			'selectors'  => [ '{{WRAPPER}} .trad-mp__trigger--img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ],
+		] );
+
+		$this->start_controls_tabs( 'trigger_img_tabs' );
+
+		$this->start_controls_tab( 'trigger_img_normal', [ 'label' => esc_html__( 'Normal', 'turbo-addons-elementor' ) ] );
+		$this->add_control( 'trigger_img_bg_color', [
+			'label'     => esc_html__( 'Background Color', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => [ '{{WRAPPER}} .trad-mp__trigger--img' => 'background-color: {{VALUE}};' ],
+		] );
+		$this->add_control( 'trigger_img_opacity', [
+			'label'     => esc_html__( 'Opacity', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::SLIDER,
+			'range'     => [ 'px' => [ 'min' => 0, 'max' => 1, 'step' => 0.05 ] ],
+			'default'   => [ 'size' => 1 ],
+			'selectors' => [ '{{WRAPPER}} .trad-mp__trigger--img img' => 'opacity: {{SIZE}};' ],
+		] );
+		$this->add_control( 'trigger_img_css_filter', [
+			'label'     => esc_html__( 'CSS Filters', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::POPOVER_TOGGLE,
+			'return_value' => 'yes',
+		] );
+		$this->start_popover();
+		$this->add_control( 'trigger_img_blur', [
+			'label'     => esc_html__( 'Blur', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::SLIDER,
+			'range'     => [ 'px' => [ 'min' => 0, 'max' => 10, 'step' => 0.1 ] ],
+			'default'   => [ 'size' => 0 ],
+			'selectors' => [ '{{WRAPPER}} .trad-mp__trigger--img img' => 'filter: blur({{SIZE}}px);' ],
+		] );
+		$this->add_control( 'trigger_img_brightness', [
+			'label'     => esc_html__( 'Brightness', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::SLIDER,
+			'range'     => [ 'px' => [ 'min' => 0, 'max' => 200 ] ],
+			'default'   => [ 'size' => 100 ],
+			'selectors' => [ '{{WRAPPER}} .trad-mp__trigger--img img' => 'filter: brightness({{SIZE}}%);' ],
+		] );
+		$this->end_popover();
+		$this->end_controls_tab();
+
+		$this->start_controls_tab( 'trigger_img_hover', [ 'label' => esc_html__( 'Hover', 'turbo-addons-elementor' ) ] );
+		$this->add_control( 'trigger_img_bg_hover', [
+			'label'     => esc_html__( 'Background Color', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => [ '{{WRAPPER}} .trad-mp__trigger--img:hover' => 'background-color: {{VALUE}};' ],
+		] );
+		$this->add_control( 'trigger_img_opacity_hover', [
+			'label'     => esc_html__( 'Opacity', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::SLIDER,
+			'range'     => [ 'px' => [ 'min' => 0, 'max' => 1, 'step' => 0.05 ] ],
+			'default'   => [ 'size' => 0.85 ],
+			'selectors' => [ '{{WRAPPER}} .trad-mp__trigger--img:hover img' => 'opacity: {{SIZE}};' ],
+		] );
+		$this->add_control( 'trigger_img_scale_hover', [
+			'label'     => esc_html__( 'Scale', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::SLIDER,
+			'range'     => [ 'px' => [ 'min' => 0.5, 'max' => 2, 'step' => 0.01 ] ],
+			'default'   => [ 'size' => 1.05 ],
+			'selectors' => [ '{{WRAPPER}} .trad-mp__trigger--img:hover img' => 'transform: scale({{SIZE}});' ],
+		] );
+		$this->add_control( 'trigger_img_transition', [
+			'label'     => esc_html__( 'Transition Duration (ms)', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::SLIDER,
+			'range'     => [ 'px' => [ 'min' => 0, 'max' => 1000, 'step' => 50 ] ],
+			'default'   => [ 'size' => 300 ],
+			'selectors' => [ '{{WRAPPER}} .trad-mp__trigger--img img' => 'transition: all {{SIZE}}ms ease;' ],
+		] );
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->end_controls_section();
+
+		// ── STYLE: Trigger Icon ───────────────────────────────────────────────
+		$this->start_controls_section( 'section_style_trigger_icon', [
+			'label'     => esc_html__( 'Trigger Icon', 'turbo-addons-elementor' ),
+			'tab'       => Controls_Manager::TAB_STYLE,
+			'condition' => [ 'trigger_type' => 'icon' ],
+		] );
+
+		$this->add_responsive_control( 'trigger_icon_size_dedicated', [
+			'label'      => esc_html__( 'Icon Size', 'turbo-addons-elementor' ),
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => [ 'px', 'em', 'rem' ],
+			'range'      => [ 'px' => [ 'min' => 10, 'max' => 120 ] ],
+			'default'    => [ 'size' => 30, 'unit' => 'px' ],
+			'selectors'  => [
+				'{{WRAPPER}} .trad-mp__trigger--icon i'   => 'font-size: {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .trad-mp__trigger--icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+			],
+		] );
+
+		$this->add_responsive_control( 'trigger_icon_box_size', [
+			'label'      => esc_html__( 'Box Size', 'turbo-addons-elementor' ),
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => [ 'px' ],
+			'range'      => [ 'px' => [ 'min' => 20, 'max' => 200 ] ],
+			'default'    => [ 'size' => 60, 'unit' => 'px' ],
+			'selectors'  => [
+				'{{WRAPPER}} .trad-mp__trigger--icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center; justify-content: center;',
+			],
+		] );
+
+		$this->add_responsive_control( 'trigger_icon_border_radius', [
+			'label'      => esc_html__( 'Border Radius', 'turbo-addons-elementor' ),
+			'type'       => Controls_Manager::DIMENSIONS,
+			'size_units' => [ 'px', '%' ],
+			'default'    => [ 'top' => '50', 'right' => '50', 'bottom' => '50', 'left' => '50', 'unit' => '%' ],
+			'selectors'  => [ '{{WRAPPER}} .trad-mp__trigger--icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ],
+		] );
+
+		$this->add_group_control( Group_Control_Box_Shadow::get_type(), [
+			'name'     => 'trigger_icon_shadow',
+			'selector' => '{{WRAPPER}} .trad-mp__trigger--icon',
+		] );
+
+		$this->start_controls_tabs( 'trigger_icon_tabs' );
+
+		$this->start_controls_tab( 'trigger_icon_normal', [ 'label' => esc_html__( 'Normal', 'turbo-addons-elementor' ) ] );
+		$this->add_control( 'trigger_icon_color', [
+			'label'     => esc_html__( 'Icon Color', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => [
+				'{{WRAPPER}} .trad-mp__trigger--icon i'   => 'color: {{VALUE}};',
+				'{{WRAPPER}} .trad-mp__trigger--icon svg' => 'fill: {{VALUE}};',
+			],
+		] );
+		$this->add_control( 'trigger_icon_bg_color', [
+			'label'     => esc_html__( 'Background Color', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => [ '{{WRAPPER}} .trad-mp__trigger--icon' => 'background-color: {{VALUE}};' ],
+		] );
+		$this->add_group_control( Group_Control_Border::get_type(), [
+			'name'     => 'trigger_icon_border',
+			'selector' => '{{WRAPPER}} .trad-mp__trigger--icon',
+		] );
+		$this->end_controls_tab();
+
+		$this->start_controls_tab( 'trigger_icon_hover', [ 'label' => esc_html__( 'Hover', 'turbo-addons-elementor' ) ] );
+		$this->add_control( 'trigger_icon_color_hover', [
+			'label'     => esc_html__( 'Icon Color', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => [
+				'{{WRAPPER}} .trad-mp__trigger--icon:hover i'   => 'color: {{VALUE}};',
+				'{{WRAPPER}} .trad-mp__trigger--icon:hover svg' => 'fill: {{VALUE}};',
+			],
+		] );
+		$this->add_control( 'trigger_icon_bg_hover', [
+			'label'     => esc_html__( 'Background Color', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => [ '{{WRAPPER}} .trad-mp__trigger--icon:hover' => 'background-color: {{VALUE}};' ],
+		] );
+		$this->add_control( 'trigger_icon_rotate_hover', [
+			'label'     => esc_html__( 'Rotate (deg)', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::SLIDER,
+			'range'     => [ 'px' => [ 'min' => -360, 'max' => 360 ] ],
+			'default'   => [ 'size' => 0 ],
+			'selectors' => [ '{{WRAPPER}} .trad-mp__trigger--icon:hover' => 'transform: rotate({{SIZE}}deg);' ],
+		] );
+		$this->add_control( 'trigger_icon_transition', [
+			'label'     => esc_html__( 'Transition Duration (ms)', 'turbo-addons-elementor' ),
+			'type'      => Controls_Manager::SLIDER,
+			'range'     => [ 'px' => [ 'min' => 0, 'max' => 1000, 'step' => 50 ] ],
+			'default'   => [ 'size' => 300 ],
+			'selectors' => [ '{{WRAPPER}} .trad-mp__trigger--icon' => 'transition: all {{SIZE}}ms ease;' ],
+		] );
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->end_controls_section();
+
+	} // end register_controls()
 
 	protected function get_elementor_templates() {
 		$templates = [ '' => esc_html__( '— Select —', 'turbo-addons-elementor' ) ];
