@@ -69,6 +69,25 @@ class TRAD_Dual_Header extends Widget_Base {
         );
         $this->end_controls_section();
 
+        // ----------------------------------suffix text-----------------------
+        $this->start_controls_section(
+            'content_section_suffix',
+            [
+                'label' => esc_html__( 'Suffix Text', 'turbo-addons-elementor' ),
+                'tab'   => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        $this->add_control(
+            'suffix_text',
+            [
+                'label'   => esc_html__( 'Suffix Text', 'turbo-addons-elementor' ),
+                'type'    => Controls_Manager::TEXTAREA,
+                'default' => '',
+                'placeholder' => esc_html__( 'Text after secondary...', 'turbo-addons-elementor' ),
+            ]
+        );
+        $this->end_controls_section();
+
         ///======================== start style section===============================
         //=============================================================================
 
@@ -101,9 +120,9 @@ class TRAD_Dual_Header extends Widget_Base {
                 ],
                 'default' => 'center',
                 'selectors_dictionary' => [
-                    'flex-start' => 'justify-content:flex-start; text-align:left;',
-                    'center'     => 'justify-content:center; text-align:center;',
-                    'flex-end'   => 'justify-content:flex-end; text-align:right;',
+                    'flex-start' => 'text-align:left;',
+                    'center'     => 'text-align:center;',
+                    'flex-end'   => 'text-align:right;',
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .trad-dual-header-text-container' => '{{VALUE}}',
@@ -126,7 +145,7 @@ class TRAD_Dual_Header extends Widget_Base {
                     'unit' => 'px',
                     'size' => 8,
                 ],
-                'selectors' => ['{{WRAPPER}} .trad-dual-header-text-container' => 'gap:{{size}}{{unit}};',],
+                'selectors' => ['{{WRAPPER}} .trad-dual-header-secondary' => 'margin-left:{{SIZE}}{{UNIT}};',],
 
             ],
         );
@@ -365,32 +384,6 @@ class TRAD_Dual_Header extends Widget_Base {
                 ]
         );
 
-        $this->add_responsive_control(
-            'secondary_newline',
-            [
-                'label'   => esc_html__( 'Start From New Line', 'turbo-addons-elementor' ),
-                'type'    => \Elementor\Controls_Manager::CHOOSE,
-                'options' => [
-                    'row' => [
-                        'title' => esc_html__( 'Inline', 'turbo-addons-elementor' ),
-                        'icon'  => 'eicon-h-align-left',
-                    ],
-                    'column' => [
-                        'title' => esc_html__( 'New Line', 'turbo-addons-elementor' ),
-                        'icon'  => 'eicon-v-align-top',
-                    ],
-                ],
-                'default' => 'row',
-                'selectors_dictionary' => [
-                    'row'    => 'flex-direction: row;',
-                    'column' => 'flex-direction: column;',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .trad-dual-header-text-container' => '{{VALUE}}',
-                ],
-            ]
-        );
-
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
@@ -585,6 +578,90 @@ class TRAD_Dual_Header extends Widget_Base {
         $this->end_controls_tab(); //-----------------end hover tab-------------
         $this->end_controls_tabs();
         $this->end_controls_section();
+
+        // ------------------------------------Suffix Text Styling-----------------------------------------------
+        $this->start_controls_section(
+            'suffix_style_section',
+            [
+                'label' => esc_html__( 'Suffix Text', 'turbo-addons-elementor' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'suffix_typography',
+                'label'    => esc_html__( 'Typography', 'turbo-addons-elementor' ),
+                'selector' => '{{WRAPPER}} .trad-dual-header-suffix',
+            ]
+        );
+
+        $this->start_controls_tabs( 'suffix_header_style_tabs' );
+
+        $this->start_controls_tab(
+            'suffix_normal_tab',
+            [ 'label' => esc_html__( 'Normal', 'turbo-addons-elementor' ) ]
+        );
+
+        $this->add_control(
+            'suffix_text_color_type',
+            [
+                'label'   => esc_html__( 'Text Color Type', 'turbo-addons-elementor' ),
+                'type'    => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'color'    => [ 'title' => esc_html__( 'Color', 'turbo-addons-elementor' ), 'icon' => 'eicon-paint-brush' ],
+                    'gradient' => [ 'title' => esc_html__( 'Gradient', 'turbo-addons-elementor' ), 'icon' => 'eicon-barcode' ],
+                ],
+                'default' => 'color',
+                'toggle'  => false,
+            ]
+        );
+
+        $this->add_control(
+            'suffix_text_color',
+            [
+                'label'     => esc_html__( 'Text Color', 'turbo-addons-elementor' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .trad-dual-header-suffix' => 'color: {{VALUE}};',
+                ],
+                'condition' => [ 'suffix_text_color_type' => 'color' ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Background::get_type(),
+            [
+                'name'      => 'suffix_text_gradient',
+                'label'     => esc_html__( 'Text Gradient', 'turbo-addons-elementor' ),
+                'types'     => [ 'gradient' ],
+                'selector'  => '{{WRAPPER}} .trad-dual-header-suffix',
+                'condition' => [ 'suffix_text_color_type' => 'gradient' ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'suffix_hover_tab',
+            [ 'label' => esc_html__( 'Hover', 'turbo-addons-elementor' ) ]
+        );
+
+        $this->add_control(
+            'suffix_text_color_hover',
+            [
+                'label'     => esc_html__( 'Text Color', 'turbo-addons-elementor' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .trad-dual-header-suffix:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
     }
 
     protected function render() {
@@ -592,6 +669,7 @@ class TRAD_Dual_Header extends Widget_Base {
 
     $primary_text      = !empty($settings['primary_text']) ? sanitize_text_field($settings['primary_text']) : '';
     $secondary_text    = !empty($settings['secondary_text']) ? sanitize_text_field($settings['secondary_text']) : '';
+    $suffix_text       = !empty($settings['suffix_text']) ? sanitize_text_field($settings['suffix_text']) : '';
     $secondary_newline = ( !empty($settings['secondary_newline']) && $settings['secondary_newline'] === 'yes' );
     $layout_class      = $secondary_newline ? 'is-column' : 'is-row';
 
@@ -600,15 +678,13 @@ class TRAD_Dual_Header extends Widget_Base {
     $secondary_color_mode_class = ( isset($settings['secondary_text_color_type']) && $settings['secondary_text_color_type'] === 'gradient' ) 
     ? 'has-gradient-secondary' 
     : '';
+    $suffix_color_mode_class = ( isset($settings['suffix_text_color_type']) && $settings['suffix_text_color_type'] === 'gradient' )
+    ? 'has-gradient-suffix'
+    : '';
 ?>
 
-    <div class="trad-dual-header-text-container <?php echo esc_attr( $layout_class . ' ' . $color_mode_class . ' ' . $secondary_color_mode_class ); ?>">
-        <span class="trad-dual-header-primary">
-            <?php echo esc_html( $primary_text ); ?>
-        </span>
-        <span class="trad-dual-header-secondary">
-            <?php echo esc_html( $secondary_text ); ?>
-        </span>
+    <div class="trad-dual-header-text-container <?php echo esc_attr( $layout_class . ' ' . $color_mode_class . ' ' . $secondary_color_mode_class . ' ' . $suffix_color_mode_class ); ?>">
+        <span class="trad-dual-header-primary"><?php echo esc_html( $primary_text ); ?></span><span class="trad-dual-header-secondary"><?php echo esc_html( $secondary_text ); ?></span><?php if ( $suffix_text ) : ?><span class="trad-dual-header-suffix"><?php echo esc_html( $suffix_text ); ?></span><?php endif; ?>
     </div>
     <?php
 }

@@ -19,7 +19,7 @@ class Trad_Advance_Search extends Widget_Base {
     }
 
     public function get_title() {
-        return esc_html__('Advanced Search', 'turbo-addons-elementor');
+        return esc_html__('Search Field', 'turbo-addons-elementor');
     }
 
     public function get_icon() {

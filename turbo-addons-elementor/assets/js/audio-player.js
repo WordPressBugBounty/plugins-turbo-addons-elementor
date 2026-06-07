@@ -38,10 +38,12 @@
 
                     // Initialize volume slider after player is ready
                     setTimeout(function() {
-                        if (settings['audioVolume'] === 'vertical') {
-                            container_elem.find('.mejs-volume-button').addClass('vertical-volume');
+                        var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+                        var volumeLayout = isTouchDevice ? 'vertical' : settings['audioVolume'];
+                        if (volumeLayout === 'vertical') {
+                            container_elem.find('.mejs-volume-button').addClass('vertical-volume').removeClass('horizontal-volume');
                         } else {
-                            container_elem.find('.mejs-volume-button').addClass('horizontal-volume');
+                            container_elem.find('.mejs-volume-button').addClass('horizontal-volume').removeClass('vertical-volume');
                         }
                     }, 100);
                  }
@@ -62,19 +64,43 @@
              }
 
              // Apply volume layout classes
-             if (settings['audioVolume'] === 'vertical') {
+             // On touch devices, always use vertical layout (horizontal bar has no space)
+             var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+             var volumeLayout = (isTouchDevice) ? 'vertical' : settings['audioVolume'];
+
+             if (volumeLayout === 'vertical') {
                  container_elem.find('.mejs-volume-button').addClass('vertical-volume');
              } else {
                  container_elem.find('.mejs-volume-button').addClass('horizontal-volume');
              }
 
              // Handle vertical volume slider functionality
-             if (settings['audioVolume'] === 'vertical') {
-                 container_elem.find('.mejs-volume-button').on('mouseenter', function() {
-                     $(this).find('.mejs-horizontal-volume-slider').show();
-                 }).on('mouseleave', function() {
-                     $(this).find('.mejs-horizontal-volume-slider').hide();
-                 });
+             if (volumeLayout === 'vertical') {
+                 var $volumeBtn = container_elem.find('.mejs-volume-button');
+
+                 if (isTouchDevice) {
+                     // Mobile: toggle on tap
+                     $volumeBtn.on('click', function(e) {
+                         var $slider = $(this).find('.mejs-horizontal-volume-slider');
+                         if ($slider.is(':visible')) {
+                             $slider.hide();
+                         } else {
+                             $slider.show();
+                         }
+                         e.stopPropagation();
+                     });
+                     // Tap outside to close
+                     $(document).on('click.trad-volume', function() {
+                         $volumeBtn.find('.mejs-horizontal-volume-slider').hide();
+                     });
+                 } else {
+                     // Desktop: hover
+                     $volumeBtn.on('mouseenter', function() {
+                         $(this).find('.mejs-horizontal-volume-slider').show();
+                     }).on('mouseleave', function() {
+                         $(this).find('.mejs-horizontal-volume-slider').hide();
+                     });
+                 }
              }
        }
  

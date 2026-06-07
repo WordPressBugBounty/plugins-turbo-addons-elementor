@@ -265,7 +265,7 @@ class Trad_Audio_Player extends Widget_Base {
 			]
 		);
 
-		$this->add_responsive_control(
+		$this->add_control(
 			'trad_audio_player_volume_layout',
 			[
 				'label' => esc_html__('Volume Layout', 'turbo-addons-elementor'),
@@ -934,6 +934,29 @@ class Trad_Audio_Player extends Widget_Base {
 				],
 				'selectors'  => [
 					'{{WRAPPER}} .trad-audio-player .mejs-time-total'	=> 'height: {{SIZE}}{{UNIT}};'
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'trad_audio_player_progress_bar_vertical_position',
+			[
+				'label'      => esc_html__( 'Vertical Position', 'turbo-addons-elementor' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range'      => [
+					'px' => [
+						'min'  => -50,
+						'max'  => 50,
+						'step' => 1,
+					],
+				],
+				'default'    => [
+					'size' => 0,
+					'unit' => 'px',
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .trad-audio-player .mejs-time-rail' => 'margin-top: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);

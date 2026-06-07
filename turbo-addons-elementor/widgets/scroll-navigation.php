@@ -130,68 +130,6 @@ class Trad_Scroll_Navigation extends Widget_Base {
         );
 
         $this->add_responsive_control(
-            'sidebar_label_position_right',
-            [
-                'label' => __( 'Label Position', 'turbo-addons-elementor' ),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => [ 'px', '%' ],
-                'range' => [
-                    'px' => [
-                        'min' => -200,
-                        'max' => 200,
-                        'step' => 1,
-                    ],
-                    '%' => [
-                        'min' => -100,
-                        'max' => 100,
-                        'step' => 1,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 50,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .trad-scroll-nav a:hover .trad-scroll-label' => 'right: {{SIZE}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'sidebar_position' => 'right', // Only show if 'Icon' is selected
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'sidebar_label_position_left',
-            [
-                'label' => __( 'Label Position', 'turbo-addons-elementor' ),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => [ 'px', '%' ],
-                'range' => [
-                    'px' => [
-                        'min' => -200,
-                        'max' => 200,
-                        'step' => 1,
-                    ],
-                    '%' => [
-                        'min' => -100,
-                        'max' => 100,
-                        'step' => 1,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => -50,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .trad-scroll-nav a:hover .trad-scroll-label' => 'right: {{SIZE}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'sidebar_position' => 'left', // Only show if 'Icon' is selected
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
             'sidebar_scroll_navigation_widght',
             [
                 'label' => __( 'Dot Width', 'turbo-addons-elementor' ),

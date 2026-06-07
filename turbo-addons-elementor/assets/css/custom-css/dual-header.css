@@ -1,11 +1,12 @@
 .trad-dual-header-text-container {
-    display: flex;
+    display: block; /* inline text flow — secondary continues right after primary */
 }
 .trad-dual-header-text-container.is-row {
-    flex-direction: row;
+    /* inline by default — no extra needed */
 }
-.trad-dual-header-text-container.is-column {
-    flex-direction: column;
+.trad-dual-header-text-container.is-column .trad-dual-header-primary,
+.trad-dual-header-text-container.is-column .trad-dual-header-secondary {
+    display: block; /* new line mode */
 }
 .trad-dual-header-text-container .trad-dual-header-primary {
     font-size: 34px;
@@ -13,6 +14,7 @@
     transition: color 0.4s ease-in-out, 
     -webkit-text-stroke-color 0.4s ease-in-out;
     color: #333;
+    display: inline;
 }
 /* Apply gradient style only if has-gradient is present */
 .trad-dual-header-text-container .trad-dual-header-primary {
@@ -49,9 +51,10 @@
     transition: color 0.4s ease, 
     -webkit-text-stroke-color 0.4s ease;
     letter-spacing: 10px;
+    display: inline; /* flows right after primary text */
 }
-/* Gradient state (additional styles only) */
-.trad-dual-header-text-container.has-gradient .trad-dual-header-secondary {
+/* Secondary gradient — only when has-gradient-secondary class is present (NOT has-gradient) */
+.trad-dual-header-text-container.has-gradient-secondary .trad-dual-header-secondary {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -61,22 +64,39 @@
                 color 0.4s ease, 
   -webkit-text-stroke-color 0.4s ease;
 }
-.trad-dual-header-text-container.has-gradient .trad-dual-header-secondary:hover {
+.trad-dual-header-text-container.has-gradient-secondary .trad-dual-header-secondary:hover {
     background-position: right center;
 }
 
+/* Reset: when primary has gradient, secondary must NOT be transparent */
+.trad-dual-header-text-container.has-gradient .trad-dual-header-secondary {
+    -webkit-text-fill-color: unset;
+}
 
-
-.trad-dual-header-text-container.has-gradient .trad-dual-header-primary,
-.trad-dual-header-text-container.has-gradient-secondary .trad-dual-header-secondary {
-    -webkit-background-clip: text;
+.trad-dual-header-text-container.has-gradient-secondary.has-gradient .trad-dual-header-secondary {
     -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 @media(max-width:767px){
-  .elementor-element-123 .trad-dual-header-text-container { flex-direction: column; }
+  .elementor-element-123 .trad-dual-header-text-container { text-align: center; }
 }
-.trad-dual-header-text-container {
-    display: flex;
+
+/* Suffix text */
+.trad-dual-header-text-container .trad-dual-header-suffix {
+    font-size: 34px;
+    font-weight: 500;
+    color: #333;
+    display: inline;
+    transition: color 0.4s ease;
+}
+
+.trad-dual-header-text-container.is-column .trad-dual-header-suffix {
+    display: block;
+}
+
+/* Gradient suffix */
+.trad-dual-header-text-container.has-gradient-suffix .trad-dual-header-suffix {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }

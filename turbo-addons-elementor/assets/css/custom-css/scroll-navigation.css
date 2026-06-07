@@ -24,20 +24,19 @@
 }
 
 .trad-scroll-nav .trad-scroll-link {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* label positioned relative to each dot */
     color: #333;
     text-decoration: none;
     padding: 5px;
     background: transparent;
     border-radius: 50%;
     text-align: center;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: all .3s;
     width: 15px;
     height: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all .3s;
     border: 3px solid #2e319559;
 }
 
@@ -89,18 +88,36 @@
 }
 
 .trad-scroll-label {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     transition: all .3s;
-    width: 200px;
+    width: max-content;
+    white-space: nowrap;
     display: none;
+    pointer-events: none;
 }
 
-.trad-scroll-nav .trad-scroll-link:hover .trad-scroll-label {
-    right: -50px;
+/* Right sidebar: label appears to the LEFT of the dot */
+.trad-scroll-right .trad-scroll-link:hover .trad-scroll-label {
+    right: calc(100% + 8px);
+    left: auto;
     color: #000000;
     display: block;
     font-size: 16px;
     border-radius: 5px;
     padding: 5px 10px;
+    white-space: nowrap;
+}
 
+/* Left sidebar: label appears to the RIGHT of the dot */
+.trad-scroll-left .trad-scroll-link:hover .trad-scroll-label {
+    left: calc(100% + 8px);
+    right: auto;
+    color: #000000;
+    display: block;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    white-space: nowrap;
 }

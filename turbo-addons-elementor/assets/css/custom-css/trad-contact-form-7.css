@@ -34,6 +34,8 @@
 .trad-turbo-contact-form-7 input[type="text"], .trad-turbo-contact-form-7 input[type="email"], .trad-turbo-contact-form-7 input[type="url"], .trad-turbo-contact-form-7 input[type="password"], .trad-turbo-contact-form-7 input[type="search"], .trad-turbo-contact-form-7 input[type="number"], .trad-turbo-contact-form-7 input[type="tel"], .trad-turbo-contact-form-7 input[type="range"], .trad-turbo-contact-form-7 input[type="date"], .trad-turbo-contact-form-7 input[type="month"], .trad-turbo-contact-form-7 input[type="week"], .trad-turbo-contact-form-7 input[type="time"], .trad-turbo-contact-form-7 input[type="datetime"], .trad-turbo-contact-form-7 input[type="datetime-local"], .trad-turbo-contact-form-7 input[type="color"], .trad-turbo-contact-form-7 textarea {
   width: 100%;
   border: none;
+  outline: none; /* allow custom focus styles from Elementor */
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 }
 
 .trad-turbo-contact-form-7 label {
@@ -117,4 +119,10 @@
 
 .trad-turbo-contact-form-7 br { 
   display: none;
+}
+
+/* Column layout: textarea and submit span full width by default */
+.trad-turbo-contact-form-7 .wpcf7-form p:has(textarea),
+.trad-turbo-contact-form-7 .wpcf7-form p:has(input[type="submit"]) {
+  grid-column: 1 / -1;
 }

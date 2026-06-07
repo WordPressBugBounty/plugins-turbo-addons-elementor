@@ -632,24 +632,239 @@ class Trad_Contact_Form_7 extends Widget_Base {
             ]
         );
 
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[
-                'name'        => 'trad_turbo_contact_field_border',
-                'selector'    => '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-text, {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-textarea, {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-select'
-			]
-		);
+		// ---- Normal / Hover / Focus Tabs ----
+        $this->add_control(
+            'trad_turbo_field_state_separator',
+            [
+                'type'      => Controls_Manager::DIVIDER,
+            ]
+        );
 
-		$this->add_responsive_control(
+        $this->start_controls_tabs( 'trad_turbo_field_state_tabs' );
+
+        // ----- Normal -----
+        $this->start_controls_tab(
+            'trad_turbo_field_normal_tab',
+            [ 'label' => __( 'Normal', 'turbo-addons-elementor' ) ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'     => 'trad_turbo_contact_field_border',
+                'selector' => '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-text,
+                               {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-textarea,
+                               {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-select',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => 'trad_turbo_field_box_shadow_normal',
+                'selector' => '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-text,
+                               {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-textarea,
+                               {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-select',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        // ----- Hover -----
+        $this->start_controls_tab(
+            'trad_turbo_field_hover_tab',
+            [ 'label' => __( 'Hover', 'turbo-addons-elementor' ) ]
+        );
+
+        $this->add_control(
+            'trad_turbo_field_bg_hover',
+            [
+                'label'     => __( 'Background Color', 'turbo-addons-elementor' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-text:hover,
+                     {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-textarea:hover,
+                     {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-select:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'trad_turbo_field_text_color_hover',
+            [
+                'label'     => __( 'Text Color', 'turbo-addons-elementor' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-text:hover,
+                     {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-textarea:hover,
+                     {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-select:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'     => 'trad_turbo_contact_field_border_hover',
+                'selector' => '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-text:hover,
+                               {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-textarea:hover,
+                               {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-select:hover',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => 'trad_turbo_field_box_shadow_hover',
+                'selector' => '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-text:hover,
+                               {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-textarea:hover,
+                               {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-select:hover',
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        // ----- Focus (onclick) -----
+        $this->start_controls_tab(
+            'trad_turbo_field_focus_tab',
+            [ 'label' => __( 'Focus', 'turbo-addons-elementor' ) ]
+        );
+
+        $this->add_control(
+            'trad_turbo_field_bg_focus',
+            [
+                'label'     => __( 'Background Color', 'turbo-addons-elementor' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-text:focus,
+                     {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-textarea:focus,
+                     {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-select:focus' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'trad_turbo_field_text_color_focus',
+            [
+                'label'     => __( 'Text Color', 'turbo-addons-elementor' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-text:focus,
+                     {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-textarea:focus,
+                     {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-select:focus' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'     => 'trad_turbo_contact_field_border_focus',
+                'selector' => '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-text:focus,
+                               {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-textarea:focus,
+                               {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-select:focus',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => 'trad_turbo_field_box_shadow_focus',
+                'selector' => '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-text:focus,
+                               {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-textarea:focus,
+                               {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-select:focus',
+            ]
+        );
+
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+
+        $this->add_responsive_control(
 			'trad_turbo_contact_field_radius',
 			[
                 'label'      => __( 'Border Radius', 'turbo-addons-elementor' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%' ],
+                'separator'  => 'before',
                 'selectors'  => [
-					'{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-text, {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+					'{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-text,
+                     {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-textarea,
+                     {{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form-control.wpcf7-select' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 				]
 			]
+        );
+
+        // ---- Column Layout ----
+        $this->add_control(
+            'trad_turbo_cf7_column_layout_heading',
+            [
+                'label'     => __( 'Column Layout', 'turbo-addons-elementor' ),
+                'type'      => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'trad_turbo_cf7_columns',
+            [
+                'label'   => __( 'Columns', 'turbo-addons-elementor' ),
+                'type'    => Controls_Manager::SELECT,
+                'options' => [
+                    '1' => __( '1 Column (Default)', 'turbo-addons-elementor' ),
+                    '2' => __( '2 Columns', 'turbo-addons-elementor' ),
+                    '3' => __( '3 Columns', 'turbo-addons-elementor' ),
+                ],
+                'default'         => '1',
+                'tablet_default'  => '1',
+                'mobile_default'  => '1',
+                'selectors'       => [
+                    '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form' => 'display: grid; grid-template-columns: repeat({{VALUE}}, 1fr);',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'trad_turbo_cf7_column_gap',
+            [
+                'label'      => __( 'Column Gap', 'turbo-addons-elementor' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'default'    => [
+                    'unit' => 'px',
+                    'size' => 15,
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form' => 'column-gap: {{SIZE}}{{UNIT}};',
+                ],
+                'condition'  => [
+                    'trad_turbo_cf7_columns!' => '1',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'trad_turbo_cf7_full_width_fields',
+            [
+                'label'       => __( 'Full Width Fields', 'turbo-addons-elementor' ),
+                'description' => __( 'These fields will always span full width regardless of column setting.', 'turbo-addons-elementor' ),
+                'type'        => Controls_Manager::SELECT2,
+                'multiple'    => true,
+                'options'     => [
+                    'textarea' => __( 'Textarea', 'turbo-addons-elementor' ),
+                    'submit'   => __( 'Submit Button', 'turbo-addons-elementor' ),
+                ],
+                'default'     => [ 'textarea', 'submit' ],
+                'condition'   => [
+                    'trad_turbo_cf7_columns!' => '1',
+                ],
+            ]
         );
 
         $this->end_controls_section();
@@ -707,28 +922,55 @@ class Trad_Contact_Form_7 extends Widget_Base {
             ]
         );
         $this->add_responsive_control(
+            'trad_turbo_contact_button_width',
+            [
+                'label'      => __( 'Width', 'turbo-addons-elementor' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%' ],
+                'range'      => [
+                    'px' => [ 'min' => 50,  'max' => 800 ],
+                    '%'  => [ 'min' => 10,  'max' => 100 ],
+                ],
+                'default'    => [
+                    'unit' => '%',
+                    'size' => '',
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form input[type="submit"]' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
             'trad_turbo_contact_section_submit_button_alignment',
             [
                 'label'   => __( 'Alignment', 'turbo-addons-elementor' ),
-                'type'    => Controls_Manager::SELECT,
+                'type'    => Controls_Manager::CHOOSE,
                 'options' => [
-					'left'  => __( 'Button Left', 'turbo-addons-elementor' ),
-					'center'  => __( 'Button Center', 'turbo-addons-elementor' ),
-					'right'  => __( 'Button Right', 'turbo-addons-elementor' ),
-					'justify'  => __( 'Button Justify', 'turbo-addons-elementor' ),
-				],
-				'desktop_default' => 'left',
-				'tablet_default' => 'left',
-				'mobile_default' => 'center',
-				'selectors_dictionary' => [
-					'left' => 'margin-right: auto;',
-					'center' => 'margin-left: auto; margin-right: auto;',
-					'right' => 'margin-left: auto;',
-					'justify' => 'width: 100%; justify-content: center;',
-				],
-                'selectors'     => [
-                    '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form input[type="submit"]' => '{{VALUE}};'
-                ]
+                    'left'    => [
+                        'title' => __( 'Left', 'turbo-addons-elementor' ),
+                        'icon'  => 'eicon-text-align-left',
+                    ],
+                    'center'  => [
+                        'title' => __( 'Center', 'turbo-addons-elementor' ),
+                        'icon'  => 'eicon-text-align-center',
+                    ],
+                    'right'   => [
+                        'title' => __( 'Right', 'turbo-addons-elementor' ),
+                        'icon'  => 'eicon-text-align-right',
+                    ],
+                ],
+                'desktop_default' => 'left',
+                'tablet_default'  => 'left',
+                'mobile_default'  => 'center',
+                'selectors_dictionary' => [
+                    'left'   => 'margin-right: auto; margin-left: 0;',
+                    'center' => 'margin-left: auto; margin-right: auto;',
+                    'right'  => 'margin-left: auto; margin-right: 0;',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form input[type="submit"]' => 'display: block; {{VALUE}}',
+                ],
             ]
         );
     
@@ -879,20 +1121,6 @@ class Trad_Contact_Form_7 extends Widget_Base {
                 'name'           => 'trad_turbo_contact_button_box_shadow_normal',
                 'label'          => __( 'Box Shadow', 'turbo-addons-elementor' ),
                 'selector'       => '{{WRAPPER}} .trad-turbo-contact-form-7 .wpcf7-form input[type="submit"]',
-                'fields_options' => [
-                    'box_shadow_type' => [ 
-                        'default'     =>'yes' 
-                    ],
-                    'box_shadow'  => [
-                        'default' => [
-                            'horizontal' => 0,
-                            'vertical'   => 13,
-                            'blur'       => 33,
-                            'spread'     => 0,
-                            'color'      => 'rgba(51, 77, 128, 0.2)'
-                        ]
-                    ]
-                ]
             ]
         );
 

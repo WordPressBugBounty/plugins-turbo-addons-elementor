@@ -8,11 +8,6 @@
 }
 
 .trad-read-more-description {
-    max-height: 100px; /* Adjust as needed */
     overflow: hidden;
     transition: max-height 0.4s ease-in-out;
-}
-
-.trad-read-more-description.expanded {
-    max-height: 1000px; /* Adjust based on content */
 }

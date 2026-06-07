@@ -97,37 +97,37 @@ function turbo_addons_admin_page() {
              <!-- ------------------tab1-----section  1// ---------------------------->
                 <div class="trad-dashboard-sec-one">
                     <div class="trad-dashboard-sec-one-left">
-                        <h3 class="trad-dashboard-sub-heading">What's New in Version 1.8.14</h3>
+                        <h3 class="trad-dashboard-sub-heading">What's New in Version 1.8.17</h3>
                         <hr>
                         <div class="trad-updated-list">
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
                             <div class="trad-updated-list-typography">
-                                <h4>Added Free Widgets</h4>
-                                <p>Accordion Slider, Modal PopUp and Metro Grid</p>
+                                <h4>Enhancement</h4>
+                                <p>Improved widget styles, performance, and overall functionality for a better user experience.</p>
                             </div>
                         </div>
                         <hr>
                         <div class="trad-updated-list">
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
                             <div class="trad-updated-list-typography">
-                                <h4>Features</h4>
-                                <p>Template gallery and Add 20+ New Modern Templates.</p>
+                                <h4>Compatibility</h4>
+                                <p>Ensured full compatibility with WordPress 7.0 and Elementor Atomic Editor.</p>
                             </div>
                         </div>
                         <hr>
                         <div class="trad-updated-list">
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
                             <div class="trad-updated-list-typography">
-                                <h4>Updated</h4>
-                                <p>Tested and verified for full compatibility with Elementor version 4.0.2</p>
+                                <h4>Bug Fix</h4>
+                                <p>Fixed multiple widget-related bugs and addressed minor stability issues across the plugin.</p>
                             </div>
                         </div>
-
+                        <hr>
                         <div class="trad-updated-list">
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
                             <div class="trad-updated-list-typography">
-                                <h4>Templates, Block & Sections</h4>
-                                <p>Added different types of 20+ free templates, block and sections</p>
+                                <h4>Templates</h4>
+                                <p>Added new ready-made templates, blocks, and sections to the template library.</p>
                             </div>
                         </div>
                     </div>

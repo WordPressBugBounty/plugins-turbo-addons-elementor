@@ -519,6 +519,31 @@ class TRAD_Read_More extends Widget_Base {
             'selector' => '{{WRAPPER}} .trad-read-more-description',
         ]);
 
+        // Animation Speed
+        $this->add_control(
+            'read_more_animation_speed',
+            [
+                'label'      => esc_html__( 'Animation Speed', 'turbo-addons-elementor' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => [ 's' ],
+                'range'      => [
+                    's' => [
+                        'min'  => 0.1,
+                        'max'  => 2,
+                        'step' => 0.1,
+                    ],
+                ],
+                'default'    => [
+                    'size' => 0.4,
+                    'unit' => 's',
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .trad-read-more-description' => 'transition-duration: {{SIZE}}{{UNIT}};',
+                ],
+                'separator'  => 'before',
+            ]
+        );
+
         $this->end_controls_section();//---------------------------------------->
 
         //---------------------------------button style------------
@@ -700,9 +725,11 @@ class TRAD_Read_More extends Widget_Base {
             <h2 class="trad-read-more-heading"><?php echo esc_html($settings['heading']); ?></h2>
 
             <div class="trad-read-more-description-wrapper">
-            <div class="trad-read-more-description" data-full-text="<?php echo esc_attr($data_full); ?>" data-short-text="<?php echo esc_attr($short_full); ?>">
-                    <?php echo wp_kses_post($short_description); ?>
-            </div>
+                <div class="trad-read-more-description trad-read-more-collapsed"
+                     data-short="<?php echo esc_attr( wp_strip_all_tags( $short_description ) ); ?>"
+                     data-full="<?php echo esc_attr( wp_strip_all_tags( $description ) ); ?>">
+                    <?php echo wp_kses_post( $description ); ?>
+                </div>
             <button class="trad-read-more-button" 
                 data-more-text="<?php echo esc_attr($settings['button_text_more']); ?>" 
                 data-less-text="<?php echo esc_attr($settings['button_text_less']); ?>"

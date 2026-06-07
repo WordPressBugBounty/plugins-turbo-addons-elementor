@@ -3,14 +3,14 @@
  * Plugin Name: Turbo Addons Elementor
  * Plugin URI: https://turbo-addons.com/
  * Description: Turbo-Addons is towards limitless Free Elementor Addons with 90+ Elementor Free & Pro Widgets, including WooCommerce widgets, for easy customization.
- * Version: 1.8.16
+ * Version: 1.8.17
  * Author: Turbo Addons
  * Author URI: https://wp-turbo.com/
  * License: GPLv3
  * License URI: https://opensource.org/licenses/GPL-3.0
  * Text Domain: turbo-addons-elementor
- * Elementor tested up to: 4.0.8
- * Elementor Pro tested up to: 4.0.8
+ * Elementor tested up to: 4.1.1
+ * Elementor Pro tested up to: 4.1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -43,7 +43,7 @@ if ( class_exists( 'WPPulse_SDK' ) ) {
 
 // Define the free version's constant...
 if ( ! defined( 'TURBO_ADDONS_VERSION' ) ) {
-    define( 'TURBO_ADDONS_VERSION', '1.8.16' ); // Update the version as necessary
+    define( 'TURBO_ADDONS_VERSION', '1.8.17' ); // Update the version as necessary
 }
 
 /**
@@ -52,7 +52,7 @@ if ( ! defined( 'TURBO_ADDONS_VERSION' ) ) {
  */
 final class TRAD_Turbo_Addons {
 
-    const TRAD_TURBO_ADDONS_PLUGIN_VERSION = '1.8.16';
+    const TRAD_TURBO_ADDONS_PLUGIN_VERSION = '1.8.17';
     const TRAD_TURBO_ADDONS_MIN_ELEMENTOR_VERSION = '3.0.0';
     const TRAD_TURBO_ADDONS_MIN_PHP_VERSION = '7.4';
     private static $_instance = null;
@@ -87,7 +87,6 @@ final class TRAD_Turbo_Addons {
         }
         add_action( 'wp_enqueue_scripts', 'trad_enqueue_scripts_styles' );
         add_action( 'elementor/editor/after_enqueue_scripts', [$this, 'trad_after_enqueue_scripts_styles'] );
-        add_action( 'init', [ $this, 'trad_load_textdomain' ] );
         add_action( 'plugins_loaded', [ $this, 'init' ] );
         add_action( 'elementor/editor/wp_head', [ $this, 'trad_editor_icon_enqueue_scripts' ] );
         // add_action( 'elementor/frontend/before_enqueue_styles', [$this, 'trad_add_turbo_icon'], 1 );
@@ -112,7 +111,7 @@ final class TRAD_Turbo_Addons {
     private function define_constants() {
         define( 'TRAD_TURBO_ADDONS_PLUGIN_URL', trailingslashit( plugins_url( '/', __FILE__ ) ) );
         define( 'TRAD_TURBO_ADDONS_PLUGIN_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
-        define( 'TRAD_TURBO_ADDONS_PLUGIN_VERSION', '1.8.16' );
+        define( 'TRAD_TURBO_ADDONS_PLUGIN_VERSION', '1.8.17' );
 
         // Include the necessary plugin management functions if not already included
         if ( ! function_exists( 'get_plugins' ) ) {
@@ -189,14 +188,6 @@ final class TRAD_Turbo_Addons {
         // Custom JS
         wp_register_script( 'trad-news-ticker-init', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/news-ticker.js', ['jquery'], TRAD_TURBO_ADDONS_PLUGIN_VERSION, true );
     }
-    /**
-     * Load Text Domain for Translations
-     * @since 1.0.0
-     */
-    public function trad_load_textdomain() {
-        load_plugin_textdomain( 'turbo-addons-elementor', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-    }
-
     /**
      * Initialize the plugin
      * @since 1.0.0

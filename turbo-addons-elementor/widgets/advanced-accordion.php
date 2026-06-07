@@ -509,7 +509,7 @@ class TRAD_Advanced_Accordion extends Widget_Base {
                     'unit'   => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .advanced-accordion-dynamic-open' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .trad-advanceaccordion-content-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -812,10 +812,12 @@ class TRAD_Advanced_Accordion extends Widget_Base {
                 $open_class = $is_open ? ' trad-advance-accordion-open' : '';
                 ?>
                <div class="trad-advanceaccordion-content<?php echo esc_attr( $open_class ); ?>">
+                    <div class="trad-advanceaccordion-content-inner">
                     <?php
                     // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $content_html already sanitized or trusted from Elementor
                     echo $content_html;
                     ?>
+                    </div>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -827,7 +829,3 @@ class TRAD_Advanced_Accordion extends Widget_Base {
 
 // Register the widget with Elementor.
 Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Advanced_Accordion() );
-
-// add_action( 'elementor/widgets/register', function( $widgets_manager ) {
-//     $widgets_manager->register( new Advanced_Accordion() );
-// } );

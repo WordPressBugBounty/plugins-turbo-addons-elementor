@@ -105,7 +105,7 @@ class Helper {
             'google-map'               => 'Google Map',
             'event-calender'           => 'Event Calender',
             'image-compare'            => 'Image Compare',
-            'advance-search'           => 'Advance Search',
+            'advance-search'           => 'Search Field',
             'scroll-to-top'            => 'Scroll To Top',
             'scroll-navigation'        => 'Scroll Navigation',
             'cookie-consent'           => 'Cookie Consent',

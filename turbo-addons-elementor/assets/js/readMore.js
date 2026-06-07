@@ -1,26 +1,48 @@
 (function ($) {
 
     const initializeReadMoreFunctionality = function (scope) {
-        const readMoreButtons = $(scope).find('.trad-read-more-button');
-
-        readMoreButtons.each(function () {
-            const button = $(this);
-            const parent = button.closest('.trad-read-more-description-wrapper');
+        $(scope).find('.trad-read-more-button').each(function () {
+            const button      = $(this);
+            const parent      = button.closest('.trad-read-more-description-wrapper');
             const description = parent.find('.trad-read-more-description');
+            const descEl      = description[0];
+
+            const shortText = description.data('short');
+            const fullText  = description.data('full');
+
+            // Step 1: measure full height (full text is in DOM right now)
+            descEl.style.maxHeight = 'none';
+            var fullHeight = descEl.scrollHeight;
+
+            // Step 2: swap to short text, measure collapsed height
+            descEl.innerText = shortText;
+            var collapsedHeight = descEl.scrollHeight;
+
+            // Step 3: immediately put full text back, restore collapsed max-height
+            descEl.innerText = fullText;
+            descEl.style.maxHeight = collapsedHeight + 'px';
 
             button.off('click').on('click', function () {
-                const isExpanded = description.toggleClass('expanded').hasClass('expanded');
+                var isExpanded = description.hasClass('expanded');
 
-                if (isExpanded) {
-                    const icon = $('<i>').addClass(button.data('less-icon'));
-                    const text = document.createTextNode(' ' + button.data('less-text'));
-                    button.empty().append(icon).append(text);
-                    description.text(description.data('full-text'));
+                if (!isExpanded) {
+                    // EXPAND: animate to full height
+                    description.addClass('expanded');
+                    descEl.style.maxHeight = fullHeight + 'px';
+
+                    var lessIcon = $('<i>').addClass(button.data('less-icon'));
+                    button.empty().append(lessIcon).append(document.createTextNode(' ' + button.data('less-text')));
+
                 } else {
-                    const icon = $('<i>').addClass(button.data('more-icon'));
-                    const text = document.createTextNode(' ' + button.data('more-text'));
-                    button.empty().append(icon).append(text);
-                    description.text(description.data('short-text'));
+                    // COLLAPSE: animate back to collapsed height
+                    descEl.style.maxHeight = descEl.scrollHeight + 'px'; // lock first
+                    descEl.offsetHeight; // reflow
+
+                    descEl.style.maxHeight = collapsedHeight + 'px';
+                    description.removeClass('expanded');
+
+                    var moreIcon = $('<i>').addClass(button.data('more-icon'));
+                    button.empty().append(moreIcon).append(document.createTextNode(' ' + button.data('more-text')));
                 }
             });
         });

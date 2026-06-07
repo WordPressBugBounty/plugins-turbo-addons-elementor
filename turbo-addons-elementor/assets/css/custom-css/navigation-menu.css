@@ -387,10 +387,30 @@ div[class*="trad-sub-icon-"] .trad-mobile-nav-menu .menu-item-has-children>a:aft
 .trad-mobile-toggle-line {
     display: block;
     width: 100%;
+    transition: transform 0.35s ease, opacity 0.25s ease, width 0.25s ease, margin 0.35s ease;
+    transform-origin: center;
 }
 
 .trad-mobile-toggle-line:last-child {
     margin-bottom: 0 !important;
+}
+
+/* ── Animated X when open ── */
+
+/* Top line: rotate +45° */
+.trad-mobile-toggle.trad-mobile-toggle-open .trad-mobile-toggle-line:nth-child(1) {
+    transform: translateY(calc(100% + var(--toggle-line-space, 4px))) rotate(45deg);
+}
+
+/* Middle line: fade out */
+.trad-mobile-toggle.trad-mobile-toggle-open .trad-mobile-toggle-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+/* Bottom line: rotate -45° */
+.trad-mobile-toggle.trad-mobile-toggle-open .trad-mobile-toggle-line:nth-child(3) {
+    transform: translateY(calc(-100% - var(--toggle-line-space, 4px))) rotate(-45deg);
 }
 
 .trad-mobile-toggle-text {

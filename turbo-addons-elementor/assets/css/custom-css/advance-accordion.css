@@ -25,22 +25,30 @@
 }
 
 .trad-advanceaccordion-content {
- max-height: 0;
- overflow: hidden;
- opacity: 0;
- visibility: hidden;
- transition: max-height 0.35s ease, opacity 0.25s ease, visibility 0.25s ease;
-  padding: 0 16px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    visibility 0s 0.35s;
+  /* No padding here — padding lives on the inner wrapper */
 }
+
+.trad-advanceaccordion-content-inner {
+  padding: 16px; /* default padding, overridden by Elementor control */
+}
+
 /* When item is open */
 .trad-advance-accordion-item.trad-advance-accordion-open .trad-advanceaccordion-content {
   opacity: 1;
   visibility: visible;
-  max-height: 2000px; /* large enough for any content */
+  max-height: 2000px;
   transition:
-    max-height 0.45s ease,
-    opacity 0.25s ease 0.1s,
-    visibility 0s;
+    max-height 0.35s ease,
+    opacity 0.25s ease 0.05s,
+    visibility 0s 0s; /* visibility: visible immediately on open */
 }
 .trad-advance-accordion-item:not(.trad-advance-accordion-open) {
   background: transparent !important;
@@ -96,12 +104,5 @@
   padding-bottom: initial !important;
 }
 .advanced-accordion-dynamic-open{
- transform: translateY(0);
-transition: transform 0.3s ease;
-}
-.trad-advanceaccordion-content.advanced-accordion-dynamic-open{
-  transition: transform 0.3s ease;
-}
-.trad-advanceaccordion-content{
-  transition: display duration 0.3s ease, transform 0.3s ease;
+  transform: translateY(0);
 }

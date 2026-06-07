@@ -128,6 +128,10 @@
 			$mobileNavMenu.find( '.trad-mobile-toggle' ).on( 'click', function() {
 				$(this).toggleClass('trad-mobile-toggle-fx');
 
+				// Sync line spacing as CSS variable for X animation
+				var lineSpace = parseInt( $(this).find('.trad-mobile-toggle-line').css('margin-bottom') ) || 4;
+				$(this)[0].style.setProperty('--toggle-line-space', lineSpace + 'px');
+
 				if ( ! $(this).hasClass('trad-mobile-toggle-open') ) {
 					$(this).addClass('trad-mobile-toggle-open');
 

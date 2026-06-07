@@ -24,16 +24,19 @@
 
       } else {
           // Collapse smoothly
+          // Fix: set explicit pixel height BEFORE removing open class,
+          // so the closed-state transition (not the open-state one) runs.
           var currentHeight = contentEl.scrollHeight + "px";
           contentEl.style.maxHeight = currentHeight;
+          contentEl.offsetHeight; // force reflow
+
+          // Remove open class NOW so the correct CSS transition kicks in
+          $item.removeClass('trad-advance-accordion-open');
+          $content.removeClass('advanced-accordion-dynamic-open');
+
+          // Force another reflow so the transition fires from currentHeight → 0
           contentEl.offsetHeight;
           contentEl.style.maxHeight = '0px';
-
-          // 🔥 Remove after animation delay
-          setTimeout(function(){
-              $item.removeClass('trad-advance-accordion-open');
-              $content.removeClass('advanced-accordion-dynamic-open');
-          }, 350);
       }
   }
 

@@ -366,10 +366,8 @@ class Trad_Navigation_Menu extends Widget_Base {
 				'default' => 'v1',
 				'options' => [
 					'v1' => esc_html__( 'Icon 1', 'turbo-addons-elementor' ),
-					'v2' => esc_html__( 'Icon 2', 'turbo-addons-elementor' ),
-					'v3' => esc_html__( 'Icon 3', 'turbo-addons-elementor' ),
-					'v4' => esc_html__( 'Icon 4', 'turbo-addons-elementor' ),
-					'v5' => esc_html__( 'Icon 5', 'turbo-addons-elementor' ),
+					'v3' => esc_html__( 'Icon 2', 'turbo-addons-elementor' ),
+					'v4' => esc_html__( 'Icon 3', 'turbo-addons-elementor' ),
 				],
 				'prefix_class' => 'trad-mobile-toggle-',
 			]
