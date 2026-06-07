@@ -4,7 +4,7 @@ Tags: elementor addons, elementor widgets, elementor templates, free elementor a
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.8.17
+Stable tag: 1.9.0
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -252,7 +252,7 @@ Follow these steps to install Turbo Addons for Elementor on your WordPress websi
 
 == Changelog ==
 
-### Version 1.8.17
+### Version 1.9.0
 
 1. **Enhancement**: Improved widget styles, performance, and overall functionality for a better user experience.
 2. **Compatibility**: Ensured full compatibility with WordPress 7.0 and Elementor Atomic Editor.

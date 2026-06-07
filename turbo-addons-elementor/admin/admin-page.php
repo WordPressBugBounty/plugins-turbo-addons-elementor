@@ -97,7 +97,7 @@ function turbo_addons_admin_page() {
              <!-- ------------------tab1-----section  1// ---------------------------->
                 <div class="trad-dashboard-sec-one">
                     <div class="trad-dashboard-sec-one-left">
-                        <h3 class="trad-dashboard-sub-heading">What's New in Version 1.8.17</h3>
+                        <h3 class="trad-dashboard-sub-heading">What's New in Version 1.9.0</h3>
                         <hr>
                         <div class="trad-updated-list">
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
