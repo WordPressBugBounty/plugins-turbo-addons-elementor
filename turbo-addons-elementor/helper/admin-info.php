@@ -50,7 +50,7 @@ class TRAD_ADMIN_INFO
                     $addons_name = esc_html__('Turbo Addons Elementor, ', 'turbo-addons-elementor');
                     $current_user = wp_get_current_user();
 
-                    $pro_link = esc_url('https://wp-turbo.com/turbo-toolkit-bundle/');
+                    $pro_link = esc_url('https://turbo-addons.com/pricing/');
                     $pricing_link = esc_url('https://turbo-addons.com');
 
                     esc_html_e('Hello, ', 'turbo-addons-elementor');

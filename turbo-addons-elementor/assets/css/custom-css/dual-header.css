@@ -2,7 +2,9 @@
     display: block; /* inline text flow — secondary continues right after primary */
 }
 .trad-dual-header-text-container.is-row {
-    /* inline by default — no extra needed */
+    /* segments flow inline; spacing comes from natural whitespace + optional Gap control */
+    word-break: normal;
+    overflow-wrap: break-word;
 }
 .trad-dual-header-text-container.is-column .trad-dual-header-primary,
 .trad-dual-header-text-container.is-column .trad-dual-header-secondary {
@@ -50,7 +52,6 @@
     color: #0c38c9;
     transition: color 0.4s ease, 
     -webkit-text-stroke-color 0.4s ease;
-    letter-spacing: 10px;
     display: inline; /* flows right after primary text */
 }
 /* Secondary gradient — only when has-gradient-secondary class is present (NOT has-gradient) */

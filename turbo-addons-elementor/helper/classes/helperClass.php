@@ -185,10 +185,7 @@ class Helper {
                 'social-bar',
                 'cookie-consent',
             ],
-            // 'WOOCOMMERCE' => [
-            //     
-            //     'food-menu',
-            // ],
+
         ];
 
         // Return widgets data

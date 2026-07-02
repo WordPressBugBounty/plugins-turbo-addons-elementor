@@ -486,6 +486,11 @@
     border-left: 3px solid #306BE0;
 }
 
+.trad-widget-card.pro-promo-card {
+    border: 1px solid #e1dfe7;
+    border-left: 4px solid #f96401;
+}
+
 .trad-elements-tab-icon-text> {
     display: flex;
     align-items: center;
@@ -1625,24 +1630,7 @@
 .trad_go_primium_explore_btn a {
     text-decoration: none !important;
 }
-.trad_go_primium_explore_btn button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 11px 32px;
-    border: none;
-    border-radius: 50px;
-    background: linear-gradient(135deg, #2A34BF 0%, #7b2ff7 60%, #c0186c 100%);
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    cursor: pointer;
-    box-shadow: 0 4px 18px rgba(123, 47, 247, 0.35);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    position: relative;
-    overflow: hidden;
-}
+
 .trad_go_primium_explore_btn button::before {
     content: '';
     position: absolute;
@@ -1661,4 +1649,142 @@
 }
 .trad_go_primium_explore_btn button:active {
     transform: translateY(0);
+}
+
+
+/* ---------------------------------//pro elements sections./---------------------- */
+.trad-widget-card.pro-promo-card {
+    position: relative;
+    overflow: hidden; /* Clips the ribbon to the boundaries of the card */
+    cursor: pointer !important;
+}
+
+.trad-widget-card.pro-promo-card * {
+    /* Ensures clicking elements inside the card still bubbles up to the card element */
+    pointer-events: none; 
+}
+
+/* Corner Diagonal Pro Ribbon Badge */
+.turbo-pro-ribbon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    overflow: hidden;
+}
+
+.turbo-pro-ribbon span {
+    font-size: 9px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 18px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 65px;
+    display: block;
+    background: #f96401;
+    position: absolute;
+    top: 7px;
+    right: -17px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Modal Popup Core Layout Styles */
+.turbo-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.turbo-modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.turbo-modal-content {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 6px;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border: 2px solid #a389ff; /* Subtle tint border matching your view highlight */
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.turbo-modal-overlay.open .turbo-modal-content {
+    transform: translateY(0);
+}
+
+.turbo-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+    line-height: 1;
+}
+
+.turbo-modal-close:hover {
+    color: #f8dddd;
+}
+
+.turbo-modal-icon {
+    margin-bottom: 15px;
+}
+
+.turbo-modal-content h2 {
+    font-size: 28px;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+    color: #23282d;
+}
+
+.turbo-modal-content p {
+    font-size: 15px;
+    color: #666;
+    margin: 0;
+}
+
+.turbo-modal-content .pro-link {
+    color: #ff4d6d;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.turbo-modal-content .pro-link:hover {
+    text-decoration: underline;
+}
+
+/* Custom clean-up formatting to remove the default checkbox artifact */
+.trad-widget-card.pro-promo-card input[type="checkbox"].trad-dashboard-toggle-switch {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    width: auto; /* inline structural sizing logic auto config */
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
 }

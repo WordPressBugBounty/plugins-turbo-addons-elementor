@@ -275,3 +275,41 @@ document.addEventListener('DOMContentLoaded', function () {
         window.scrollTo({ top: targetTop, behavior: 'smooth' });
     });
 });
+
+// ------------------------------ pro widgets promotion js-----------------------------
+
+document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('turbo-pro-modal');
+    if (!modal) return;
+
+    const closeBtn = modal.querySelector('.turbo-modal-close');
+
+    // Find and intercept clicks on all Pro Promotional Cards
+    document.querySelectorAll('.pro-promo-card').forEach(function (card) {
+        card.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation(); // Stops any tab-switching framework events from triggering
+            
+            modal.classList.add('open');
+        });
+    });
+
+    // Close on X Button click
+    closeBtn.addEventListener('click', function () {
+        modal.classList.remove('open');
+    });
+
+    // Close when clicking outside content card on the backdrop
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) {
+            modal.classList.remove('open');
+        }
+    });
+
+    // Escape Key compatibility
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('open')) {
+            modal.classList.remove('open');
+        }
+    });
+});

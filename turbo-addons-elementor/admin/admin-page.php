@@ -83,6 +83,7 @@ function turbo_addons_admin_page() {
                 <li class="trad-tab-link tab-link active" data-tab="general-tab"><a href="#"><?php esc_html_e('Dashboard', 'turbo-addons-elementor'); ?></a></li>
                 <li class="trad-tab-link tab-link" data-tab="elements-tab"><a href="#"><?php esc_html_e('Elements', 'turbo-addons-elementor'); ?></a></li>
                 <li class="trad-tab-link tab-link" data-tab="extension-tab"><a href="#"><?php esc_html_e('Extension', 'turbo-addons-elementor'); ?></a></li>
+                <li class="trad-tab-link tab-link" data-tab="proelements-tab"><a href="#"><?php esc_html_e('Pro Elements', 'turbo-addons-elementor'); ?></a></li>
                 <li class="trad-tab-link tab-link" data-tab="premium-tab"><a href="#"><?php esc_html_e('Go Premium', 'turbo-addons-elementor'); ?></a></li>
             </ul>
         </div> 
@@ -97,7 +98,7 @@ function turbo_addons_admin_page() {
              <!-- ------------------tab1-----section  1// ---------------------------->
                 <div class="trad-dashboard-sec-one">
                     <div class="trad-dashboard-sec-one-left">
-                        <h3 class="trad-dashboard-sub-heading">What's New in Version 1.9.0</h3>
+                        <h3 class="trad-dashboard-sub-heading">What's New in Version 1.9.1</h3>
                         <hr>
                         <div class="trad-updated-list">
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
@@ -644,8 +645,71 @@ function turbo_addons_admin_page() {
                     </form>
                 </div>
             </div>
+
+            <!-- ======================tab-4===Pro Elements Tab Content
+            ================================================================================ -->
+           
+             <div id="proelements-tab" class="trad-tab-content tab-content trad-dashboard-proelements-tab <?php echo $current_tab === 'proelements-tab' ? 'active' : ''; ?>">
+                <div class="trad-widgets-section">
+
+                    <form method="post" action="#">
+                        <?php
+                        // ✅ Get extension data
+                        $all_pro_wid_data   = Turbo_Addons\ProPromotion::get_pro_promtion_lists();
+                        $pro_wid_list       = $all_pro_wid_data['pro_wid_list'];
+                        $all_pro_list       = $all_pro_wid_data['all_pro_list'];
+                        $extensions         = is_array($pro_wid_list) ? $pro_wid_list : [];
+
+                        echo '<div class="trad-widget-tabs-container">'; 
+                        echo '<div class="trad-widget-tabs-content">';
+                        echo '<div class="trad-widget-tab-content active" id="trad-pro-elements-inner-tab">';
+                        echo '<div class="trad-widget-list">';
+
+                        foreach ($all_pro_list as $pro_list_key => $pro_list_value) {
+                            $is_active = in_array($pro_list_key, $extensions, true);
+                            ?>
+                            <div class="trad-widget-card pro-promo-card" data-widget-name="<?php echo esc_attr($pro_list_value); ?>">
+        
+                                    <div class="turbo-pro-ribbon"><span><?php esc_html_e('Pro', 'turbo-addons-elementor'); ?></span></div>
+
+                                    <label class="trad-elements-tab-icon-text">
+                                        <input type="checkbox" class="extension-checkbox trad-dashboard-toggle-switch" disabled />
+                                        <span class="trad-dashboard-toggle-slider"></span>
+                                        <span class="trad-dashboard-widget-label"><?php echo esc_html($pro_list_value); ?></span>
+                                    </label>
+                                </div>
+                            <?php
+                        }
+                        ?>
+                        <div id="turbo-pro-modal" class="turbo-modal-overlay">
+                            <div class="turbo-modal-content">
+                                <button class="turbo-modal-close" type="button">&times;</button>
+                                <div class="turbo-modal-icon">
+                                    <svg viewBox="0 0 24 24" width="50" height="50" fill="none" stroke="#ff4d6d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                </div>
+                                <h2><?php esc_html_e('Go Premium', 'turbo-addons-elementor'); ?></h2>
+                                <p>
+                                    <?php esc_html_e( 'Upgrade to our', 'turbo-addons-elementor' ); ?>
+                                    <a href="<?php echo esc_url( 'https://turbo-addons.com/pricing/' ); ?>" target="_blank" class="pro-link">
+                                        <?php esc_html_e( 'Pro Version', 'turbo-addons-elementor' ); ?>
+                                    </a>
+                                    <?php esc_html_e( 'to unlock these premium features!', 'turbo-addons-elementor' ); ?>
+                                </p>
+                            </div>
+                        </div>
+
+                        <?php
+                        echo '</div>';  // .trad-widget-list
+                        echo '</div>';  // .trad-widget-tab-content
+                        echo '</div>';  // .trad-widget-tabs-content
+                        echo '</div>';  // .trad-widget-tabs-container
+                        ?>
+
+                    </form>
+                </div>
+            </div>
             
-            <!-- ======tab-4/// ========================================Premium tabs=========================
+            <!-- ======tab-5/// ========================================Premium tabs=========================
              ====================================================================================================-->
 
             <div id="premium-tab" class="trad-tab-content tab-content trad-dashboard-premium-tab <?php echo $current_tab === 'premium-tab' ? 'active' : ''; ?>">

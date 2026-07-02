@@ -102,12 +102,6 @@ function trad_get_expert_widgets_data() {
             'icon' => 'eicon-slideshow trad-icon',
             'categories' => '["' . $category . '"]',
         ],
-        [
-            'name' => 'pricing-table-pro',
-            'title' => __('Pricing Table Pro', 'turbo-addons-elementor'),
-            'icon' => 'eicon-price-table trad-icon',
-            'categories' => '["' . $category . '"]',
-        ],
         // 1.6.5
         [
             'name' => 'hero-slider',
@@ -236,7 +230,46 @@ function trad_get_expert_widgets_data() {
             'icon' => 'eicon-product-title trad-icon',
             'categories' => '["' . $category . '"]',
         ],
-       
+
+        // ---- Newly synced pro widgets (previously missing from promotion list) ----
+        [
+            'name' => 'trad-flip-book',
+            'title' => __('PDF Flip Book', 'turbo-addons-elementor'),
+            'icon' => 'eicon-library-open trad-icon',
+            'categories' => '["' . $category . '"]',
+        ],
+        [
+            'name' => 'csv-data-table',
+            'title' => __('CSV Data Table', 'turbo-addons-elementor'),
+            'icon' => 'eicon-upload trad-icon',
+            'categories' => '["' . $category . '"]',
+        ],
+
+        [
+            'name' => 'trad-advanced-search',
+            'title' => __('Advanced Search', 'turbo-addons-elementor'),
+            'icon' => 'eicon-search trad-icon',
+            'categories' => '["' . $category . '"]',
+        ],
+        [
+            'name' => 'trad-off-canvas',
+            'title' => __('Off-Canvas', 'turbo-addons-elementor'),
+            'icon' => 'eicon-sidebar trad-icon',
+            'categories' => '["' . $category . '"]',
+        ],
+        [
+            'name' => 'trad-whatsapp',
+            'title' => __('WhatsApp', 'turbo-addons-elementor'),
+            'icon' => 'eicon-commenting-o trad-icon',
+            'categories' => '["' . $category . '"]',
+        ],
+        [
+            'name' => 'trad-hotspot',
+            'title' => __('Image Hotspot', 'turbo-addons-elementor'),
+            'icon' => 'eicon-image-hotspot trad-icon',
+            'categories' => '["' . $category . '"]',
+        ],
+
         // Add additional expert widgets here
     ];
 }

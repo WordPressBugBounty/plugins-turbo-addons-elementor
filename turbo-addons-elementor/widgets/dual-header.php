@@ -145,7 +145,10 @@ class TRAD_Dual_Header extends Widget_Base {
                     'unit' => 'px',
                     'size' => 8,
                 ],
-                'selectors' => ['{{WRAPPER}} .trad-dual-header-secondary' => 'margin-left:{{SIZE}}{{UNIT}};',],
+                'selectors' => [
+                    '{{WRAPPER}} .trad-dual-header-secondary' => 'margin-left:{{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .trad-dual-header-suffix' => 'margin-left:{{SIZE}}{{UNIT}};',
+                ],
 
             ],
         );
@@ -684,7 +687,7 @@ class TRAD_Dual_Header extends Widget_Base {
 ?>
 
     <div class="trad-dual-header-text-container <?php echo esc_attr( $layout_class . ' ' . $color_mode_class . ' ' . $secondary_color_mode_class . ' ' . $suffix_color_mode_class ); ?>">
-        <span class="trad-dual-header-primary"><?php echo esc_html( $primary_text ); ?></span><span class="trad-dual-header-secondary"><?php echo esc_html( $secondary_text ); ?></span><?php if ( $suffix_text ) : ?><span class="trad-dual-header-suffix"><?php echo esc_html( $suffix_text ); ?></span><?php endif; ?>
+        <span class="trad-dual-header-primary"><?php echo esc_html( $primary_text ); ?></span> <span class="trad-dual-header-secondary"><?php echo esc_html( $secondary_text ); ?></span><?php if ( $suffix_text ) : ?> <span class="trad-dual-header-suffix"><?php echo esc_html( $suffix_text ); ?></span><?php endif; ?>
     </div>
     <?php
 }

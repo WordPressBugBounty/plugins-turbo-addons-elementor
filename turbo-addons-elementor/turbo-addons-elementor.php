@@ -3,7 +3,7 @@
  * Plugin Name: Turbo Addons Elementor
  * Plugin URI: https://turbo-addons.com/
  * Description: Turbo-Addons is towards limitless Free Elementor Addons with 90+ Elementor Free & Pro Widgets, including WooCommerce widgets, for easy customization.
- * Version: 1.9.0
+ * Version: 1.9.1
  * Author: Turbo Addons
  * Author URI: https://wp-turbo.com/
  * License: GPLv3
@@ -43,7 +43,7 @@ if ( class_exists( 'WPPulse_SDK' ) ) {
 
 // Define the free version's constant...
 if ( ! defined( 'TURBO_ADDONS_VERSION' ) ) {
-    define( 'TURBO_ADDONS_VERSION', '1.9.0' ); // Update the version as necessary
+    define( 'TURBO_ADDONS_VERSION', '1.9.1' ); // Update the version as necessary
 }
 
 /**
@@ -52,7 +52,7 @@ if ( ! defined( 'TURBO_ADDONS_VERSION' ) ) {
  */
 final class TRAD_Turbo_Addons {
 
-    const TRAD_TURBO_ADDONS_PLUGIN_VERSION = '1.9.0';
+    const TRAD_TURBO_ADDONS_PLUGIN_VERSION = '1.9.1';
     const TRAD_TURBO_ADDONS_MIN_ELEMENTOR_VERSION = '3.0.0';
     const TRAD_TURBO_ADDONS_MIN_PHP_VERSION = '7.4';
     private static $_instance = null;
@@ -79,6 +79,7 @@ final class TRAD_Turbo_Addons {
         include_once plugin_dir_path(__FILE__) . 'helper/helper.php';
         include_once plugin_dir_path(__FILE__) . 'widgets/helper/helper.php';
         require_once plugin_dir_path(__FILE__) . 'helper/classes/helperClass.php';
+        require_once plugin_dir_path(__FILE__ ) . 'admin/all-pro-widgets-list-promotion.php';
         include_once plugin_dir_path(__FILE__) . 'helper/admin-info.php';
         if ( is_admin() ) {
 
@@ -111,7 +112,7 @@ final class TRAD_Turbo_Addons {
     private function define_constants() {
         define( 'TRAD_TURBO_ADDONS_PLUGIN_URL', trailingslashit( plugins_url( '/', __FILE__ ) ) );
         define( 'TRAD_TURBO_ADDONS_PLUGIN_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
-        define( 'TRAD_TURBO_ADDONS_PLUGIN_VERSION', '1.9.0' );
+        define( 'TRAD_TURBO_ADDONS_PLUGIN_VERSION', '1.9.1' );
 
         // Include the necessary plugin management functions if not already included
         if ( ! function_exists( 'get_plugins' ) ) {
@@ -177,9 +178,27 @@ final class TRAD_Turbo_Addons {
 			'turbo-premium-promotion-script',
 			TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/admin/editor.min.js',
 			[ 'jquery'],
-			TRAD_TURBO_ADDONS_PLUGIN_PATH,
+			filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/js/admin/editor.min.js' ),
 			true
-		); 
+		);
+
+		// Pass OUR promotion widget names + pricing URL to the editor script so the
+		// upgrade-button override only applies to Turbo's own promotion widgets.
+		$promo_names = [];
+		if ( function_exists( 'trad_get_promotion_widgets_data' ) && function_exists( 'trad_get_expert_widgets_data' ) ) {
+			$all_promos  = array_merge( trad_get_promotion_widgets_data(), trad_get_expert_widgets_data() );
+			$promo_names = array_values( array_filter( array_map( function ( $w ) {
+				return isset( $w['name'] ) ? $w['name'] : null;
+			}, $all_promos ) ) );
+		}
+		wp_localize_script(
+			'turbo-premium-promotion-script',
+			'TurboPromoData',
+			[
+				'pricingUrl'   => 'https://turbo-addons.com/pricing/',
+				'widgetNames'  => $promo_names,
+			]
+		);
 	}
     public function trad_after_enqueue_scripts_styles() {
         wp_register_style('trad-ent-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/vendor/ticker/css/ent-style.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/vendor/ticker/css/ent-style.css' ), 'all' );
