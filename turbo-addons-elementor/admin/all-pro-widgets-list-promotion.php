@@ -26,16 +26,16 @@ class ProPromotion {
     'turbo-post-date' => __('Post Date', 'turbo-addons-elementor'),
     
     // Post Elements
-    'category-post-count' => __('Post Count', 'turbo-addons-elementor'),
+    'category-post-count' => __('Post Category', 'turbo-addons-elementor'),
     'post-list' => __('Post List', 'turbo-addons-elementor'),
     'advance-featured-card' => __('Advance Featured Card', 'turbo-addons-elementor'),
-    'category-filter-tab' => __('Advance Post Filter', 'turbo-addons-elementor'),
-    'list-icon' => __('List Icon', 'turbo-addons-elementor'),
+    'category-filter-tab' => __('Post Filter Tab', 'turbo-addons-elementor'),
+    'list-icon' => __('Icon List', 'turbo-addons-elementor'),
     
     // WooCommerce Elements
     'woo-product-card' => __('Woo Products Card', 'turbo-addons-elementor'),
     'woo-product-pagination' => __('WOO Product Pagination', 'turbo-addons-elementor'),
-    'woo-category' => __('WOO Category', 'turbo-addons-elementor'),
+    'woo-category' => __('WOO Category Card', 'turbo-addons-elementor'),
     'woo-mini-cart' => __('WOO Mini Cart', 'turbo-addons-elementor'),
     'woo-product-breadcrumb' => __('WOO Product Breadcrumb', 'turbo-addons-elementor'),
     'woo-product-button' => __('WOO BuyNow Button', 'turbo-addons-elementor'),
@@ -53,7 +53,7 @@ class ProPromotion {
     'woo-product-title' => __('WOO Product Title', 'turbo-addons-elementor'),
     
     // Utility Elements
-    'tour-guide' => __('Tour Guide', 'turbo-addons-elementor'),
+    'tour-guide' => __('User Walkthrough', 'turbo-addons-elementor'),
     'text-gradient' => __('Text Gradient', 'turbo-addons-elementor'),
     'csv-data-table' => __('CSV Data Table', 'turbo-addons-elementor'),
     'trad-advanced-search' => __('Advanced Search', 'turbo-addons-elementor'),

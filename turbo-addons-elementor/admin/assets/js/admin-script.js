@@ -276,19 +276,204 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+/* ============================================================
+   Templates tab search, category filter and pagination
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', function () {
+    var grid = document.getElementById('trad-tmpl-grid');
+    var searchInput = document.getElementById('trad-template-search');
+    var categoryFilter = document.getElementById('trad-template-category-filter');
+    var paginationWrap = document.getElementById('trad-tmpl-pagination');
+    var resultsCount = document.getElementById('trad-tmpl-results-count');
+    var emptyState = document.getElementById('trad-tmpl-empty');
+
+    if ( ! grid || ! searchInput || ! categoryFilter || ! paginationWrap ) return;
+
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.trad-tmpl-card'));
+    var pageSize = 10;
+    var currentPage = 1;
+    var filteredCards = cards.slice();
+
+    function normalize(value) {
+        return (value || '').toString().toLowerCase().trim();
+    }
+
+    function renderPagination(totalPages, page) {
+        paginationWrap.innerHTML = '';
+
+        if ( totalPages <= 1 ) {
+            return;
+        }
+
+        var prevBtn = document.createElement('button');
+        prevBtn.type = 'button';
+        prevBtn.className = 'trad-tmpl-page-btn';
+        prevBtn.textContent = '← Prev';
+        prevBtn.disabled = page === 1;
+        prevBtn.addEventListener('click', function () {
+            if ( page > 1 ) {
+                renderPage(page - 1);
+            }
+        });
+        paginationWrap.appendChild(prevBtn);
+
+        for ( var i = 1; i <= totalPages; i++ ) {
+            var pageBtn = document.createElement('button');
+            pageBtn.type = 'button';
+            pageBtn.className = 'trad-tmpl-page-btn';
+            if ( i === page ) {
+                pageBtn.classList.add('is-active');
+            }
+            pageBtn.textContent = i;
+            pageBtn.setAttribute('data-page', i);
+            pageBtn.addEventListener('click', function () {
+                renderPage(parseInt(this.getAttribute('data-page'), 10));
+            });
+            paginationWrap.appendChild(pageBtn);
+        }
+
+        var nextBtn = document.createElement('button');
+        nextBtn.type = 'button';
+        nextBtn.className = 'trad-tmpl-page-btn';
+        nextBtn.textContent = 'Next →';
+        nextBtn.disabled = page === totalPages;
+        nextBtn.addEventListener('click', function () {
+            if ( page < totalPages ) {
+                renderPage(page + 1);
+            }
+        });
+        paginationWrap.appendChild(nextBtn);
+    }
+
+    function renderPage(page) {
+        var totalPages = Math.max(1, Math.ceil(filteredCards.length / pageSize));
+        page = Math.min(Math.max(1, page), totalPages);
+        currentPage = page;
+
+        cards.forEach(function (card) {
+            card.style.display = 'none';
+        });
+
+        var startIndex = (page - 1) * pageSize;
+        var endIndex = startIndex + pageSize;
+
+        filteredCards.slice(startIndex, endIndex).forEach(function (card) {
+            card.style.display = 'flex';
+        });
+
+        if ( resultsCount ) {
+            if ( filteredCards.length > 0 ) {
+                resultsCount.textContent = 'Showing ' + Math.min(endIndex, filteredCards.length) + ' of ' + filteredCards.length + ' templates';
+            } else {
+                resultsCount.textContent = 'No templates found';
+            }
+        }
+
+        if ( emptyState ) {
+            emptyState.style.display = filteredCards.length > 0 ? 'none' : 'block';
+        }
+
+        renderPagination(totalPages, page);
+    }
+
+    function applyFilters() {
+        var query = normalize(searchInput.value);
+        var category = normalize(categoryFilter.value);
+
+        filteredCards = cards.filter(function (card) {
+            var cardCategory = normalize(card.getAttribute('data-category'));
+            var searchText = normalize(card.getAttribute('data-search'));
+
+            if ( category && category !== 'all' && cardCategory !== category ) {
+                return false;
+            }
+
+            if ( ! query ) {
+                return true;
+            }
+
+            return searchText.indexOf(query) !== -1;
+        });
+
+        renderPage(1);
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+    categoryFilter.addEventListener('change', applyFilters);
+    applyFilters();
+});
+
 // ------------------------------ pro widgets promotion js-----------------------------
+
+// Preview URLs for each pro widget
+const TURBO_PRO_PREVIEW_URLS = {
+    '3D Carousel': 'https://turbo-addons.com/3d-carousel/',
+    '3D Flip Box': 'https://turbo-addons.com/3d-flip-box/',
+    'PDF Flip Book': 'https://turbo-addons.com/pdf-flip-book/',
+    'Testimonial Slider': 'https://turbo-addons.com/testimonial-slider/',
+    'Hero Slider': 'https://turbo-addons.com/hero-slider/',
+    'Image Auto Scroll': 'https://turbo-addons.com/image-vertical-scrolling/',
+    'Local Date': 'https://turbo-addons.com/local-date/',
+    'Post Date': 'https://turbo-addons.com/post-date/',
+    'Post Category': 'https://turbo-addons.com/elementor-post-category/',
+    'Post List': 'https://turbo-addons.com/post-category-list/',
+    'Advance Featured Card': 'https://turbo-addons.com/advance-featured-card/',
+    'Post Filter Tab': 'https://turbo-addons.com/post-filter-tab/',
+    'Icon List': 'https://turbo-addons.com/icon-list/',
+    'Woo Products Card': 'https://turbo-addons.com/woo-products-card/',
+    'WOO Product Pagination': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO Category Card': 'https://turbo-addons.com/woo-category-card/',
+    'WOO Mini Cart': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO Product Breadcrumb': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO BuyNow Button': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO Product Add to Cart': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO Product Description': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO Product Image': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO Product Meta': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO Product Navigation': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO Product Price': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO Product Rating': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO Product Related': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO Product Short Description': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO Product Stock': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO Product Tabs': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'WOO Product Title': 'https://turbo-addons.com/product/apple-reveals-apple-watch-series-7-featuring-a-larger-more/',
+    'User Walkthrough': 'https://turbo-addons.com/user-walkthrough/',
+    'Text Gradient': 'https://turbo-addons.com/text-gradient/',
+    'CSV Data Table': 'https://turbo-addons.com/advanced-table/',
+    'Advanced Search': 'https://turbo-addons.com/smart-search-field-advanced-search-field-elementor/',
+    'Off-Canvas': 'https://turbo-addons.com/off-canvas/',
+    'WhatsApp': 'https://turbo-addons.com/whatsapp-chat/',
+    'Image Hotspot': 'https://turbo-addons.com/image-hotspot/'
+};
 
 document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('turbo-pro-modal');
     if (!modal) return;
 
     const closeBtn = modal.querySelector('.turbo-modal-close');
+    const modalTitle = document.getElementById('turbo-modal-widget-name');
+    const previewBtn = document.getElementById('turbo-modal-preview-btn');
 
     // Find and intercept clicks on all Pro Promotional Cards
     document.querySelectorAll('.pro-promo-card').forEach(function (card) {
         card.addEventListener('click', function (e) {
             e.preventDefault();
             e.stopPropagation(); // Stops any tab-switching framework events from triggering
+            
+            // Get the widget name from the card
+            const widgetName = card.getAttribute('data-widget-name');
+            
+            // Update modal title with widget name
+            if (modalTitle) {
+                modalTitle.textContent = widgetName;
+            }
+            
+            // Update preview button link
+            if (previewBtn) {
+                const previewUrl = TURBO_PRO_PREVIEW_URLS[widgetName] || 'https://turbo-addons.com/widgets/';
+                previewBtn.href = previewUrl;
+            }
             
             modal.classList.add('open');
         });
