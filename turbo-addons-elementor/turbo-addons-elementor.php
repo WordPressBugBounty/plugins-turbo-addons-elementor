@@ -3,14 +3,14 @@
  * Plugin Name: Turbo Addons Elementor
  * Plugin URI: https://turbo-addons.com/
  * Description: Turbo-Addons is towards limitless Free Elementor Addons with 90+ Elementor Free & Pro Widgets, including WooCommerce widgets, for easy customization.
- * Version: 1.9.2
+ * Version: 1.9.3
  * Author: Turbo Addons
  * Author URI: https://wp-turbo.com/
  * License: GPLv3
  * License URI: https://opensource.org/licenses/GPL-3.0
  * Text Domain: turbo-addons-elementor
- * Elementor tested up to: 4.1.1
- * Elementor Pro tested up to: 4.1.1
+ * Elementor tested up to: 4.2.4
+ * Elementor Pro tested up to: 4.2.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -43,7 +43,7 @@ if ( class_exists( 'WPPulse_SDK' ) ) {
 
 // Define the free version's constant...
 if ( ! defined( 'TURBO_ADDONS_VERSION' ) ) {
-    define( 'TURBO_ADDONS_VERSION', '1.9.2' ); // Update the version as necessary
+    define( 'TURBO_ADDONS_VERSION', '1.9.3' ); // Update the version as necessary
 }
 
 /**
@@ -52,7 +52,7 @@ if ( ! defined( 'TURBO_ADDONS_VERSION' ) ) {
  */
 final class TRAD_Turbo_Addons {
 
-    const TRAD_TURBO_ADDONS_PLUGIN_VERSION = '1.9.2';
+    const TRAD_TURBO_ADDONS_PLUGIN_VERSION = '1.9.3';
     const TRAD_TURBO_ADDONS_MIN_ELEMENTOR_VERSION = '3.0.0';
     const TRAD_TURBO_ADDONS_MIN_PHP_VERSION = '7.4';
     private static $_instance = null;
@@ -77,6 +77,7 @@ final class TRAD_Turbo_Addons {
         $this->call_main_file();
         // Include the helper file
         include_once plugin_dir_path(__FILE__) . 'helper/helper.php';
+        include_once plugin_dir_path(__FILE__) . 'helper/dynamic-url.php';
         include_once plugin_dir_path(__FILE__) . 'widgets/helper/helper.php';
         require_once plugin_dir_path(__FILE__) . 'helper/classes/helperClass.php';
         require_once plugin_dir_path(__FILE__ ) . 'admin/all-pro-widgets-list-promotion.php';
@@ -112,7 +113,7 @@ final class TRAD_Turbo_Addons {
     private function define_constants() {
         define( 'TRAD_TURBO_ADDONS_PLUGIN_URL', trailingslashit( plugins_url( '/', __FILE__ ) ) );
         define( 'TRAD_TURBO_ADDONS_PLUGIN_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
-        define( 'TRAD_TURBO_ADDONS_PLUGIN_VERSION', '1.9.2' );
+        define( 'TRAD_TURBO_ADDONS_PLUGIN_VERSION', '1.9.3' );
 
         // Include the necessary plugin management functions if not already included
         if ( ! function_exists( 'get_plugins' ) ) {
@@ -229,6 +230,7 @@ final class TRAD_Turbo_Addons {
 
         require_once plugin_dir_path(__FILE__) . 'includes/call-admin-ajax.php';
         require_once plugin_dir_path(__FILE__) . 'includes/ajax/trad-post-like-ajax.php';
+        require_once plugin_dir_path(__FILE__) . 'includes/dynamic-tags/turbo-dynamic-tags.php';
         
         
         add_action( 'elementor/init', [ $this, 'trad_init_category' ] );

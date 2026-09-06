@@ -10,3 +10,11 @@
     font-size: 12px !important;
     text-align: center !important;
 }
+
+/*------------------------------------------------------- Hide Elementor Pro upsell ------------------------------------------------------------ */
+
+/* Hide Elementor's built-in "Elementor Dynamic Content / Upgrade" teaser
+   inside the dynamic tags dropdown so only our own tags show cleanly. */
+.elementor-tags-list__teaser {
+    display: none !important;
+}

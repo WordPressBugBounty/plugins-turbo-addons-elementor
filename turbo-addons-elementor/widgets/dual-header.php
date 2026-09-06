@@ -47,6 +47,9 @@ class TRAD_Dual_Header extends Widget_Base {
                 [
                     'label' => esc_html__( 'Primary Header', 'turbo-addons-elementor' ),
                     'type' => Controls_Manager::TEXTAREA,
+                    'dynamic' => [
+                         'active' => true,
+                    ],
                     'default' => esc_html__( 'Dual Header', 'turbo-addons-elementor' ),
                 ]
         );
@@ -64,6 +67,9 @@ class TRAD_Dual_Header extends Widget_Base {
                 [
                     'label' => esc_html__( 'Secondary Header', 'turbo-addons-elementor' ),
                     'type' => Controls_Manager::TEXTAREA,
+                    'dynamic' => [
+                         'active' => true,
+                    ],
                     'default' => esc_html__( 'Magic', 'turbo-addons-elementor' ),
                 ]
         );

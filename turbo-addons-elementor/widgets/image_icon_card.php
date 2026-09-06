@@ -223,8 +223,8 @@ class TRAD_image_Icon_Card extends Widget_Base {
                 'show_external'=> true,
                 'default'      => [
                     'url'        => '',
-                    'is_external'=> true,
-                    'nofollow'   => true,
+                    'is_external'=> false,
+                    'nofollow'   => false,
                 ],
                 'condition'    => [ 'show_read_more_button' => 'yes' ],
             ]
@@ -1144,14 +1144,11 @@ class TRAD_image_Icon_Card extends Widget_Base {
 
                 //----------------Icon
                 if( 'yes' == $settings['icon_link_condition'] ) {
-                    $target = '_blank';
-                        if( !empty( $settings['link']['is_external'] ) && $settings['icon_link']['is_external'] == 'on' ) {
-                            $target = '_blank';
-                        }
-
-                        echo'<a href="'.esc_url( $settings['icon_link']['url'] ).'" target="'.esc_attr( $target ).'">';
-                    }
-                echo '<div class="trad-icon-image-card-icons ' . esc_attr($settings['image_icon_card_icon_position']) . '">';
+                    $target = ! empty( $settings['icon_link']['is_external'] ) ? '_blank' : '_self';
+                    echo '<a href="' . esc_url( $settings['icon_link']['url'] ) . '" target="' . esc_attr( $target ) . '">';
+                }
+                $icon_position_class = isset( $settings['image_icon_card_icon_position'] ) ? $settings['image_icon_card_icon_position'] : '';
+                echo '<div class="trad-icon-image-card-icons ' . esc_attr( $icon_position_class ) . '">';
                         if (!empty($settings['image_icon_card_icon'])) {
                             echo '<span>';
                                  \Elementor\Icons_Manager::render_icon($settings['image_icon_card_icon'], ['aria-hidden' => 'true']);

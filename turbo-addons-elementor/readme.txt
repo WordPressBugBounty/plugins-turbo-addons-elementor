@@ -2,9 +2,9 @@
 Contributors: TurboAddons, siraji2017, sharifok, wpanik, rabiulalam01833
 Tags: elementor addons, elementor widgets, elementor templates, free elementor addons, elementor woocommerce
 Requires at least: 5.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.9.2
+Stable tag: 1.9.3
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -251,6 +251,13 @@ Follow these steps to install Turbo Addons for Elementor on your WordPress websi
    - After making the desired changes, click `Publish` or `Update` to save.
 
 == Changelog ==
+
+### Version 1.9.3
+
+1. **New Feature**: Added native dynamic tags for Elementor — URL, text, and image tags (Site, Post, Author, Archive, Current User, Site Logo, Featured Image, and more) so widgets can use dynamic content without Elementor Pro.
+2. **New Feature**: Added WooCommerce dynamic tags — Product, Shop, Cart, Checkout, My Account, Orders, Downloads, Add to Cart URLs, and Product Image.
+3. **New Feature**: Added a hook-based dynamic URL system with support for tokens like `{home_url}`, `{post_url}`, `{cart_url}` directly inside any link field, extendable via filters.
+4. **Improvement**: Icon Button widget now supports native dynamic links alongside custom links.
 
 ### Version 1.9.2
 

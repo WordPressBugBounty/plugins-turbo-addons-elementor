@@ -75,6 +75,9 @@ class TRAD_Icon_Button extends Widget_Base {
             [
                 'label' => esc_html__( 'Link', 'turbo-addons-elementor' ),
                 'type' => Controls_Manager::URL,
+                'dynamic' => [
+                    'active' => true,
+                ],
                 'placeholder' => esc_html__( 'https://your-link.com', 'turbo-addons-elementor' ),
                 'default' => [
                     'url' => '#',
@@ -649,7 +652,11 @@ class TRAD_Icon_Button extends Widget_Base {
     
         // Sanitize and escape button attributes
         $button_text = esc_html( $settings['button_text'] );
-        $button_url = isset( $settings['link']['url'] ) ? esc_url( $settings['link']['url'] ) : '#';
+
+        // Resolve the button URL — native dynamic tags are already resolved by
+        // Elementor; this also resolves any {token} typed into the link field.
+        $button_url = trad_get_link_url( $settings['link'] );
+        $button_url = $button_url ? esc_url( $button_url ) : '#';
         $icon_position = esc_attr( $settings['icon_position'] );
     
         // Render the icon using Elementor's Icons_Manager

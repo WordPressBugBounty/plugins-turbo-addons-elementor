@@ -117,6 +117,9 @@ class TRAD_Call_To_Action_Widget extends Widget_Base {
                 'label' => esc_html__('Button URL', 'turbo-addons-elementor'),
                 'type' => Controls_Manager::URL,
                 'placeholder' => esc_html__('https://your-link.com', 'turbo-addons-elementor'),
+                'dynamic' => [
+                    'active' => true,
+                ],
                 'condition'   => [
 					'show_cta_button_one' => 'yes',
 				],
@@ -181,6 +184,9 @@ class TRAD_Call_To_Action_Widget extends Widget_Base {
                 'label' => esc_html__('Button URL', 'turbo-addons-elementor'),
                 'type' => Controls_Manager::URL,
                 'placeholder' => esc_html__('https://your-link.com', 'turbo-addons-elementor'),
+                'dynamic' => [
+                    'active' => true,
+                ],
                 'condition'   => [
                         'show_cta_button_two' => 'yes',
                     ],

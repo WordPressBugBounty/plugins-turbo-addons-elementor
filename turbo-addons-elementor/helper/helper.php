@@ -331,6 +331,9 @@ function trad_get_widget_lists() {
 
 function trad_enqueue_scripts_styles() {   
 
+    // Global widget base styles (link underline resets, etc.) — loaded on every frontend page.
+    wp_enqueue_style( 'trad-widgets-base', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/turbo-widgets-base.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/turbo-widgets-base.css' ), 'all' );
+
     // preview card
     wp_register_style( 'trad-preview-card-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/preview-card.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/preview-card.css' ), 'all' );
 
