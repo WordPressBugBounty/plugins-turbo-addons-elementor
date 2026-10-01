@@ -32,13 +32,6 @@
 
 
 }
-.trad-preview-card-divider {
-    position: relative;
-    height: 2px;
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
-
 .trad-preview-card 
 .trad-preview-card-image 
 .trad-top-price-badge {

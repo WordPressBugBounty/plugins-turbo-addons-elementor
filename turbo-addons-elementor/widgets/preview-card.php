@@ -94,7 +94,6 @@ class TRAD_Preview_Card_Widget extends Widget_Base {
 		//------------style section-----------------
 		$this->trad_register_card_style_controls(); //card Wraper
 		$this->trad_register_card_content_style_section(); //card content
-		$this->trad_register_preview_card_divider_style_section(); // card divider
 		$this->trad_register_button_style_controls();
 		$this->trad_register_badge_top_controls();
 		$this->trad_register_badge_bottom_controls();
@@ -161,18 +160,6 @@ class TRAD_Preview_Card_Widget extends Widget_Base {
 			[
 				'label' => esc_html__( 'Content', 'turbo-addons-elementor' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-		$this->add_responsive_control(
-			'show_divider',
-			[
-				'label'        => esc_html__( 'Show Divider', 'turbo-addons-elementor' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Show', 'turbo-addons-elementor' ),
-				'label_off'    => esc_html__( 'Hide', 'turbo-addons-elementor' ),
-				'return_value' => 'yes',
-				'default'      => 'yes',
 			]
 		);
 
@@ -492,9 +479,6 @@ class TRAD_Preview_Card_Widget extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .trad-preview-card:hover' => 'background-color: {{VALUE}};',
                 ],
-				'condition' => [
-					'show_divider' => 'yes',
-				],
             ]
         );
 
@@ -779,146 +763,6 @@ class TRAD_Preview_Card_Widget extends Widget_Base {
 		$this->end_controls_tabs(); //-------------------------- end content tabs
 		$this->end_controls_section(); //-------------------------end controls sections
 	}
-		// -------------------divider style------------------------------------//
-	protected function trad_register_preview_card_divider_style_section() {
-			// Style Controls
-			$this->start_controls_section(
-			'preview_card_divider_style_section',
-				[
-					'label' => esc_html__( 'Title Under Line', 'turbo-addons-elementor' ), // Escaped output
-					'tab' => Controls_Manager::TAB_STYLE,
-					'condition' => [
-					'show_divider' => 'yes',
-				],
-				]
-			);
-
-		$this->add_responsive_control(
-            'divider_background_color',
-            [
-                'label' => __('Divider Background Color', 'turbo-addons-elementor'),
-                'type' => Controls_Manager::COLOR,
-                'default' => '#001166',
-                'selectors' => [
-                    '{{WRAPPER}} .trad-preview-card-divider' => 'background-color: {{VALUE}};',
-                ],
-				'condition' => [
-					'show_divider' => 'yes',
-				],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'divider_width',
-            [
-                'label' => __('Width', 'turbo-addons-elementor'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 600,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'size' => 25,
-                    'unit' => '%',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .trad-preview-card-divider' => 'width: {{SIZE}}{{UNIT}};',
-                ],
-				'condition' => [
-					'show_divider' => 'yes',
-				],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'divider_height',
-            [
-                'label' => __('Height', 'turbo-addons-elementor'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'size' => 1,
-                    'unit' => 'px',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .trad-preview-card-divider' => 'height: {{SIZE}}{{UNIT}};',
-                ],
-				'condition' => [
-					'show_divider' => 'yes',
-				],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'divider_position_left',
-            [
-                'label' => __('offset X', 'turbo-addons-elementor'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => [
-                    'px' => [
-                        'min' => -500,
-                        'max' => 500,
-                    ],
-                    '%' => [
-                        'min' => -100,
-                        'max' => 100,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .trad-preview-card-divider' => 'left: {{SIZE}}{{UNIT}};',
-                ],
-				'condition' => [
-					'show_divider' => 'yes',
-				],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'divider_position_top',
-            [
-                'label' => __('offset Y', 'turbo-addons-elementor'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => [
-                    'px' => [
-                        'min' => -500,
-                        'max' => 500,
-                    ],
-                    '%' => [
-                        'min' => -100,
-                        'max' => 100,
-                    ],
-                ],
-				'default' => [
-                    'size' => -10,
-                    'unit' => 'px',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .trad-preview-card-divider' => 'top: {{SIZE}}{{UNIT}};',
-                ],
-				'condition' => [
-					'show_divider' => 'yes',
-				],
-            ]
-        );		
-
-		$this->end_controls_section();
-	}
-
 // ----------------------button Style Controls--------------------------
 	protected function trad_register_button_style_controls() {
 		
@@ -1485,9 +1329,6 @@ class TRAD_Preview_Card_Widget extends Widget_Base {
 			</div>
 			<div class="trad-preview-card-content">
 				<h2 class="trad-preview-card-title" <?php echo esc_attr( $this->get_render_attribute_string( 'card_title' ) ); ?>><?php echo esc_html( $settings['card_title'] ); ?></h2>
-				<?php if ( 'yes' === $settings['show_divider'] ) : ?>
-					<div class="trad-preview-card-divider"></div>
-				<?php endif; ?>
 
 				<div class="trad-preview-card-excerpt"
 					<?php echo esc_attr( $this->get_render_attribute_string( 'item_description' ) ); ?>

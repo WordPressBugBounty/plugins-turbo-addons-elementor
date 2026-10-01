@@ -214,11 +214,11 @@ if ( ! function_exists( 'trad_get_dynamic_url_token_value' ) ) {
 				break;
 
 			case 'current_date':
-				$value = wp_date( get_option( 'date_format' ) );
+				$value = date_i18n( get_option( 'date_format' ) );
 				break;
 
 			case 'current_time':
-				$value = wp_date( get_option( 'time_format' ) );
+				$value = date_i18n( get_option( 'time_format' ) );
 				break;
 
 			case 'post_excerpt':

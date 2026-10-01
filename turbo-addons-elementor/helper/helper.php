@@ -374,7 +374,7 @@ function trad_enqueue_scripts_styles() {
     //Owl Carousel
     wp_register_style( 'trad-owl-carousel-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/vendor/owl/css/owl.carousel.min.css', [], '2.3.4', 'all' );
     wp_register_script( 'trad-owl-carousel-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/vendor/owl/js/owl.carousel.min.js', [ 'jquery'], TRAD_TURBO_ADDONS_PLUGIN_PATH, true );
-    wp_register_style( 'owl-carousel-theme', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/vendor/owl/css/owl.theme.default.min.css', [''], '2.3.4', 'all' );
+    wp_register_style( 'owl-carousel-theme', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/vendor/owl/css/owl.theme.default.min.css', [], '2.3.4', 'all' );
 
     //Call to action
     wp_register_style( 'trad-call-to-action-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/call-to-action.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/call-to-action.css' ), 'all' );
@@ -417,7 +417,7 @@ function trad_enqueue_scripts_styles() {
 
     //Read More
     wp_register_style( 'trad-read-more-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/read-more.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/read-more.css' ), 'all' );
-    wp_register_script( 'trad-read-more-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/readMore.js',[ 'jquery'], TRAD_TURBO_ADDONS_PLUGIN_PATH, true );
+    wp_register_script( 'trad-read-more-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/readMore.js',[ 'jquery'], TRAD_TURBO_ADDONS_PLUGIN_VERSION, true );
 
     //Event Calender
     wp_register_style( 'trad-event-calender-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/event-calender.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/event-calender.css' ), 'all' );

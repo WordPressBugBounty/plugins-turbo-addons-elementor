@@ -34,3 +34,12 @@
 .trad-popular-post-date{
     font-size: 14px;
 }
+.trad-popular-post-meta{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.trad-popular-post-views{
+    font-size: 13px;
+    color: #777;
+}

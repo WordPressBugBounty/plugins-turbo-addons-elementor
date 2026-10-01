@@ -49,19 +49,6 @@ class Trad_Logo_Carousel extends Widget_Base {
 			)
 		);
 
-		$this->add_control(
-			'trad_logo_style',
-			array(
-				'label'   => esc_html__( 'Logo Style', 'turbo-addons-elementor' ),
-				'type'    => Controls_Manager::SELECT,
-				'default' => 'normal_logo_image',
-				'options' => array(
-					'normal_logo_image' => esc_html__( 'Normal', 'turbo-addons-elementor' ),
-					'advance_logo_image' => esc_html__( 'Advance', 'turbo-addons-elementor' ),
-				),
-			)
-		);
-
 		$repeater = new Repeater();
 
 		$repeater->add_control(
@@ -193,6 +180,19 @@ class Trad_Logo_Carousel extends Widget_Base {
 				'return_value' => 'yes',
 				'default'      => '',
 				'condition'    => [ 'rows' => '1' ],
+			)
+		);
+
+		$this->add_control(
+			'carousel_direction',
+			array(
+				'label'   => esc_html__( 'Direction', 'turbo-addons-elementor' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'left_to_right',
+				'options' => array(
+					'left_to_right' => esc_html__( 'Left to Right', 'turbo-addons-elementor' ),
+					'right_to_left' => esc_html__( 'Right to Left', 'turbo-addons-elementor' ),
+				),
 			)
 		);
 
@@ -422,6 +422,63 @@ class Trad_Logo_Carousel extends Widget_Base {
 			)
 		);
 
+		// Same height for all logos
+		$this->add_control(
+			'same_height',
+			array(
+				'label'        => esc_html__( 'Same Height', 'turbo-addons-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'turbo-addons-elementor' ),
+				'label_off'    => esc_html__( 'No', 'turbo-addons-elementor' ),
+				'return_value' => 'yes',
+				'default'      => '',
+			)
+		);
+
+		// Logo width
+		$this->add_responsive_control(
+			'logo_width',
+			array(
+				'label'      => esc_html__( 'Logo Width', 'turbo-addons-elementor' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em', '%' ),
+				'range'      => array(
+					'px' => array( 'min' => 10, 'max' => 500, 'step' => 1 ),
+					'em' => array( 'min' => 1, 'max' => 50, 'step' => 0.1 ),
+					'%'  => array( 'min' => 1, 'max' => 100, 'step' => 1 ),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .trad-carousel-logo .trad-carousel img' => 'width: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		// Grayscale logos (color on hover)
+		$this->add_control(
+			'logo_grayscale',
+			array(
+				'label'        => esc_html__( 'Grayscale (Color on Hover)', 'turbo-addons-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'turbo-addons-elementor' ),
+				'label_off'    => esc_html__( 'No', 'turbo-addons-elementor' ),
+				'return_value' => 'yes',
+				'default'      => '',
+			)
+		);
+
+		// Hover zoom
+		$this->add_control(
+			'hover_zoom',
+			array(
+				'label'        => esc_html__( 'Hover Zoom', 'turbo-addons-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'turbo-addons-elementor' ),
+				'label_off'    => esc_html__( 'No', 'turbo-addons-elementor' ),
+				'return_value' => 'yes',
+				'default'      => '',
+			)
+		);
+
 		$this->start_controls_tabs( 'tabs_logo_bg' );
 
 		$this->start_controls_tab( 'tab_logo_bg_normal', array( 'label' => esc_html__( 'Normal', 'turbo-addons-elementor' ) ) );
@@ -475,22 +532,10 @@ class Trad_Logo_Carousel extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			array(
-				'name'     => 'logo_bg_hover_advance',
-				'label'    => esc_html__( 'Background', 'turbo-addons-elementor' ),
-				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .trad-carousel-logo.advance_logo_image .trad-carousel:before, {{WRAPPER}} .trad-carousel-logo.hover-bg-gradient .trad-carousel:before',
-				'condition'=> array( 'trad_logo_style' => 'advance_logo_image' ),
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
-			array(
 				'name'      => 'logo_bg_hover_normal',
 				'label'     => esc_html__( 'Background', 'turbo-addons-elementor' ),
 				'types'     => array( 'classic', 'gradient' ),
 				'selector'  => '{{WRAPPER}} .trad-carousel-logo .trad-carousel:hover',
-				'condition' => array( 'trad_logo_style' => 'normal_logo_image' ),
 			)
 		);
 
@@ -499,7 +544,7 @@ class Trad_Logo_Carousel extends Widget_Base {
 			array(
 				'name'     => 'logo_shadow_hover',
 				'label'    => esc_html__( 'Box Shadow', 'turbo-addons-elementor' ),
-				'selector' => '{{WRAPPER}} .trad-carousel-logo.normal_logo_image .trad-carousel:hover',
+				'selector' => '{{WRAPPER}} .trad-carousel-logo .trad-carousel:hover',
 			)
 		);
 
@@ -524,60 +569,6 @@ class Trad_Logo_Carousel extends Widget_Base {
 				'label'    => esc_html__( 'Border', 'turbo-addons-elementor' ),
 				'selector' => '{{WRAPPER}} .trad-carousel-logo .trad-carousel:hover',
 			)
-		);
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab(
-			'tab_logo_bg_overlay',
-			[
-				'label'     => esc_html__( 'Overlay', 'turbo-addons-elementor' ),
-				'condition' => [ 'trad_logo_style' => 'advance_logo_image' ],
-			]
-		);
-
-		$this->add_control(
-			'overlay_direction',
-			[
-				'label'   => esc_html__( 'Overlay Direction', 'turbo-addons-elementor' ),
-				'type'    => Controls_Manager::CHOOSE,
-				'options' => [
-					'hover_from_left' => [
-						'title' => esc_html__( 'From Left', 'turbo-addons-elementor' ),
-						'icon'  => 'eicon-arrow-right',
-					],
-					'hover_from_top' => [
-						'title' => esc_html__( 'From Top', 'turbo-addons-elementor' ),
-						'icon'  => 'eicon-arrow-down',
-					],
-					'hover_from_bottom' => [
-						'title' => esc_html__( 'From Bottom', 'turbo-addons-elementor' ),
-						'icon'  => 'eicon-arrow-up',
-					],
-					'hover_from_right' => [
-						'title' => esc_html__( 'From Right', 'turbo-addons-elementor' ),
-						'icon'  => 'eicon-arrow-left',
-					],
-				],
-				'default'   => 'hover_from_bottom',
-				'toggle'    => true,
-				'condition' => [ 'trad_logo_style' => 'advance_logo_image' ],
-			]
-		);
-
-
-		// Overlay Background Control
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-				'name'      => 'overlay_bg_color',
-				'label'     => esc_html__( 'Overlay Background', 'turbo-addons-elementor' ),
-				'types'     => [ 'classic', 'gradient' ], // allow color or gradient
-				'selector'  => '{{WRAPPER}} .trad-carousel-logo.advance_logo_image .trad-carousel::before',
-				'condition' => [
-					'trad_logo_style' => 'advance_logo_image',
-				],
-			]
 		);
 
 		$this->end_controls_tab();
@@ -1018,9 +1009,11 @@ class Trad_Logo_Carousel extends Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
         $items = isset( $settings['items'] ) && is_array( $settings['items'] ) ? $settings['items'] : array();
+        // "Left to Right" = slides travel toward the right = Swiper RTL (dir="rtl").
+        $direction = ( ! empty( $settings['carousel_direction'] ) && 'right_to_left' === $settings['carousel_direction'] ) ? 'ltr' : 'rtl';
 
         $config = array(
-            'rtl'            => is_rtl(),
+            'rtl'            => ( 'rtl' === $direction ),
             'arrows'         => ( ! empty( $settings['show_arrow'] ) && 'yes' === $settings['show_arrow'] ),
             'dots'           => ( ! empty( $settings['show_dot'] ) && 'yes' === $settings['show_dot'] ),
             'autoplay'       => ( ! empty( $settings['autoplay'] ) && 'yes' === $settings['autoplay'] ),
@@ -1076,10 +1069,11 @@ class Trad_Logo_Carousel extends Widget_Base {
         $arrow_position = ! empty( $settings['arrow_pos'] ) ? $settings['arrow_pos'] : 'arrow_inside';
         $wrapper_classes = array(
             'trad-carousel-logo',
-            esc_attr( $settings['trad_logo_style'] ?? 'normal_logo_image' ),
             esc_attr( $arrow_position ),
             esc_attr( $settings['dot_style'] ?? 'dot_default' ),
-            esc_attr( $settings['overlay_direction'] ?? '' ),
+            ( ! empty( $settings['same_height'] ) && 'yes' === $settings['same_height'] ) ? 'trad-logo-equal-height' : '',
+            ( ! empty( $settings['logo_grayscale'] ) && 'yes' === $settings['logo_grayscale'] ) ? 'trad-logo-grayscale' : '',
+            ( ! empty( $settings['hover_zoom'] ) && 'yes' === $settings['hover_zoom'] ) ? 'trad-logo-hover-zoom' : '',
         );
         $widget_id = $this->get_id();
         ?>
@@ -1088,7 +1082,7 @@ class Trad_Logo_Carousel extends Widget_Base {
             id="<?php echo esc_attr( 'trad-carousel-logo-' . $widget_id ); ?>"
             data-config='<?php echo wp_json_encode( $config ); ?>'>
 
-            <div class="swiper trad-main-swiper">
+            <div class="swiper trad-main-swiper" dir="<?php echo esc_attr( $direction ); ?>">
                 <div class="swiper-wrapper">
                     <?php foreach ( $items as $item ) :
                         $title = $item['title'] ?? '';

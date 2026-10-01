@@ -192,7 +192,19 @@ class TRAD_Read_More extends Widget_Base {
                 ],
             ]
         );
-        
+
+        $this->add_control(
+            'button_icon_position',
+            [
+                'label' => esc_html__('Icon Position', 'turbo-addons-elementor'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'before',
+                'options' => [
+                    'before' => esc_html__('Before Text', 'turbo-addons-elementor'),
+                    'after'  => esc_html__('After Text', 'turbo-addons-elementor'),
+                ],
+            ]
+        );
 
         $this->end_controls_section();
 
@@ -471,7 +483,7 @@ class TRAD_Read_More extends Widget_Base {
         $this->add_responsive_control(
             'description_alignment',
             [
-                'label' => esc_html__('Descrption Alignment', 'turbo-addons-elementor'),
+                'label' => esc_html__('Description Alignment', 'turbo-addons-elementor'),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
@@ -559,6 +571,12 @@ class TRAD_Read_More extends Widget_Base {
             'selectors' => ['{{WRAPPER}} .trad-read-more-button' => 'color: {{VALUE}};'],
         ]);
 
+        $this->add_control('text_color_hover', [
+            'label' => esc_html__('Hover Text Color', 'turbo-addons-elementor'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => ['{{WRAPPER}} .trad-read-more-button:hover' => 'color: {{VALUE}};'],
+        ]);
+
         $this->add_group_control(Group_Control_Typography::get_type(), [
             'name' => 'button_typography',
             'label' => esc_html__('Typography', 'turbo-addons-elementor'),
@@ -577,6 +595,17 @@ class TRAD_Read_More extends Widget_Base {
             ]
         );
 
+        // Hover background
+        $this->add_group_control(
+            \Elementor\Group_Control_Background::get_type(),
+            [
+                'name' => 'button_background_hover',
+                'label' => __('Hover Background', 'turbo-addons-elementor'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .trad-read-more-button:hover',
+            ]
+        );
+
         // Border
         $this->add_group_control(
             \Elementor\Group_Control_Border::get_type(),
@@ -586,6 +615,13 @@ class TRAD_Read_More extends Widget_Base {
                 'selector' => '{{WRAPPER}} .trad-read-more-button',
             ]
         );
+
+        // Hover border color
+        $this->add_control('button_border_color_hover', [
+            'label' => esc_html__('Hover Border Color', 'turbo-addons-elementor'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => ['{{WRAPPER}} .trad-read-more-button:hover' => 'border-color: {{VALUE}};'],
+        ]);
 
         // Padding
         $this->add_responsive_control(
@@ -681,68 +717,87 @@ class TRAD_Read_More extends Widget_Base {
 
     protected function render() {
         $settings = $this->get_settings_for_display();
-        
-        $description = $settings['description'];
-        $words = explode(' ', $description);
-        $default_word_count = $settings['default_word_count'];
-        $short_description = implode(' ', array_slice($words, 0, $default_word_count));
 
-        $data_full = wp_strip_all_tags($description);
-        $short_full = wp_strip_all_tags($short_description);
-        ?>
-        <div class="trad-read-more-widget">
+        $description = isset( $settings['description'] ) ? $settings['description'] : '';
+        $full_html   = wp_kses_post( $description );
 
-        <?php 
-            $image_url = '';
+        // Truncate to an accurate plain-text excerpt of N words.
+        $plain_text = trim( wp_strip_all_tags( $description ) );
+        $word_count = ! empty( $settings['default_word_count'] ) ? max( 1, (int) $settings['default_word_count'] ) : 20;
+        $words      = preg_split( '/\s+/', $plain_text, -1, PREG_SPLIT_NO_EMPTY );
+        $truncated  = count( $words ) > $word_count;
+        $short_text = $truncated ? wp_trim_words( $plain_text, $word_count, '…' ) : $plain_text;
 
-            if ('yes' === $settings['show_image']) {
-                if ('custom' === $settings['image_source'] && !empty($settings['image']['url'])) {
-                    // Use custom uploaded image
-                    $image_url = esc_url($settings['image']['url']);
-                } elseif ('featured' === $settings['image_source'] && has_post_thumbnail()) {
-                    // Use Featured Image (Post Thumbnail)
-                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                } elseif ('category' === $settings['image_source']) {
-                    // Get Category Image from Custom Field
-                    $category = get_the_category();
-                    if (!empty($category)) {
-                        $category_id = $category[0]->term_id;
-                        $category_image = get_term_meta($category_id, 'category_image', true);
-                        if (!empty($category_image)) {
-                            $image_url = esc_url($category_image);
-                        }
+        $widget_id     = $this->get_id();
+        $desc_id       = 'trad-read-more-desc-' . $widget_id;
+        $heading       = isset( $settings['heading'] ) ? $settings['heading'] : '';
+        $show_heading  = ! empty( $settings['show_heading'] ) && 'yes' === $settings['show_heading'];
+        $icon_position = ! empty( $settings['button_icon_position'] ) ? $settings['button_icon_position'] : 'before';
+        $more_icon     = isset( $settings['read_more_icon']['value'] ) ? $settings['read_more_icon']['value'] : '';
+        $less_icon     = isset( $settings['read_less_icon']['value'] ) ? $settings['read_less_icon']['value'] : '';
+
+        $image_url = '';
+        if ( ! empty( $settings['show_image'] ) && 'yes' === $settings['show_image'] ) {
+            if ( 'custom' === $settings['image_source'] && ! empty( $settings['image']['url'] ) ) {
+                $image_url = esc_url( $settings['image']['url'] );
+            } elseif ( 'featured' === $settings['image_source'] && has_post_thumbnail() ) {
+                $image_url = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+            } elseif ( 'category' === $settings['image_source'] ) {
+                $category = get_the_category();
+                if ( ! empty( $category ) ) {
+                    $category_id    = $category[0]->term_id;
+                    $category_image = get_term_meta( $category_id, 'category_image', true );
+                    if ( ! empty( $category_image ) ) {
+                        $image_url = esc_url( $category_image );
                     }
                 }
             }
+        }
+        ?>
+        <div class="trad-read-more-widget">
 
-            // Display the selected image
-            if (!empty($image_url)) : ?>
+            <?php if ( ! empty( $image_url ) ) : ?>
                 <div class="trad-read-more-image">
-                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($settings['heading']); ?>">
+                    <img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $heading ); ?>">
                 </div>
             <?php endif; ?>
 
-            <h2 class="trad-read-more-heading"><?php echo esc_html($settings['heading']); ?></h2>
+            <?php if ( $show_heading && '' !== $heading ) : ?>
+                <h2 class="trad-read-more-heading"><?php echo esc_html( $heading ); ?></h2>
+            <?php endif; ?>
 
             <div class="trad-read-more-description-wrapper">
-                <div class="trad-read-more-description trad-read-more-collapsed"
-                     data-short="<?php echo esc_attr( wp_strip_all_tags( $short_description ) ); ?>"
-                     data-full="<?php echo esc_attr( wp_strip_all_tags( $description ) ); ?>">
-                    <?php echo wp_kses_post( $description ); ?>
-                </div>
-            <button class="trad-read-more-button" 
-                data-more-text="<?php echo esc_attr($settings['button_text_more']); ?>" 
-                data-less-text="<?php echo esc_attr($settings['button_text_less']); ?>"
-                data-more-icon="<?php echo esc_attr($settings['read_more_icon']['value']); ?>"
-                data-less-icon="<?php echo esc_attr($settings['read_less_icon']['value']); ?>">
-                <?php if (!empty($settings['read_more_icon']['value'])) : ?>
-                    <i class="<?php echo esc_attr($settings['read_more_icon']['value']); ?>"></i>
+                <?php if ( $truncated ) : ?>
+                    <div class="trad-read-more-description trad-read-more-collapsed"
+                         id="<?php echo esc_attr( $desc_id ); ?>">
+                        <?php echo esc_html( $short_text ); ?>
+                    </div>
+                    <div class="trad-read-more-description-full" aria-hidden="true" hidden>
+                        <?php echo $full_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $full_html is sanitized via wp_kses_post() above. ?>
+                    </div>
+                    <button type="button" class="trad-read-more-button"
+                        aria-expanded="false"
+                        aria-controls="<?php echo esc_attr( $desc_id ); ?>"
+                        data-more-text="<?php echo esc_attr( $settings['button_text_more'] ); ?>"
+                        data-less-text="<?php echo esc_attr( $settings['button_text_less'] ); ?>"
+                        data-more-icon="<?php echo esc_attr( $more_icon ); ?>"
+                        data-less-icon="<?php echo esc_attr( $less_icon ); ?>"
+                        data-icon-position="<?php echo esc_attr( $icon_position ); ?>">
+                        <?php if ( ! empty( $more_icon ) && 'before' === $icon_position ) : ?>
+                            <i class="<?php echo esc_attr( $more_icon ); ?>" aria-hidden="true"></i>
+                        <?php endif; ?>
+                        <?php echo esc_html( $settings['button_text_more'] ); ?>
+                        <?php if ( ! empty( $more_icon ) && 'after' === $icon_position ) : ?>
+                            <i class="<?php echo esc_attr( $more_icon ); ?>" aria-hidden="true"></i>
+                        <?php endif; ?>
+                    </button>
+                <?php else : ?>
+                    <div class="trad-read-more-description" id="<?php echo esc_attr( $desc_id ); ?>">
+                        <?php echo $full_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $full_html is sanitized via wp_kses_post() above. ?>
+                    </div>
                 <?php endif; ?>
-                <?php echo esc_html($settings['button_text_more']); ?>  
-            </button>
             </div>
         </div>
-        
         <?php
     }
 }

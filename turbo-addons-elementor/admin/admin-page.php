@@ -101,37 +101,37 @@ function turbo_addons_admin_page() {
              <!-- ------------------tab1-----section  1// ---------------------------->
                 <div class="trad-dashboard-sec-one">
                     <div class="trad-dashboard-sec-one-left">
-                        <h3 class="trad-dashboard-sub-heading">What's New in Version 1.9.2</h3>
+                        <h3 class="trad-dashboard-sub-heading">What's New in Version 1.9.4</h3>
                         <hr>
                         <div class="trad-updated-list">
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
                             <div class="trad-updated-list-typography">
-                                <h4>Bug Fixes</h4>
-                                <p>Fixed known issues and improved reliability across Turbo Addons widgets and dashboard features.</p>
+                                <h4>Team Slider Fix</h4>
+                                <p>Resolved the pagination and dots display issue that could prevent the slider from rendering correctly.</p>
                             </div>
                         </div>
                         <hr>
                         <div class="trad-updated-list">
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
                             <div class="trad-updated-list-typography">
-                                <h4>Compatibility</h4>
-                                <p>Updated compatibility for the latest WordPress and Elementor releases.</p>
+                                <h4>Dynamic Tags</h4>
+                                <p>Added Elementor dynamic tags for text, image, and URL fields — Post, Author, Archive, Site Logo, Featured Image, WooCommerce, and more — no Elementor Pro required.</p>
                             </div>
                         </div>
                         <hr>
                         <div class="trad-updated-list">
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
                             <div class="trad-updated-list-typography">
-                                <h4>Performance</h4>
-                                <p>Enhanced plugin stability, loading speed, and user experience.</p>
+                                <h4>Logo Carousel Direction</h4>
+                                <p>Added a new Direction control to switch the carousel between Left to Right and Right to Left.</p>
                             </div>
                         </div>
                         <hr>
                         <div class="trad-updated-list">
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
                             <div class="trad-updated-list-typography">
-                                <h4>Templates</h4>
-                                <p>Added new ready-made templates, blocks, and sections to the template library.</p>
+                                <h4>Read More Enhancements</h4>
+                                <p>Upgraded the Read More widget with accurate word-count truncation, smooth expand/collapse animation, auto-hide button, icon position, and hover styling.</p>
                             </div>
                         </div>
                     </div>

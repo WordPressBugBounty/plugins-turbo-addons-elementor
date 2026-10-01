@@ -6,8 +6,6 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Text_Shadow;
-use Elementor\Group_Control_Image_Size;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -80,7 +78,7 @@ class TRAD_Popular_Posts extends Widget_Base {
 	 * @since 1.0.0
 	 * @access protected
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 
 		$this->start_controls_section(
 			'section_query',
@@ -591,7 +589,7 @@ class TRAD_Popular_Posts extends Widget_Base {
 			]
 		);
 		$this->add_control(
-			'hr',
+			'hr_section_heading',
 			[
 				'type' => \Elementor\Controls_Manager::DIVIDER,
 			]
@@ -639,7 +637,7 @@ class TRAD_Popular_Posts extends Widget_Base {
 			]
 		);
 		$this->add_control(
-			'hr',
+			'hr_post_title',
 			[
 				'type' => \Elementor\Controls_Manager::DIVIDER,
 			]
@@ -678,7 +676,7 @@ class TRAD_Popular_Posts extends Widget_Base {
 			]
 		);
 		$this->add_control(
-			'hr',
+			'hr_post_date',
 			[
 				'type' => \Elementor\Controls_Manager::DIVIDER,
 			]
@@ -762,7 +760,7 @@ class TRAD_Popular_Posts extends Widget_Base {
 	protected function render() {
 
 		$settings = $this->get_settings_for_display();
-		$custom_text = ! empty( $settings['heading_text'] ) ? esc_html( $settings['heading_text'] ) : esc_html__( 'Popular Posts', 'turbo-addons-elementor' );
+		$custom_text = ! empty( $settings['heading_text'] ) ? $settings['heading_text'] : __( 'Popular Posts', 'turbo-addons-elementor' );
 		$post_count = ! empty( $settings['posts_per_page'] ) ? (int) $settings['posts_per_page'] : 5;
 
 		echo '<div class="trad-popular-posts-wrapper">';
@@ -775,8 +773,23 @@ class TRAD_Popular_Posts extends Widget_Base {
 		$args = [
 			'posts_per_page'      => $post_count,
 			'post_status'         => 'publish',
-			'orderby'             => 'meta_value_num',
+			'orderby'             => [
+				'meta_value_num' => 'DESC',
+				'date'           => 'DESC',
+			],
 			'meta_key'            => 'trad_post_views_count', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+			'meta_query'          => [ // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- intentional OR query to include posts with and without a view count.
+				'relation' => 'OR',
+				[
+					'key'     => 'trad_post_views_count',
+					'type'    => 'NUMERIC',
+					'compare' => 'EXISTS',
+				],
+				[
+					'key'     => 'trad_post_views_count',
+					'compare' => 'NOT EXISTS',
+				],
+			],
 			'ignore_sticky_posts' => true,
 		];
 		$recent_posts = new WP_Query( $args );
@@ -792,7 +805,7 @@ class TRAD_Popular_Posts extends Widget_Base {
 							if ( $thumbnail ) {
 								echo wp_kses_post( $thumbnail );
 							} else {
-								echo '<img src="' . esc_url( plugins_url( '../assets/images/tard-default-image.png', __FILE__ ) ) . '" class="trad-popular-post-thumb" alt="No image" />';
+								echo '<img src="' . esc_url( trad_get_placeholder_image() ) . '" class="trad-popular-post-thumb" alt="' . esc_attr__( 'No image', 'turbo-addons-elementor' ) . '" />';
 							}
 						echo '</a>';
 					}
@@ -805,14 +818,15 @@ class TRAD_Popular_Posts extends Widget_Base {
 							echo '<a href="' . esc_url( get_permalink() ) . '">' . esc_html( get_the_title() ) . '</a>';
 						echo '</div>';
 
-						//date
-						if ( empty( $settings['hide_post_date'] ) ) {
-							$views = (int) get_post_meta( get_the_ID(), 'trad_post_views_count', true );
+						// Meta (date + views) — independent of each other.
+						if ( empty( $settings['hide_post_date'] ) || empty( $settings['hide_post_views'] ) ) {
 							echo '<div class="trad-popular-post-meta">';
-								echo '<span class="trad-popular-post-date">' . esc_html( get_the_date() ) . '</span>';
+								if ( empty( $settings['hide_post_date'] ) ) {
+									echo '<span class="trad-popular-post-date">' . esc_html( get_the_date() ) . '</span>';
+								}
 								if ( empty( $settings['hide_post_views'] ) ) {
 									$views = (int) get_post_meta( get_the_ID(), 'trad_post_views_count', true );
-									echo '<span class="trad-popular-post-views"> &#x1F441; ' . esc_html( $views ) . '</span>';
+									echo '<span class="trad-popular-post-views"> &#x1F441; ' . esc_html( (string) $views ) . '</span>';
 								}
 							echo '</div>';
 						}
@@ -820,6 +834,7 @@ class TRAD_Popular_Posts extends Widget_Base {
 
 				echo '</div>';
 			}
+			wp_reset_postdata();
 			echo '</div>';
 		} else {
 			echo '<p>' . esc_html__( 'No popular posts found.', 'turbo-addons-elementor' ) . '</p>';
@@ -830,4 +845,4 @@ class TRAD_Popular_Posts extends Widget_Base {
 }
 
 // Register widget
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Popular_Posts() );
+Plugin::instance()->widgets_manager->register( new TRAD_Popular_Posts() );

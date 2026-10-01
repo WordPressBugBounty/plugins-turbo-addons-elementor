@@ -1014,114 +1014,148 @@ $this->end_controls_section();
         $this->end_controls_section();
 
         // Add Dots
-        // $this->start_controls_section(
-        //     'team_slider_nav_dot_section',
-        //     [
-        //         'label' => esc_html__('Dots', 'turbo-addons-elementor'),
-        //         'tab' => Controls_Manager::TAB_STYLE,
-        //     ]
-        // );
-        // $this->add_responsive_control(
-        //     'team_slider_dots_top',
-        //     [
-        //         'label' => esc_html__('Dots Top', 'turbo-addons-elementor'),
-        //         'type' => Controls_Manager::SLIDER,
-        //         'size_units' => ['px', 'em', '%'],
-        //         'default' => [
-        //             'unit' => '%',
-        //             'size' => 100, // Default value
-        //         ],
-        //         'range' => [
-        //             'px' => [
-        //                 'min' => -500,
-        //                 'max' => 500,
-        //                 'step' => 1,
-        //             ],
-        //             'em' => [
-        //                 'min' => -10,
-        //                 'max' => 10,
-        //                 'step' => 0.1,
-        //             ],
-        //             '%' => [
-        //                 'min' => -100,
-        //                 'max' => 100,
-        //                 'step' => 1,
-        //             ],
-        //         ],
-        //         'selectors' => [
-        //             '{{WRAPPER}} .owl-dots' => 'position: absolute; top: {{SIZE}}{{UNIT}};', // Apply the to owl-dots
-        //         ],
-        //     ]
-        // );
+        $this->start_controls_section(
+            'team_slider_nav_dot_section',
+            [
+                'label' => esc_html__('Dots', 'turbo-addons-elementor'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
 
-        // $this->add_responsive_control(
-        //     'team_slider_dots_left',
-        //     [
-        //         'label' => esc_html__('Dots Left', 'turbo-addons-elementor'),
-        //         'type' => Controls_Manager::SLIDER,
-        //         'size_units' => ['px', 'em', '%'],
-        //         'default' => [
-        //             'unit' => '%',
-        //             'size' => 48, // Default value
-        //         ],
-        //         'range' => [
-        //             'px' => [
-        //                 'min' => -500,
-        //                 'max' => 500,
-        //                 'step' => 1,
-        //             ],
-        //             'em' => [
-        //                 'min' => -10,
-        //                 'max' => 10,
-        //                 'step' => 0.1,
-        //             ],
-        //             '%' => [
-        //                 'min' => -100,
-        //                 'max' => 100,
-        //                 'step' => 1,
-        //             ],
-        //         ],
-        //         'selectors' => [
-        //             '{{WRAPPER}} .owl-dots' => 'position: absolute; left: {{SIZE}}{{UNIT}};', // Apply the to owl-dots
-        //         ],
-        //     ]
-        // );
+        $this->add_control(
+            'team_slider_dots_display',
+            [
+                'label' => esc_html__('Show Dots', 'turbo-addons-elementor'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'turbo-addons-elementor'),
+                'label_off' => esc_html__('No', 'turbo-addons-elementor'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
 
-        // $this->add_control(
-        //     'team_slider_dots_background_color',
-        //     [
-        //         'label' => esc_html__('Dots Background Color', 'turbo-addons-elementor'),
-        //         'type' => Controls_Manager::COLOR,
-        //         'selectors' => [
-        //             '{{WRAPPER}} .owl-dots button' => 'background-color: {{VALUE}};',
-        //         ],
-        //     ]
-        // );
+        $this->add_responsive_control(
+            'team_slider_dots_top',
+            [
+                'label' => esc_html__('Dots Top', 'turbo-addons-elementor'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', '%'],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 0,
+                ],
+                'range' => [
+                    'px' => [
+                        'min' => -500,
+                        'max' => 500,
+                        'step' => 1,
+                    ],
+                    'em' => [
+                        'min' => -10,
+                        'max' => 10,
+                        'step' => 0.1,
+                    ],
+                    '%' => [
+                        'min' => -100,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .owl-dots' => 'margin-top: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [ 'team_slider_dots_display' => 'yes' ],
+            ]
+        );
 
-        // $this->add_control(
-        //     'team_slider_active_dots_background_color',
-        //     [
-        //         'label' => esc_html__('Active Dots Background Color', 'turbo-addons-elementor'),
-        //         'type' => Controls_Manager::COLOR,
-        //         'selectors' => [
-        //             '{{WRAPPER}} .owl-dots button.active' => 'background-color: {{VALUE}};',
-        //         ],
-        //     ]
-        // );
+        $this->add_responsive_control(
+            'team_slider_dots_left',
+            [
+                'label' => esc_html__('Dots Left', 'turbo-addons-elementor'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', '%'],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 0,
+                ],
+                'range' => [
+                    'px' => [
+                        'min' => -500,
+                        'max' => 500,
+                        'step' => 1,
+                    ],
+                    'em' => [
+                        'min' => -10,
+                        'max' => 10,
+                        'step' => 0.1,
+                    ],
+                    '%' => [
+                        'min' => -100,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .owl-dots' => 'margin-left: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [ 'team_slider_dots_display' => 'yes' ],
+            ]
+        );
 
-        // $this->add_control(
-        //     'team_slider_dots_display',
-        //     [
-        //         'label' => esc_html__('Show Dots', 'turbo-addons-elementor'),
-        //         'type' => Controls_Manager::SWITCHER,
-        //         'label_on' => esc_html__('Yes', 'turbo-addons-elementor'),
-        //         'label_off' => esc_html__('No', 'turbo-addons-elementor'),
-        //         'return_value' => 'yes',
-        //         'default' => 'yes',
-        //     ]
-        // );
+        $this->add_responsive_control(
+            'team_slider_dots_size',
+            [
+                'label' => esc_html__('Dots Size', 'turbo-addons-elementor'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'range' => [
+                    'px' => [
+                        'min' => 4,
+                        'max' => 50,
+                        'step' => 1,
+                    ],
+                    'em' => [
+                        'min' => 0.2,
+                        'max' => 3,
+                        'step' => 0.1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 12,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .owl-dots button.owl-dot' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [ 'team_slider_dots_display' => 'yes' ],
+            ]
+        );
 
-        // $this->end_controls_section();
+        $this->add_control(
+            'team_slider_dots_background_color',
+            [
+                'label' => esc_html__('Dots Background Color', 'turbo-addons-elementor'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .owl-dots button' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [ 'team_slider_dots_display' => 'yes' ],
+            ]
+        );
+
+        $this->add_control(
+            'team_slider_active_dots_background_color',
+            [
+                'label' => esc_html__('Active Dots Background Color', 'turbo-addons-elementor'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .owl-dots button.active' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [ 'team_slider_dots_display' => 'yes' ],
+            ]
+        );
+
+        $this->end_controls_section();
 
         $this->start_controls_section(
             'team_slider_animation_section',
@@ -1167,6 +1201,7 @@ $this->end_controls_section();
     $settings = $this->get_settings_for_display();
     //image zoomin animation
     $zoom_enabled = ( isset( $settings['enable_image_zoom'] ) && $settings['enable_image_zoom'] === 'yes' ) ? 'trad-zoom-active' : '';
+    $show_dots = isset( $settings['team_slider_dots_display'] ) ? $settings['team_slider_dots_display'] : 'yes';
     $team_responsive = [];
 
     if ( ! empty( $settings['team_slider_responsive_items'] ) ) {
@@ -1276,7 +1311,7 @@ $this->end_controls_section();
                 autoplayHoverPause: <?php echo ($settings['team_slider_autoplay_hover_pause'] === 'yes') ? 'true' : 'false'; ?>,
                 smartSpeed: <?php echo isset($settings['team_slider_animation_speed']['size']) ? intval($settings['team_slider_animation_speed']['size']) : 600; ?>,
                 nav: <?php echo esc_js( $settings['team_slider_nav_display'] === 'yes' ? 'true' : 'false' ); ?>,
-                dots: <?php echo esc_js( $settings['team_slider_dots_display'] === 'yes' ? 'true' : 'false' ); ?>,
+                dots: <?php echo esc_js( $show_dots === 'yes' ? 'true' : 'false' ); ?>,
                 navText: [
                     '<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>',
                     '<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>'

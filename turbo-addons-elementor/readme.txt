@@ -4,7 +4,7 @@ Tags: elementor addons, elementor widgets, elementor templates, free elementor a
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.9.3
+Stable tag: 1.9.4
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -29,8 +29,20 @@ Turbo Addons is your all-in-one free elementor addons to build stunning, fast, a
 *  Full design control with Elementors interface
 * Lightweight and performance-optimized
 * Compatible with both free and Pro Elementor
+* Elementor Pro-style dynamic content (text, image & URL tags) — free forever
 
 Whether you're a designer, developer, or business owner  Turbo Addons gives you everything you need to build better websites, all in one place.
+
+## Dynamic Content (Text, Image & URL) — An Elementor Pro Feature, Now Free
+
+Stop paying for Elementor Pro just to use dynamic tags. Turbo Addons brings the full dynamic-tags experience to the free Elementor editor with **47+ native dynamic tags** (35+ core tags + WooCommerce).
+
+* **Dynamic Text** — Post Title, Post Excerpt, Post Date, Post Time, Post Categories, Post Tags, Author Name, Author Bio, Archive Title, Site Name, Site Tagline, Admin Email, Current Year, Current Date/Time, Current User Name/Email, and more.
+* **Dynamic Images** — Site Logo, Featured Image, Author Avatar, and Current User Avatar.
+* **Dynamic URLs** — Home, Site, Current Page, Post, Author, Login, Logout, Register, Admin, plus WooCommerce Product, Shop, Cart, Checkout, My Account, Orders, Downloads, and Add to Cart URLs.
+* **WooCommerce** — Product Image and every key store URL, ready for your shop.
+
+Insert a dynamic tag into any compatible text, image, or link field and the content updates automatically — personalized, always-fresh pages without writing a single line of code.
 
 ## Our Latest Templates
 
@@ -251,6 +263,13 @@ Follow these steps to install Turbo Addons for Elementor on your WordPress websi
    - After making the desired changes, click `Publish` or `Update` to save.
 
 == Changelog ==
+
+### Version 1.9.4
+
+1. **Bug Fix**: Team Slider — fixed the dots/pagination display issue that could prevent the slider from rendering.
+2. **New Feature**: Added Elementor dynamic tags for text, image, and URL fields (Post, Author, Archive, Current User, Site Logo, Featured Image, and WooCommerce) — no Elementor Pro required.
+3. **New Feature**: Logo Carousel — added a Direction control (Left to Right / Right to Left).
+4. **Improvement**: Read More widget — updated with accurate word-count truncation, smooth expand/collapse animation, auto-hide button, icon position, and hover styling.
 
 ### Version 1.9.3
 

@@ -3,6 +3,10 @@
     margin: auto;
 }
 
+.trad-team-slider-wrapper-main {
+    position: relative;
+}
+
 .trad-team-slider .owl-nav {
   position: absolute;
   top: 50%;

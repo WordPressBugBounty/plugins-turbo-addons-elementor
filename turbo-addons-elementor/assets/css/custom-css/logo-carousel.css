@@ -46,27 +46,6 @@
 }
 
 /* ==============================
-   ✅ HOVER OVERLAY
-   ============================== */
-.trad-carousel-logo.advance_logo_image .trad-carousel::before {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(315deg, #f2709c 0%, #fe8f75 60%);
-    transition: all 0.4s ease-in-out;
-    opacity: 0;
-    z-index: 1;
-}
-
-.trad-carousel-logo.advance_logo_image .trad-carousel:hover::before {
-    top: 0;
-    opacity: 1;
-}
-
-/* ==============================
    ✅ NAVIGATION ARROWS
    ============================== */
 .trad-carousel-logo .swiper-navigation-button {
@@ -230,57 +209,44 @@
 }
 
 /* ==============================
-   ✅ ADVANCE LOGO IMAGE - OVERLAY DIRECTIONS
+   ✅ SAME HEIGHT LOGOS
    ============================== */
-
-/* Base overlay layer */
-.trad-carousel-logo.advance_logo_image .trad-carousel::before {
-    content: "";
-    position: absolute;
-    width: 100%;
+.trad-carousel-logo.trad-logo-equal-height .swiper-wrapper {
+    align-items: stretch;
+}
+.trad-carousel-logo.trad-logo-equal-height .trad-carousel-item {
+    display: flex;
+}
+.trad-carousel-logo.trad-logo-equal-height .trad-carousel {
     height: 100%;
-    transition: all 0.5s ease-in-out;
-    opacity: 0;
-    z-index: 1;
+}
+.trad-carousel-logo.trad-logo-equal-height .content-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.trad-carousel-logo.trad-logo-equal-height .content-image img {
+    height: auto !important;
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
 }
 
-/* ----- From Bottom ----- */
-.trad-carousel-logo.hover_from_bottom .trad-carousel::before {
-    top: 100%;
-    left: 0;
+/* ==============================
+   ✅ GRAYSCALE + HOVER ZOOM
+   ============================== */
+.trad-carousel-logo.trad-logo-grayscale .trad-carousel img {
+    filter: grayscale(1);
 }
-.trad-carousel-logo.hover_from_bottom .trad-carousel:hover::before {
-    top: 0;
-    opacity: 1;
+.trad-carousel-logo.trad-logo-grayscale .trad-carousel:hover img {
+    filter: grayscale(0);
 }
-
-/* ----- From Top ----- */
-.trad-carousel-logo.hover_from_top .trad-carousel::before {
-    top: -100%;
-    left: 0;
+.trad-carousel-logo.trad-logo-hover-zoom .trad-carousel .content-image {
+    transition: transform 0.3s ease;
 }
-.trad-carousel-logo.hover_from_top .trad-carousel:hover::before {
-    top: 0;
-    opacity: 1;
-}
-
-/* ----- From Left ----- */
-.trad-carousel-logo.hover_from_left .trad-carousel::before {
-    top: 0;
-    left: -100%;
-}
-.trad-carousel-logo.hover_from_left .trad-carousel:hover::before {
-    left: 0;
-    opacity: 1;
-}
-
-/* ----- From Right ----- */
-.trad-carousel-logo.hover_from_right .trad-carousel::before {
-    top: 0;
-    left: 100%;
-}
-.trad-carousel-logo.hover_from_right .trad-carousel:hover::before {
-    left: 0;
-    opacity: 1;
+.trad-carousel-logo.trad-logo-hover-zoom .trad-carousel:hover .content-image {
+    transform: scale(1.08);
 }
 

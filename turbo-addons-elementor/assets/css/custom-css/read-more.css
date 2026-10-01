@@ -1,6 +1,12 @@
-.trad-read-more-button{
- background-color: #2e3192;
- border: none;
+.trad-read-more-button {
+    background-color: #2e3192;
+    border: none;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .trad-read-more-widget {
@@ -10,4 +16,9 @@
 .trad-read-more-description {
     overflow: hidden;
     transition: max-height 0.4s ease-in-out;
+}
+
+/* Hidden rich-content copy used by the JS as the expanded template. */
+.trad-read-more-description-full {
+    display: none !important;
 }

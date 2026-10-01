@@ -1,5 +1,4 @@
 <?php
-
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Icons_Manager;
@@ -266,71 +265,6 @@ class TRAD_Info_Box extends Widget_Base {
                 'toggle' => true,
             ]
         );
-
-
-        // Vertical Alignment (only when row or row-reverse)
-        // $this->add_responsive_control(
-        //     'icon_image_vertical_alignment',
-        //     [
-        //         'label'   => esc_html__( 'Image/Icon Vertical Alignment', 'turbo-addons-elementor' ),
-        //         'type'    => \Elementor\Controls_Manager::SLIDER,
-        //         'default' => [
-        //             'unit' => ['px','%'],
-        //             'size' => 0,
-        //         ],
-        //         'range'   => [
-        //             'px' => [
-        //                 'min' => -100,
-        //                 'max' => 100,
-        //                 'step' => 1,
-        //             ],
-        //         ],
-        //         'selectors' => [
-        //             '{{WRAPPER}} .trad-infobox-image img'  => 'top:{{VALUE}};',
-        //             '{{WRAPPER}} .info-box-icon-box'       => 'position:relative; top:{{VALUE}};',
-        //         ],
-        //         'condition' => [
-        //             'info_box_image_position' => [ 'row', 'row-reverse' ], // Only active when image position is row or row-reverse
-        //         ],
-        //         'toggle' => true,
-        //     ]
-        // );
-    //   $this->add_responsive_control(
-    //         'icon_image_vertical_alignment',
-    //         [
-    //             'label' => esc_html__('Image/Icon Vertical Alignment', 'turbo-addons-elementor'),
-    //             'type' => Controls_Manager::SLIDER,
-    //             'size_units' => ['px', '%', 'em'],
-    //             'default' => [
-    //                 'size' => 0,
-    //                 'unit' => 'px',
-    //             ],
-    //             'range' => [
-    //                 'px' => [
-    //                     'min' => -100,  // Minimum value (moves the element upwards)
-    //                     'max' => 100,   // Maximum value (moves the element downwards)
-    //                     'step' => 1,    // Step size (1px increment)
-    //                 ],
-    //                 'percent' => [
-    //                     'min' => -100,
-    //                     'max' => 100,
-    //                     'step' => 1,
-    //                 ],
-    //                 'em' => [
-    //                     'min' => -10,
-    //                     'max' => 10,
-    //                     'step' => 0.1,
-    //                 ],
-    //             ],
-    //             'selectors' => [
-    //                 '{{WRAPPER}} .trad-infobox-image img'  => 'top:{{VALUE}} !important;',
-    //                 '{{WRAPPER}} .info-box-icon-box'       => 'transform: translateY({{VALUE}});',
-    //             ],
-    //             'condition' => [
-    //                 'info_box_image_position' => [ 'row', 'row-reverse' ], 
-    //             ],
-    //         ]
-    //     );
 
 
         $this->add_responsive_control(
@@ -960,7 +894,7 @@ class TRAD_Info_Box extends Widget_Base {
 
         // description color control//
         $this->start_controls_tabs(
-			'heading_style_tabs'
+			'description_style_tabs'
             );
 
         //---------normal------------
