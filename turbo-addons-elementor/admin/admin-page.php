@@ -53,22 +53,19 @@ function turbo_addons_admin_page() {
         <div class="trad-dashboard-top-banner-container">
             <div class="trad-dashboard-top-banner-container-60">
                 <span class="trad-top-banner-eyebrow">&#9889; New &mdash; Turbo Addons Pro</span>
-                <p>Now available with full <strong>WooCommerce support with custom product pages.</strong> Get 90+ widgets and 200+ ready templates to speed up your design process.</p>
-                <p>Upgrade to <strong>Turbo Addons Pro</strong> and unlock the full potential!
-                    <a class="trad-dashboard-top-message-button" href="https://turbo-addons.com/pricing/" target="_blank">
-                        &#9889; Upgrade Now
-                    </a>
-                </p>
+                <h2 class="trad-top-banner-title"><?php esc_html_e( 'Full WooCommerce support is here', 'turbo-addons-elementor' ); ?></h2>
+                <p class="trad-top-banner-text"><?php esc_html_e( 'Custom product pages, 90+ widgets, and 200+ ready templates to speed up your design process.', 'turbo-addons-elementor' ); ?></p>
+                <a class="trad-dashboard-top-message-button" href="https://turbo-addons.com/pricing/" target="_blank" rel="noopener noreferrer">
+                    &#9889; <?php esc_html_e( 'Upgrade Now', 'turbo-addons-elementor' ); ?>
+                </a>
             </div>
-            
+
             <div class="trad-dashboard-top-banner-container-40">
                 <img class="turbo-dashboard-banner-add" src="<?php echo esc_url( plugin_dir_url( __FILE__ ) . 'assets/images/h_and_f_promotion.webp' ); ?>" alt="<?php echo esc_attr__( 'Header Footer Builder', 'turbo-addons-elementor' ); ?>">
                 <a href="https://wordpress.org/plugins/header-footer-builder-for-elementor/" target="_blank" rel="noopener noreferrer" class="trad-hf-download-btn">
                     &#8659; <?php esc_html_e( 'Download Header Footer Builder', 'turbo-addons-elementor' ); ?>
                 </a>
             </div>
-
-
         </div>
     </div>
 
@@ -101,13 +98,13 @@ function turbo_addons_admin_page() {
              <!-- ------------------tab1-----section  1// ---------------------------->
                 <div class="trad-dashboard-sec-one">
                     <div class="trad-dashboard-sec-one-left">
-                        <h3 class="trad-dashboard-sub-heading">What's New in Version 1.9.4</h3>
+                        <h3 class="trad-dashboard-sub-heading">What's New in Version 1.9.5</h3>
                         <hr>
                         <div class="trad-updated-list">
                             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/updatelist-icon.svg'); ?>" alt="<?php echo esc_attr('update icon'); ?>"> 
                             <div class="trad-updated-list-typography">
-                                <h4>Team Slider Fix</h4>
-                                <p>Resolved the pagination and dots display issue that could prevent the slider from rendering correctly.</p>
+                                <h4>Template Library Fix</h4>
+                                <p>Fixed the template library API handling so templates load reliably on the first load instead of showing "No template found".</p>
                             </div>
                         </div>
                         <hr>

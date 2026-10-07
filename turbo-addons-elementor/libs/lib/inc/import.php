@@ -66,7 +66,7 @@ if (did_action('elementor/loaded')) {
 				wp_die();
 			}
 
-			$data = json_decode(wp_remote_retrieve_body($response), true);
+			$data = \TRAD_Turbo_Template_Library::json_decode_remote(wp_remote_retrieve_body($response));
 
 			if (!isset($data['content'])) {
 				wp_send_json_error(array('message' => __('Invalid data received', 'turbo-addons-elementor')));

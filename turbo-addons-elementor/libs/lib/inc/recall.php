@@ -22,7 +22,7 @@ class TRAD_Turbo_Addons_Recall_Class
 			// No existing data, fetch from API
 			// error_log("No existing data found in trad_turbo_addons_template_items. Fetching from API...");
 			$response = wp_safe_remote_get($remote . 'api/ta/v1/' . $endpoint);
-			$library_data = json_decode(wp_remote_retrieve_body($response), true);
+			$library_data = \TRAD_Turbo_Template_Library::json_decode_remote(wp_remote_retrieve_body($response));
 		
 			if (!empty($library_data)) {
 				update_option('trad_turbo_addons_template_items', $library_data);
@@ -40,7 +40,7 @@ class TRAD_Turbo_Addons_Recall_Class
 
 			// Fetch and store initial data
 			$response = wp_safe_remote_get($remote . 'api/ta/v1/' . $endpoint);
-			$library_data = json_decode(wp_remote_retrieve_body($response), true);
+			$library_data = \TRAD_Turbo_Template_Library::json_decode_remote(wp_remote_retrieve_body($response));
 
 			if (!empty($library_data)) {
 				update_option('trad_turbo_addons_template_items', $library_data);
@@ -55,7 +55,7 @@ class TRAD_Turbo_Addons_Recall_Class
 
 			// Fetch and update data again if version changed
 			$response = wp_safe_remote_get($remote . 'api/ta/v1/' . $endpoint);
-			$library_data = json_decode(wp_remote_retrieve_body($response), true);
+			$library_data = \TRAD_Turbo_Template_Library::json_decode_remote(wp_remote_retrieve_body($response));
 
 			if (!empty($library_data)) {
 				update_option('trad_turbo_addons_template_items', $library_data);
@@ -64,7 +64,7 @@ class TRAD_Turbo_Addons_Recall_Class
 		}else {
 			// Fetch and update data again if version changed
 			$response = wp_safe_remote_get($remote . 'api/ta/v1/' . $endpoint);
-			$library_data = json_decode(wp_remote_retrieve_body($response), true);
+			$library_data = \TRAD_Turbo_Template_Library::json_decode_remote(wp_remote_retrieve_body($response));
 
 			if (!empty($library_data)) {
 				update_option('trad_turbo_addons_template_items', $library_data);

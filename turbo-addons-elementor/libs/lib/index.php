@@ -99,6 +99,21 @@ if (!class_exists('TRAD_Turbo_Template_Library')) {
 			// }
 		}
 
+		public static function json_decode_remote($body)
+		{
+			$body = trim((string) $body);
+			if ('' === $body) {
+				return null;
+			}
+
+			$json_start = strcspn($body, '[{');
+			if ($json_start > 0) {
+				$body = substr($body, $json_start);
+			}
+
+			return json_decode($body, true);
+		}
+
 		function choose_option_table($table_name)
 		{
 			if ($table_name == 'page') {
@@ -130,7 +145,7 @@ if (!class_exists('TRAD_Turbo_Template_Library')) {
 			$direct_data = [];
 
 			if (!is_wp_error($response)) {
-				$direct_data = json_decode(wp_remote_retrieve_body($response), true);
+				$direct_data = self::json_decode_remote(wp_remote_retrieve_body($response));
 			}
 
 			// TYPE selection
