@@ -86,7 +86,7 @@ class TRAD_Preview_Card_Widget extends Widget_Base {
 	 * @since 1.0.0
 	 * @access protected
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->trad_register_image_controls();
 		$this->trad_register_content_controls();
 		$this->trad_register_badge_controls();
@@ -987,7 +987,7 @@ class TRAD_Preview_Card_Widget extends Widget_Base {
 		$this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
-				'name'     => 'preview_button_border',
+				'name'     => 'preview_button_border_hover',
 				'label'    => esc_html__( 'Border', 'turbo-addons-elementor' ),
 				'selector' => '{{WRAPPER}} .trad-preview-card:hover .trad-preview-button-readmore',
 			]
@@ -1375,7 +1375,7 @@ class TRAD_Preview_Card_Widget extends Widget_Base {
 }
 
 // Register widget
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Preview_Card_Widget() );
+Plugin::instance()->widgets_manager->register( new TRAD_Preview_Card_Widget() );
 
 
 

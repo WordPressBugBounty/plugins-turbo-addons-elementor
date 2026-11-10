@@ -33,7 +33,7 @@ class TRAD_Dual_Header extends Widget_Base {
         return ['trad-dual-header-style'];
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
         // ----------------------------------header one------------------
         $this->start_controls_section(
                 'content_section_one',
@@ -701,4 +701,4 @@ class TRAD_Dual_Header extends Widget_Base {
 }
 
 // Register widget
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Dual_Header() );
+Plugin::instance()->widgets_manager->register( new TRAD_Dual_Header() );

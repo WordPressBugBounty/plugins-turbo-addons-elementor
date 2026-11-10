@@ -34,7 +34,7 @@
         }
    
         public function get_script_depends() {
-            return ['trad-moment-script', 'trad-fullcalendar-script'];
+            return ['moment', 'trad-fullcalendar-script']; // WordPress core moment (2.30+) instead of the bundled 2.29.1
         }
    
         protected function register_controls() {
@@ -812,11 +812,14 @@
                 </div>
                 <script>
                 jQuery(document).ready(function($) {
+                    // Scope everything to this widget so several calendars can live on one page.
+                    var $root = $('.elementor-element-<?php echo esc_attr( $this->get_id() ); ?>');
+                    if ( ! $root.length ) { return; }
                     const events = <?php echo json_encode($events); ?>;
                     var prevIconHtml = <?php echo json_encode($prevIconHtml); ?>;
                     var nextIconHtml = <?php echo json_encode($nextIconHtml); ?>;
                     // Initialize FullCalendar
-                    $('#calendar').fullCalendar({
+                    $root.find('#calendar').fullCalendar({
                         themeSystem: 'jquery-ui',
                         header: {
                             left: 'prev,next today',
@@ -827,13 +830,13 @@
                             prev: {
                                 text: '',
                                 click: function() {
-                                    $('#calendar').fullCalendar('prev');
+                                    $root.find('#calendar').fullCalendar('prev');
                                 }
                             },
                             next: {
                                 text: '',
                                 click: function() {
-                                    $('#calendar').fullCalendar('next');
+                                    $root.find('#calendar').fullCalendar('next');
                                 }
                             }
                         },
@@ -852,54 +855,54 @@
                             const eventEndDatetime = moment(event.end).format('MMM D, h:mmA');
                 
                             // Populate modal with event details
-                            $('#event-title').text(event.title);
-                            $('#event-description').text(event.description);
-                            $('#event-start-datetime').text(eventStartDatetime);
-                            $('#event-end-datetime').text(eventEndDatetime);
+                            $root.find('#event-title').text(event.title);
+                            $root.find('#event-description').text(event.description);
+                            $root.find('#event-start-datetime').text(eventStartDatetime);
+                            $root.find('#event-end-datetime').text(eventEndDatetime);
                 
                             // Show modal and overlay
-                            $('#trad-event-modal-overlay').fadeIn();
-                            $('#trad-event-modal').fadeIn();
+                            $root.find('#trad-event-modal-overlay').fadeIn();
+                            $root.find('#trad-event-modal').fadeIn();
                         },
                         viewRender: function(view) {
                             // Add a custom class to the FullCalendar table
-                            $('.fc-view-container').addClass('trad-full-calendar-table-wrapper');
-                            $('.fc-view-container table').addClass('trad-full-calendar-table');
-                            $('.fc-toolbar.fc-header-toolbar').addClass('trad-full-calendar-table-header-content');
-                            $('.fc-left').addClass('trad-full-calendar-table-header-fc-left');
-                            $('.fc-right').addClass('trad-full-calendar-table-header-fc-right');
-                            $('.fc-button-group').addClass('trad-full-calendar-table-header-button-group');
-                            $('.fc-prev-button').addClass('trad-full-calendar-table-header-prev-button-left');
-                            $('.fc-prev-button').addClass('elementor-icon');
-                            $('.fc-next-button').addClass('trad-full-calendar-table-header-next-button-right');
-                            $('.fc-next-button').addClass('elementor-icon');
-                            $('.fc-T-button').addClass('trad-full-calendar-table-header-button-right');
-                            $('.fc-center h2').addClass('trad-full-calendar-table-header-headline');
-                            $('.fc-month-button').addClass('trad-full-calendar-table-header-filter-month');
-                            $('.fc-agendaWeek-button').addClass('trad-full-calendar-table-header-filter-week'); 
-                            $('.fc-agendaDay-button').addClass('trad-full-calendar-table-header-filter-day');
-                            $('.fc-listMonth-button').addClass('trad-full-calendar-table-header-filter-listMonth'); 
-                            $('.trad-full-calendar-table thead').addClass('trad-full-calendar-table-week-header'); 
-                            $('.fc-sun').addClass('trad-full-calendar-table-week-header-sun'); 
-                            $('.fc-mon').addClass('trad-full-calendar-table-week-header-mon'); 
-                            $('.fc-tue').addClass('trad-full-calendar-table-week-header-tue'); 
-                            $('.fc-wed').addClass('trad-full-calendar-table-week-header-wed'); 
-                            $('.fc-thu').addClass('trad-full-calendar-table-week-header-thu'); 
-                            $('.fc-fri').addClass('trad-full-calendar-table-week-header-fri'); 
-                            $('.fc-sat').addClass('trad-full-calendar-table-week-header-sat'); 
-                            $('.fc-day-number').addClass('trad-full-calendar-table-day-number');
-                            $('.fc-event, .fc-event-dot').addClass('trad-full-calendar-event-background');
+                            $root.find('.fc-view-container').addClass('trad-full-calendar-table-wrapper');
+                            $root.find('.fc-view-container table').addClass('trad-full-calendar-table');
+                            $root.find('.fc-toolbar.fc-header-toolbar').addClass('trad-full-calendar-table-header-content');
+                            $root.find('.fc-left').addClass('trad-full-calendar-table-header-fc-left');
+                            $root.find('.fc-right').addClass('trad-full-calendar-table-header-fc-right');
+                            $root.find('.fc-button-group').addClass('trad-full-calendar-table-header-button-group');
+                            $root.find('.fc-prev-button').addClass('trad-full-calendar-table-header-prev-button-left');
+                            $root.find('.fc-prev-button').addClass('elementor-icon');
+                            $root.find('.fc-next-button').addClass('trad-full-calendar-table-header-next-button-right');
+                            $root.find('.fc-next-button').addClass('elementor-icon');
+                            $root.find('.fc-T-button').addClass('trad-full-calendar-table-header-button-right');
+                            $root.find('.fc-center h2').addClass('trad-full-calendar-table-header-headline');
+                            $root.find('.fc-month-button').addClass('trad-full-calendar-table-header-filter-month');
+                            $root.find('.fc-agendaWeek-button').addClass('trad-full-calendar-table-header-filter-week'); 
+                            $root.find('.fc-agendaDay-button').addClass('trad-full-calendar-table-header-filter-day');
+                            $root.find('.fc-listMonth-button').addClass('trad-full-calendar-table-header-filter-listMonth'); 
+                            $root.find('.trad-full-calendar-table thead').addClass('trad-full-calendar-table-week-header'); 
+                            $root.find('.fc-sun').addClass('trad-full-calendar-table-week-header-sun'); 
+                            $root.find('.fc-mon').addClass('trad-full-calendar-table-week-header-mon'); 
+                            $root.find('.fc-tue').addClass('trad-full-calendar-table-week-header-tue'); 
+                            $root.find('.fc-wed').addClass('trad-full-calendar-table-week-header-wed'); 
+                            $root.find('.fc-thu').addClass('trad-full-calendar-table-week-header-thu'); 
+                            $root.find('.fc-fri').addClass('trad-full-calendar-table-week-header-fri'); 
+                            $root.find('.fc-sat').addClass('trad-full-calendar-table-week-header-sat'); 
+                            $root.find('.fc-day-number').addClass('trad-full-calendar-table-day-number');
+                            $root.find('.fc-event, .fc-event-dot').addClass('trad-full-calendar-event-background');
                         }
                     });
                 
                     // Add icons manually after the calendar renders
-                    $('.trad-full-calendar-table-header-prev-button-left').html(<?php echo json_encode($prevIconHtml); ?>);
-                    $('.trad-full-calendar-table-header-next-button-right').html(<?php echo json_encode($nextIconHtml); ?>);
+                    $root.find('.trad-full-calendar-table-header-prev-button-left').html(<?php echo json_encode($prevIconHtml); ?>);
+                    $root.find('.trad-full-calendar-table-header-next-button-right').html(<?php echo json_encode($nextIconHtml); ?>);
                 
                     // Close Modal
-                    $('#tradCloseEventModal, #trad-event-modal-overlay').on('click', function() {
-                        $('#trad-event-modal').fadeOut();
-                        $('#trad-event-modal-overlay').fadeOut();
+                    $root.find('#tradCloseEventModal, #trad-event-modal-overlay').on('click', function() {
+                        $root.find('#trad-event-modal').fadeOut();
+                        $root.find('#trad-event-modal-overlay').fadeOut();
                     });
                 });
                 </script>
@@ -907,4 +910,4 @@
         }
     }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type(new Trad_Event_Calendar());
+Plugin::instance()->widgets_manager->register(new Trad_Event_Calendar());

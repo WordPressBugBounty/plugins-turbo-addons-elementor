@@ -16,12 +16,21 @@ function trad_handle_post_vote() {
 
     $post_id = absint( wp_unslash( $_POST['post_id'] ) );
 
+    // Only published posts of a public post type can be voted on.
+    $post = $post_id ? get_post( $post_id ) : null;
+    if ( ! $post || 'publish' !== $post->post_status || ! is_post_type_viewable( $post->post_type ) || post_password_required( $post ) ) {
+        wp_send_json_error( [ 'message' => 'Invalid post' ], 400 );
+    }
+
     // Validate vote
     if ( empty( $_POST['vote'] ) ) {
         wp_send_json_error([ 'message' => 'Vote missing' ], 400);
     }
 
-    $new_vote = sanitize_text_field( wp_unslash( $_POST['vote'] ) );
+    $new_vote = sanitize_key( wp_unslash( $_POST['vote'] ) );
+    if ( ! in_array( $new_vote, [ 'like', 'unlike' ], true ) ) {
+        wp_send_json_error( [ 'message' => 'Invalid vote' ], 400 );
+    }
 
     /**
      * Identify voter
@@ -33,6 +42,20 @@ function trad_handle_post_vote() {
     } elseif ( ! empty( $_POST['voter_id'] ) ) {
 
         $voter_id = sanitize_text_field( wp_unslash( $_POST['voter_id'] ) );
+
+        // Must look like the ID created by trad-post-like.js ("v_" + base36 + timestamp).
+        if ( ! preg_match( '/^v_[a-z0-9]{6,40}$/', $voter_id ) ) {
+            wp_send_json_error( [ 'message' => 'Invalid voter ID' ], 403 );
+        }
+
+        // Light flood protection for guests: max 30 votes per IP per 10 minutes.
+        $ip       = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+        $rate_key = 'trad_vote_rate_' . md5( $ip . wp_salt( 'nonce' ) );
+        $hits     = (int) get_transient( $rate_key );
+        if ( $hits >= 30 ) {
+            wp_send_json_error( [ 'message' => 'Too many votes, please try again later.' ], 429 );
+        }
+        set_transient( $rate_key, $hits + 1, 10 * MINUTE_IN_SECONDS );
 
     } else {
 

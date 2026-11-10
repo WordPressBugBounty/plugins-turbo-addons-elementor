@@ -48,7 +48,7 @@ class Trad_Scroll_Navigation extends Widget_Base {
 		];
 	}
 
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'content_section',
             [
@@ -551,12 +551,23 @@ class Trad_Scroll_Navigation extends Widget_Base {
 
         <script>
             (function ($) {
+                // "#section-id" -> jQuery element, or null when the section is not on this page.
+                function tradScrollTarget(href) {
+                    if (!href || href.charAt(0) !== '#' || href.length < 2) {
+                        return null;
+                    }
+                    var el = document.getElementById(href.slice(1));
+                    return el ? $(el) : null;
+                }
                 $(document).ready(function () {
                     $('.trad-scroll-link').on('click', function (e) {
+                        let $target = tradScrollTarget($(this).attr('href'));
+                        if (!$target) {
+                            return; // not an on-page section: let the browser follow the link
+                        }
                         e.preventDefault();
-                        let target = $(this).attr('href');
                         $('html, body').animate({
-                            scrollTop: $(target).offset().top,
+                            scrollTop: $target.offset().top,
                         }, 800);
                         $('.trad-scroll-link').removeClass('active');
                         $(this).addClass('active');
@@ -564,8 +575,8 @@ class Trad_Scroll_Navigation extends Widget_Base {
 
                     $(window).on('scroll', function () {
                         $('.trad-scroll-link').each(function () {
-                            let target = $(this).attr('href');
-                            if ($(window).scrollTop() >= $(target).offset().top - 100) {
+                            let $target = tradScrollTarget($(this).attr('href'));
+                            if ($target && $(window).scrollTop() >= $target.offset().top - 100) {
                                 $('.trad-scroll-link').removeClass('active');
                                 $(this).addClass('active');
                             }
@@ -580,4 +591,4 @@ class Trad_Scroll_Navigation extends Widget_Base {
     
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_Scroll_Navigation() );
+Plugin::instance()->widgets_manager->register( new Trad_Scroll_Navigation() );

@@ -1,8 +1,6 @@
 <?php
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
@@ -1028,16 +1026,6 @@ class TRAD_image_Icon_Card extends Widget_Base {
                 ],
             ]
         );
-        //------button shadow
-        $this->add_group_control(
-            \Elementor\Group_Control_Background::get_type(),
-            [
-                'name' => 'button_background',
-                'label' => esc_html__( 'Background', 'turbo-addons-elementor' ),
-                'types' => [ 'classic', 'gradient' ],
-                'selector' => '{{WRAPPER}} .trad-image-card-readmore-btn',
-            ]
-        );
 
         //button border
         $this->add_group_control(
@@ -1236,4 +1224,4 @@ class TRAD_image_Icon_Card extends Widget_Base {
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new TRAD_image_Icon_Card());
+Plugin::instance()->widgets_manager->register(new TRAD_image_Icon_Card());

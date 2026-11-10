@@ -32,7 +32,7 @@ class TRAD_Image_Floating_Effect extends Widget_Base {
         return ['trad-floating-effect-style'];
     }
 
-    public function _register_controls() {
+    public function register_controls() {
 
       // ==================================== start Content sections =================
       //================================================================================
@@ -323,4 +323,4 @@ class TRAD_Image_Floating_Effect extends Widget_Base {
 }
 
 // Register widget
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Image_Floating_Effect() );
+Plugin::instance()->widgets_manager->register( new TRAD_Image_Floating_Effect() );

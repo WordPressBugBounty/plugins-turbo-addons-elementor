@@ -68,7 +68,7 @@ class TRAD_Pricing_Table_Widget extends Widget_Base {
 	 * @since 1.0.0
 	 * @access protected
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->trad_register_header_controls();
 		$this->trad_register_price_controls();
 		$this->trad_register_listing_controls();
@@ -1471,4 +1471,4 @@ class TRAD_Pricing_Table_Widget extends Widget_Base {
 }
 
 // Register widget
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Pricing_Table_Widget() );
+Plugin::instance()->widgets_manager->register( new TRAD_Pricing_Table_Widget() );

@@ -2589,4 +2589,4 @@ class Trad_Image_Carousel extends Widget_Base {
 }
 
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_Image_Carousel() );
+Plugin::instance()->widgets_manager->register( new Trad_Image_Carousel() );

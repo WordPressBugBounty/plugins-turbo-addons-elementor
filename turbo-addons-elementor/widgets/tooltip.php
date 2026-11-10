@@ -45,7 +45,7 @@ class Trad_Tooltip extends Widget_Base {
 		];
 	}
 
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'tooltip_content',
             [
@@ -408,4 +408,4 @@ class Trad_Tooltip extends Widget_Base {
     }
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_Tooltip() );
+Plugin::instance()->widgets_manager->register( new Trad_Tooltip() );

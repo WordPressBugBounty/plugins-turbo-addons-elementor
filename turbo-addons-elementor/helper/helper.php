@@ -345,12 +345,12 @@ function trad_enqueue_scripts_styles() {
 
     //Text Animation
     wp_register_style( 'trad-animated-text-effect-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/text-animation.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/text-animation.css' ), 'all' );
-    wp_register_script( 'typed-js', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/typed.min.js', [], '2.0.12', true );
-    wp_register_script( 'trad-animated-text-effect-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/text-animation.js', [ 'jquery', 'typed-js' ], TRAD_TURBO_ADDONS_PLUGIN_PATH, true );
+    wp_register_script( 'typed-js', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/typed.min.js', [], '2.1.0', true );
+    wp_register_script( 'trad-animated-text-effect-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/text-animation.js', [ 'jquery', 'typed-js' ], TRAD_TURBO_ADDONS_PLUGIN_VERSION, true );
 
     //Countdown-timer 
     wp_register_style( 'trad-countdown-timer-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/countdown-timer.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/countdown-timer.css' ), 'all' );
-    wp_register_script( 'trad-countdown-timer-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/countdown-timer.js', [], TRAD_TURBO_ADDONS_PLUGIN_PATH, true );
+    wp_register_script( 'trad-countdown-timer-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/countdown-timer.js', [], TRAD_TURBO_ADDONS_PLUGIN_VERSION, true );
 
     //Social bar
     wp_register_style( 'trad-social-bar-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/social-bar.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/social-bar.css' ), 'all' );
@@ -360,7 +360,7 @@ function trad_enqueue_scripts_styles() {
 
     //Team slider
     wp_register_style( 'trad-team-slider-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/team-slider.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/team-slider.css' ), 'all' );
-    wp_register_script( 'trad-team-slider-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/team-slider.js', [ 'jquery'], TRAD_TURBO_ADDONS_PLUGIN_PATH, true );
+    wp_register_script( 'trad-team-slider-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/team-slider.js', [ 'jquery'], TRAD_TURBO_ADDONS_PLUGIN_VERSION, true );
 
     //Dual Header
     wp_register_style( 'trad-dual-header-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/dual-header.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/dual-header.css' ), 'all' );
@@ -373,7 +373,7 @@ function trad_enqueue_scripts_styles() {
 
     //Owl Carousel
     wp_register_style( 'trad-owl-carousel-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/vendor/owl/css/owl.carousel.min.css', [], '2.3.4', 'all' );
-    wp_register_script( 'trad-owl-carousel-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/vendor/owl/js/owl.carousel.min.js', [ 'jquery'], TRAD_TURBO_ADDONS_PLUGIN_PATH, true );
+    wp_register_script( 'trad-owl-carousel-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/vendor/owl/js/owl.carousel.min.js', [ 'jquery'], TRAD_TURBO_ADDONS_PLUGIN_VERSION, true );
     wp_register_style( 'owl-carousel-theme', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/vendor/owl/css/owl.theme.default.min.css', [], '2.3.4', 'all' );
 
     //Call to action
@@ -381,7 +381,7 @@ function trad_enqueue_scripts_styles() {
 
     // Accordion
     wp_register_style( 'trad-accordion-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/trad_accordion.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/trad_accordion.css' ), 'all' );
-    // wp_register_script( 'trad-accordion-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/accordion.js', [ 'jquery'], TRAD_TURBO_ADDONS_PLUGIN_PATH, true );
+    // wp_register_script( 'trad-accordion-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/accordion.js', [ 'jquery'], TRAD_TURBO_ADDONS_PLUGIN_VERSION, true );
 
     //Tooltip
     // wp_enqueue_style( 'trad-tooltip-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/tooltip.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/tooltip.css' ), 'all' );
@@ -397,7 +397,7 @@ function trad_enqueue_scripts_styles() {
 
     //Coupon code
     wp_register_style( 'trad-coupon-code-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/coupon-code.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/coupon-code.css' ), 'all' );
-    wp_register_script( 'trad-coupon-code-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/coupon-code.js', [ 'jquery'], TRAD_TURBO_ADDONS_PLUGIN_PATH, true );
+    wp_register_script( 'trad-coupon-code-script', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/js/coupon-code.js', [ 'jquery'], TRAD_TURBO_ADDONS_PLUGIN_VERSION, true );
 
     //Single testimonial
     wp_register_style( 'trad-single-testimonial-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/single-testimonial.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/single-testimonial.css' ), 'all' );
@@ -421,9 +421,9 @@ function trad_enqueue_scripts_styles() {
 
     //Event Calender
     wp_register_style( 'trad-event-calender-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/event-calender.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/event-calender.css' ), 'all' );
-    wp_register_script('trad-moment-script',TRAD_TURBO_ADDONS_PLUGIN_URL. 'assets/css/vendor/calendar/moment.min.js', [], '2.29.1', true);
-    wp_register_script('trad-fullcalendar-script', TRAD_TURBO_ADDONS_PLUGIN_URL. 'assets/css/vendor/calendar/fullcalendar.min.js', ['jquery', 'moment'], '3.10.2', true);
-    wp_register_style('trad-fullcalendar-style',TRAD_TURBO_ADDONS_PLUGIN_URL. 'assets/css/vendor/calendar/fullcalendar.min.css', [], '3.10.2');
+    // moment: WordPress core handle 'moment' (2.30+) is used; the bundled 2.29.1 (CVE-2022-31129) was removed in 1.9.6.
+    wp_register_script('trad-fullcalendar-script', TRAD_TURBO_ADDONS_PLUGIN_URL. 'assets/css/vendor/calendar/fullcalendar.min.js', ['jquery', 'moment'], '3.10.5', true);
+    wp_register_style('trad-fullcalendar-style',TRAD_TURBO_ADDONS_PLUGIN_URL. 'assets/css/vendor/calendar/fullcalendar.min.css', [], '3.10.5');
 
     //Image Compare
     wp_register_style( 'trad-image-compare-style', TRAD_TURBO_ADDONS_PLUGIN_URL . 'assets/css/custom-css/image-compare.css', [], filemtime( TRAD_TURBO_ADDONS_PLUGIN_PATH . 'assets/css/custom-css/image-compare.css' ), 'all' );

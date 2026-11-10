@@ -481,4 +481,4 @@ class Trad_Post_Like_Unlike_Counter extends Widget_Base {
     }
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_Post_Like_Unlike_Counter() );
+Plugin::instance()->widgets_manager->register( new Trad_Post_Like_Unlike_Counter() );

@@ -828,4 +828,4 @@ class TRAD_Advanced_Accordion extends Widget_Base {
 }
 
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Advanced_Accordion() );
+Plugin::instance()->widgets_manager->register( new TRAD_Advanced_Accordion() );

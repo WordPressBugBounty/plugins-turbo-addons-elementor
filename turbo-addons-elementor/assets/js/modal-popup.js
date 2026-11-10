@@ -80,7 +80,13 @@
   }
 
   function initAll() {
-    (window.tradModalQueue || []).forEach(initModal);
+    // The queue is an array until the first run; after that it is replaced by
+    // { push: initModal } so later widgets initialise immediately. initAll()
+    // runs once per modal widget, so only drain it while it is still an array.
+    var queue = window.tradModalQueue;
+    if (Array.isArray(queue)) {
+      queue.forEach(initModal);
+    }
     window.tradModalQueue = { push: initModal };
   }
 

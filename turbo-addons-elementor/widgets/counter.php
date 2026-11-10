@@ -51,7 +51,7 @@ class Trad_Counter extends Widget_Base {
 		];
 	}
 
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'trad_counter_content',
             [
@@ -529,4 +529,4 @@ class Trad_Counter extends Widget_Base {
     }
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_Counter() );
+Plugin::instance()->widgets_manager->register( new Trad_Counter() );

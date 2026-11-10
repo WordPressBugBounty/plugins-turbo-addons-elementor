@@ -306,4 +306,4 @@ class Trad_Google_Map extends Widget_Base {
     }
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_Google_Map() );
+Plugin::instance()->widgets_manager->register( new Trad_Google_Map() );

@@ -1322,6 +1322,10 @@ class Trad_Contact_Form_7 extends Widget_Base {
 	 */
     protected function render() {
         if( ! class_exists( 'WPCF7_ContactForm' ) ) {
+            // Tell the editor why the widget is empty instead of rendering nothing.
+            if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+                echo '<div class="elementor-alert elementor-alert-warning">' . esc_html__( 'Please install and activate the Contact Form 7 plugin to use this widget.', 'turbo-addons-elementor' ) . '</div>';
+            }
             return;
         }        
 
@@ -1353,4 +1357,4 @@ class Trad_Contact_Form_7 extends Widget_Base {
     
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_Contact_Form_7() );
+Plugin::instance()->widgets_manager->register( new Trad_Contact_Form_7() );

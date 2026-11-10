@@ -496,4 +496,4 @@ class TRAD_Scroll_To_Top extends Widget_Base {
     
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Scroll_To_Top() );
+Plugin::instance()->widgets_manager->register( new TRAD_Scroll_To_Top() );

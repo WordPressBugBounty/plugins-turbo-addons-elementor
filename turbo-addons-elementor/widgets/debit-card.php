@@ -32,7 +32,7 @@ class Trad_Debit_Card extends Widget_Base {
         return ['trad-debit-card-style'];
     }
     
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'content_section',
             [
@@ -975,4 +975,4 @@ class Trad_Debit_Card extends Widget_Base {
     
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_Debit_Card() );
+Plugin::instance()->widgets_manager->register( new Trad_Debit_Card() );

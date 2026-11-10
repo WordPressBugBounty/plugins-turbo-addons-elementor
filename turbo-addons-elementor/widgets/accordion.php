@@ -38,7 +38,7 @@ class TRAD_Accordion_Widget extends Widget_Base {
         return [ 'trad-accordion-script' ];
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
         // Title & Content Section
         $this->start_controls_section(
             'section_title',
@@ -589,4 +589,4 @@ class TRAD_Accordion_Widget extends Widget_Base {
 }
 
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Accordion_Widget() );
+Plugin::instance()->widgets_manager->register( new TRAD_Accordion_Widget() );

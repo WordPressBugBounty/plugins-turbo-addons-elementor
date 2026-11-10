@@ -31,7 +31,7 @@ class TRAD_Shape_Divider extends Widget_Base {
         return ['trad-section-divider-style'];
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
         // Divider Style
         $this->start_controls_section(
             'divider_content',
@@ -473,4 +473,4 @@ class TRAD_Shape_Divider extends Widget_Base {
 }
 
 // Register widget
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Shape_Divider() );
+Plugin::instance()->widgets_manager->register( new TRAD_Shape_Divider() );

@@ -1130,4 +1130,4 @@ class Trad_News_Ticker extends Widget_Base {
 
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_News_Ticker() );
+Plugin::instance()->widgets_manager->register( new Trad_News_Ticker() );

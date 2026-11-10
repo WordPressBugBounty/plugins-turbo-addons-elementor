@@ -34,7 +34,7 @@ class TRAD_Text_Animation_Widget extends Widget_Base {
         return [ 'typed-js', 'trad-animated-text-effect-script' ];
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
 
         $this->start_controls_section(
             'content_section',
@@ -245,4 +245,4 @@ class TRAD_Text_Animation_Widget extends Widget_Base {
 }
 
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Text_Animation_Widget() );
+Plugin::instance()->widgets_manager->register( new TRAD_Text_Animation_Widget() );

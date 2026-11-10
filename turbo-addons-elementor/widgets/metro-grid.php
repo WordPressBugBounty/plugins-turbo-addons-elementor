@@ -507,4 +507,4 @@ class TRAD_Metro_Grid extends Widget_Base {
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Metro_Grid() );
+Plugin::instance()->widgets_manager->register( new TRAD_Metro_Grid() );

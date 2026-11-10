@@ -802,4 +802,4 @@ class TRAD_Read_More extends Widget_Base {
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new TRAD_Read_More());
+Plugin::instance()->widgets_manager->register(new TRAD_Read_More());

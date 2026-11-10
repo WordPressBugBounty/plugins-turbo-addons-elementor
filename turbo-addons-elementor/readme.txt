@@ -4,7 +4,7 @@ Tags: elementor addons, elementor widgets, elementor templates, free elementor a
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.9.5
+Stable tag: 1.9.6
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -263,6 +263,21 @@ Follow these steps to install Turbo Addons for Elementor on your WordPress websi
    - After making the desired changes, click `Publish` or `Update` to save.
 
 == Changelog ==
+
+### Version 1.9.6
+
+1. **Privacy**: Usage data (site URL, admin email, plugin version) is now sent only after an administrator opts in from the new admin notice. Nothing is shared without consent.
+2. **Security**: Template library actions now check the nonce and the user's permission; the Like/Unlike vote endpoint validates the post, vote and voter ID and limits repeated votes.
+3. **Template Library**: Pro templates can be inserted only with Turbo Addons Pro and an active license; fixed a case where a template could be inserted twice after switching documents; clearer error messages.
+4. **Compatibility**: Tested with WordPress 7.1, PHP 8.5 and Elementor 4.3. Replaced Elementor APIs deprecated since 3.1/3.5 (minimum Elementor version is now 3.5).
+5. **Bug Fix**: Fixed style controls that were declared twice in Preview Card and Image Icon Card (the hover border/background settings now work).
+6. **Bug Fix**: Scroll Navigation no longer throws errors when a linked section is not on the page; Modal Popup now works with several popups on one page.
+7. **Bug Fix**: Event Calendar works with several calendars on one page and uses WordPress's built-in Moment.js (the bundled 2.29.1 had a known vulnerability).
+8. **Improvement**: Contact Form 7 widget shows a notice in the editor when Contact Form 7 is not active.
+9. **Improvement**: Asset version strings no longer expose the server path; updated FullCalendar (3.10.5), Typed.js (2.1.0) and canvas-confetti (1.9.4); jQuery 4 readiness fixes.
+10. **Bug Fix**: Filtering the template library by Pro/Free or category no longer replaces the saved template list, which made the dashboard show only Pro templates (free templates disappeared). The dashboard Templates tab now refreshes the full list every 12 hours.
+11. **Bug Fix**: The dashboard "Templates Added" slider now shows the latest templates from the API again (it fell back to the static banner because the API response could not be read) and marks Pro/Free templates correctly.
+12. **Improvement**: Dashboard: the "Unlock Premium Features" card now sits beside the review box, and its card slot shows Turbo Guard (Install / Activate / Upgrade button based on the plugin's state). Also fixed JavaScript errors on dashboard screens without the theme toggle or widget list.
 
 ### Version 1.9.5
 

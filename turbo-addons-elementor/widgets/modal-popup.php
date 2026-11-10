@@ -1050,4 +1050,4 @@ class TRAD_Modal_Popup_Widget extends Widget_Base {
 }
 
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Modal_Popup_Widget() );
+Plugin::instance()->widgets_manager->register( new TRAD_Modal_Popup_Widget() );

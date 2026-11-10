@@ -32,7 +32,7 @@ class TRAD_Social_Bar extends Widget_Base {
         return ['trad-social-bar-style'];
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
 
         $this->start_controls_section(
             'social_content',
@@ -295,4 +295,4 @@ class TRAD_Social_Bar extends Widget_Base {
 }
 
 // Register widget
-Plugin::instance()->widgets_manager->register_widget_type(new TRAD_Social_Bar());
+Plugin::instance()->widgets_manager->register(new TRAD_Social_Bar());

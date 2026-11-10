@@ -153,4 +153,4 @@ class TRAD_Copy_Right extends Widget_Base {
 }
 
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type(new TRAD_Copy_Right());
+Plugin::instance()->widgets_manager->register(new TRAD_Copy_Right());

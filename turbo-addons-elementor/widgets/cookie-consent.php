@@ -934,4 +934,4 @@ class Trad_Cookie_Consent extends Widget_Base {
     }
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_Cookie_Consent() );
+Plugin::instance()->widgets_manager->register( new Trad_Cookie_Consent() );

@@ -1935,4 +1935,4 @@ class Trad_Audio_Player extends Widget_Base {
 
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_Audio_Player() );
+Plugin::instance()->widgets_manager->register( new Trad_Audio_Player() );

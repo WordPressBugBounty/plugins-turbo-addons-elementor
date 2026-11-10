@@ -1,8 +1,6 @@
 <?php
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
@@ -344,4 +342,4 @@ class Trad_Image_Compare extends Widget_Base {
     
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_Image_Compare() );
+Plugin::instance()->widgets_manager->register( new Trad_Image_Compare() );

@@ -33,7 +33,7 @@ class TRAD_Info_Box extends Widget_Base {
         return ['trad-info-box-style'];
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
 
       // Icon/Image Section
         $this->start_controls_section(
@@ -1217,5 +1217,5 @@ class TRAD_Info_Box extends Widget_Base {
     }
 
 // Register widget
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Info_Box() );
+Plugin::instance()->widgets_manager->register( new TRAD_Info_Box() );
 

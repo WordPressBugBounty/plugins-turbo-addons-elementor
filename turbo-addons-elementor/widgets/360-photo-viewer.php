@@ -984,4 +984,4 @@ class TRAD_360_Photo_Viewer extends Widget_Base {
 }
 
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_360_Photo_Viewer() );
+Plugin::instance()->widgets_manager->register( new Trad_360_Photo_Viewer() );

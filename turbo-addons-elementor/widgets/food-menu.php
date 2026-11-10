@@ -407,4 +407,4 @@ class Trad_Food_Menu extends Widget_Base {
 
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_Food_Menu() );
+Plugin::instance()->widgets_manager->register( new Trad_Food_Menu() );

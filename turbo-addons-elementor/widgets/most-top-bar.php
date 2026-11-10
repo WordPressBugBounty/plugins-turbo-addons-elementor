@@ -32,7 +32,7 @@ class TRAD_Top_Bar extends Widget_Base {
         return ['trad-most-top-bar-style'];
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
 
         // Content Section
         $this->start_controls_section(
@@ -428,4 +428,4 @@ class TRAD_Top_Bar extends Widget_Base {
 }
 
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Top_Bar() );
+Plugin::instance()->widgets_manager->register( new TRAD_Top_Bar() );

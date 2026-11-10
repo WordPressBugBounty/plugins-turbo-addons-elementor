@@ -49,11 +49,29 @@ if (did_action('elementor/loaded')) {
 				wp_send_json_error(array('error' => __('Invalid nonce. You are not allowed to perform this action.', 'turbo-addons-elementor')), 403);
 				wp_die();
 			}
+			if (!current_user_can('edit_posts')) {
+				wp_send_json_error(array('error' => __('You are not allowed to import templates.', 'turbo-addons-elementor')), 403);
+				wp_die();
+			}
 			//end error handle
 			//.................................need tochange with live url.............................................
 			//error handle
 			// $id = isset($_POST['id']) ? sanitize_text_field($_POST['id']) : '';
 			$id = isset($_POST['id']) ? sanitize_text_field(wp_unslash($_POST['id'])) : '';
+
+			// Server-side gate (the button alone is not enough): Pro templates need
+			// Turbo Addons Pro with an active license. Unknown IDs are refused too
+			// unless Pro is licensed, so a stale/forged ID cannot bypass the check.
+			if (!\TRAD_Turbo_Template_Library::has_pro_access()) {
+				$is_pro = \TRAD_Turbo_Template_Library::is_pro_template($id);
+				if (false !== $is_pro) {
+					$msg = (null === $is_pro)
+						? __('This template is not in the library list. Please refresh the library and try again.', 'turbo-addons-elementor')
+						: __('This is a Pro template. An active Turbo Addons Pro license is required to insert it.', 'turbo-addons-elementor');
+					wp_send_json_error(array('error' => $msg), 403);
+					wp_die();
+				}
+			}
 			//end error handle
 			$remote = isset($_POST['parent_site']) ? 'https://mt.turbo-addons.com/' : '';
 			$end_point = \TRAD_Turbo_Template_Library::$plugin_data["trad_turbo_import_data"];

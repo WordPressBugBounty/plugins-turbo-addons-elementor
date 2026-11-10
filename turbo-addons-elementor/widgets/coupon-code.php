@@ -827,4 +827,4 @@ class TRAD_Coupon_Code extends Widget_Base {
 }
 
 // Register widget
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Coupon_Code() );
+Plugin::instance()->widgets_manager->register( new TRAD_Coupon_Code() );

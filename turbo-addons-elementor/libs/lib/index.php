@@ -74,6 +74,11 @@ if (!class_exists('TRAD_Turbo_Template_Library')) {
 
 		function reload_library()
 		{
+			// Only editors may refresh the library (it calls the remote API and updates an option).
+			check_ajax_referer('trad_turbo_lib_nonce', 'nonce');
+			if (!current_user_can('edit_posts')) {
+				wp_send_json_error(array('message' => __('Permission denied.', 'turbo-addons-elementor')), 403);
+			}
 			$file = __DIR__ . '/inc/recall.php';
 			if (file_exists($file)) {
 
@@ -97,6 +102,44 @@ if (!class_exists('TRAD_Turbo_Template_Library')) {
 			// else {
 			// 	error_log("File not found: " . $file);
 			// }
+		}
+
+		/**
+		 * Pro templates may be inserted only with Turbo Addons Pro active AND an
+		 * active Pro license (expired / unlicensed installs keep their existing
+		 * pages, but cannot insert new Pro templates). @since 1.9.6
+		 *
+		 * @return bool
+		 */
+		public static function has_pro_access()
+		{
+			return function_exists('trad_pro_is_license_active') && trad_pro_is_license_active();
+		}
+
+		/**
+		 * Is this library template a Pro template? Looks it up in the cached
+		 * library list (refreshed whenever the library is opened).
+		 *
+		 * @param string $id Template ID.
+		 * @return bool|null true = Pro, false = free, null = unknown ID.
+		 */
+		public static function is_pro_template($id)
+		{
+			$items = get_option('trad_turbo_addons_template_items', []);
+			if (!is_array($items)) {
+				return null;
+			}
+			foreach ($items as $list) {
+				if (!is_array($list)) {
+					continue;
+				}
+				foreach ($list as $item) {
+					if (is_array($item) && isset($item['id']) && (string) $item['id'] === (string) $id) {
+						return isset($item['pro']) && 'on' === $item['pro'];
+					}
+				}
+			}
+			return null;
 		}
 
 		public static function json_decode_remote($body)
@@ -128,6 +171,11 @@ if (!class_exists('TRAD_Turbo_Template_Library')) {
 
 		function ajax_data()
 		{
+			// Only editors may load/refresh the library (remote API call + option update).
+			check_ajax_referer('trad_turbo_lib_nonce_verify', 'nonce');
+			if (!current_user_can('edit_posts')) {
+				wp_send_json_error(array('message' => __('Permission denied.', 'turbo-addons-elementor')), 403);
+			}
 			// ⭐ NEW FILTERS — ADD HERE
 			$pro_filter     = isset($_POST['data']['pro']) ? sanitize_text_field(wp_unslash($_POST['data']['pro'])) : 'all';
 			$website_type   = isset($_POST['data']['website_type']) ? sanitize_text_field(wp_unslash($_POST['data']['website_type'])) : 'all';
@@ -162,8 +210,13 @@ if (!class_exists('TRAD_Turbo_Template_Library')) {
 
 			$products = !empty($direct_data[$option_type]) ? $direct_data[$option_type] : [];
 
-			// Update cached option with fresh API data
-			if ( ! empty( $direct_data ) ) {
+			// Update the cached library list with fresh API data — but ONLY from an
+			// unfiltered request. The API returns just the matching items when a
+			// Pro/Free or category filter is set; caching that response used to
+			// wipe the other templates (e.g. after filtering "Pro" the dashboard
+			// showed only Pro templates and every free template disappeared). @since 1.9.6
+			$is_unfiltered = ( '' === $pro_filter || 'all' === $pro_filter ) && ( '' === $website_type || 'all' === $website_type );
+			if ( $is_unfiltered && ! empty( $direct_data ) && is_array( $direct_data ) ) {
 				update_option( 'trad_turbo_addons_template_items', $direct_data );
 			}
 
@@ -228,8 +281,10 @@ if (!class_exists('TRAD_Turbo_Template_Library')) {
 
 						$parent_site = substr($product['thumb'], 0, strpos($product['thumb'], 'wp-content'));
 
-						if ($product['pro'] == 'on' && !class_exists('TRAD_Turbo_Addons_Pro')) {
-							$btn = '<a target="_blank" href="' . self::$plugin_data['pro-link'] . '" class="buy-tmpl"><i class="eicon-external-link-square"></i> Buy pro</a>';
+						if ($product['pro'] == 'on' && !self::has_pro_access()) {
+							// Pro installed but license expired/inactive -> renew; no Pro -> buy.
+							$label = class_exists('TRAD_Turbo_Addons_Pro') ? __('Renew Pro', 'turbo-addons-elementor') : __('Buy pro', 'turbo-addons-elementor');
+							$btn   = '<a target="_blank" rel="noopener noreferrer" href="' . esc_url(self::$plugin_data['pro-link']) . '" class="buy-tmpl"><i class="eicon-external-link-square"></i> ' . esc_html($label) . '</a>';
 						} else {
 							// Check required plugins
 							$required_plugins = !empty($product['required_plugins']) ? (array) $product['required_plugins'] : [];

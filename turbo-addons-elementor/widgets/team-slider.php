@@ -45,7 +45,7 @@ class TRAD_Team_Slider extends Widget_Base {
         return [ 'trad-team-slider-script', 'trad-owl-carousel-script' ];
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'team_slider_responsive_settings',
             [
@@ -1334,4 +1334,4 @@ $this->end_controls_section();
 }
 
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Team_Slider() );
+Plugin::instance()->widgets_manager->register( new TRAD_Team_Slider() );

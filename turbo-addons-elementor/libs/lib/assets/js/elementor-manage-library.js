@@ -84,9 +84,13 @@
             
                                 main_wrap.find('.elementor-add-template-button').after("<div class='elementor-add-section-area-button trad-turbo-add-button trad-turbobtn' style='margin-left:5px; margin-right:5px;'></div>");
 
-            $('#elementor-editor-wrapper').append(wrapper_html);
-            $('#elementor-editor-wrapper').append('<div class="trad-turbo-lib-preview"><div>');
-            main_wrap.find('.trad-turbo-add-button').click(function(){
+            // The library modal lives in the editor (not the preview), so add it only once;
+            // document:loaded fires again every time another document is opened.
+            if ( ! $('#elementor-editor-wrapper').find('.trad-lib-wrap').length ) {
+                $('#elementor-editor-wrapper').append(wrapper_html);
+                $('#elementor-editor-wrapper').append('<div class="trad-turbo-lib-preview"><div>');
+            }
+            main_wrap.find('.trad-turbo-add-button').on('click', function(){
 
                 $('#elementor-editor-wrapper').find('.trad-lib-wrap').show();
                 var ajax_data = {
@@ -97,6 +101,14 @@
                 process_data(ajax_data);
 
             });
+
+            // Everything below binds document-level handlers: do it only once, otherwise
+            // re-opening a document would bind them again and one click would insert
+            // the template twice. (process_data is a hoisted function declaration.)
+            if ( TRAD_TURBO_LIB.handlersBound ) {
+                return;
+            }
+            TRAD_TURBO_LIB.handlersBound = true;
 
             $(document).on('click', '.insert-tmpl', function(e) {
 
@@ -132,7 +144,10 @@
 
                     },
                     error: function (jqXHR, exception) {
-                        // console.log(exception);
+                        $('.trad-lib-content').removeClass('loading');
+                        var res = jqXHR.responseJSON || {};
+                        var msg = ( res.data && ( res.data.error || res.data.message ) ) || 'Could not insert this template. Please try again.';
+                        window.alert( msg );
                     }, 
 
                   });
@@ -147,6 +162,7 @@
                     url: ajaxurl,
                     data: {
                       action: 'trad_turbo_addon_xl_tab_reload_template',
+                      nonce: trad_turbo_lib_params.nonce,
                     },
                     success: function(data, textStatus, XMLHttpRequest) {
                         $('.xl-loader').hide();
@@ -328,7 +344,7 @@
             });
 
 
-            $('#elementor-editor-wrapper').find('.trad-lib-close').click(function(){
+            $('#elementor-editor-wrapper').find('.trad-lib-close').on('click', function(){
                 $('#elementor-editor-wrapper').find('.trad-lib-wrap').hide();
                 $('.live-preview').html('');
                 $('.trad-lib-content').show();

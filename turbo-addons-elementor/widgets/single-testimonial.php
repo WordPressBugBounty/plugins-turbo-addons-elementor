@@ -734,4 +734,4 @@ class Trad_Single_Testimonial extends Widget_Base {
     
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_Single_Testimonial() );
+Plugin::instance()->widgets_manager->register( new Trad_Single_Testimonial() );

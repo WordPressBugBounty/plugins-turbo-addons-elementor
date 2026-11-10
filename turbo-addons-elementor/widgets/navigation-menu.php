@@ -1468,4 +1468,4 @@ class Trad_Navigation_Menu extends Widget_Base {
     
 }
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new Trad_Navigation_Menu() );
+Plugin::instance()->widgets_manager->register( new Trad_Navigation_Menu() );

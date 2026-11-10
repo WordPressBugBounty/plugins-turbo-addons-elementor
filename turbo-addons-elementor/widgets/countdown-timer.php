@@ -45,7 +45,7 @@ class TRAD_Countdown_Timer extends Widget_Base {
         return [ 'trad-countdown-timer-script' ];
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
         // Countdown Timer Controls
         $this->start_controls_section(
             'content_section',
@@ -663,4 +663,4 @@ class TRAD_Countdown_Timer extends Widget_Base {
 }
 
 // Register the widget with Elementor
-Plugin::instance()->widgets_manager->register_widget_type(new TRAD_Countdown_Timer());
+Plugin::instance()->widgets_manager->register(new TRAD_Countdown_Timer());

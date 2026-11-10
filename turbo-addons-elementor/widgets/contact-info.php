@@ -663,4 +663,4 @@ class TRAD_ContactInfo extends Widget_Base {
 }
 
 // Register the widget with Elementor.
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_ContactInfo() );
+Plugin::instance()->widgets_manager->register( new TRAD_ContactInfo() );

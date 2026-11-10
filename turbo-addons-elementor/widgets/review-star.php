@@ -29,7 +29,7 @@ class TRAD_Review_Star extends Widget_Base {
         return ['trad-review-star-style'];
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
         // Star Rating Settings
         $this->start_controls_section(
             'star_rating_content',
@@ -194,4 +194,4 @@ class TRAD_Review_Star extends Widget_Base {
 }
 
 // Register widget
-Plugin::instance()->widgets_manager->register_widget_type( new TRAD_Review_Star() );
+Plugin::instance()->widgets_manager->register( new TRAD_Review_Star() );

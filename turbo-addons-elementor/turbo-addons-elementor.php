@@ -3,14 +3,14 @@
  * Plugin Name: Turbo Addons Elementor
  * Plugin URI: https://turbo-addons.com/
  * Description: Turbo-Addons is towards limitless Free Elementor Addons with 90+ Elementor Free & Pro Widgets, including WooCommerce widgets, for easy customization.
- * Version: 1.9.5
+ * Version: 1.9.6
  * Author: Turbo Addons
  * Author URI: https://wp-turbo.com/
  * License: GPLv3
  * License URI: https://opensource.org/licenses/GPL-3.0
  * Text Domain: turbo-addons-elementor
- * Elementor tested up to: 4.3.3
- * Elementor Pro tested up to: 4.3.3
+ * Elementor tested up to: 4.4.0
+ * Elementor Pro tested up to: 4.4.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // wp-pulse integration
-if ( ! class_exists( 'WPPulse_SDK' ) ) {
+if ( ! class_exists( 'WPPulse_SDK_V2' ) ) {
     require_once __DIR__ . '/wppulse/wppulse-plugin-analytics-engine-sdk.php';
 }
 
@@ -32,8 +32,8 @@ $trad_turbo_plugin_data = get_file_data( __FILE__, [
 $trad_turbo_plugin_slug = dirname( plugin_basename( __FILE__ ) );
 
 // Initialize SDK
-if ( class_exists( 'WPPulse_SDK' ) ) {
-    WPPulse_SDK::init( __FILE__, [
+if ( class_exists( 'WPPulse_SDK_V2' ) ) {
+    WPPulse_SDK_V2::init( __FILE__, [
         'name'     => $trad_turbo_plugin_data['Name'],
         'slug'     => $trad_turbo_plugin_slug,
         'version'  => $trad_turbo_plugin_data['Version'],
@@ -43,7 +43,7 @@ if ( class_exists( 'WPPulse_SDK' ) ) {
 
 // Define the free version's constant...
 if ( ! defined( 'TURBO_ADDONS_VERSION' ) ) {
-    define( 'TURBO_ADDONS_VERSION', '1.9.5' ); // Update the version as necessary
+    define( 'TURBO_ADDONS_VERSION', '1.9.6' ); // Update the version as necessary
 }
 
 /**
@@ -52,8 +52,8 @@ if ( ! defined( 'TURBO_ADDONS_VERSION' ) ) {
  */
 final class TRAD_Turbo_Addons {
 
-    const TRAD_TURBO_ADDONS_PLUGIN_VERSION = '1.9.5';
-    const TRAD_TURBO_ADDONS_MIN_ELEMENTOR_VERSION = '3.0.0';
+    const TRAD_TURBO_ADDONS_PLUGIN_VERSION = '1.9.6';
+    const TRAD_TURBO_ADDONS_MIN_ELEMENTOR_VERSION = '3.5.0'; // widgets use Widgets_Manager::register() + the elementor/widgets/register hook (3.5+)
     const TRAD_TURBO_ADDONS_MIN_PHP_VERSION = '7.4';
     private static $_instance = null;
 
@@ -113,7 +113,7 @@ final class TRAD_Turbo_Addons {
     private function define_constants() {
         define( 'TRAD_TURBO_ADDONS_PLUGIN_URL', trailingslashit( plugins_url( '/', __FILE__ ) ) );
         define( 'TRAD_TURBO_ADDONS_PLUGIN_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
-        define( 'TRAD_TURBO_ADDONS_PLUGIN_VERSION', '1.9.5' );
+        define( 'TRAD_TURBO_ADDONS_PLUGIN_VERSION', '1.9.6' );
 
         // Include the necessary plugin management functions if not already included
         if ( ! function_exists( 'get_plugins' ) ) {
@@ -234,7 +234,7 @@ final class TRAD_Turbo_Addons {
         
         
         add_action( 'elementor/init', [ $this, 'trad_init_category' ] );
-        add_action( 'elementor/widgets/widgets_registered', [ $this, 'trad_init_widgets' ] );
+        add_action( 'elementor/widgets/register', [ $this, 'trad_init_widgets' ] );
 
         if (is_admin()) {
             include_once ABSPATH . 'wp-admin/includes/plugin.php';
